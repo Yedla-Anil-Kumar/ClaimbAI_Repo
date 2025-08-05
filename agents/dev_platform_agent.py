@@ -1,29 +1,27 @@
-import os
-# import fnmatch
+from pathlib import Path
+from typing import List
+
 from utils.file_utils import list_all_files
 from utils.code_analysis import (
-    average_cyclomatic_complexity,
-    maintainability_index,
-    detect_ml_usage,
-    detect_advanced_tech_usage
+    ast_metrics,
+    notebook_metrics,
+    detect_tests,
+    detect_env,
+    detect_ci,
+    detect_cd,
+    detect_experiments,
+    scan_secrets
 )
 
-GOVERNANCE_ITEMS = [
-    "README.md",
-    "CHANGELOG.md",
-    ".github/ISSUE_TEMPLATE.md",
-    ".github/PULL_REQUEST_TEMPLATE.md"
-]
+# Thresholds for mapping numeric values to a 0–5 scale
+CC_THRESHOLDS    = [0,  5, 10, 20, 30]   # cyclomatic complexity (lower is better)
+MI_THRESHOLDS    = [100, 80, 60, 40, 20] # maintainability index (higher is better)
+COUNT_THRESHOLDS = [0,   1,  5, 10, 20]   # for counts (tests, CI files, etc.)
 
-# Threshold arrays for scoring (0–5)
-# CC_THRESHOLDS   = [0, 5, 10, 20, 30] 
-# MI_THRESHOLDS   = [100, 80, 60, 40, 20] 
-# COUNT_THRESHOLDS= [0, 1, 2, 5, 10] 
-
-def score_metric(value, thresholds, invert=False):
+def score_metric(value: float, thresholds: List[float], invert: bool=False) -> int:
     """
     Map `value` into 0–5 based on `thresholds`.
-    If invert=True, higher value → lower score.
+    If invert=True, higher values yield lower scores.
     """
     for i, t in enumerate(thresholds):
         if (value <= t and not invert) or (value >= t and invert):
@@ -32,81 +30,65 @@ def score_metric(value, thresholds, invert=False):
 
 def analyze_repo(repo_path: str) -> dict:
     """
-    Scan local `repo_path` and return:
-      - signals (raw metrics)
-      - development_maturity (0–5)
-      - innovation_pipeline (0–5)
+    Scans the given local repo folder and returns:
+      - raw `signals` (all eight helpers)
+      - `scores`: development_maturity and innovation_pipeline (0–5)
     """
-    files = list(list_all_files(repo_path))
+    root = Path(repo_path)
+    all_files = list_all_files(repo_path)
 
-    # Python files
-    py_files = [f for f in files if f.endswith(".py")]
+    # — Gather file‐lists for helpers
+    py_files = [Path(f) for f in all_files if f.endswith(".py")]
+    nb_files = [Path(f) for f in all_files if f.endswith(".ipynb")]
 
-    # Code metrics
-    avg_cc   = average_cyclomatic_complexity(py_files)
-    avg_mi   = maintainability_index(py_files)
-    uses_ml  = detect_ml_usage(py_files)
-    adv_ml   = detect_advanced_tech_usage(py_files)
+    # — Raw signals from your helpers
+    signals = {}
+    signals.update(ast_metrics(py_files))             # avg_cc, avg_mi, doc_cov
+    signals.update(notebook_metrics(nb_files))        # notebook_count
+    signals.update(detect_tests(root))                # test_file_count, has_tests, has_test_coverage_report
+    signals.update(detect_env(root))                  # has_requirements, has_pipfile, has_env_yml
+    signals.update(detect_ci(root))                   # ci_workflow_count, has_ci
+    signals.update(detect_cd(root))                   # deploy_script_count, has_deploy_scripts
+    signals.update(detect_experiments(root))          # experiment_folder_count, has_experiments
+    signals.update(scan_secrets(root))                # secret_file_count, has_secrets
 
-    # CI/CD and pipelines
-    yaml_files = [f for f in files if f.endswith((".yml", ".yaml"))]
-    ci_files   = [f for f in yaml_files if ".github" in f or "workflow" in os.path.basename(f).lower()]
-    pipe_defs  = [f for f in yaml_files if "pipeline" in os.path.basename(f).lower()]
+    # — Sub-scores for Development Maturity
+    sc_cc    = score_metric(signals["avg_cyclomatic_complexity"], CC_THRESHOLDS, invert=True)
+    sc_mi    = score_metric(signals["avg_maintainability_index"],    MI_THRESHOLDS)
+    sc_tests = score_metric(signals["test_file_count"],              COUNT_THRESHOLDS)
+    sc_ci    = score_metric(signals["ci_workflow_count"],            COUNT_THRESHOLDS)
+    sc_cd    = score_metric(signals["deploy_script_count"],          COUNT_THRESHOLDS)
+    # environment maturity as fraction of env files present
+    env_flags = [
+        signals["has_requirements"],
+        signals["has_pipfile"],
+        signals["has_env_yml"]
+    ]
+    sc_env   = int(sum(env_flags) / len(env_flags) * 5)
+    # penalize secret leaks (if any secrets found, score low)
+    sc_sec   = 0 if signals["has_secrets"] else 5
 
-    # Tests
-    test_files = [f for f in files if "/tests/" in f.lower() or os.path.basename(f).startswith("test_")]
-
-    # Governance
-    gov_count = sum(
-        1 for item in GOVERNANCE_ITEMS
-        if os.path.exists(os.path.join(repo_path, item))
+    # Composite Dev Maturity (weighted equally across 7 sub-scores)
+    dev_maturity = round(
+        (sc_cc + sc_mi + sc_tests + sc_ci + sc_cd + sc_env + sc_sec) / 7, 2
     )
 
-    # Notebooks & experiments
-    nb_files = [f for f in files if f.endswith(".ipynb")]
-    exp_dirs = [d for d in os.listdir(repo_path) if "experiment" in d.lower()]
+    # — Sub-scores for Innovation Pipeline
+    sc_nb   = score_metric(signals["notebook_count"], COUNT_THRESHOLDS)
+    sc_exp  = score_metric(signals["experiment_folder_count"], COUNT_THRESHOLDS)
+    sc_gov  = score_metric(
+        signals.get("has_test_coverage_report", 0) + signals.get("has_tests", 0),
+        COUNT_THRESHOLDS
+    )  # reuse test/coverage as a proxy for governance
 
-    # Subscores
-    # sc_cc    = score_metric(avg_cc, CC_THRESHOLDS, invert=True)
-    # sc_mi    = score_metric(avg_mi, MI_THRESHOLDS)
-    # sc_ci    = score_metric(len(ci_files), COUNT_THRESHOLDS)
-    # sc_pipe  = score_metric(len(pipe_defs), COUNT_THRESHOLDS)
-    # sc_gov   = min(gov_count, 5)
-    # sc_adv   = 1 if adv_ml else 0
-
-    # Dev Maturity composite: weights 25%,25%,20%,15%,15%
-    # dev_maturity = round(
-    #     sc_cc    * 0.25 +
-    #     sc_mi    * 0.25 +
-    #     sc_ci    * 0.20 +
-    #     sc_pipe  * 0.15 +
-    #     sc_gov   * 0.15,
-    #     2
-    # )
-
-    # Innovation Pipeline: notebooks, ML usage, experiments
-    # sc_nb    = 1 if nb_files else 0
-    # sc_ml    = 1 if uses_ml else 0
-    # sc_exp   = min(len(exp_dirs), 5)
-    #innovation = round((sc_nb + sc_ml + sc_exp) / 3 * 5, 2)
+    innovation = round((sc_nb + sc_exp + sc_gov) / 3 * 5, 2)
 
     return {
         "agent": "dev_platform_agent",
-        "repo": os.path.basename(repo_path),
-        "signals": {
-            "avg_cyclomatic_complexity": avg_cc,
-            "avg_maintainability_index": avg_mi,
-            "ci_cd_file_count": len(ci_files),
-            "pipeline_definition_count": len(pipe_defs),
-            "test_file_count": len(test_files),
-            "governance_item_count": gov_count,
-            "uses_standard_ml_frameworks": uses_ml,
-            "uses_advanced_ml_tech": adv_ml,
-            "notebook_count": len(nb_files),
-            "experiment_folder_count": len(exp_dirs)
-        },
-        # "scores": {
-        #     "development_maturity": dev_maturity,
-        #     "innovation_pipeline": innovation
-        # }
+        "repo": root.name,
+        "signals": signals,
+        "scores": {
+            "development_maturity": dev_maturity,
+            "innovation_pipeline": innovation
+        }
     }
