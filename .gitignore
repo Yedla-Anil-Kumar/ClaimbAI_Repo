@@ -1,4 +1,4 @@
 /venv/
 /external_repos/
-/data/
+# /data/
 /*.env

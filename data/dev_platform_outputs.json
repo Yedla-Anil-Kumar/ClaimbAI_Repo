@@ -1,0 +1,594 @@
+[
+  {
+    "agent": "dev_platform_agent",
+    "repo": "Beginner-Friendly-Machine-Learning-And-AI-Projects",
+    "signals": {
+      "avg_cyclomatic_complexity": 0,
+      "avg_maintainability_index": 0,
+      "ci_cd_file_count": 0,
+      "pipeline_definition_count": 0,
+      "test_file_count": 0,
+      "governance_item_count": 1,
+      "uses_standard_ml_frameworks": false,
+      "uses_advanced_ml_tech": false,
+      "notebook_count": 0,
+      "experiment_folder_count": 0
+    }
+  },
+  {
+    "agent": "dev_platform_agent",
+    "repo": "Machine-Learning-with-Python",
+    "signals": {
+      "avg_cyclomatic_complexity": 2.7058823529411766,
+      "avg_maintainability_index": 0,
+      "ci_cd_file_count": 0,
+      "pipeline_definition_count": 0,
+      "test_file_count": 0,
+      "governance_item_count": 1,
+      "uses_standard_ml_frameworks": true,
+      "uses_advanced_ml_tech": false,
+      "notebook_count": 140,
+      "experiment_folder_count": 0
+    }
+  },
+  {
+    "agent": "dev_platform_agent",
+    "repo": "ML-Papers-of-the-Week",
+    "signals": {
+      "avg_cyclomatic_complexity": 0,
+      "avg_maintainability_index": 0,
+      "ci_cd_file_count": 0,
+      "pipeline_definition_count": 0,
+      "test_file_count": 0,
+      "governance_item_count": 1,
+      "uses_standard_ml_frameworks": false,
+      "uses_advanced_ml_tech": false,
+      "notebook_count": 0,
+      "experiment_folder_count": 0
+    }
+  },
+  {
+    "agent": "dev_platform_agent",
+    "repo": "pandas_exercises",
+    "signals": {
+      "avg_cyclomatic_complexity": 0,
+      "avg_maintainability_index": 0,
+      "ci_cd_file_count": 1,
+      "pipeline_definition_count": 0,
+      "test_file_count": 0,
+      "governance_item_count": 1,
+      "uses_standard_ml_frameworks": false,
+      "uses_advanced_ml_tech": false,
+      "notebook_count": 83,
+      "experiment_folder_count": 0
+    }
+  },
+  {
+    "agent": "dev_platform_agent",
+    "repo": "hum2song",
+    "signals": {
+      "avg_cyclomatic_complexity": 0,
+      "avg_maintainability_index": 0,
+      "ci_cd_file_count": 0,
+      "pipeline_definition_count": 0,
+      "test_file_count": 0,
+      "governance_item_count": 1,
+      "uses_standard_ml_frameworks": false,
+      "uses_advanced_ml_tech": false,
+      "notebook_count": 0,
+      "experiment_folder_count": 0
+    }
+  },
+  {
+    "agent": "dev_platform_agent",
+    "repo": "StudentPerformancePrediction-ML",
+    "signals": {
+      "avg_cyclomatic_complexity": 0,
+      "avg_maintainability_index": 0,
+      "ci_cd_file_count": 0,
+      "pipeline_definition_count": 0,
+      "test_file_count": 0,
+      "governance_item_count": 1,
+      "uses_standard_ml_frameworks": false,
+      "uses_advanced_ml_tech": false,
+      "notebook_count": 0,
+      "experiment_folder_count": 0
+    }
+  },
+  {
+    "agent": "dev_platform_agent",
+    "repo": "qxresearch-event-1",
+    "signals": {
+      "avg_cyclomatic_complexity": 1.3823529411764706,
+      "avg_maintainability_index": 0,
+      "ci_cd_file_count": 2,
+      "pipeline_definition_count": 0,
+      "test_file_count": 0,
+      "governance_item_count": 1,
+      "uses_standard_ml_frameworks": false,
+      "uses_advanced_ml_tech": false,
+      "notebook_count": 0,
+      "experiment_folder_count": 0
+    }
+  },
+  {
+    "agent": "dev_platform_agent",
+    "repo": "awesome-ai-web-search",
+    "signals": {
+      "avg_cyclomatic_complexity": 0,
+      "avg_maintainability_index": 0,
+      "ci_cd_file_count": 5,
+      "pipeline_definition_count": 0,
+      "test_file_count": 0,
+      "governance_item_count": 1,
+      "uses_standard_ml_frameworks": false,
+      "uses_advanced_ml_tech": false,
+      "notebook_count": 0,
+      "experiment_folder_count": 0
+    }
+  },
+  {
+    "agent": "dev_platform_agent",
+    "repo": "open-webui",
+    "signals": {
+      "avg_cyclomatic_complexity": 3.9321623258631133,
+      "avg_maintainability_index": 0,
+      "ci_cd_file_count": 11,
+      "pipeline_definition_count": 0,
+      "test_file_count": 7,
+      "governance_item_count": 3,
+      "uses_standard_ml_frameworks": true,
+      "uses_advanced_ml_tech": false,
+      "notebook_count": 0,
+      "experiment_folder_count": 0
+    }
+  },
+  {
+    "agent": "dev_platform_agent",
+    "repo": "private-gpt",
+    "signals": {
+      "avg_cyclomatic_complexity": 2.791411042944785,
+      "avg_maintainability_index": 0,
+      "ci_cd_file_count": 13,
+      "pipeline_definition_count": 0,
+      "test_file_count": 22,
+      "governance_item_count": 3,
+      "uses_standard_ml_frameworks": false,
+      "uses_advanced_ml_tech": false,
+      "notebook_count": 0,
+      "experiment_folder_count": 0
+    }
+  },
+  {
+    "agent": "dev_platform_agent",
+    "repo": "AI-Resume-Analyzer",
+    "signals": {
+      "avg_cyclomatic_complexity": 6.25,
+      "avg_maintainability_index": 0,
+      "ci_cd_file_count": 0,
+      "pipeline_definition_count": 0,
+      "test_file_count": 0,
+      "governance_item_count": 1,
+      "uses_standard_ml_frameworks": false,
+      "uses_advanced_ml_tech": false,
+      "notebook_count": 0,
+      "experiment_folder_count": 0
+    }
+  },
+  {
+    "agent": "dev_platform_agent",
+    "repo": "Simplify-Event-Management-System",
+    "signals": {
+      "avg_cyclomatic_complexity": 0,
+      "avg_maintainability_index": 0,
+      "ci_cd_file_count": 0,
+      "pipeline_definition_count": 0,
+      "test_file_count": 0,
+      "governance_item_count": 1,
+      "uses_standard_ml_frameworks": false,
+      "uses_advanced_ml_tech": false,
+      "notebook_count": 0,
+      "experiment_folder_count": 0
+    }
+  },
+  {
+    "agent": "dev_platform_agent",
+    "repo": "ai-resume-parser",
+    "signals": {
+      "avg_cyclomatic_complexity": 0,
+      "avg_maintainability_index": 0,
+      "ci_cd_file_count": 0,
+      "pipeline_definition_count": 0,
+      "test_file_count": 0,
+      "governance_item_count": 1,
+      "uses_standard_ml_frameworks": false,
+      "uses_advanced_ml_tech": false,
+      "notebook_count": 0,
+      "experiment_folder_count": 0
+    }
+  },
+  {
+    "agent": "dev_platform_agent",
+    "repo": "AI-Resume-Analyzer",
+    "signals": {
+      "avg_cyclomatic_complexity": 6.25,
+      "avg_maintainability_index": 0,
+      "ci_cd_file_count": 0,
+      "pipeline_definition_count": 0,
+      "test_file_count": 0,
+      "governance_item_count": 1,
+      "uses_standard_ml_frameworks": false,
+      "uses_advanced_ml_tech": false,
+      "notebook_count": 0,
+      "experiment_folder_count": 0
+    }
+  },
+  {
+    "agent": "dev_platform_agent",
+    "repo": "MATLAB-Simulink-Challenge-Project-Hub",
+    "signals": {
+      "avg_cyclomatic_complexity": 0,
+      "avg_maintainability_index": 0,
+      "ci_cd_file_count": 0,
+      "pipeline_definition_count": 0,
+      "test_file_count": 0,
+      "governance_item_count": 1,
+      "uses_standard_ml_frameworks": false,
+      "uses_advanced_ml_tech": false,
+      "notebook_count": 0,
+      "experiment_folder_count": 0
+    }
+  },
+  {
+    "agent": "dev_platform_agent",
+    "repo": "CryptocurrencyPrediction",
+    "signals": {
+      "avg_cyclomatic_complexity": 2.3333333333333335,
+      "avg_maintainability_index": 0,
+      "ci_cd_file_count": 0,
+      "pipeline_definition_count": 0,
+      "test_file_count": 3,
+      "governance_item_count": 1,
+      "uses_standard_ml_frameworks": true,
+      "uses_advanced_ml_tech": false,
+      "notebook_count": 25,
+      "experiment_folder_count": 0
+    }
+  },
+  {
+    "agent": "dev_platform_agent",
+    "repo": "Gesture-Controlled-Virtual-Mouse",
+    "signals": {
+      "avg_cyclomatic_complexity": 3.823529411764706,
+      "avg_maintainability_index": 0,
+      "ci_cd_file_count": 0,
+      "pipeline_definition_count": 0,
+      "test_file_count": 0,
+      "governance_item_count": 1,
+      "uses_standard_ml_frameworks": false,
+      "uses_advanced_ml_tech": false,
+      "notebook_count": 0,
+      "experiment_folder_count": 0
+    }
+  },
+  {
+    "agent": "dev_platform_agent",
+    "repo": "Finding-missing-person-using-AI",
+    "signals": {
+      "avg_cyclomatic_complexity": 2.3,
+      "avg_maintainability_index": 0,
+      "ci_cd_file_count": 1,
+      "pipeline_definition_count": 0,
+      "test_file_count": 0,
+      "governance_item_count": 1,
+      "uses_standard_ml_frameworks": true,
+      "uses_advanced_ml_tech": false,
+      "notebook_count": 0,
+      "experiment_folder_count": 0
+    }
+  },
+  {
+    "agent": "dev_platform_agent",
+    "repo": "ML-Sample-Projects",
+    "signals": {
+      "avg_cyclomatic_complexity": 0,
+      "avg_maintainability_index": 0,
+      "ci_cd_file_count": 0,
+      "pipeline_definition_count": 0,
+      "test_file_count": 0,
+      "governance_item_count": 1,
+      "uses_standard_ml_frameworks": false,
+      "uses_advanced_ml_tech": false,
+      "notebook_count": 6,
+      "experiment_folder_count": 0
+    }
+  },
+  {
+    "agent": "dev_platform_agent",
+    "repo": "flyte",
+    "signals": {
+      "avg_cyclomatic_complexity": 1.5576923076923077,
+      "avg_maintainability_index": 0,
+      "ci_cd_file_count": 56,
+      "pipeline_definition_count": 0,
+      "test_file_count": 46,
+      "governance_item_count": 2,
+      "uses_standard_ml_frameworks": false,
+      "uses_advanced_ml_tech": false,
+      "notebook_count": 0,
+      "experiment_folder_count": 0
+    }
+  },
+  {
+    "agent": "dev_platform_agent",
+    "repo": "simple-data-analysis",
+    "signals": {
+      "avg_cyclomatic_complexity": 0,
+      "avg_maintainability_index": 0,
+      "ci_cd_file_count": 3,
+      "pipeline_definition_count": 0,
+      "test_file_count": 0,
+      "governance_item_count": 1,
+      "uses_standard_ml_frameworks": false,
+      "uses_advanced_ml_tech": false,
+      "notebook_count": 0,
+      "experiment_folder_count": 0
+    }
+  },
+  {
+    "agent": "dev_platform_agent",
+    "repo": "Basic-Machine-Learning-Projects-",
+    "signals": {
+      "avg_cyclomatic_complexity": 0,
+      "avg_maintainability_index": 0,
+      "ci_cd_file_count": 0,
+      "pipeline_definition_count": 0,
+      "test_file_count": 0,
+      "governance_item_count": 1,
+      "uses_standard_ml_frameworks": false,
+      "uses_advanced_ml_tech": false,
+      "notebook_count": 9,
+      "experiment_folder_count": 0
+    }
+  },
+  {
+    "agent": "dev_platform_agent",
+    "repo": "dvc",
+    "signals": {
+      "avg_cyclomatic_complexity": 3.3559613319011814,
+      "avg_maintainability_index": 0,
+      "ci_cd_file_count": 9,
+      "pipeline_definition_count": 0,
+      "test_file_count": 282,
+      "governance_item_count": 1,
+      "uses_standard_ml_frameworks": false,
+      "uses_advanced_ml_tech": false,
+      "notebook_count": 0,
+      "experiment_folder_count": 0
+    }
+  },
+  {
+    "agent": "dev_platform_agent",
+    "repo": "evidently",
+    "signals": {
+      "avg_cyclomatic_complexity": 2.6444902870895652,
+      "avg_maintainability_index": 0,
+      "ci_cd_file_count": 8,
+      "pipeline_definition_count": 0,
+      "test_file_count": 213,
+      "governance_item_count": 1,
+      "uses_standard_ml_frameworks": true,
+      "uses_advanced_ml_tech": true,
+      "notebook_count": 18,
+      "experiment_folder_count": 0
+    }
+  },
+  {
+    "agent": "dev_platform_agent",
+    "repo": "ML_toy_examples",
+    "signals": {
+      "avg_cyclomatic_complexity": 0,
+      "avg_maintainability_index": 0,
+      "ci_cd_file_count": 0,
+      "pipeline_definition_count": 0,
+      "test_file_count": 0,
+      "governance_item_count": 1,
+      "uses_standard_ml_frameworks": false,
+      "uses_advanced_ml_tech": false,
+      "notebook_count": 11,
+      "experiment_folder_count": 0
+    }
+  },
+  {
+    "agent": "dev_platform_agent",
+    "repo": "FastChat",
+    "signals": {
+      "avg_cyclomatic_complexity": 3.2867025365103766,
+      "avg_maintainability_index": 0,
+      "ci_cd_file_count": 1,
+      "pipeline_definition_count": 0,
+      "test_file_count": 16,
+      "governance_item_count": 2,
+      "uses_standard_ml_frameworks": true,
+      "uses_advanced_ml_tech": true,
+      "notebook_count": 1,
+      "experiment_folder_count": 0
+    }
+  },
+  {
+    "agent": "dev_platform_agent",
+    "repo": "ml-pipeline-tutorial",
+    "signals": {
+      "avg_cyclomatic_complexity": 2.717391304347826,
+      "avg_maintainability_index": 0,
+      "ci_cd_file_count": 0,
+      "pipeline_definition_count": 0,
+      "test_file_count": 0,
+      "governance_item_count": 1,
+      "uses_standard_ml_frameworks": true,
+      "uses_advanced_ml_tech": false,
+      "notebook_count": 0,
+      "experiment_folder_count": 0
+    }
+  },
+  {
+    "agent": "dev_platform_agent",
+    "repo": "ml-dl-journey",
+    "signals": {
+      "avg_cyclomatic_complexity": 1.7142857142857142,
+      "avg_maintainability_index": 0,
+      "ci_cd_file_count": 0,
+      "pipeline_definition_count": 0,
+      "test_file_count": 0,
+      "governance_item_count": 1,
+      "uses_standard_ml_frameworks": true,
+      "uses_advanced_ml_tech": false,
+      "notebook_count": 6,
+      "experiment_folder_count": 0
+    }
+  },
+  {
+    "agent": "dev_platform_agent",
+    "repo": "fastai",
+    "signals": {
+      "avg_cyclomatic_complexity": 2.480859989512323,
+      "avg_maintainability_index": 0,
+      "ci_cd_file_count": 4,
+      "pipeline_definition_count": 0,
+      "test_file_count": 2,
+      "governance_item_count": 2,
+      "uses_standard_ml_frameworks": true,
+      "uses_advanced_ml_tech": false,
+      "notebook_count": 105,
+      "experiment_folder_count": 0
+    }
+  },
+  {
+    "agent": "dev_platform_agent",
+    "repo": "Machine-learning-applications-Examples",
+    "signals": {
+      "avg_cyclomatic_complexity": 0,
+      "avg_maintainability_index": 0,
+      "ci_cd_file_count": 0,
+      "pipeline_definition_count": 0,
+      "test_file_count": 0,
+      "governance_item_count": 1,
+      "uses_standard_ml_frameworks": false,
+      "uses_advanced_ml_tech": false,
+      "notebook_count": 2,
+      "experiment_folder_count": 0
+    }
+  },
+  {
+    "agent": "dev_platform_agent",
+    "repo": "detectron2",
+    "signals": {
+      "avg_cyclomatic_complexity": 3.2197016780609076,
+      "avg_maintainability_index": 0,
+      "ci_cd_file_count": 13,
+      "pipeline_definition_count": 0,
+      "test_file_count": 83,
+      "governance_item_count": 3,
+      "uses_standard_ml_frameworks": true,
+      "uses_advanced_ml_tech": true,
+      "notebook_count": 0,
+      "experiment_folder_count": 0
+    }
+  },
+  {
+    "agent": "dev_platform_agent",
+    "repo": "DataAnalysisInAction",
+    "signals": {
+      "avg_cyclomatic_complexity": 2.081081081081081,
+      "avg_maintainability_index": 0,
+      "ci_cd_file_count": 0,
+      "pipeline_definition_count": 0,
+      "test_file_count": 0,
+      "governance_item_count": 1,
+      "uses_standard_ml_frameworks": true,
+      "uses_advanced_ml_tech": false,
+      "notebook_count": 0,
+      "experiment_folder_count": 0
+    }
+  },
+  {
+    "agent": "dev_platform_agent",
+    "repo": "500-AI-Machine-learning-Deep-learning-Computer-vision-NLP-Projects-with-code",
+    "signals": {
+      "avg_cyclomatic_complexity": 0,
+      "avg_maintainability_index": 0,
+      "ci_cd_file_count": 1,
+      "pipeline_definition_count": 0,
+      "test_file_count": 0,
+      "governance_item_count": 1,
+      "uses_standard_ml_frameworks": false,
+      "uses_advanced_ml_tech": false,
+      "notebook_count": 0,
+      "experiment_folder_count": 0
+    }
+  },
+  {
+    "agent": "dev_platform_agent",
+    "repo": "Machine-learning-pipeline",
+    "signals": {
+      "avg_cyclomatic_complexity": 2.2142857142857144,
+      "avg_maintainability_index": 0,
+      "ci_cd_file_count": 0,
+      "pipeline_definition_count": 0,
+      "test_file_count": 0,
+      "governance_item_count": 1,
+      "uses_standard_ml_frameworks": true,
+      "uses_advanced_ml_tech": false,
+      "notebook_count": 0,
+      "experiment_folder_count": 0
+    }
+  },
+  {
+    "agent": "dev_platform_agent",
+    "repo": "client",
+    "signals": {
+      "avg_cyclomatic_complexity": 2.9528210544846405,
+      "avg_maintainability_index": 0,
+      "ci_cd_file_count": 15,
+      "pipeline_definition_count": 1,
+      "test_file_count": 392,
+      "governance_item_count": 3,
+      "uses_standard_ml_frameworks": true,
+      "uses_advanced_ml_tech": true,
+      "notebook_count": 8,
+      "experiment_folder_count": 1
+    }
+  },
+  {
+    "agent": "dev_platform_agent",
+    "repo": "handson-ml2",
+    "signals": {
+      "avg_cyclomatic_complexity": 4.0,
+      "avg_maintainability_index": 0,
+      "ci_cd_file_count": 0,
+      "pipeline_definition_count": 0,
+      "test_file_count": 1,
+      "governance_item_count": 1,
+      "uses_standard_ml_frameworks": false,
+      "uses_advanced_ml_tech": false,
+      "notebook_count": 27,
+      "experiment_folder_count": 0
+    }
+  },
+  {
+    "agent": "dev_platform_agent",
+    "repo": "mindsdb",
+    "signals": {
+      "avg_cyclomatic_complexity": 3.2879659211927583,
+      "avg_maintainability_index": 0,
+      "ci_cd_file_count": 15,
+      "pipeline_definition_count": 0,
+      "test_file_count": 446,
+      "governance_item_count": 2,
+      "uses_standard_ml_frameworks": true,
+      "uses_advanced_ml_tech": true,
+      "notebook_count": 0,
+      "experiment_folder_count": 0
+    }
+  }
+]
