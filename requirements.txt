@@ -13,3 +13,6 @@ weaviate-client
 langchain-openai
 google-search-results
 serpapi
+GitPython
+radon
+flake8     

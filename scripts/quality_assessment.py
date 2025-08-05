@@ -1,16 +1,22 @@
-import json
+import os
 import sys
-from agents.dev_quality_agent import analyze_dev_and_innovation
+import json
+from pathlib import Path
+from agents.dev_platform_agent import analyze_repo
 
-def assess_repository(repo_path: str) -> dict:
-    
-    return analyze_dev_and_innovation(repo_path)["signals"]
+PROJECT_ROOT = Path(__file__).parent.parent.resolve()
+sys.path.insert(0, str(PROJECT_ROOT))
+
+
+def assess_all_repos(base_dir: str):
+    for entry in os.listdir(base_dir):
+        repo_path = os.path.join(base_dir, entry)
+        if not os.path.isdir(repo_path):
+            continue
+        signals = analyze_repo(repo_path)
+        print(f"\n--- Assessment for {entry} ---")
+        print(json.dumps(signals, indent=2))
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python scripts/quality_assessment.py /path/to/repo")
-        sys.exit(1)
-
-    repo_path = sys.argv[1]
-    signals = assess_repository(repo_path)
-    print(json.dumps(signals, indent=2))
+    base = Path(__file__).parent.parent / "external_repos"
+    assess_all_repos(str(base))

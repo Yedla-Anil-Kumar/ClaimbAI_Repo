@@ -1,5 +1,3 @@
-# agents/dev_quality_agent.py
-
 import os
 import fnmatch
 from datetime import datetime, timedelta
