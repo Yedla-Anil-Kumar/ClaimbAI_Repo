@@ -3,8 +3,7 @@ import sys
 from agents.dev_quality_agent import analyze_dev_and_innovation
 
 def assess_repository(repo_path: str) -> dict:
-    signals = {}
-
+    
     return analyze_dev_and_innovation(repo_path)["signals"]
 
 if __name__ == "__main__":
