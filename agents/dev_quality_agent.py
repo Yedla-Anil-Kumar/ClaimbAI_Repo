@@ -1,5 +1,3 @@
-# agents/dev_quality_agent.py
-
 import os
 from datetime import datetime, timedelta
 from pathlib import Path
