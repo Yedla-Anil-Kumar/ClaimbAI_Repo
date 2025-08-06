@@ -18,5 +18,5 @@ def assess_all_repos(base_dir: str):
         print(json.dumps(signals, indent=2))
 
 if __name__ == "__main__":
-    base = Path(__file__).parent.parent / "external_repos"
+    base = Path(__file__).parent.parent / "useful_repos"
     assess_all_repos(str(base))

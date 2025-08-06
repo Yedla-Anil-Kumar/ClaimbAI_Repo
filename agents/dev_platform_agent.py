@@ -1,10 +1,12 @@
+# agents/dev_platform_agent.py
+
 from pathlib import Path
-from typing import List
+from typing import Any, Dict
 
 from utils.file_utils import list_all_files
 from utils.code_analysis import (
     ast_metrics,
-    notebook_metrics,
+    notebook_metrics,      # still collected, but NOT used in scoring as per mentor
     detect_tests,
     detect_env,
     detect_ci,
@@ -12,83 +14,140 @@ from utils.code_analysis import (
     detect_experiments,
     scan_secrets
 )
+from utils.ml_insights import (
+    detect_ml_frameworks,
+    detect_data_pipeline_configs,    # now takes (root, py_files)
+    detect_experiment_tracking,
+    detect_model_training_scripts,
+    detect_model_evaluation,
+    detect_hyperparameter_configs,    # now takes (root, py_files)
+    detect_data_validation,
+    detect_feature_engineering,
+    detect_model_export,
+    detect_inference_endpoints,
+    detect_metric_reporting,
+    detect_nested_loops,
+    detect_dependency_files,          # new
+    detect_documentation             # new
+)
 
-# Thresholds for mapping numeric values to a 0–5 scale
-CC_THRESHOLDS    = [0,  5, 10, 20, 30]   # cyclomatic complexity (lower is better)
-MI_THRESHOLDS    = [100, 80, 60, 40, 20] # maintainability index (higher is better)
-COUNT_THRESHOLDS = [0,   1,  5, 10, 20]   # for counts (tests, CI files, etc.)
+# Threshold helpers
+def clamp01(x: float) -> float:
+    return max(0.0, min(1.0, x))
 
-def score_metric(value: float, thresholds: List[float], invert: bool=False) -> int:
-    """
-    Map `value` into 0–5 based on `thresholds`.
-    If invert=True, higher values yield lower scores.
-    """
-    for i, t in enumerate(thresholds):
-        if (value <= t and not invert) or (value >= t and invert):
-            return 5 - i
-    return 0
-
-def analyze_repo(repo_path: str) -> dict:
-    """
-    Scans the given local repo folder and returns:
-      - raw `signals` (all eight helpers)
-      - `scores`: development_maturity and innovation_pipeline (0–5)
-    """
+def analyze_repo(repo_path: str) -> Dict[str, Any]:
     root = Path(repo_path)
+    # gather every file path once
     all_files = list_all_files(repo_path)
+    py_files   = [Path(f) for f in all_files if f.endswith(".py")]
+    nb_files   = [Path(f) for f in all_files if f.endswith(".ipynb")]
 
-    # — Gather file‐lists for helpers
-    py_files = [Path(f) for f in all_files if f.endswith(".py")]
-    nb_files = [Path(f) for f in all_files if f.endswith(".ipynb")]
+    # ───── Signals ───────────────────────────────────────────────
+    signals: Dict[str, Any] = {}
 
-    # — Raw signals from your helpers
-    signals = {}
-    signals.update(ast_metrics(py_files))             # avg_cc, avg_mi, doc_cov
-    signals.update(notebook_metrics(nb_files))        # notebook_count
-    signals.update(detect_tests(root))                # test_file_count, has_tests, has_test_coverage_report
-    signals.update(detect_env(root))                  # has_requirements, has_pipfile, has_env_yml
-    signals.update(detect_ci(root))                   # ci_workflow_count, has_ci
-    signals.update(detect_cd(root))                   # deploy_script_count, has_deploy_scripts
-    signals.update(detect_experiments(root))          # experiment_folder_count, has_experiments
-    signals.update(scan_secrets(root))                # secret_file_count, has_secrets
+    # core static analysis
+    signals.update(ast_metrics(py_files))             # avg_cc, avg_mi, docstring_coverage
+    signals.update(notebook_metrics(nb_files))        # notebook_count (collected, not scored)
+    signals.update(detect_tests(root))
+    signals.update(detect_env(root))
+    signals.update(detect_ci(root))
+    signals.update(detect_cd(root))
+    signals.update(detect_experiments(root))
+    signals.update(scan_secrets(root))
 
-    # — Sub-scores for Development Maturity
-    sc_cc    = score_metric(signals["avg_cyclomatic_complexity"], CC_THRESHOLDS, invert=True)
-    sc_mi    = score_metric(signals["avg_maintainability_index"],    MI_THRESHOLDS)
-    sc_tests = score_metric(signals["test_file_count"],              COUNT_THRESHOLDS)
-    sc_ci    = score_metric(signals["ci_workflow_count"],            COUNT_THRESHOLDS)
-    sc_cd    = score_metric(signals["deploy_script_count"],          COUNT_THRESHOLDS)
-    # environment maturity as fraction of env files present
-    env_flags = [
-        signals["has_requirements"],
-        signals["has_pipfile"],
-        signals["has_env_yml"]
+    # AI/ML static analysis
+    signals.update(detect_ml_frameworks(py_files))
+    signals.update(detect_data_pipeline_configs(root, py_files))
+    signals.update(detect_experiment_tracking(py_files))
+    signals.update(detect_model_training_scripts(py_files))
+    signals.update(detect_model_evaluation(py_files))
+    signals.update(detect_hyperparameter_configs(root, py_files))
+    signals.update(detect_data_validation(py_files))
+    signals.update(detect_feature_engineering(py_files))
+    signals.update(detect_model_export(py_files, root))
+    signals.update(detect_inference_endpoints(py_files))
+    signals.update(detect_metric_reporting(py_files))
+    signals.update(detect_nested_loops(py_files))
+
+    # New repo-maturity checks
+    signals.update(detect_dependency_files(root))
+    signals.update(detect_documentation(root))
+
+    # ───── Scoring (rebalance) ─────────────────────────────────
+    # lower CC better
+    s_cc   = clamp01(1.0 - min(signals.get("avg_cyclomatic_complexity", 0.0), 30) / 30.0)
+    # MI 20→0.0, 100→1.0
+    s_mi   = clamp01((min(signals.get("avg_maintainability_index", 0.0), 100) - 20) / 80.0)
+    s_doc  = clamp01(signals.get("docstring_coverage", 0.0))
+    # tests capped at 10 files
+    s_tests = clamp01(signals.get("test_file_count", 0) / 10.0)
+    # CI/CD flags
+    s_ci   = 1.0 if signals.get("ci_workflow_count", 0) > 0 else 0.0
+    s_cd   = 1.0 if signals.get("deploy_script_count", 0) > 0 else 0.0
+    # env files fraction
+    env_bits = [
+        signals.get("has_requirements", False),
+        signals.get("has_pipfile", False),
+        signals.get("has_env_yml", False)
     ]
-    sc_env   = int(sum(env_flags) / len(env_flags) * 5)
-    # penalize secret leaks (if any secrets found, score low)
-    sc_sec   = 0 if signals["has_secrets"] else 5
+    s_env  = sum(env_bits) / len(env_bits)
+    # secret penalty
+    s_sec  = 0.0 if signals.get("has_secrets", False) else 1.0
+    # nested loops penalty (soft)
+    nested_pen = clamp01(min(signals.get("nested_loop_files", 0), 10) / 10.0)
+    s_eff  = clamp01(1.0 - 0.5 * nested_pen)
 
-    # Composite Dev Maturity (weighted equally across 7 sub-scores)
-    dev_maturity = round(
-        (sc_cc + sc_mi + sc_tests + sc_ci + sc_cd + sc_env + sc_sec) / 7, 2
-    )
+    # weights (sum ≈ 1.0)
+    w = {
+        "mi":    0.30,
+        "doc":   0.20,
+        "cc":    0.05,
+        "tests": 0.15,
+        "ci":    0.10,
+        "cd":    0.10,
+        "env":   0.07,
+        "sec":   0.03,
+        "eff":   0.00,   # available if you want to penalize inefficiency later
+    }
+    dev_maturity = round((
+        w["mi"]*s_mi + w["doc"]*s_doc + w["cc"]*s_cc +
+        w["tests"]*s_tests + w["ci"]*s_ci + w["cd"]*s_cd +
+        w["env"]*s_env + w["sec"]*s_sec + w["eff"]*s_eff
+    ) * 5, 2)
 
-    # — Sub-scores for Innovation Pipeline
-    sc_nb   = score_metric(signals["notebook_count"], COUNT_THRESHOLDS)
-    sc_exp  = score_metric(signals["experiment_folder_count"], COUNT_THRESHOLDS)
-    sc_gov  = score_metric(
-        signals.get("has_test_coverage_report", 0) + signals.get("has_tests", 0),
-        COUNT_THRESHOLDS
-    )  # reuse test/coverage as a proxy for governance
+    # ─ Innovation Pipeline ────────────────────────────────────────
+    # experiments, tracking, hyperparams, validation, metrics
+    s_exp     = 1.0 if signals.get("has_experiments") else 0.0
+    s_track   = 1.0 if any(signals.get(f"uses_{t}", False) for t in ("mlflow","wandb","clearml")) else 0.0
+    s_hparams = 1.0 if (
+        signals.get("has_hyperparam_file") or
+        signals.get("uses_optuna") or signals.get("uses_ray_tune")
+    ) else 0.0
+    s_valid   = 1.0 if any(signals.get(f"uses_{v}", False) for v in ("great_expectations","evidently","pandera")) else 0.0
+    s_metrics = 1.0 if (
+        signals.get("reports_precision_recall_f1") or
+        signals.get("reports_regression_metrics")
+    ) else 0.0
 
-    innovation = round((sc_nb + sc_exp + sc_gov) / 3 * 5, 2)
+    iw = {
+        "exp":     0.30,
+        "track":   0.25,
+        "hparams": 0.20,
+        "valid":   0.15,
+        "metrics": 0.10
+    }
+    innovation = round((
+        iw["exp"]*s_exp + iw["track"]*s_track +
+        iw["hparams"]*s_hparams + iw["valid"]*s_valid +
+        iw["metrics"]*s_metrics
+    ) * 5, 2)
 
     return {
         "agent": "dev_platform_agent",
-        "repo": root.name,
+        "repo":   root.name,
         "signals": signals,
         "scores": {
             "development_maturity": dev_maturity,
-            "innovation_pipeline": innovation
+            "innovation_pipeline":  innovation
         }
     }

@@ -1,286 +1,6 @@
 [
   {
     "agent": "dev_platform_agent",
-    "repo": "Beginner-Friendly-Machine-Learning-And-AI-Projects",
-    "signals": {
-      "avg_cyclomatic_complexity": 0.0,
-      "avg_maintainability_index": 0.0,
-      "docstring_coverage": 0.0,
-      "notebook_count": 0,
-      "test_file_count": 0,
-      "has_tests": false,
-      "has_test_coverage_report": false,
-      "has_requirements": false,
-      "has_pipfile": false,
-      "has_env_yml": false,
-      "ci_workflow_count": 0,
-      "has_ci": false,
-      "deploy_script_count": 0,
-      "has_deploy_scripts": false,
-      "experiment_folder_count": 0,
-      "has_experiments": false,
-      "secret_file_count": 0,
-      "has_secrets": false
-    },
-    "scores": {
-      "development_maturity": 4.29,
-      "innovation_pipeline": 25.0
-    }
-  },
-  {
-    "agent": "dev_platform_agent",
-    "repo": "Machine-Learning-with-Python",
-    "signals": {
-      "avg_cyclomatic_complexity": 1.3529411764705883,
-      "avg_maintainability_index": 0.0,
-      "docstring_coverage": 0.058823529411764705,
-      "notebook_count": 0,
-      "test_file_count": 0,
-      "has_tests": false,
-      "has_test_coverage_report": false,
-      "has_requirements": false,
-      "has_pipfile": false,
-      "has_env_yml": false,
-      "ci_workflow_count": 0,
-      "has_ci": false,
-      "deploy_script_count": 0,
-      "has_deploy_scripts": false,
-      "experiment_folder_count": 0,
-      "has_experiments": false,
-      "secret_file_count": 0,
-      "has_secrets": false
-    },
-    "scores": {
-      "development_maturity": 4.29,
-      "innovation_pipeline": 25.0
-    }
-  },
-  {
-    "agent": "dev_platform_agent",
-    "repo": "ML-Papers-of-the-Week",
-    "signals": {
-      "avg_cyclomatic_complexity": 0.0,
-      "avg_maintainability_index": 0.0,
-      "docstring_coverage": 0.0,
-      "notebook_count": 0,
-      "test_file_count": 0,
-      "has_tests": false,
-      "has_test_coverage_report": false,
-      "has_requirements": false,
-      "has_pipfile": false,
-      "has_env_yml": false,
-      "ci_workflow_count": 0,
-      "has_ci": false,
-      "deploy_script_count": 0,
-      "has_deploy_scripts": false,
-      "experiment_folder_count": 0,
-      "has_experiments": false,
-      "secret_file_count": 0,
-      "has_secrets": false
-    },
-    "scores": {
-      "development_maturity": 4.29,
-      "innovation_pipeline": 25.0
-    }
-  },
-  {
-    "agent": "dev_platform_agent",
-    "repo": "pandas_exercises",
-    "signals": {
-      "avg_cyclomatic_complexity": 0.0,
-      "avg_maintainability_index": 0.0,
-      "docstring_coverage": 0.0,
-      "notebook_count": 0,
-      "test_file_count": 0,
-      "has_tests": false,
-      "has_test_coverage_report": false,
-      "has_requirements": true,
-      "has_pipfile": false,
-      "has_env_yml": false,
-      "ci_workflow_count": 0,
-      "has_ci": false,
-      "deploy_script_count": 0,
-      "has_deploy_scripts": false,
-      "experiment_folder_count": 0,
-      "has_experiments": false,
-      "secret_file_count": 0,
-      "has_secrets": false
-    },
-    "scores": {
-      "development_maturity": 4.43,
-      "innovation_pipeline": 25.0
-    }
-  },
-  {
-    "agent": "dev_platform_agent",
-    "repo": "hum2song",
-    "signals": {
-      "avg_cyclomatic_complexity": 0.0,
-      "avg_maintainability_index": 0.0,
-      "docstring_coverage": 0.0,
-      "notebook_count": 0,
-      "test_file_count": 0,
-      "has_tests": false,
-      "has_test_coverage_report": false,
-      "has_requirements": false,
-      "has_pipfile": false,
-      "has_env_yml": false,
-      "ci_workflow_count": 0,
-      "has_ci": false,
-      "deploy_script_count": 0,
-      "has_deploy_scripts": false,
-      "experiment_folder_count": 0,
-      "has_experiments": false,
-      "secret_file_count": 0,
-      "has_secrets": false
-    },
-    "scores": {
-      "development_maturity": 4.29,
-      "innovation_pipeline": 25.0
-    }
-  },
-  {
-    "agent": "dev_platform_agent",
-    "repo": "StudentPerformancePrediction-ML",
-    "signals": {
-      "avg_cyclomatic_complexity": 0.0,
-      "avg_maintainability_index": 0.0,
-      "docstring_coverage": 0.0,
-      "notebook_count": 0,
-      "test_file_count": 0,
-      "has_tests": false,
-      "has_test_coverage_report": false,
-      "has_requirements": false,
-      "has_pipfile": false,
-      "has_env_yml": false,
-      "ci_workflow_count": 0,
-      "has_ci": false,
-      "deploy_script_count": 0,
-      "has_deploy_scripts": false,
-      "experiment_folder_count": 0,
-      "has_experiments": false,
-      "secret_file_count": 0,
-      "has_secrets": false
-    },
-    "scores": {
-      "development_maturity": 4.29,
-      "innovation_pipeline": 25.0
-    }
-  },
-  {
-    "agent": "dev_platform_agent",
-    "repo": "qxresearch-event-1",
-    "signals": {
-      "avg_cyclomatic_complexity": 0.6911764705882353,
-      "avg_maintainability_index": 0.0,
-      "docstring_coverage": 0.0,
-      "notebook_count": 0,
-      "test_file_count": 0,
-      "has_tests": false,
-      "has_test_coverage_report": false,
-      "has_requirements": false,
-      "has_pipfile": false,
-      "has_env_yml": false,
-      "ci_workflow_count": 2,
-      "has_ci": true,
-      "deploy_script_count": 0,
-      "has_deploy_scripts": false,
-      "experiment_folder_count": 0,
-      "has_experiments": false,
-      "secret_file_count": 3,
-      "has_secrets": true
-    },
-    "scores": {
-      "development_maturity": 3.29,
-      "innovation_pipeline": 25.0
-    }
-  },
-  {
-    "agent": "dev_platform_agent",
-    "repo": "awesome-ai-web-search",
-    "signals": {
-      "avg_cyclomatic_complexity": 0.0,
-      "avg_maintainability_index": 0.0,
-      "docstring_coverage": 0.0,
-      "notebook_count": 0,
-      "test_file_count": 0,
-      "has_tests": false,
-      "has_test_coverage_report": false,
-      "has_requirements": false,
-      "has_pipfile": false,
-      "has_env_yml": false,
-      "ci_workflow_count": 2,
-      "has_ci": true,
-      "deploy_script_count": 0,
-      "has_deploy_scripts": false,
-      "experiment_folder_count": 0,
-      "has_experiments": false,
-      "secret_file_count": 0,
-      "has_secrets": false
-    },
-    "scores": {
-      "development_maturity": 4.0,
-      "innovation_pipeline": 25.0
-    }
-  },
-  {
-    "agent": "dev_platform_agent",
-    "repo": "open-webui",
-    "signals": {
-      "avg_cyclomatic_complexity": 1.8965819456617004,
-      "avg_maintainability_index": 0.0,
-      "docstring_coverage": 0.08676599474145487,
-      "notebook_count": 0,
-      "test_file_count": 7,
-      "has_tests": true,
-      "has_test_coverage_report": false,
-      "has_requirements": false,
-      "has_pipfile": false,
-      "has_env_yml": false,
-      "ci_workflow_count": 3,
-      "has_ci": true,
-      "deploy_script_count": 0,
-      "has_deploy_scripts": false,
-      "experiment_folder_count": 0,
-      "has_experiments": false,
-      "secret_file_count": 102,
-      "has_secrets": true
-    },
-    "scores": {
-      "development_maturity": 2.86,
-      "innovation_pipeline": 23.33
-    }
-  },
-  {
-    "agent": "dev_platform_agent",
-    "repo": "private-gpt",
-    "signals": {
-      "avg_cyclomatic_complexity": 1.3643178410794603,
-      "avg_maintainability_index": 0.0,
-      "docstring_coverage": 0.08995502248875563,
-      "notebook_count": 0,
-      "test_file_count": 22,
-      "has_tests": true,
-      "has_test_coverage_report": false,
-      "has_requirements": false,
-      "has_pipfile": false,
-      "has_env_yml": false,
-      "ci_workflow_count": 7,
-      "has_ci": true,
-      "deploy_script_count": 0,
-      "has_deploy_scripts": false,
-      "experiment_folder_count": 0,
-      "has_experiments": false,
-      "secret_file_count": 8,
-      "has_secrets": true
-    },
-    "scores": {
-      "development_maturity": 2.43,
-      "innovation_pipeline": 23.33
-    }
-  },
-  {
-    "agent": "dev_platform_agent",
     "repo": "AI-Resume-Analyzer",
     "signals": {
       "avg_cyclomatic_complexity": 3.125,
@@ -300,235 +20,53 @@
       "experiment_folder_count": 0,
       "has_experiments": false,
       "secret_file_count": 1,
-      "has_secrets": true
+      "has_secrets": true,
+      "framework_xgboost": 0,
+      "framework_keras": 0,
+      "framework_sklearn": 0,
+      "framework_tensorflow": 0,
+      "framework_torch": 0,
+      "framework_lightgbm": 0,
+      "has_airflow": false,
+      "has_prefect": false,
+      "has_luigi": false,
+      "has_argo": false,
+      "has_kedro": false,
+      "uses_uses_mlflow": false,
+      "uses_uses_clearml": false,
+      "uses_uses_wandb": false,
+      "train_script_count": 0,
+      "has_entrypoint_training": false,
+      "eval_script_count": 0,
+      "uses_metrics_library": false,
+      "has_hyperparam_file": false,
+      "uses_optuna": false,
+      "uses_ray_tune": false,
+      "uses_great_expectations": false,
+      "uses_pandera": false,
+      "uses_evidently": false,
+      "uses_featuretools": false,
+      "uses_tsfresh": false,
+      "uses_sklearn_preprocessing": false,
+      "exports_torch_model": false,
+      "exports_sklearn_model": false,
+      "has_saved_model_dir": false,
+      "uses_fastapi": false,
+      "uses_streamlit": true,
+      "uses_flask": false,
+      "reports_precision_recall_f1": false,
+      "reports_regression_metrics": false,
+      "nested_loop_files": 1,
+      "has_Pipfile": false,
+      "has_requirements_txt": false,
+      "has_pyproject_toml": false,
+      "has_README_rst": false,
+      "has_docs": false,
+      "has_README_md": true
     },
     "scores": {
-      "development_maturity": 3.57,
-      "innovation_pipeline": 25.0
-    }
-  },
-  {
-    "agent": "dev_platform_agent",
-    "repo": "Simplify-Event-Management-System",
-    "signals": {
-      "avg_cyclomatic_complexity": 0.0,
-      "avg_maintainability_index": 0.0,
-      "docstring_coverage": 0.0,
-      "notebook_count": 0,
-      "test_file_count": 0,
-      "has_tests": false,
-      "has_test_coverage_report": false,
-      "has_requirements": false,
-      "has_pipfile": false,
-      "has_env_yml": false,
-      "ci_workflow_count": 0,
-      "has_ci": false,
-      "deploy_script_count": 0,
-      "has_deploy_scripts": false,
-      "experiment_folder_count": 0,
-      "has_experiments": false,
-      "secret_file_count": 0,
-      "has_secrets": false
-    },
-    "scores": {
-      "development_maturity": 4.29,
-      "innovation_pipeline": 25.0
-    }
-  },
-  {
-    "agent": "dev_platform_agent",
-    "repo": "ai-resume-parser",
-    "signals": {
-      "avg_cyclomatic_complexity": 0.0,
-      "avg_maintainability_index": 0.0,
-      "docstring_coverage": 0.0,
-      "notebook_count": 0,
-      "test_file_count": 0,
-      "has_tests": false,
-      "has_test_coverage_report": false,
-      "has_requirements": false,
-      "has_pipfile": false,
-      "has_env_yml": false,
-      "ci_workflow_count": 0,
-      "has_ci": false,
-      "deploy_script_count": 0,
-      "has_deploy_scripts": false,
-      "experiment_folder_count": 0,
-      "has_experiments": false,
-      "secret_file_count": 0,
-      "has_secrets": false
-    },
-    "scores": {
-      "development_maturity": 4.29,
-      "innovation_pipeline": 25.0
-    }
-  },
-  {
-    "agent": "dev_platform_agent",
-    "repo": "AI-Resume-Analyzer",
-    "signals": {
-      "avg_cyclomatic_complexity": 3.125,
-      "avg_maintainability_index": 0.0,
-      "docstring_coverage": 0.0,
-      "notebook_count": 0,
-      "test_file_count": 0,
-      "has_tests": false,
-      "has_test_coverage_report": false,
-      "has_requirements": false,
-      "has_pipfile": false,
-      "has_env_yml": false,
-      "ci_workflow_count": 0,
-      "has_ci": false,
-      "deploy_script_count": 0,
-      "has_deploy_scripts": false,
-      "experiment_folder_count": 0,
-      "has_experiments": false,
-      "secret_file_count": 1,
-      "has_secrets": true
-    },
-    "scores": {
-      "development_maturity": 3.57,
-      "innovation_pipeline": 25.0
-    }
-  },
-  {
-    "agent": "dev_platform_agent",
-    "repo": "MATLAB-Simulink-Challenge-Project-Hub",
-    "signals": {
-      "avg_cyclomatic_complexity": 0.0,
-      "avg_maintainability_index": 0.0,
-      "docstring_coverage": 0.0,
-      "notebook_count": 0,
-      "test_file_count": 0,
-      "has_tests": false,
-      "has_test_coverage_report": false,
-      "has_requirements": false,
-      "has_pipfile": false,
-      "has_env_yml": false,
-      "ci_workflow_count": 0,
-      "has_ci": false,
-      "deploy_script_count": 0,
-      "has_deploy_scripts": false,
-      "experiment_folder_count": 0,
-      "has_experiments": false,
-      "secret_file_count": 0,
-      "has_secrets": false
-    },
-    "scores": {
-      "development_maturity": 4.29,
-      "innovation_pipeline": 25.0
-    }
-  },
-  {
-    "agent": "dev_platform_agent",
-    "repo": "CryptocurrencyPrediction",
-    "signals": {
-      "avg_cyclomatic_complexity": 1.1666666666666667,
-      "avg_maintainability_index": 0.0,
-      "docstring_coverage": 0.3333333333333333,
-      "notebook_count": 0,
-      "test_file_count": 3,
-      "has_tests": true,
-      "has_test_coverage_report": false,
-      "has_requirements": false,
-      "has_pipfile": false,
-      "has_env_yml": false,
-      "ci_workflow_count": 0,
-      "has_ci": false,
-      "deploy_script_count": 0,
-      "has_deploy_scripts": false,
-      "experiment_folder_count": 0,
-      "has_experiments": false,
-      "secret_file_count": 0,
-      "has_secrets": false
-    },
-    "scores": {
-      "development_maturity": 4.0,
-      "innovation_pipeline": 23.33
-    }
-  },
-  {
-    "agent": "dev_platform_agent",
-    "repo": "Gesture-Controlled-Virtual-Mouse",
-    "signals": {
-      "avg_cyclomatic_complexity": 1.911764705882353,
-      "avg_maintainability_index": 0.0,
-      "docstring_coverage": 0.16911764705882354,
-      "notebook_count": 0,
-      "test_file_count": 0,
-      "has_tests": false,
-      "has_test_coverage_report": false,
-      "has_requirements": true,
-      "has_pipfile": false,
-      "has_env_yml": false,
-      "ci_workflow_count": 0,
-      "has_ci": false,
-      "deploy_script_count": 0,
-      "has_deploy_scripts": false,
-      "experiment_folder_count": 0,
-      "has_experiments": false,
-      "secret_file_count": 0,
-      "has_secrets": false
-    },
-    "scores": {
-      "development_maturity": 4.43,
-      "innovation_pipeline": 25.0
-    }
-  },
-  {
-    "agent": "dev_platform_agent",
-    "repo": "Finding-missing-person-using-AI",
-    "signals": {
-      "avg_cyclomatic_complexity": 1.1311475409836065,
-      "avg_maintainability_index": 0.0,
-      "docstring_coverage": 0.08196721311475409,
-      "notebook_count": 0,
-      "test_file_count": 0,
-      "has_tests": false,
-      "has_test_coverage_report": false,
-      "has_requirements": true,
-      "has_pipfile": false,
-      "has_env_yml": false,
-      "ci_workflow_count": 0,
-      "has_ci": false,
-      "deploy_script_count": 0,
-      "has_deploy_scripts": false,
-      "experiment_folder_count": 0,
-      "has_experiments": false,
-      "secret_file_count": 0,
-      "has_secrets": false
-    },
-    "scores": {
-      "development_maturity": 4.43,
-      "innovation_pipeline": 25.0
-    }
-  },
-  {
-    "agent": "dev_platform_agent",
-    "repo": "ML-Sample-Projects",
-    "signals": {
-      "avg_cyclomatic_complexity": 0.0,
-      "avg_maintainability_index": 0.0,
-      "docstring_coverage": 0.0,
-      "notebook_count": 0,
-      "test_file_count": 0,
-      "has_tests": false,
-      "has_test_coverage_report": false,
-      "has_requirements": false,
-      "has_pipfile": false,
-      "has_env_yml": false,
-      "ci_workflow_count": 0,
-      "has_ci": false,
-      "deploy_script_count": 0,
-      "has_deploy_scripts": false,
-      "experiment_folder_count": 0,
-      "has_experiments": false,
-      "secret_file_count": 0,
-      "has_secrets": false
-    },
-    "scores": {
-      "development_maturity": 4.29,
-      "innovation_pipeline": 25.0
+      "development_maturity": 0.22,
+      "innovation_pipeline": 0.0
     }
   },
   {
@@ -552,431 +90,53 @@
       "experiment_folder_count": 0,
       "has_experiments": false,
       "secret_file_count": 26,
-      "has_secrets": true
+      "has_secrets": true,
+      "framework_xgboost": 0,
+      "framework_keras": 0,
+      "framework_sklearn": 0,
+      "framework_tensorflow": 0,
+      "framework_torch": 0,
+      "framework_lightgbm": 0,
+      "has_airflow": false,
+      "has_prefect": false,
+      "has_luigi": false,
+      "has_argo": false,
+      "has_kedro": false,
+      "uses_uses_mlflow": false,
+      "uses_uses_clearml": false,
+      "uses_uses_wandb": false,
+      "train_script_count": 0,
+      "has_entrypoint_training": false,
+      "eval_script_count": 2,
+      "uses_metrics_library": false,
+      "has_hyperparam_file": false,
+      "uses_optuna": false,
+      "uses_ray_tune": false,
+      "uses_great_expectations": false,
+      "uses_pandera": false,
+      "uses_evidently": false,
+      "uses_featuretools": false,
+      "uses_tsfresh": false,
+      "uses_sklearn_preprocessing": false,
+      "exports_torch_model": false,
+      "exports_sklearn_model": false,
+      "has_saved_model_dir": false,
+      "uses_fastapi": false,
+      "uses_streamlit": false,
+      "uses_flask": false,
+      "reports_precision_recall_f1": false,
+      "reports_regression_metrics": false,
+      "nested_loop_files": 3,
+      "has_Pipfile": false,
+      "has_requirements_txt": false,
+      "has_pyproject_toml": false,
+      "has_README_rst": false,
+      "has_docs": true,
+      "has_README_md": true
     },
     "scores": {
-      "development_maturity": 1.86,
-      "innovation_pipeline": 23.33
-    }
-  },
-  {
-    "agent": "dev_platform_agent",
-    "repo": "simple-data-analysis",
-    "signals": {
-      "avg_cyclomatic_complexity": 0.0,
-      "avg_maintainability_index": 0.0,
-      "docstring_coverage": 0.0,
-      "notebook_count": 0,
-      "test_file_count": 0,
-      "has_tests": false,
-      "has_test_coverage_report": false,
-      "has_requirements": false,
-      "has_pipfile": false,
-      "has_env_yml": false,
-      "ci_workflow_count": 3,
-      "has_ci": true,
-      "deploy_script_count": 0,
-      "has_deploy_scripts": false,
-      "experiment_folder_count": 0,
-      "has_experiments": false,
-      "secret_file_count": 1,
-      "has_secrets": true
-    },
-    "scores": {
-      "development_maturity": 3.29,
-      "innovation_pipeline": 25.0
-    }
-  },
-  {
-    "agent": "dev_platform_agent",
-    "repo": "Basic-Machine-Learning-Projects-",
-    "signals": {
-      "avg_cyclomatic_complexity": 0.0,
-      "avg_maintainability_index": 0.0,
-      "docstring_coverage": 0.0,
-      "notebook_count": 0,
-      "test_file_count": 0,
-      "has_tests": false,
-      "has_test_coverage_report": false,
-      "has_requirements": false,
-      "has_pipfile": false,
-      "has_env_yml": false,
-      "ci_workflow_count": 0,
-      "has_ci": false,
-      "deploy_script_count": 0,
-      "has_deploy_scripts": false,
-      "experiment_folder_count": 0,
-      "has_experiments": false,
-      "secret_file_count": 0,
-      "has_secrets": false
-    },
-    "scores": {
-      "development_maturity": 4.29,
-      "innovation_pipeline": 25.0
-    }
-  },
-  {
-    "agent": "dev_platform_agent",
-    "repo": "dvc",
-    "signals": {
-      "avg_cyclomatic_complexity": 1.6470216130732735,
-      "avg_maintainability_index": 0.0,
-      "docstring_coverage": 0.03890353189246178,
-      "notebook_count": 0,
-      "test_file_count": 282,
-      "has_tests": true,
-      "has_test_coverage_report": false,
-      "has_requirements": false,
-      "has_pipfile": false,
-      "has_env_yml": false,
-      "ci_workflow_count": 1,
-      "has_ci": true,
-      "deploy_script_count": 0,
-      "has_deploy_scripts": false,
-      "experiment_folder_count": 0,
-      "has_experiments": false,
-      "secret_file_count": 9,
-      "has_secrets": true
-    },
-    "scores": {
-      "development_maturity": 2.71,
-      "innovation_pipeline": 23.33
-    }
-  },
-  {
-    "agent": "dev_platform_agent",
-    "repo": "evidently",
-    "signals": {
-      "avg_cyclomatic_complexity": 1.2428698392179043,
-      "avg_maintainability_index": 0.0,
-      "docstring_coverage": 0.022137836309283346,
-      "notebook_count": 0,
-      "test_file_count": 213,
-      "has_tests": true,
-      "has_test_coverage_report": false,
-      "has_requirements": false,
-      "has_pipfile": false,
-      "has_env_yml": false,
-      "ci_workflow_count": 5,
-      "has_ci": true,
-      "deploy_script_count": 0,
-      "has_deploy_scripts": false,
-      "experiment_folder_count": 0,
-      "has_experiments": false,
-      "secret_file_count": 22,
-      "has_secrets": true
-    },
-    "scores": {
-      "development_maturity": 2.57,
-      "innovation_pipeline": 23.33
-    }
-  },
-  {
-    "agent": "dev_platform_agent",
-    "repo": "ML_toy_examples",
-    "signals": {
-      "avg_cyclomatic_complexity": 0.0,
-      "avg_maintainability_index": 0.0,
-      "docstring_coverage": 0.0,
-      "notebook_count": 0,
-      "test_file_count": 0,
-      "has_tests": false,
-      "has_test_coverage_report": false,
-      "has_requirements": false,
-      "has_pipfile": false,
-      "has_env_yml": false,
-      "ci_workflow_count": 0,
-      "has_ci": false,
-      "deploy_script_count": 0,
-      "has_deploy_scripts": false,
-      "experiment_folder_count": 0,
-      "has_experiments": false,
-      "secret_file_count": 0,
-      "has_secrets": false
-    },
-    "scores": {
-      "development_maturity": 4.29,
-      "innovation_pipeline": 25.0
-    }
-  },
-  {
-    "agent": "dev_platform_agent",
-    "repo": "FastChat",
-    "signals": {
-      "avg_cyclomatic_complexity": 1.6295731707317074,
-      "avg_maintainability_index": 0.0,
-      "docstring_coverage": 0.07736280487804878,
-      "notebook_count": 0,
-      "test_file_count": 16,
-      "has_tests": true,
-      "has_test_coverage_report": false,
-      "has_requirements": false,
-      "has_pipfile": false,
-      "has_env_yml": false,
-      "ci_workflow_count": 1,
-      "has_ci": true,
-      "deploy_script_count": 0,
-      "has_deploy_scripts": false,
-      "experiment_folder_count": 0,
-      "has_experiments": false,
-      "secret_file_count": 24,
-      "has_secrets": true
-    },
-    "scores": {
-      "development_maturity": 2.86,
-      "innovation_pipeline": 23.33
-    }
-  },
-  {
-    "agent": "dev_platform_agent",
-    "repo": "ml-pipeline-tutorial",
-    "signals": {
-      "avg_cyclomatic_complexity": 1.288659793814433,
-      "avg_maintainability_index": 0.0,
-      "docstring_coverage": 0.21649484536082475,
-      "notebook_count": 0,
-      "test_file_count": 0,
-      "has_tests": false,
-      "has_test_coverage_report": false,
-      "has_requirements": false,
-      "has_pipfile": false,
-      "has_env_yml": false,
-      "ci_workflow_count": 0,
-      "has_ci": false,
-      "deploy_script_count": 0,
-      "has_deploy_scripts": false,
-      "experiment_folder_count": 0,
-      "has_experiments": false,
-      "secret_file_count": 0,
-      "has_secrets": false
-    },
-    "scores": {
-      "development_maturity": 4.29,
-      "innovation_pipeline": 25.0
-    }
-  },
-  {
-    "agent": "dev_platform_agent",
-    "repo": "ml-dl-journey",
-    "signals": {
-      "avg_cyclomatic_complexity": 0.8571428571428571,
-      "avg_maintainability_index": 0.0,
-      "docstring_coverage": 0.3333333333333333,
-      "notebook_count": 0,
-      "test_file_count": 0,
-      "has_tests": false,
-      "has_test_coverage_report": false,
-      "has_requirements": false,
-      "has_pipfile": false,
-      "has_env_yml": false,
-      "ci_workflow_count": 0,
-      "has_ci": false,
-      "deploy_script_count": 0,
-      "has_deploy_scripts": false,
-      "experiment_folder_count": 0,
-      "has_experiments": false,
-      "secret_file_count": 4,
-      "has_secrets": true
-    },
-    "scores": {
-      "development_maturity": 3.57,
-      "innovation_pipeline": 25.0
-    }
-  },
-  {
-    "agent": "dev_platform_agent",
-    "repo": "fastai",
-    "signals": {
-      "avg_cyclomatic_complexity": 1.2199587416193913,
-      "avg_maintainability_index": 0.0,
-      "docstring_coverage": 0.2109334708612687,
-      "notebook_count": 0,
-      "test_file_count": 2,
-      "has_tests": true,
-      "has_test_coverage_report": false,
-      "has_requirements": false,
-      "has_pipfile": false,
-      "has_env_yml": true,
-      "ci_workflow_count": 3,
-      "has_ci": true,
-      "deploy_script_count": 0,
-      "has_deploy_scripts": false,
-      "experiment_folder_count": 0,
-      "has_experiments": false,
-      "secret_file_count": 1,
-      "has_secrets": true
-    },
-    "scores": {
-      "development_maturity": 3.14,
-      "innovation_pipeline": 23.33
-    }
-  },
-  {
-    "agent": "dev_platform_agent",
-    "repo": "Machine-learning-applications-Examples",
-    "signals": {
-      "avg_cyclomatic_complexity": 0.0,
-      "avg_maintainability_index": 0.0,
-      "docstring_coverage": 0.0,
-      "notebook_count": 0,
-      "test_file_count": 0,
-      "has_tests": false,
-      "has_test_coverage_report": false,
-      "has_requirements": false,
-      "has_pipfile": false,
-      "has_env_yml": false,
-      "ci_workflow_count": 0,
-      "has_ci": false,
-      "deploy_script_count": 0,
-      "has_deploy_scripts": false,
-      "experiment_folder_count": 0,
-      "has_experiments": false,
-      "secret_file_count": 0,
-      "has_secrets": false
-    },
-    "scores": {
-      "development_maturity": 4.29,
-      "innovation_pipeline": 25.0
-    }
-  },
-  {
-    "agent": "dev_platform_agent",
-    "repo": "detectron2",
-    "signals": {
-      "avg_cyclomatic_complexity": 1.546187136248321,
-      "avg_maintainability_index": 0.0,
-      "docstring_coverage": 0.21131174451574392,
-      "notebook_count": 0,
-      "test_file_count": 83,
-      "has_tests": true,
-      "has_test_coverage_report": false,
-      "has_requirements": false,
-      "has_pipfile": false,
-      "has_env_yml": false,
-      "ci_workflow_count": 4,
-      "has_ci": true,
-      "deploy_script_count": 0,
-      "has_deploy_scripts": false,
-      "experiment_folder_count": 0,
-      "has_experiments": false,
-      "secret_file_count": 3,
-      "has_secrets": true
-    },
-    "scores": {
-      "development_maturity": 2.57,
-      "innovation_pipeline": 23.33
-    }
-  },
-  {
-    "agent": "dev_platform_agent",
-    "repo": "DataAnalysisInAction",
-    "signals": {
-      "avg_cyclomatic_complexity": 1.0405405405405406,
-      "avg_maintainability_index": 0.0,
-      "docstring_coverage": 0.0,
-      "notebook_count": 0,
-      "test_file_count": 0,
-      "has_tests": false,
-      "has_test_coverage_report": false,
-      "has_requirements": false,
-      "has_pipfile": true,
-      "has_env_yml": false,
-      "ci_workflow_count": 0,
-      "has_ci": false,
-      "deploy_script_count": 0,
-      "has_deploy_scripts": false,
-      "experiment_folder_count": 0,
-      "has_experiments": false,
-      "secret_file_count": 0,
-      "has_secrets": false
-    },
-    "scores": {
-      "development_maturity": 4.43,
-      "innovation_pipeline": 25.0
-    }
-  },
-  {
-    "agent": "dev_platform_agent",
-    "repo": "500-AI-Machine-learning-Deep-learning-Computer-vision-NLP-Projects-with-code",
-    "signals": {
-      "avg_cyclomatic_complexity": 0.0,
-      "avg_maintainability_index": 0.0,
-      "docstring_coverage": 0.0,
-      "notebook_count": 0,
-      "test_file_count": 0,
-      "has_tests": false,
-      "has_test_coverage_report": false,
-      "has_requirements": false,
-      "has_pipfile": false,
-      "has_env_yml": false,
-      "ci_workflow_count": 1,
-      "has_ci": true,
-      "deploy_script_count": 0,
-      "has_deploy_scripts": false,
-      "experiment_folder_count": 0,
-      "has_experiments": false,
-      "secret_file_count": 1,
-      "has_secrets": true
-    },
-    "scores": {
-      "development_maturity": 3.43,
-      "innovation_pipeline": 25.0
-    }
-  },
-  {
-    "agent": "dev_platform_agent",
-    "repo": "Machine-learning-pipeline",
-    "signals": {
-      "avg_cyclomatic_complexity": 1.1071428571428572,
-      "avg_maintainability_index": 0.0,
-      "docstring_coverage": 0.0,
-      "notebook_count": 0,
-      "test_file_count": 0,
-      "has_tests": false,
-      "has_test_coverage_report": false,
-      "has_requirements": false,
-      "has_pipfile": false,
-      "has_env_yml": false,
-      "ci_workflow_count": 0,
-      "has_ci": false,
-      "deploy_script_count": 0,
-      "has_deploy_scripts": false,
-      "experiment_folder_count": 0,
-      "has_experiments": false,
-      "secret_file_count": 0,
-      "has_secrets": false
-    },
-    "scores": {
-      "development_maturity": 4.29,
-      "innovation_pipeline": 25.0
-    }
-  },
-  {
-    "agent": "dev_platform_agent",
-    "repo": "client",
-    "signals": {
-      "avg_cyclomatic_complexity": 1.4245615525075375,
-      "avg_maintainability_index": 0.0,
-      "docstring_coverage": 0.15346723852392882,
-      "notebook_count": 0,
-      "test_file_count": 392,
-      "has_tests": true,
-      "has_test_coverage_report": false,
-      "has_requirements": false,
-      "has_pipfile": false,
-      "has_env_yml": false,
-      "ci_workflow_count": 10,
-      "has_ci": true,
-      "deploy_script_count": 0,
-      "has_deploy_scripts": false,
-      "experiment_folder_count": 1,
-      "has_experiments": true,
-      "secret_file_count": 64,
-      "has_secrets": true
-    },
-    "scores": {
-      "development_maturity": 2.43,
-      "innovation_pipeline": 21.67
+      "development_maturity": 2.2,
+      "innovation_pipeline": 0.0
     }
   },
   {
@@ -1000,39 +160,53 @@
       "experiment_folder_count": 0,
       "has_experiments": false,
       "secret_file_count": 1,
-      "has_secrets": true
+      "has_secrets": true,
+      "framework_xgboost": 0,
+      "framework_keras": 0,
+      "framework_sklearn": 0,
+      "framework_tensorflow": 0,
+      "framework_torch": 0,
+      "framework_lightgbm": 0,
+      "has_airflow": false,
+      "has_prefect": false,
+      "has_luigi": false,
+      "has_argo": false,
+      "has_kedro": false,
+      "uses_uses_mlflow": false,
+      "uses_uses_clearml": false,
+      "uses_uses_wandb": false,
+      "train_script_count": 0,
+      "has_entrypoint_training": false,
+      "eval_script_count": 0,
+      "uses_metrics_library": false,
+      "has_hyperparam_file": false,
+      "uses_optuna": false,
+      "uses_ray_tune": false,
+      "uses_great_expectations": false,
+      "uses_pandera": false,
+      "uses_evidently": false,
+      "uses_featuretools": false,
+      "uses_tsfresh": false,
+      "uses_sklearn_preprocessing": false,
+      "exports_torch_model": false,
+      "exports_sklearn_model": false,
+      "has_saved_model_dir": false,
+      "uses_fastapi": false,
+      "uses_streamlit": false,
+      "uses_flask": false,
+      "reports_precision_recall_f1": false,
+      "reports_regression_metrics": false,
+      "nested_loop_files": 0,
+      "has_Pipfile": false,
+      "has_requirements_txt": true,
+      "has_pyproject_toml": false,
+      "has_README_rst": false,
+      "has_docs": false,
+      "has_README_md": true
     },
     "scores": {
-      "development_maturity": 3.86,
-      "innovation_pipeline": 23.33
-    }
-  },
-  {
-    "agent": "dev_platform_agent",
-    "repo": "mindsdb",
-    "signals": {
-      "avg_cyclomatic_complexity": 1.6218743433494431,
-      "avg_maintainability_index": 0.0,
-      "docstring_coverage": 0.19195209077537298,
-      "notebook_count": 0,
-      "test_file_count": 446,
-      "has_tests": true,
-      "has_test_coverage_report": false,
-      "has_requirements": false,
-      "has_pipfile": false,
-      "has_env_yml": false,
-      "ci_workflow_count": 10,
-      "has_ci": true,
-      "deploy_script_count": 0,
-      "has_deploy_scripts": false,
-      "experiment_folder_count": 0,
-      "has_experiments": false,
-      "secret_file_count": 149,
-      "has_secrets": true
-    },
-    "scores": {
-      "development_maturity": 2.43,
-      "innovation_pipeline": 23.33
+      "development_maturity": 0.54,
+      "innovation_pipeline": 0.0
     }
   }
 ]

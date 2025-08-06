@@ -67,8 +67,6 @@
 #     return False
 
 
-# utils/code_analysis.py
-
 import os
 import fnmatch
 import ast
@@ -77,7 +75,6 @@ from pathlib import Path
 from typing import List, Dict
 from radon.complexity import cc_visit
 from radon.metrics import mi_visit
-from flake8.api import legacy as flake8
 from utils.file_utils import list_all_files
 
 SECRET_PATTERN = re.compile(r"(?:api_key|secret|token)\s*[:=]\s*['\"]?[A-Za-z0-9_\-]+")
