@@ -96,7 +96,7 @@ def analyze_repo(repo_path: str) -> Dict[str,Any]:
 
     scores = calculate_scores(signals, source_py)
     return {
-        "agent":  "development_environment_scanner",
+        "agent":  "dev_platform_agent",
         "repo":   root.name,
         "signals":signals,
         "scores": scores
