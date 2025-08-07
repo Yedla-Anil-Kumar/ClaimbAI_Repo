@@ -26,17 +26,16 @@ from utils.ml_insights import (
     detect_parallel_patterns
 )
 
-
 def clamp01(x: float) -> float:
     return max(0.0, min(1.0, x))
 
-def calculate_scores(signals: Dict[str,Any], py_files: List[Path]) -> Dict[str,float]:
+def calculate_scores(signals: Dict[str,Any], num_py_files: int) -> Dict[str,float]:
     # ─── Development Maturity ────────────────────────────────────
     s_cc   = clamp01(1 - (min(signals["avg_cyclomatic_complexity"],30)/30)**1.5)
     s_mi   = clamp01(signals["avg_maintainability_index"])
     s_doc  = clamp01(signals["docstring_coverage"])
     tc     = signals["test_file_count"]
-    s_tests= clamp01(0.3*min(tc,10)/10 + 0.7*(tc/len(py_files) if py_files else 0))
+    s_tests= clamp01(0.3*min(tc,10)/10 + 0.7*(tc/num_py_files if num_py_files else 0))
     s_ci   = 1.0 if signals["ci_workflow_count"]>0 else 0.0
     s_cd   = 1.0 if signals["deploy_script_count"]>0 else 0.0
     env_bits=[signals["has_requirements"],signals["has_pipfile"],signals["has_env_yml"]]
@@ -68,8 +67,6 @@ def analyze_repo(repo_path: str) -> Dict[str,Any]:
     root = Path(repo_path)
     # get only source .py for AST/ML detectors
     source_py = list(list_source_files(repo_path))
-    # get all .py for tests, secrets, etc.
-    # all_py    = [Path(f) for f in list_all_files(repo_path) if f.endswith(".py")]
 
     signals: Dict[str,Any] = {}
     # core
@@ -94,7 +91,8 @@ def analyze_repo(repo_path: str) -> Dict[str,Any]:
     signals.update(detect_parallel_patterns(source_py))
     signals.update(detect_nested_loops(source_py))
 
-    scores = calculate_scores(signals, source_py)
+
+    scores = calculate_scores(signals, len(source_py))
     return {
         "agent":  "dev_platform_agent",
         "repo":   root.name,

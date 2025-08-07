@@ -15,4 +15,8 @@ google-search-results
 serpapi
 GitPython
 radon
-flake8     
+flake8
+transformers 
+torch
+sentence-transformers
+fastapi-utils

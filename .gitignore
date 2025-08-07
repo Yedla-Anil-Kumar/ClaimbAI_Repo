@@ -3,4 +3,4 @@
 /useful_repos/
 # /data/
 /*.env
-/__pycache__/
+/*__pycache__/
