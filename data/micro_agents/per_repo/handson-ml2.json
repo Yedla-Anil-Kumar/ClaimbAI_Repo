@@ -50,9 +50,9 @@
     "has_env_yml": true,
     "ci_workflow_count": 0,
     "has_ci": false,
-    "deploy_script_count": 6,
+    "deploy_script_count": 4,
     "has_deploy_scripts": true,
-    "experiment_folder_count": 4,
+    "experiment_folder_count": 1,
     "has_experiments": true,
     "test_frameworks": [
       "pytest",
@@ -65,9 +65,9 @@
     "dependency_management_quality": 0.9,
     "environment_consistency": 0.8,
     "dependency_best_practices": [
-      "Use a requirements.txt for Python package dependencies.",
-      "Use an environment.yml for managing environments with conda.",
-      "Ensure both files are kept in sync for consistency."
+      "Use both requirements.txt and environment.yml for comprehensive dependency management.",
+      "Ensure version pinning in requirements.txt for reproducibility.",
+      "Regularly update dependencies to avoid security vulnerabilities."
     ],
     "ci_quality": 0.0,
     "deployment_automation": 1.0,
@@ -80,15 +80,12 @@
     "has_makefile": true,
     "has_readme": true,
     "has_env": true,
-    "has_python_script": true,
-    "has_bash_script": true,
+    "has_python": true,
+    "has_bash": true,
     "has_docker_compose": true,
-    "has_binary": true,
+    "has_script": true,
     "experiment_dirs": [
-      "handson-ml2",
-      "docker",
-      "datasets",
-      "images"
+      "handson-ml2"
     ],
     "experiment_management": 1.0,
     "reproducibility_analysis": [

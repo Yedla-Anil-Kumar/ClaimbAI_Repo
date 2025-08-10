@@ -2,12 +2,12 @@
   "agent": "micro_agent_orchestrator",
   "repo": "transformers",
   "signals": {
-    "avg_cyclomatic_complexity": 2.76,
-    "avg_maintainability_index": 0.7019999999999997,
-    "docstring_coverage": 0.182,
-    "nested_loop_files": 3,
-    "framework_torch": 25,
-    "framework_tensorflow": 4,
+    "avg_cyclomatic_complexity": 2.84,
+    "avg_maintainability_index": 0.6919999999999998,
+    "docstring_coverage": 0.20199999999999993,
+    "nested_loop_files": 6,
+    "framework_torch": 42,
+    "framework_tensorflow": 12,
     "framework_sklearn": 0,
     "framework_keras": 2,
     "framework_xgboost": 0,
@@ -15,13 +15,13 @@
     "uses_mlflow": false,
     "uses_wandb": false,
     "uses_clearml": false,
-    "has_hyperparam_file": false,
+    "has_hyperparam_file": true,
     "uses_optuna": false,
     "uses_ray_tune": false,
     "train_script_count": 0,
     "has_entrypoint_training": false,
     "eval_script_count": 2,
-    "uses_metrics_library": false,
+    "uses_metrics_library": true,
     "uses_great_expectations": true,
     "uses_evidently": false,
     "uses_pandera": false,
@@ -48,7 +48,7 @@
     "has_requirements": true,
     "has_pipfile": false,
     "has_env_yml": false,
-    "ci_workflow_count": 47,
+    "ci_workflow_count": 51,
     "has_ci": true,
     "deploy_script_count": 1,
     "has_deploy_scripts": true,
@@ -65,10 +65,10 @@
     "dependency_management_quality": 0.9,
     "environment_consistency": 0.8,
     "dependency_best_practices": [
-      "Use a single requirements.txt for the main dependencies.",
-      "Ensure all requirements files are up to date.",
-      "Consider using a lock file for reproducibility.",
-      "Document the purpose of each requirements file."
+      "Use a single requirements.txt for the entire project if possible.",
+      "Keep dependencies updated regularly.",
+      "Document the purpose of each dependency in the requirements file.",
+      "Use version pinning to avoid breaking changes."
     ],
     "ci_quality": 0.9,
     "deployment_automation": 1.0,
@@ -89,19 +89,19 @@
     "reproducibility_analysis": [],
     "structure_quality": 0.9,
     "organization_patterns": [
-      "Consistent naming conventions",
-      "Separation of concerns (e.g., tests, models, benchmarks)",
-      "Use of standard files (README, LICENSE, etc.)"
+      "Clear separation of documentation, source code, and tests",
+      "Use of standardized file naming conventions",
+      "Logical grouping of related files and directories"
     ],
     "documentation_quality": 0.8,
     "best_practices_adherence": 0.85
   },
   "scores": {
-    "development_maturity": 2.67,
-    "innovation_pipeline": 2.0
+    "development_maturity": 2.61,
+    "innovation_pipeline": 3.5
   },
   "micro_agent_results": {
-    "source_files_analyzed": 25,
+    "source_files_analyzed": 50,
     "total_files_analyzed": 2437
   }
 }

@@ -66,8 +66,8 @@
     "environment_consistency": 0.0,
     "dependency_best_practices": [
       "Include a package manager file (e.g., package.json, requirements.txt)",
-      "Ensure environment configuration files are present",
-      "Use version control for dependency files"
+      "Ensure consistent environment setup (e.g., Dockerfile, .env)",
+      "Document dependencies clearly in README"
     ],
     "ci_quality": 0.8,
     "deployment_automation": 1.0,
@@ -84,15 +84,21 @@
       "ds-pipeline"
     ],
     "experiment_management": 1.0,
-    "reproducibility_analysis": [],
+    "reproducibility_analysis": [
+      "README.md",
+      ".gitlab-ci.yml",
+      "template.yml",
+      "docs.md"
+    ],
     "structure_quality": 0.7,
     "organization_patterns": [
       "Templates organized under a dedicated directory",
-      "Presence of a README file for project overview",
-      "Use of Git for version control"
+      "Use of .gitkeep files to maintain empty directories",
+      "Presence of CI configuration file (.gitlab-ci.yml)",
+      "Documentation file (README.md) present"
     ],
-    "documentation_quality": 0.5,
-    "best_practices_adherence": 0.6
+    "documentation_quality": 0.6,
+    "best_practices_adherence": 0.8
   },
   "scores": {
     "development_maturity": 1.7,

@@ -2,9 +2,9 @@
   "agent": "micro_agent_orchestrator",
   "repo": "flyte",
   "signals": {
-    "avg_cyclomatic_complexity": 0.68,
-    "avg_maintainability_index": 0.614,
-    "docstring_coverage": 0.13,
+    "avg_cyclomatic_complexity": 0.56,
+    "avg_maintainability_index": 0.6199999999999998,
+    "docstring_coverage": 0.10999999999999993,
     "nested_loop_files": 0,
     "framework_torch": 1,
     "framework_tensorflow": 2,
@@ -20,7 +20,7 @@
     "uses_ray_tune": false,
     "train_script_count": 0,
     "has_entrypoint_training": false,
-    "eval_script_count": 1,
+    "eval_script_count": 4,
     "uses_metrics_library": true,
     "uses_great_expectations": true,
     "uses_evidently": false,
@@ -48,7 +48,7 @@
     "has_requirements": false,
     "has_pipfile": false,
     "has_env_yml": false,
-    "ci_workflow_count": 40,
+    "ci_workflow_count": 50,
     "has_ci": true,
     "deploy_script_count": 5,
     "has_deploy_scripts": true,
@@ -59,7 +59,7 @@
       "unittest"
     ],
     "test_coverage_estimate": 0.85,
-    "testing_quality": 0.9,
+    "testing_quality": 0.75,
     "has_pyproject_toml": false,
     "has_setup_py": false,
     "dependency_management_quality": 0.8,
@@ -70,7 +70,7 @@
       "Regularly update dependency files to avoid vulnerabilities.",
       "Use consistent naming conventions for requirements files."
     ],
-    "ci_quality": 0.9,
+    "ci_quality": 0.8,
     "deployment_automation": 1.0,
     "has_github_actions": false,
     "has_gitlab_ci": false,
@@ -79,15 +79,15 @@
     "has_dockerfile": true,
     "has_makefile": true,
     "has_yaml": true,
-    "has_json": true,
     "has_shell script": true,
     "has_markdown": true,
+    "has_json": true,
     "has_go": true,
     "has_other": true,
     "experiment_dirs": [
+      "flyte",
       "docker/sandbox-bundled",
-      "docker/sandbox",
-      "flyteplugins"
+      "docker/sandbox"
     ],
     "experiment_management": 1.0,
     "reproducibility_analysis": [],
@@ -101,11 +101,11 @@
     "best_practices_adherence": 0.85
   },
   "scores": {
-    "development_maturity": 2.45,
+    "development_maturity": 2.38,
     "innovation_pipeline": 2.5
   },
   "micro_agent_results": {
-    "source_files_analyzed": 25,
+    "source_files_analyzed": 50,
     "total_files_analyzed": 148
   }
 }

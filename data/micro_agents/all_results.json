@@ -67,8 +67,8 @@
       "environment_consistency": 0.0,
       "dependency_best_practices": [
         "Include a package manager file (e.g., package.json, requirements.txt)",
-        "Ensure environment configuration files are present",
-        "Use version control for dependency files"
+        "Ensure consistent environment setup (e.g., Dockerfile, .env)",
+        "Document dependencies clearly in README"
       ],
       "ci_quality": 0.8,
       "deployment_automation": 1.0,
@@ -85,15 +85,21 @@
         "ds-pipeline"
       ],
       "experiment_management": 1.0,
-      "reproducibility_analysis": [],
+      "reproducibility_analysis": [
+        "README.md",
+        ".gitlab-ci.yml",
+        "template.yml",
+        "docs.md"
+      ],
       "structure_quality": 0.7,
       "organization_patterns": [
         "Templates organized under a dedicated directory",
-        "Presence of a README file for project overview",
-        "Use of Git for version control"
+        "Use of .gitkeep files to maintain empty directories",
+        "Presence of CI configuration file (.gitlab-ci.yml)",
+        "Documentation file (README.md) present"
       ],
-      "documentation_quality": 0.5,
-      "best_practices_adherence": 0.6
+      "documentation_quality": 0.6,
+      "best_practices_adherence": 0.8
     },
     "scores": {
       "development_maturity": 1.7,
@@ -171,9 +177,9 @@
       "dependency_management_quality": 0.8,
       "environment_consistency": 0.9,
       "dependency_best_practices": [
-        "Use virtual environments for dependency isolation",
-        "Regularly update dependencies",
-        "Pin versions in requirements.txt"
+        "Use a virtual environment",
+        "Pin package versions in requirements.txt",
+        "Regularly update dependencies"
       ],
       "ci_quality": 0.0,
       "deployment_automation": 1.0,
@@ -191,7 +197,7 @@
       "organization_patterns": [
         "Clear separation of application code and resources",
         "Use of subdirectories for screenshots and documentation",
-        "Presence of a license file and README"
+        "Presence of a LICENSE and README file"
       ],
       "documentation_quality": 0.7,
       "best_practices_adherence": 0.6
@@ -209,8 +215,8 @@
     "agent": "micro_agent_orchestrator",
     "repo": "shrimp-data-analysis-dw-iam",
     "signals": {
-      "avg_cyclomatic_complexity": 2.0,
-      "avg_maintainability_index": 0.6285714285714284,
+      "avg_cyclomatic_complexity": 2.142857142857143,
+      "avg_maintainability_index": 0.6357142857142856,
       "docstring_coverage": 0.0,
       "nested_loop_files": 1,
       "framework_torch": 0,
@@ -266,7 +272,7 @@
         "unittest"
       ],
       "test_coverage_estimate": 0.85,
-      "testing_quality": 0.75,
+      "testing_quality": 0.9,
       "has_pyproject_toml": false,
       "has_setup_py": false,
       "dependency_management_quality": 0.0,
@@ -286,6 +292,7 @@
       "has_xls": true,
       "has_xlsx": true,
       "has_png": true,
+      "has_gitignore": true,
       "experiment_dirs": [
         "shrimp-data-analysis-dw-iam"
       ],
@@ -293,15 +300,15 @@
       "reproducibility_analysis": [],
       "structure_quality": 0.6,
       "organization_patterns": [
-        "Model files are named consistently with descriptive terms.",
-        "Output files are stored in a separate directory.",
-        "Tools and scripts are organized in a dedicated 'tools' directory."
+        "Multiple model files with similar naming conventions",
+        "Use of subdirectories for tools and output",
+        "Presence of data files in a dedicated directory"
       ],
       "documentation_quality": 0.7,
       "best_practices_adherence": 0.5
     },
     "scores": {
-      "development_maturity": 2.33,
+      "development_maturity": 2.34,
       "innovation_pipeline": 1.25
     },
     "micro_agent_results": {
@@ -311,128 +318,11 @@
   },
   {
     "agent": "micro_agent_orchestrator",
-    "repo": "handson-ml2",
-    "signals": {
-      "avg_cyclomatic_complexity": 3.0,
-      "avg_maintainability_index": 0.7,
-      "docstring_coverage": 0.0,
-      "nested_loop_files": 0,
-      "framework_torch": 0,
-      "framework_tensorflow": 0,
-      "framework_sklearn": 0,
-      "framework_keras": 0,
-      "framework_xgboost": 0,
-      "framework_lightgbm": 0,
-      "uses_mlflow": false,
-      "uses_wandb": false,
-      "uses_clearml": false,
-      "has_hyperparam_file": false,
-      "uses_optuna": false,
-      "uses_ray_tune": false,
-      "train_script_count": 0,
-      "has_entrypoint_training": false,
-      "eval_script_count": 1,
-      "uses_metrics_library": false,
-      "uses_great_expectations": false,
-      "uses_evidently": false,
-      "uses_pandera": false,
-      "uses_threading": false,
-      "uses_multiprocessing": false,
-      "uses_concurrent": false,
-      "uses_fastapi": false,
-      "uses_flask": false,
-      "uses_streamlit": false,
-      "exports_torch_model": false,
-      "exports_sklearn_model": false,
-      "has_airflow": false,
-      "has_prefect": false,
-      "has_luigi": false,
-      "has_argo": false,
-      "has_kedro": false,
-      "uses_sklearn_preprocessing": false,
-      "uses_featuretools": false,
-      "uses_tsfresh": false,
-      "has_secrets": true,
-      "test_file_count": 5,
-      "has_tests": true,
-      "has_test_coverage_report": true,
-      "has_requirements": true,
-      "has_pipfile": false,
-      "has_env_yml": true,
-      "ci_workflow_count": 0,
-      "has_ci": false,
-      "deploy_script_count": 6,
-      "has_deploy_scripts": true,
-      "experiment_folder_count": 4,
-      "has_experiments": true,
-      "test_frameworks": [
-        "pytest",
-        "unittest"
-      ],
-      "test_coverage_estimate": 0.85,
-      "testing_quality": 0.9,
-      "has_pyproject_toml": false,
-      "has_setup_py": false,
-      "dependency_management_quality": 0.9,
-      "environment_consistency": 0.8,
-      "dependency_best_practices": [
-        "Use a requirements.txt for Python package dependencies.",
-        "Use an environment.yml for managing environments with conda.",
-        "Ensure both files are kept in sync for consistency."
-      ],
-      "ci_quality": 0.0,
-      "deployment_automation": 1.0,
-      "has_github_actions": false,
-      "has_gitlab_ci": false,
-      "has_jenkins": false,
-      "deployment_quality": 0.8,
-      "has_notebook": true,
-      "has_dockerfile": true,
-      "has_makefile": true,
-      "has_readme": true,
-      "has_env": true,
-      "has_python_script": true,
-      "has_bash_script": true,
-      "has_docker_compose": true,
-      "has_binary": true,
-      "experiment_dirs": [
-        "handson-ml2",
-        "docker",
-        "datasets",
-        "images"
-      ],
-      "experiment_management": 1.0,
-      "reproducibility_analysis": [
-        "ml-project-checklist.md",
-        "requirements.txt",
-        "environment.yml"
-      ],
-      "structure_quality": 0.8,
-      "organization_patterns": [
-        "Notebooks organized by topic and numbered sequentially",
-        "Documentation files present for installation and project overview",
-        "Docker configuration files organized in a dedicated directory",
-        "Images and datasets organized in separate directories"
-      ],
-      "documentation_quality": 0.7,
-      "best_practices_adherence": 0.6
-    },
-    "scores": {
-      "development_maturity": 2.93,
-      "innovation_pipeline": 1.25
-    },
-    "micro_agent_results": {
-      "source_files_analyzed": 1,
-      "total_files_analyzed": 1
-    }
-  },
-  {
-    "agent": "micro_agent_orchestrator",
     "repo": "ds-salary-prediction",
     "signals": {
-      "avg_cyclomatic_complexity": 2.0,
-      "avg_maintainability_index": 0.6714285714285715,
-      "docstring_coverage": 0.07142857142857142,
+      "avg_cyclomatic_complexity": 2.142857142857143,
+      "avg_maintainability_index": 0.6714285714285714,
+      "docstring_coverage": 0.05714285714285715,
       "nested_loop_files": 0,
       "framework_torch": 0,
       "framework_tensorflow": 0,
@@ -519,15 +409,15 @@
       ],
       "structure_quality": 0.8,
       "organization_patterns": [
-        "Modular organization with separate directories for data collection, EDA, model building, and deployment",
-        "Use of a README file for project overview",
-        "Consistent naming conventions for scripts and files"
+        "Modular structure with separate directories for data collection, EDA, model building, and deployment",
+        "Use of descriptive file names for scripts and data",
+        "Presence of images in a dedicated folder"
       ],
       "documentation_quality": 0.7,
       "best_practices_adherence": 0.6
     },
     "scores": {
-      "development_maturity": 2.83,
+      "development_maturity": 2.82,
       "innovation_pipeline": 1.75
     },
     "micro_agent_results": {
@@ -537,11 +427,125 @@
   },
   {
     "agent": "micro_agent_orchestrator",
+    "repo": "handson-ml2",
+    "signals": {
+      "avg_cyclomatic_complexity": 3.0,
+      "avg_maintainability_index": 0.7,
+      "docstring_coverage": 0.0,
+      "nested_loop_files": 0,
+      "framework_torch": 0,
+      "framework_tensorflow": 0,
+      "framework_sklearn": 0,
+      "framework_keras": 0,
+      "framework_xgboost": 0,
+      "framework_lightgbm": 0,
+      "uses_mlflow": false,
+      "uses_wandb": false,
+      "uses_clearml": false,
+      "has_hyperparam_file": false,
+      "uses_optuna": false,
+      "uses_ray_tune": false,
+      "train_script_count": 0,
+      "has_entrypoint_training": false,
+      "eval_script_count": 1,
+      "uses_metrics_library": false,
+      "uses_great_expectations": false,
+      "uses_evidently": false,
+      "uses_pandera": false,
+      "uses_threading": false,
+      "uses_multiprocessing": false,
+      "uses_concurrent": false,
+      "uses_fastapi": false,
+      "uses_flask": false,
+      "uses_streamlit": false,
+      "exports_torch_model": false,
+      "exports_sklearn_model": false,
+      "has_airflow": false,
+      "has_prefect": false,
+      "has_luigi": false,
+      "has_argo": false,
+      "has_kedro": false,
+      "uses_sklearn_preprocessing": false,
+      "uses_featuretools": false,
+      "uses_tsfresh": false,
+      "has_secrets": true,
+      "test_file_count": 5,
+      "has_tests": true,
+      "has_test_coverage_report": true,
+      "has_requirements": true,
+      "has_pipfile": false,
+      "has_env_yml": true,
+      "ci_workflow_count": 0,
+      "has_ci": false,
+      "deploy_script_count": 4,
+      "has_deploy_scripts": true,
+      "experiment_folder_count": 1,
+      "has_experiments": true,
+      "test_frameworks": [
+        "pytest",
+        "unittest"
+      ],
+      "test_coverage_estimate": 0.85,
+      "testing_quality": 0.9,
+      "has_pyproject_toml": false,
+      "has_setup_py": false,
+      "dependency_management_quality": 0.9,
+      "environment_consistency": 0.8,
+      "dependency_best_practices": [
+        "Use both requirements.txt and environment.yml for comprehensive dependency management.",
+        "Ensure version pinning in requirements.txt for reproducibility.",
+        "Regularly update dependencies to avoid security vulnerabilities."
+      ],
+      "ci_quality": 0.0,
+      "deployment_automation": 1.0,
+      "has_github_actions": false,
+      "has_gitlab_ci": false,
+      "has_jenkins": false,
+      "deployment_quality": 0.8,
+      "has_notebook": true,
+      "has_dockerfile": true,
+      "has_makefile": true,
+      "has_readme": true,
+      "has_env": true,
+      "has_python": true,
+      "has_bash": true,
+      "has_docker_compose": true,
+      "has_script": true,
+      "experiment_dirs": [
+        "handson-ml2"
+      ],
+      "experiment_management": 1.0,
+      "reproducibility_analysis": [
+        "ml-project-checklist.md",
+        "requirements.txt",
+        "environment.yml"
+      ],
+      "structure_quality": 0.8,
+      "organization_patterns": [
+        "Notebooks organized by topic and numbered sequentially",
+        "Documentation files present for installation and project overview",
+        "Docker configuration files organized in a dedicated directory",
+        "Images and datasets organized in separate directories"
+      ],
+      "documentation_quality": 0.7,
+      "best_practices_adherence": 0.6
+    },
+    "scores": {
+      "development_maturity": 2.93,
+      "innovation_pipeline": 1.25
+    },
+    "micro_agent_results": {
+      "source_files_analyzed": 1,
+      "total_files_analyzed": 1
+    }
+  },
+  {
+    "agent": "micro_agent_orchestrator",
     "repo": "flyte",
     "signals": {
-      "avg_cyclomatic_complexity": 0.68,
-      "avg_maintainability_index": 0.614,
-      "docstring_coverage": 0.13,
+      "avg_cyclomatic_complexity": 0.56,
+      "avg_maintainability_index": 0.6199999999999998,
+      "docstring_coverage": 0.10999999999999993,
       "nested_loop_files": 0,
       "framework_torch": 1,
       "framework_tensorflow": 2,
@@ -557,7 +561,7 @@
       "uses_ray_tune": false,
       "train_script_count": 0,
       "has_entrypoint_training": false,
-      "eval_script_count": 1,
+      "eval_script_count": 4,
       "uses_metrics_library": true,
       "uses_great_expectations": true,
       "uses_evidently": false,
@@ -585,7 +589,7 @@
       "has_requirements": false,
       "has_pipfile": false,
       "has_env_yml": false,
-      "ci_workflow_count": 40,
+      "ci_workflow_count": 50,
       "has_ci": true,
       "deploy_script_count": 5,
       "has_deploy_scripts": true,
@@ -596,7 +600,7 @@
         "unittest"
       ],
       "test_coverage_estimate": 0.85,
-      "testing_quality": 0.9,
+      "testing_quality": 0.75,
       "has_pyproject_toml": false,
       "has_setup_py": false,
       "dependency_management_quality": 0.8,
@@ -607,7 +611,7 @@
         "Regularly update dependency files to avoid vulnerabilities.",
         "Use consistent naming conventions for requirements files."
       ],
-      "ci_quality": 0.9,
+      "ci_quality": 0.8,
       "deployment_automation": 1.0,
       "has_github_actions": false,
       "has_gitlab_ci": false,
@@ -616,15 +620,15 @@
       "has_dockerfile": true,
       "has_makefile": true,
       "has_yaml": true,
-      "has_json": true,
       "has_shell script": true,
       "has_markdown": true,
+      "has_json": true,
       "has_go": true,
       "has_other": true,
       "experiment_dirs": [
+        "flyte",
         "docker/sandbox-bundled",
-        "docker/sandbox",
-        "flyteplugins"
+        "docker/sandbox"
       ],
       "experiment_management": 1.0,
       "reproducibility_analysis": [],
@@ -638,11 +642,11 @@
       "best_practices_adherence": 0.85
     },
     "scores": {
-      "development_maturity": 2.45,
+      "development_maturity": 2.38,
       "innovation_pipeline": 2.5
     },
     "micro_agent_results": {
-      "source_files_analyzed": 25,
+      "source_files_analyzed": 50,
       "total_files_analyzed": 148
     }
   },
@@ -650,12 +654,12 @@
     "agent": "micro_agent_orchestrator",
     "repo": "transformers",
     "signals": {
-      "avg_cyclomatic_complexity": 2.76,
-      "avg_maintainability_index": 0.7019999999999997,
-      "docstring_coverage": 0.182,
-      "nested_loop_files": 3,
-      "framework_torch": 25,
-      "framework_tensorflow": 4,
+      "avg_cyclomatic_complexity": 2.84,
+      "avg_maintainability_index": 0.6919999999999998,
+      "docstring_coverage": 0.20199999999999993,
+      "nested_loop_files": 6,
+      "framework_torch": 42,
+      "framework_tensorflow": 12,
       "framework_sklearn": 0,
       "framework_keras": 2,
       "framework_xgboost": 0,
@@ -663,13 +667,13 @@
       "uses_mlflow": false,
       "uses_wandb": false,
       "uses_clearml": false,
-      "has_hyperparam_file": false,
+      "has_hyperparam_file": true,
       "uses_optuna": false,
       "uses_ray_tune": false,
       "train_script_count": 0,
       "has_entrypoint_training": false,
       "eval_script_count": 2,
-      "uses_metrics_library": false,
+      "uses_metrics_library": true,
       "uses_great_expectations": true,
       "uses_evidently": false,
       "uses_pandera": false,
@@ -696,7 +700,7 @@
       "has_requirements": true,
       "has_pipfile": false,
       "has_env_yml": false,
-      "ci_workflow_count": 47,
+      "ci_workflow_count": 51,
       "has_ci": true,
       "deploy_script_count": 1,
       "has_deploy_scripts": true,
@@ -713,10 +717,10 @@
       "dependency_management_quality": 0.9,
       "environment_consistency": 0.8,
       "dependency_best_practices": [
-        "Use a single requirements.txt for the main dependencies.",
-        "Ensure all requirements files are up to date.",
-        "Consider using a lock file for reproducibility.",
-        "Document the purpose of each requirements file."
+        "Use a single requirements.txt for the entire project if possible.",
+        "Keep dependencies updated regularly.",
+        "Document the purpose of each dependency in the requirements file.",
+        "Use version pinning to avoid breaking changes."
       ],
       "ci_quality": 0.9,
       "deployment_automation": 1.0,
@@ -737,19 +741,19 @@
       "reproducibility_analysis": [],
       "structure_quality": 0.9,
       "organization_patterns": [
-        "Consistent naming conventions",
-        "Separation of concerns (e.g., tests, models, benchmarks)",
-        "Use of standard files (README, LICENSE, etc.)"
+        "Clear separation of documentation, source code, and tests",
+        "Use of standardized file naming conventions",
+        "Logical grouping of related files and directories"
       ],
       "documentation_quality": 0.8,
       "best_practices_adherence": 0.85
     },
     "scores": {
-      "development_maturity": 2.67,
-      "innovation_pipeline": 2.0
+      "development_maturity": 2.61,
+      "innovation_pipeline": 3.5
     },
     "micro_agent_results": {
-      "source_files_analyzed": 25,
+      "source_files_analyzed": 50,
       "total_files_analyzed": 2437
     }
   }

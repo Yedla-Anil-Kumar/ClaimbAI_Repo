@@ -65,9 +65,9 @@
     "dependency_management_quality": 0.8,
     "environment_consistency": 0.9,
     "dependency_best_practices": [
-      "Use virtual environments for dependency isolation",
-      "Regularly update dependencies",
-      "Pin versions in requirements.txt"
+      "Use a virtual environment",
+      "Pin package versions in requirements.txt",
+      "Regularly update dependencies"
     ],
     "ci_quality": 0.0,
     "deployment_automation": 1.0,
@@ -85,7 +85,7 @@
     "organization_patterns": [
       "Clear separation of application code and resources",
       "Use of subdirectories for screenshots and documentation",
-      "Presence of a license file and README"
+      "Presence of a LICENSE and README file"
     ],
     "documentation_quality": 0.7,
     "best_practices_adherence": 0.6

@@ -2,8 +2,8 @@
   "agent": "micro_agent_orchestrator",
   "repo": "shrimp-data-analysis-dw-iam",
   "signals": {
-    "avg_cyclomatic_complexity": 2.0,
-    "avg_maintainability_index": 0.6285714285714284,
+    "avg_cyclomatic_complexity": 2.142857142857143,
+    "avg_maintainability_index": 0.6357142857142856,
     "docstring_coverage": 0.0,
     "nested_loop_files": 1,
     "framework_torch": 0,
@@ -59,7 +59,7 @@
       "unittest"
     ],
     "test_coverage_estimate": 0.85,
-    "testing_quality": 0.75,
+    "testing_quality": 0.9,
     "has_pyproject_toml": false,
     "has_setup_py": false,
     "dependency_management_quality": 0.0,
@@ -79,6 +79,7 @@
     "has_xls": true,
     "has_xlsx": true,
     "has_png": true,
+    "has_gitignore": true,
     "experiment_dirs": [
       "shrimp-data-analysis-dw-iam"
     ],
@@ -86,15 +87,15 @@
     "reproducibility_analysis": [],
     "structure_quality": 0.6,
     "organization_patterns": [
-      "Model files are named consistently with descriptive terms.",
-      "Output files are stored in a separate directory.",
-      "Tools and scripts are organized in a dedicated 'tools' directory."
+      "Multiple model files with similar naming conventions",
+      "Use of subdirectories for tools and output",
+      "Presence of data files in a dedicated directory"
     ],
     "documentation_quality": 0.7,
     "best_practices_adherence": 0.5
   },
   "scores": {
-    "development_maturity": 2.33,
+    "development_maturity": 2.34,
     "innovation_pipeline": 1.25
   },
   "micro_agent_results": {

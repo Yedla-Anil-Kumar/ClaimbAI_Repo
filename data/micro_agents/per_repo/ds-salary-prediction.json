@@ -2,9 +2,9 @@
   "agent": "micro_agent_orchestrator",
   "repo": "ds-salary-prediction",
   "signals": {
-    "avg_cyclomatic_complexity": 2.0,
-    "avg_maintainability_index": 0.6714285714285715,
-    "docstring_coverage": 0.07142857142857142,
+    "avg_cyclomatic_complexity": 2.142857142857143,
+    "avg_maintainability_index": 0.6714285714285714,
+    "docstring_coverage": 0.05714285714285715,
     "nested_loop_files": 0,
     "framework_torch": 0,
     "framework_tensorflow": 0,
@@ -91,15 +91,15 @@
     ],
     "structure_quality": 0.8,
     "organization_patterns": [
-      "Modular organization with separate directories for data collection, EDA, model building, and deployment",
-      "Use of a README file for project overview",
-      "Consistent naming conventions for scripts and files"
+      "Modular structure with separate directories for data collection, EDA, model building, and deployment",
+      "Use of descriptive file names for scripts and data",
+      "Presence of images in a dedicated folder"
     ],
     "documentation_quality": 0.7,
     "best_practices_adherence": 0.6
   },
   "scores": {
-    "development_maturity": 2.83,
+    "development_maturity": 2.82,
     "innovation_pipeline": 1.75
   },
   "micro_agent_results": {
