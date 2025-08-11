@@ -1,0 +1,62 @@
+{
+  "agent": "ml_ops_monitor",
+  "repo": "handson-ml2",
+  "platforms": {
+    "uses_mlflow": false,
+    "uses_sagemaker": false,
+    "uses_azureml": false,
+    "uses_kubeflow": true
+  },
+  "scores": {
+    "ai_ml_capabilities": 1.97,
+    "operations_maturity": 0.16
+  },
+  "aimri_ops_summary": {
+    "platform_surface_area": {
+      "level": 0,
+      "value": 1,
+      "desc": "Distinct MLOps platforms detected (0\u20134)."
+    },
+    "experiment_tracking": {
+      "coverage_level": 2,
+      "coverage_value": 0.7,
+      "hygiene_level": 3,
+      "hygiene_value": 0.8,
+      "tools": [
+        {
+          "name": "TensorBoard",
+          "usage": "moderate"
+        },
+        {
+          "name": "Jupyter",
+          "usage": "heavy"
+        }
+      ],
+      "metrics_logged": true,
+      "artifacts_logged": true
+    },
+    "model_registry": {
+      "present": false,
+      "registered_models_level": 0,
+      "registered_models_count": 0
+    },
+    "pipeline_automation": {
+      "orchestrators": [],
+      "automation_level": 0,
+      "automation_value": 0.0,
+      "scheduling": false,
+      "pipelines_level": 0,
+      "pipelines_total": 1
+    },
+    "serving_endpoints": {
+      "level": 0,
+      "total": 0,
+      "sagemaker": 0,
+      "azureml": 0
+    },
+    "experiments_scale": {
+      "level": 0,
+      "count": 0
+    }
+  }
+}

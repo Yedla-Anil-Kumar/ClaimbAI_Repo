@@ -1,0 +1,55 @@
+{
+  "agent": "ml_ops_monitor",
+  "repo": "ds-salary-prediction",
+  "platforms": {
+    "uses_mlflow": false,
+    "uses_sagemaker": false,
+    "uses_azureml": true,
+    "uses_kubeflow": false
+  },
+  "scores": {
+    "ai_ml_capabilities": 1.45,
+    "operations_maturity": 3.81
+  },
+  "aimri_ops_summary": {
+    "platform_surface_area": {
+      "level": 0,
+      "value": 1,
+      "desc": "Distinct MLOps platforms detected (0\u20134)."
+    },
+    "experiment_tracking": {
+      "coverage_level": 1,
+      "coverage_value": 0.5,
+      "hygiene_level": 1,
+      "hygiene_value": 0.3,
+      "tools": [],
+      "metrics_logged": false,
+      "artifacts_logged": true
+    },
+    "model_registry": {
+      "present": true,
+      "registered_models_level": 0,
+      "registered_models_count": 0
+    },
+    "pipeline_automation": {
+      "orchestrators": [
+        "gitlab_ci"
+      ],
+      "automation_level": 2,
+      "automation_value": 0.75,
+      "scheduling": true,
+      "pipelines_level": 1,
+      "pipelines_total": 2
+    },
+    "serving_endpoints": {
+      "level": 1,
+      "total": 1,
+      "sagemaker": 0,
+      "azureml": 1
+    },
+    "experiments_scale": {
+      "level": 0,
+      "count": 0
+    }
+  }
+}
