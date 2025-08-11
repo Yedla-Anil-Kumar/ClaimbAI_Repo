@@ -38,8 +38,8 @@
       "automation_level": 3,
       "automation_value": 0.85,
       "scheduling": true,
-      "pipelines_level": 0,
-      "pipelines_total": 1
+      "pipelines_level": 2,
+      "pipelines_total": 3
     },
     "serving_endpoints": {
       "level": 0,

@@ -20,7 +20,9 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from ml_ops_agent.orchestrator import MLOpsOrchestrator  # noqa: E402
+from Data_Collection_Agents.ml_ops_agent.orchestrator import (  # noqa: E402
+    MLOpsOrchestrator,
+)
 
 
 def find_git_repos(base: Path) -> Iterable[Path]:

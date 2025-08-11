@@ -48,8 +48,6 @@ It supports both classic static code analysis and advanced LLM-powered micro-age
    - Copy `.env.example` to `.env` and fill in your API keys and settings, or edit `.env` directly:
      ```
      OPENAI_API_KEY=sk-...
-     # or for Huggingface:
-     HUGGINGFACE_HUB_TOKEN=hf_...
      REPO_BASE=useful_repos
      MA_CONCURRENCY=2
      MA_MAX_FILES_PER_REPO=5
@@ -106,7 +104,6 @@ python scripts/run_micro_agents_all.py --base useful_repos --out data/micro_agen
 
 - **API Keys:**  
   - For OpenAI: `OPENAI_API_KEY`
-  - For Huggingface: `HUGGINGFACE_HUB_TOKEN`
 
 ---
 
@@ -147,38 +144,61 @@ python run_agents.py
 
 ## Project Structure
 
-```
 ClaimbAI/
+├── Data_Collection_Agents/
+│   ├── __init__.py
+│   ├── dev_env_agent/                 # (was: micro_agents)
+│   │   ├── __init__.py
+│   │   ├── base_agent.py
+│   │   ├── code_quality_agents.py
+│   │   ├── file_system_agents.py
+│   │   ├── infrastructure_agents.py
+│   │   ├── ml_framework_agents.py
+│   │   └── orchestrator.py            # MicroAgentOrchestrator
+│   └── ml_ops_agent/
+│       ├── __init__.py
+│       ├── platform_agents.py         # MLflow/SageMaker/AzureML/Kubeflow LLM agents
+│       ├── pipeline_agents.py         # Tracking + automation LLM agents
+│       └── orchestrator.py            # MLOpsOrchestrator
+│
 ├── agents/
-│   └── dev_platform_agent.py
-├── micro_agents/
-│   ├── orchestrator.py
-│   ├── code_quality_agents.py
-│   └── ... (other agent modules)
+│   └── dev_platform_agent.py          # Static dev-platform scanner (baseline)
+│
 ├── utils/
-│   ├── code_analysis.py
-│   ├── ml_insights.py
-│   └── file_utils.py
+│   ├── code_analysis.py               # AST metrics, tests/env/CI/CD detection (PEP8)
+│   ├── ml_insights.py                 # ML patterns (frameworks, endpoints, etc.)
+│   └── file_utils.py                  # list_all_files, list_source_files
+│
 ├── scripts/
-│   ├── run_micro_agents_all.py
-│   └── ... (other scripts)
+│   ├── run_micro_agents_all.py        # runs dev_env_agent orchestrator (LLM)
+│   └── run_ml_ops_agent.py            # runs ml_ops_agent orchestrator (LLM)
+│
 ├── data/
-│   ├── dev_platform_outputs.json
-│   └── micro_agents/
-│       ├── aggregate.json
-│       └── per_repo/
+│   ├── dev_platform_outputs.json      # legacy static agent output (optional)
+│   ├── micro_agents/                  # dev_env_agent results
+│   │   ├── all_results.json           # aggregate
+│   │   └── per_repo/                  # one JSON per repo
+│   └── ml_ops/                        # ml_ops_agent results
+│       ├── all_results.json           # aggregate
+│       └── per_repo/                  # one JSON per repo
+│
 ├── useful_repos/
-│   └── ... (your target repos)
-├── .env
+│   ├── Github_repos/
+│   │   └── ... (your cloned GitHub repos; each must contain a .git folder)
+│   └── Gitlab_repos/
+│       └── ... (your cloned GitLab repos; each must contain a .git folder)
+│
+├── .env                               # OPENAI_API_KEY, OPENAI_MODEL (optional)
 ├── requirements.txt
-└── run_agents.py
-```
+├── run_agents.py                      # (optional) umbrella runner if you use it
+└── README.md                          # this file
+
 
 ---
 
 ## License
 
-MIT License (or your chosen license)
+( Our chosen license)
 
 ---
 

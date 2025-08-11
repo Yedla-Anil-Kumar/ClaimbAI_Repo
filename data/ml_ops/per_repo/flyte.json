@@ -8,7 +8,7 @@
     "uses_kubeflow": true
   },
   "scores": {
-    "ai_ml_capabilities": 3.79,
+    "ai_ml_capabilities": 3.75,
     "operations_maturity": 4.4
   },
   "aimri_ops_summary": {
@@ -18,10 +18,10 @@
       "desc": "Distinct MLOps platforms detected (0\u20134)."
     },
     "experiment_tracking": {
-      "coverage_level": 3,
-      "coverage_value": 0.85,
-      "hygiene_level": 2,
-      "hygiene_value": 0.75,
+      "coverage_level": 2,
+      "coverage_value": 0.75,
+      "hygiene_level": 3,
+      "hygiene_value": 0.8,
       "tools": [
         {
           "name": "mlflow",

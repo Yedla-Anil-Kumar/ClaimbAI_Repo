@@ -7,6 +7,8 @@ import argparse
 import json
 import os
 import sys
+
+
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import Dict, Iterable, List, Tuple
@@ -19,8 +21,9 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 # -----------------------------------------------------------------------------------------
 
-from micro_agents.orchestrator import MicroAgentOrchestrator  # noqa: E402
-
+from Data_Collection_Agents.dev_env_scanner_agent.orchestrator import (  # noqa: E402
+    MicroAgentOrchestrator,
+)
 
 def find_git_repos(base: Path) -> Iterable[Path]:
     """Yield repo roots that contain a .git directory."""

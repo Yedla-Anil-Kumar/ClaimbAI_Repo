@@ -8,8 +8,8 @@
     "uses_kubeflow": true
   },
   "scores": {
-    "ai_ml_capabilities": 1.97,
-    "operations_maturity": 0.16
+    "ai_ml_capabilities": 1.75,
+    "operations_maturity": 0.15
   },
   "aimri_ops_summary": {
     "platform_surface_area": {
@@ -20,20 +20,16 @@
     "experiment_tracking": {
       "coverage_level": 2,
       "coverage_value": 0.7,
-      "hygiene_level": 3,
-      "hygiene_value": 0.8,
+      "hygiene_level": 1,
+      "hygiene_value": 0.5,
       "tools": [
         {
           "name": "TensorBoard",
           "usage": "moderate"
-        },
-        {
-          "name": "Jupyter",
-          "usage": "heavy"
         }
       ],
-      "metrics_logged": true,
-      "artifacts_logged": true
+      "metrics_logged": false,
+      "artifacts_logged": false
     },
     "model_registry": {
       "present": false,

@@ -8,8 +8,8 @@
     "uses_kubeflow": false
   },
   "scores": {
-    "ai_ml_capabilities": 2.45,
-    "operations_maturity": 0.0
+    "ai_ml_capabilities": 2.38,
+    "operations_maturity": 0.19
   },
   "aimri_ops_summary": {
     "platform_surface_area": {
@@ -19,15 +19,10 @@
     },
     "experiment_tracking": {
       "coverage_level": 2,
-      "coverage_value": 0.75,
+      "coverage_value": 0.7,
       "hygiene_level": 3,
-      "hygiene_value": 0.85,
-      "tools": [
-        {
-          "name": "custom",
-          "usage": "heavy"
-        }
-      ],
+      "hygiene_value": 0.8,
+      "tools": [],
       "metrics_logged": true,
       "artifacts_logged": false
     },

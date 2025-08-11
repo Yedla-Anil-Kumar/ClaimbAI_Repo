@@ -8,7 +8,7 @@
     "uses_kubeflow": false
   },
   "scores": {
-    "ai_ml_capabilities": 1.45,
+    "ai_ml_capabilities": 1.52,
     "operations_maturity": 3.81
   },
   "aimri_ops_summary": {
@@ -21,7 +21,7 @@
       "coverage_level": 1,
       "coverage_value": 0.5,
       "hygiene_level": 1,
-      "hygiene_value": 0.3,
+      "hygiene_value": 0.4,
       "tools": [],
       "metrics_logged": false,
       "artifacts_logged": true
