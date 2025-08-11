@@ -1,108 +1,6 @@
 {
   "agent": "micro_agent_orchestrator",
   "repo": "handson-ml2",
-  "signals": {
-    "avg_cyclomatic_complexity": 3.0,
-    "avg_maintainability_index": 0.7,
-    "docstring_coverage": 0.0,
-    "nested_loop_files": 0,
-    "framework_torch": 0,
-    "framework_tensorflow": 0,
-    "framework_sklearn": 0,
-    "framework_keras": 0,
-    "framework_xgboost": 0,
-    "framework_lightgbm": 0,
-    "uses_mlflow": false,
-    "uses_wandb": false,
-    "uses_clearml": false,
-    "has_hyperparam_file": false,
-    "uses_optuna": false,
-    "uses_ray_tune": false,
-    "train_script_count": 0,
-    "has_entrypoint_training": false,
-    "eval_script_count": 1,
-    "uses_metrics_library": false,
-    "uses_great_expectations": false,
-    "uses_evidently": false,
-    "uses_pandera": false,
-    "uses_threading": false,
-    "uses_multiprocessing": false,
-    "uses_concurrent": false,
-    "uses_fastapi": false,
-    "uses_flask": false,
-    "uses_streamlit": false,
-    "exports_torch_model": false,
-    "exports_sklearn_model": false,
-    "has_airflow": false,
-    "has_prefect": false,
-    "has_luigi": false,
-    "has_argo": false,
-    "has_kedro": false,
-    "uses_sklearn_preprocessing": false,
-    "uses_featuretools": false,
-    "uses_tsfresh": false,
-    "has_secrets": true,
-    "test_file_count": 5,
-    "has_tests": true,
-    "has_test_coverage_report": true,
-    "has_requirements": true,
-    "has_pipfile": false,
-    "has_env_yml": true,
-    "ci_workflow_count": 0,
-    "has_ci": false,
-    "deploy_script_count": 4,
-    "has_deploy_scripts": true,
-    "experiment_folder_count": 1,
-    "has_experiments": true,
-    "test_frameworks": [
-      "pytest",
-      "unittest"
-    ],
-    "test_coverage_estimate": 0.85,
-    "testing_quality": 0.9,
-    "has_pyproject_toml": false,
-    "has_setup_py": false,
-    "dependency_management_quality": 0.9,
-    "environment_consistency": 0.8,
-    "dependency_best_practices": [
-      "Use both requirements.txt and environment.yml for comprehensive dependency management.",
-      "Ensure version pinning in requirements.txt for reproducibility.",
-      "Regularly update dependencies to avoid security vulnerabilities."
-    ],
-    "ci_quality": 0.0,
-    "deployment_automation": 1.0,
-    "has_github_actions": false,
-    "has_gitlab_ci": false,
-    "has_jenkins": false,
-    "deployment_quality": 0.8,
-    "has_notebook": true,
-    "has_dockerfile": true,
-    "has_makefile": true,
-    "has_readme": true,
-    "has_env": true,
-    "has_python": true,
-    "has_bash": true,
-    "has_docker_compose": true,
-    "has_script": true,
-    "experiment_dirs": [
-      "handson-ml2"
-    ],
-    "experiment_management": 1.0,
-    "reproducibility_analysis": [
-      "ml-project-checklist.md",
-      "requirements.txt",
-      "environment.yml"
-    ],
-    "structure_quality": 0.8,
-    "organization_patterns": [
-      "Notebooks organized by topic and numbered sequentially",
-      "Documentation files present for installation and project overview",
-      "Docker configuration files organized in a dedicated directory",
-      "Images and datasets organized in separate directories"
-    ],
-    "documentation_quality": 0.7,
-    "best_practices_adherence": 0.6
-  },
   "scores": {
     "development_maturity": 2.93,
     "innovation_pipeline": 1.25
@@ -110,5 +8,114 @@
   "micro_agent_results": {
     "source_files_analyzed": 1,
     "total_files_analyzed": 1
+  },
+  "aimri_summary": {
+    "code_health": {
+      "level": 3,
+      "evidence": {
+        "mi": 0.7,
+        "cc": 3.0,
+        "docs": 0.0
+      }
+    },
+    "testing_rigor": {
+      "level": 5,
+      "evidence": {
+        "has_tests": true,
+        "files": 5,
+        "coverage": 0.85,
+        "testing_quality": 0.9
+      }
+    },
+    "ci_cd": {
+      "level": 3,
+      "evidence": {
+        "ci_workflows": 0,
+        "has_ci": false,
+        "deploy_scripts": 4,
+        "has_deploy_scripts": true
+      }
+    },
+    "env_reproducibility": {
+      "level": 5,
+      "evidence": {
+        "requirements": true,
+        "pipfile": false,
+        "env_yml": true,
+        "pyproject": false,
+        "dep_quality": 0.9,
+        "env_consistency": 0.8
+      }
+    },
+    "secret_hygiene": {
+      "level": 0,
+      "evidence": {
+        "has_secrets": true,
+        "security_score": 0.0
+      }
+    },
+    "experiment_tracking": {
+      "level": 0,
+      "evidence": {
+        "mlflow": false,
+        "wandb": false,
+        "clearml": false
+      }
+    },
+    "hpo": {
+      "level": 0,
+      "evidence": {
+        "hparam_file": false,
+        "optuna": false,
+        "ray_tune": false
+      }
+    },
+    "data_validation": {
+      "level": 0,
+      "evidence": {
+        "great_expectations": false,
+        "evidently": false,
+        "pandera": false
+      }
+    },
+    "training_eval": {
+      "level": 1,
+      "evidence": {
+        "train_scripts": 0,
+        "entrypoint": false,
+        "metrics_lib": false,
+        "eval_scripts": 1
+      }
+    },
+    "serving_deploy": {
+      "level": 1,
+      "evidence": {
+        "fastapi": false,
+        "flask": false,
+        "streamlit": false,
+        "export_torch": false,
+        "export_sklearn": false,
+        "deploy_scripts": true
+      }
+    },
+    "pipelines": {
+      "level": 0,
+      "evidence": {
+        "airflow": false,
+        "prefect": false,
+        "luigi": false,
+        "argo": false,
+        "kedro": false
+      }
+    },
+    "parallelism": {
+      "level": 0,
+      "evidence": {
+        "threading": false,
+        "multiprocessing": false,
+        "concurrent": false,
+        "nested_loop_files": 0
+      }
+    }
   }
 }

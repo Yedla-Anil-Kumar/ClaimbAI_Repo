@@ -1,0 +1,39 @@
+version: 1
+
+categories:
+  code_quality:
+    - { key: avg_maintainability_index, type: direct }
+    - { key: docstring_coverage,        type: direct }
+    - { key: avg_cyclomatic_complexity, type: inverse_cc, max: 30 }
+    - { key: nested_loop_files,         type: inverse_ratio }
+
+  experimentation_tracking:
+    - { any_of: [uses_mlflow, uses_wandb, uses_clearml], mode: any }
+    - { key: has_hyperparam_file, type: boolean }
+    - { any_of: [uses_optuna, uses_ray_tune], mode: any }
+    - { key: uses_metrics_library, type: boolean }
+    - { key: test_coverage_estimate, type: direct }   # optional if present
+    - { key: has_tests, type: boolean }               # fallback presence
+
+  data_validation_quality:
+    - { any_of: [uses_great_expectations, uses_evidently, uses_pandera], mode: any }
+    - { key: has_tests, type: boolean }
+
+  modeling_frameworks:
+    - { prefix_count: "framework_", max: 6 }  # counts any framework_* in signals
+    - { any_of: [uses_sklearn_preprocessing, uses_featuretools, uses_tsfresh], mode: any }
+    - { any_of: [uses_optuna, uses_ray_tune], mode: any }
+    - { key: uses_metrics_library, type: boolean }
+
+  serving_and_mlop_ops:
+    - { any_of: [uses_fastapi, uses_flask, uses_streamlit], mode: any }
+    - { any_of: [exports_torch_model, exports_sklearn_model], mode: any }
+    - { any_of: [has_airflow, has_prefect, has_luigi, has_argo, has_kedro], mode: any }
+    - { any_of: [has_ci], mode: any }
+    - { any_of: [has_deploy_scripts], mode: any }
+
+  governance_security:
+    - { inverse_bool: has_secrets }
+    - { key: documentation_quality, type: direct }
+    - { key: structure_quality,     type: direct }
+    - { any_of: [has_ci, has_deploy_scripts], mode: any }

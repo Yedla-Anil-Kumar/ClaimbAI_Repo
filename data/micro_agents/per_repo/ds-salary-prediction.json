@@ -1,109 +1,121 @@
 {
   "agent": "micro_agent_orchestrator",
   "repo": "ds-salary-prediction",
-  "signals": {
-    "avg_cyclomatic_complexity": 2.142857142857143,
-    "avg_maintainability_index": 0.6714285714285714,
-    "docstring_coverage": 0.05714285714285715,
-    "nested_loop_files": 0,
-    "framework_torch": 0,
-    "framework_tensorflow": 0,
-    "framework_sklearn": 6,
-    "framework_keras": 0,
-    "framework_xgboost": 0,
-    "framework_lightgbm": 0,
-    "uses_mlflow": false,
-    "uses_wandb": false,
-    "uses_clearml": false,
-    "has_hyperparam_file": false,
-    "uses_optuna": false,
-    "uses_ray_tune": false,
-    "train_script_count": 1,
-    "has_entrypoint_training": true,
-    "eval_script_count": 1,
-    "uses_metrics_library": true,
-    "uses_great_expectations": false,
-    "uses_evidently": false,
-    "uses_pandera": false,
-    "uses_threading": false,
-    "uses_multiprocessing": false,
-    "uses_concurrent": false,
-    "uses_fastapi": false,
-    "uses_flask": false,
-    "uses_streamlit": false,
-    "exports_torch_model": false,
-    "exports_sklearn_model": false,
-    "has_airflow": false,
-    "has_prefect": false,
-    "has_luigi": false,
-    "has_argo": false,
-    "has_kedro": false,
-    "uses_sklearn_preprocessing": false,
-    "uses_featuretools": false,
-    "uses_tsfresh": false,
-    "has_secrets": true,
-    "test_file_count": 5,
-    "has_tests": true,
-    "has_test_coverage_report": true,
-    "has_requirements": false,
-    "has_pipfile": false,
-    "has_env_yml": false,
-    "ci_workflow_count": 1,
-    "has_ci": true,
-    "deploy_script_count": 3,
-    "has_deploy_scripts": true,
-    "experiment_folder_count": 5,
-    "has_experiments": true,
-    "test_frameworks": [
-      "pytest",
-      "unittest"
-    ],
-    "test_coverage_estimate": 0.85,
-    "testing_quality": 0.9,
-    "has_pyproject_toml": false,
-    "has_setup_py": false,
-    "dependency_management_quality": 0.0,
-    "environment_consistency": 0.0,
-    "dependency_best_practices": [],
-    "ci_quality": 0.8,
-    "deployment_automation": 1.0,
-    "has_github_actions": false,
-    "has_gitlab_ci": false,
-    "has_jenkins": false,
-    "deployment_quality": 1.0,
-    "has_csv": true,
-    "has_python": true,
-    "experiment_dirs": [
-      "data_collection",
-      "data_EDA",
-      "model_deployment",
-      "model_building",
-      "data_cleaning"
-    ],
-    "experiment_management": 1.0,
-    "reproducibility_analysis": [
-      "data_collection/glassdoor_scraper.py",
-      "data_collection/job_collector.py",
-      "data_EDA/data_EDA.ipynb",
-      "model_deployment/prediction_model.py",
-      "model_building/model_building.py",
-      "data_cleaning/data_cleaning.py"
-    ],
-    "structure_quality": 0.8,
-    "organization_patterns": [
-      "Modular structure with separate directories for data collection, EDA, model building, and deployment",
-      "Use of descriptive file names for scripts and data",
-      "Presence of images in a dedicated folder"
-    ],
-    "documentation_quality": 0.7,
-    "best_practices_adherence": 0.6
-  },
   "scores": {
-    "development_maturity": 2.82,
+    "development_maturity": 2.83,
     "innovation_pipeline": 1.75
   },
   "micro_agent_results": {
     "source_files_analyzed": 7,
     "total_files_analyzed": 7
+  },
+  "aimri_summary": {
+    "code_health": {
+      "level": 3,
+      "evidence": {
+        "mi": 0.6714285714285714,
+        "cc": 2.142857142857143,
+        "docs": 0.07142857142857142
+      }
+    },
+    "testing_rigor": {
+      "level": 5,
+      "evidence": {
+        "has_tests": true,
+        "files": 5,
+        "coverage": 0.85,
+        "testing_quality": 0.9
+      }
+    },
+    "ci_cd": {
+      "level": 4,
+      "evidence": {
+        "ci_workflows": 1,
+        "has_ci": true,
+        "deploy_scripts": 4,
+        "has_deploy_scripts": true
+      }
+    },
+    "env_reproducibility": {
+      "level": 0,
+      "evidence": {
+        "requirements": false,
+        "pipfile": false,
+        "env_yml": false,
+        "pyproject": false,
+        "dep_quality": 0.2,
+        "env_consistency": 0.5
+      }
+    },
+    "secret_hygiene": {
+      "level": 0,
+      "evidence": {
+        "has_secrets": true,
+        "security_score": 0.0
+      }
+    },
+    "experiment_tracking": {
+      "level": 0,
+      "evidence": {
+        "mlflow": false,
+        "wandb": false,
+        "clearml": false
+      }
+    },
+    "hpo": {
+      "level": 0,
+      "evidence": {
+        "hparam_file": false,
+        "optuna": false,
+        "ray_tune": false
+      }
+    },
+    "data_validation": {
+      "level": 0,
+      "evidence": {
+        "great_expectations": false,
+        "evidently": false,
+        "pandera": false
+      }
+    },
+    "training_eval": {
+      "level": 5,
+      "evidence": {
+        "train_scripts": 1,
+        "entrypoint": true,
+        "metrics_lib": true,
+        "eval_scripts": 1
+      }
+    },
+    "serving_deploy": {
+      "level": 1,
+      "evidence": {
+        "fastapi": false,
+        "flask": false,
+        "streamlit": false,
+        "export_torch": false,
+        "export_sklearn": false,
+        "deploy_scripts": true
+      }
+    },
+    "pipelines": {
+      "level": 0,
+      "evidence": {
+        "airflow": false,
+        "prefect": false,
+        "luigi": false,
+        "argo": false,
+        "kedro": false
+      }
+    },
+    "parallelism": {
+      "level": 0,
+      "evidence": {
+        "threading": false,
+        "multiprocessing": false,
+        "concurrent": false,
+        "nested_loop_files": 0
+      }
+    }
   }
 }

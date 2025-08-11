@@ -26,6 +26,7 @@ from utils.ml_insights import (
     detect_parallel_patterns,
 )
 
+from utils.aimri_mapping import compute_aimri_summary
 
 def clamp01(x: float) -> float:
     return max(0.0, min(1.0, x))
@@ -131,9 +132,12 @@ def _analyze_repo_static(repo_path: str) -> Dict[str, Any]:
     signals.update(detect_nested_loops(source_py))
 
     scores = calculate_scores(signals, len(source_py))
+    aimri = compute_aimri_summary(signals)
+
     return {
         "agent": "dev_platform_agent_static",
         "repo": root.name,
-        "signals": signals,
+        # "signals": signals,
         "scores": scores,
+        "aimri_summary": aimri,
     }

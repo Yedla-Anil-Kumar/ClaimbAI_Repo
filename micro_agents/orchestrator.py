@@ -1,6 +1,7 @@
 from __future__ import annotations
 from pathlib import Path
 from typing import Any, Dict, Iterable, List
+import os
 
 from dotenv import load_dotenv
 
@@ -34,11 +35,10 @@ from .ml_framework_agents import (
     ModelEvaluationAgent,
     ModelTrainingAgent,
 )
-
+from utils.aimri_mapping import compute_aimri_summary
 load_dotenv()
 
 # ---- Budget caps (env-overridable) ----
-import os
 
 MAX_FILES_PER_REPO = int(os.getenv("MA_MAX_FILES_PER_REPO", "40"))
 MAX_SNIPPET_BYTES = int(os.getenv("MA_MAX_SNIPPET_BYTES", "3000"))
@@ -113,16 +113,18 @@ class MicroAgentOrchestrator:
 
         # Compute scores with your existing function
         scores = self._calculate_scores(signals, len(picked))
+        aimri = compute_aimri_summary(signals)
 
         return {
             "agent": "micro_agent_orchestrator",
             "repo": root.name,
-            "signals": signals,
+            #"signals": signals,
             "scores": scores,
             "micro_agent_results": {
                 "source_files_analyzed": len(picked),
                 "total_files_analyzed": len(all_source),
             },
+            "aimri_summary": aimri,
         }
 
     # ---------- file helpers ----------

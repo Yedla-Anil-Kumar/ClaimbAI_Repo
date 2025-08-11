@@ -1,105 +1,121 @@
 {
   "agent": "micro_agent_orchestrator",
   "repo": "shrimp-data-analysis-dw-iam",
-  "signals": {
-    "avg_cyclomatic_complexity": 2.142857142857143,
-    "avg_maintainability_index": 0.6357142857142856,
-    "docstring_coverage": 0.0,
-    "nested_loop_files": 1,
-    "framework_torch": 0,
-    "framework_tensorflow": 0,
-    "framework_sklearn": 0,
-    "framework_keras": 0,
-    "framework_xgboost": 0,
-    "framework_lightgbm": 0,
-    "uses_mlflow": false,
-    "uses_wandb": false,
-    "uses_clearml": false,
-    "has_hyperparam_file": false,
-    "uses_optuna": false,
-    "uses_ray_tune": false,
-    "train_script_count": 0,
-    "has_entrypoint_training": false,
-    "eval_script_count": 4,
-    "uses_metrics_library": false,
-    "uses_great_expectations": false,
-    "uses_evidently": false,
-    "uses_pandera": false,
-    "uses_threading": false,
-    "uses_multiprocessing": false,
-    "uses_concurrent": false,
-    "uses_fastapi": false,
-    "uses_flask": false,
-    "uses_streamlit": false,
-    "exports_torch_model": false,
-    "exports_sklearn_model": false,
-    "has_airflow": false,
-    "has_prefect": false,
-    "has_luigi": false,
-    "has_argo": false,
-    "has_kedro": false,
-    "uses_sklearn_preprocessing": false,
-    "uses_featuretools": false,
-    "uses_tsfresh": false,
-    "has_secrets": true,
-    "test_file_count": 5,
-    "has_tests": true,
-    "has_test_coverage_report": true,
-    "has_requirements": false,
-    "has_pipfile": false,
-    "has_env_yml": false,
-    "ci_workflow_count": 0,
-    "has_ci": false,
-    "deploy_script_count": 5,
-    "has_deploy_scripts": true,
-    "experiment_folder_count": 1,
-    "has_experiments": true,
-    "test_frameworks": [
-      "pytest",
-      "unittest"
-    ],
-    "test_coverage_estimate": 0.85,
-    "testing_quality": 0.9,
-    "has_pyproject_toml": false,
-    "has_setup_py": false,
-    "dependency_management_quality": 0.0,
-    "environment_consistency": 0.0,
-    "dependency_best_practices": [],
-    "ci_quality": 0.0,
-    "deployment_automation": 1.0,
-    "has_github_actions": false,
-    "has_gitlab_ci": false,
-    "has_jenkins": false,
-    "deployment_quality": 0.8,
-    "has_ipynb": true,
-    "has_rmd": true,
-    "has_py": true,
-    "has_txt": true,
-    "has_md": true,
-    "has_xls": true,
-    "has_xlsx": true,
-    "has_png": true,
-    "has_gitignore": true,
-    "experiment_dirs": [
-      "shrimp-data-analysis-dw-iam"
-    ],
-    "experiment_management": 1.0,
-    "reproducibility_analysis": [],
-    "structure_quality": 0.6,
-    "organization_patterns": [
-      "Multiple model files with similar naming conventions",
-      "Use of subdirectories for tools and output",
-      "Presence of data files in a dedicated directory"
-    ],
-    "documentation_quality": 0.7,
-    "best_practices_adherence": 0.5
-  },
   "scores": {
-    "development_maturity": 2.34,
-    "innovation_pipeline": 1.25
+    "development_maturity": 2.17,
+    "innovation_pipeline": 1.75
   },
   "micro_agent_results": {
-    "source_files_analyzed": 7,
-    "total_files_analyzed": 7
+    "source_files_analyzed": 10,
+    "total_files_analyzed": 10
+  },
+  "aimri_summary": {
+    "code_health": {
+      "level": 3,
+      "evidence": {
+        "mi": 0.62,
+        "cc": 1.6,
+        "docs": 0.0
+      }
+    },
+    "testing_rigor": {
+      "level": 5,
+      "evidence": {
+        "has_tests": true,
+        "files": 5,
+        "coverage": 0.85,
+        "testing_quality": 0.9
+      }
+    },
+    "ci_cd": {
+      "level": 3,
+      "evidence": {
+        "ci_workflows": 0,
+        "has_ci": false,
+        "deploy_scripts": 6,
+        "has_deploy_scripts": true
+      }
+    },
+    "env_reproducibility": {
+      "level": 0,
+      "evidence": {
+        "requirements": false,
+        "pipfile": false,
+        "env_yml": false,
+        "pyproject": false,
+        "dep_quality": 0.0,
+        "env_consistency": 0.0
+      }
+    },
+    "secret_hygiene": {
+      "level": 0,
+      "evidence": {
+        "has_secrets": true,
+        "security_score": 0.0
+      }
+    },
+    "experiment_tracking": {
+      "level": 0,
+      "evidence": {
+        "mlflow": false,
+        "wandb": false,
+        "clearml": false
+      }
+    },
+    "hpo": {
+      "level": 0,
+      "evidence": {
+        "hparam_file": false,
+        "optuna": false,
+        "ray_tune": false
+      }
+    },
+    "data_validation": {
+      "level": 0,
+      "evidence": {
+        "great_expectations": false,
+        "evidently": false,
+        "pandera": false
+      }
+    },
+    "training_eval": {
+      "level": 4,
+      "evidence": {
+        "train_scripts": 1,
+        "entrypoint": false,
+        "metrics_lib": true,
+        "eval_scripts": 4
+      }
+    },
+    "serving_deploy": {
+      "level": 1,
+      "evidence": {
+        "fastapi": false,
+        "flask": false,
+        "streamlit": false,
+        "export_torch": false,
+        "export_sklearn": false,
+        "deploy_scripts": true
+      }
+    },
+    "pipelines": {
+      "level": 0,
+      "evidence": {
+        "airflow": false,
+        "prefect": false,
+        "luigi": false,
+        "argo": false,
+        "kedro": false
+      }
+    },
+    "parallelism": {
+      "level": 0,
+      "evidence": {
+        "threading": false,
+        "multiprocessing": false,
+        "concurrent": false,
+        "nested_loop_files": 1
+      }
+    }
   }
 }
