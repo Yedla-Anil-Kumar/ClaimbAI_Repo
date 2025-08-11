@@ -144,6 +144,7 @@ python run_agents.py
 
 ## Project Structure
 
+```
 ClaimbAI/
 ├── Data_Collection_Agents/
 │   ├── __init__.py
@@ -192,7 +193,7 @@ ClaimbAI/
 ├── requirements.txt
 ├── run_agents.py                      # (optional) umbrella runner if you use it
 └── README.md                          # this file
-
+```
 
 ---
 
