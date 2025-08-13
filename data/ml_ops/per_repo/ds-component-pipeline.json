@@ -8,8 +8,8 @@
     "uses_kubeflow": false
   },
   "scores": {
-    "ai_ml_capabilities": 0.94,
-    "operations_maturity": 4.1
+    "ai_ml_capabilities": 0.97,
+    "operations_maturity": 4.21
   },
   "aimri_ops_summary": {
     "platform_surface_area": {
@@ -18,10 +18,10 @@
       "desc": "Distinct MLOps platforms detected (0\u20134)."
     },
     "experiment_tracking": {
-      "coverage_level": 1,
-      "coverage_value": 0.5,
+      "coverage_level": 2,
+      "coverage_value": 0.6,
       "hygiene_level": 2,
-      "hygiene_value": 0.75,
+      "hygiene_value": 0.7,
       "tools": [],
       "metrics_logged": false,
       "artifacts_logged": true
@@ -39,7 +39,7 @@
       "automation_value": 0.85,
       "scheduling": true,
       "pipelines_level": 2,
-      "pipelines_total": 3
+      "pipelines_total": 5
     },
     "serving_endpoints": {
       "level": 0,

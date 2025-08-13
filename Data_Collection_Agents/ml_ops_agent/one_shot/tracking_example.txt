@@ -1,0 +1,11 @@
+# Example inspired by Weights & Biases usage
+import wandb
+
+run = wandb.init(project="cv-detector", config={"lr": 0.001, "epochs": 20})
+for step in range(3):
+    wandb.log({"loss": 0.4 - 0.1*step, "val_acc": 0.80 + 0.02*step}, step=step)
+
+art = wandb.Artifact("cf-matrix", type="dataset")
+art.add_file("confusion_matrix.png")
+run.log_artifact(art)
+run.finish()

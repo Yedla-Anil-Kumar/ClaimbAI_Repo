@@ -1,0 +1,23 @@
+# Example inspired by AWS SageMaker SDK patterns
+import sagemaker
+from sagemaker.xgboost.estimator import XGBoost
+
+sess = sagemaker.Session()
+role = "SageMakerRole"
+
+est = XGBoost(
+    entry_point="train.py",
+    role=role,
+    instance_type="ml.m5.xlarge",
+    framework_version="1.7"
+)
+
+est.fit({"train": "s3://bucket/train/", "validation": "s3://bucket/val/"})
+predictor = est.deploy(initial_instance_count=2, instance_type="ml.m5.large")
+
+# Simple demo pipeline
+from sagemaker.workflow.pipeline import Pipeline
+from sagemaker.workflow.steps import TrainingStep
+train_step = TrainingStep(name="XGBTrain", estimator=est, inputs={})
+pipe = Pipeline(name="credit-risk-pipeline", steps=[train_step])
+pipe.upsert()

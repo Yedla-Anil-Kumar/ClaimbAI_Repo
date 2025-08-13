@@ -1,0 +1,8 @@
+{
+  "uses_sagemaker": true,
+  "training_jobs_count": 1,
+  "endpoints_count": 1,
+  "pipelines_count": 1,
+  "registry_usage": false,
+  "ops_quality": 0.85
+}

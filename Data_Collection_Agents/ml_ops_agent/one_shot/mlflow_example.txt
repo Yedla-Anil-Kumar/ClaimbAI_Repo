@@ -1,0 +1,14 @@
+# Example inspired by common MLflow usage in production repos
+import mlflow
+import mlflow.sklearn
+
+mlflow.set_tracking_uri("http://mlflow.mycompany.internal")
+mlflow.set_experiment("credit_risk_v2")
+
+with mlflow.start_run(run_name="xgboost-2024-11-05") as run:
+    mlflow.log_param("max_depth", 6)
+    mlflow.log_metric("auc", 0.9123)
+    mlflow.sklearn.log_model(model, "model", registered_model_name="credit_risk")
+
+# Integration note: this training job is triggered nightly by GitHub Actions
+# Deployment note: model is served via a Kubernetes deployment using the MLflow model-serving image

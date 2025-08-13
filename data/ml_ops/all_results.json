@@ -9,8 +9,8 @@
       "uses_kubeflow": false
     },
     "scores": {
-      "ai_ml_capabilities": 0.94,
-      "operations_maturity": 4.1
+      "ai_ml_capabilities": 0.97,
+      "operations_maturity": 4.21
     },
     "aimri_ops_summary": {
       "platform_surface_area": {
@@ -19,10 +19,10 @@
         "desc": "Distinct MLOps platforms detected (0\u20134)."
       },
       "experiment_tracking": {
-        "coverage_level": 1,
-        "coverage_value": 0.5,
+        "coverage_level": 2,
+        "coverage_value": 0.6,
         "hygiene_level": 2,
-        "hygiene_value": 0.75,
+        "hygiene_value": 0.7,
         "tools": [],
         "metrics_logged": false,
         "artifacts_logged": true
@@ -40,7 +40,7 @@
         "automation_value": 0.85,
         "scheduling": true,
         "pipelines_level": 2,
-        "pipelines_total": 3
+        "pipelines_total": 5
       },
       "serving_endpoints": {
         "level": 0,
@@ -60,30 +60,30 @@
     "platforms": {
       "uses_mlflow": false,
       "uses_sagemaker": false,
-      "uses_azureml": true,
+      "uses_azureml": false,
       "uses_kubeflow": false
     },
     "scores": {
-      "ai_ml_capabilities": 1.52,
-      "operations_maturity": 3.81
+      "ai_ml_capabilities": 0.0,
+      "operations_maturity": 1.4
     },
     "aimri_ops_summary": {
       "platform_surface_area": {
         "level": 0,
-        "value": 1,
+        "value": 0,
         "desc": "Distinct MLOps platforms detected (0\u20134)."
       },
       "experiment_tracking": {
-        "coverage_level": 1,
-        "coverage_value": 0.5,
-        "hygiene_level": 1,
-        "hygiene_value": 0.4,
+        "coverage_level": 0,
+        "coverage_value": 0.0,
+        "hygiene_level": 0,
+        "hygiene_value": 0.0,
         "tools": [],
         "metrics_logged": false,
         "artifacts_logged": true
       },
       "model_registry": {
-        "present": true,
+        "present": false,
         "registered_models_level": 0,
         "registered_models_count": 0
       },
@@ -93,62 +93,9 @@
         ],
         "automation_level": 2,
         "automation_value": 0.75,
-        "scheduling": true,
-        "pipelines_level": 1,
-        "pipelines_total": 2
-      },
-      "serving_endpoints": {
-        "level": 1,
-        "total": 1,
-        "sagemaker": 0,
-        "azureml": 1
-      },
-      "experiments_scale": {
-        "level": 0,
-        "count": 0
-      }
-    }
-  },
-  {
-    "agent": "ml_ops_monitor",
-    "repo": "shrimp-data-analysis-dw-iam",
-    "platforms": {
-      "uses_mlflow": false,
-      "uses_sagemaker": true,
-      "uses_azureml": true,
-      "uses_kubeflow": false
-    },
-    "scores": {
-      "ai_ml_capabilities": 2.38,
-      "operations_maturity": 0.19
-    },
-    "aimri_ops_summary": {
-      "platform_surface_area": {
-        "level": 1,
-        "value": 2,
-        "desc": "Distinct MLOps platforms detected (0\u20134)."
-      },
-      "experiment_tracking": {
-        "coverage_level": 2,
-        "coverage_value": 0.7,
-        "hygiene_level": 3,
-        "hygiene_value": 0.8,
-        "tools": [],
-        "metrics_logged": true,
-        "artifacts_logged": false
-      },
-      "model_registry": {
-        "present": false,
-        "registered_models_level": 0,
-        "registered_models_count": 0
-      },
-      "pipeline_automation": {
-        "orchestrators": [],
-        "automation_level": 0,
-        "automation_value": 0.0,
         "scheduling": false,
         "pipelines_level": 0,
-        "pipelines_total": 0
+        "pipelines_total": 1
       },
       "serving_endpoints": {
         "level": 0,
@@ -164,55 +111,51 @@
   },
   {
     "agent": "ml_ops_monitor",
-    "repo": "flyte",
+    "repo": "shrimp-data-analysis-dw-iam",
     "platforms": {
-      "uses_mlflow": true,
-      "uses_sagemaker": true,
+      "uses_mlflow": false,
+      "uses_sagemaker": false,
       "uses_azureml": false,
-      "uses_kubeflow": true
+      "uses_kubeflow": false
     },
     "scores": {
-      "ai_ml_capabilities": 3.75,
-      "operations_maturity": 4.4
+      "ai_ml_capabilities": 1.16,
+      "operations_maturity": 0.0
     },
     "aimri_ops_summary": {
       "platform_surface_area": {
-        "level": 2,
-        "value": 3,
+        "level": 0,
+        "value": 0,
         "desc": "Distinct MLOps platforms detected (0\u20134)."
       },
       "experiment_tracking": {
-        "coverage_level": 2,
-        "coverage_value": 0.75,
-        "hygiene_level": 3,
-        "hygiene_value": 0.8,
+        "coverage_level": 3,
+        "coverage_value": 0.85,
+        "hygiene_level": 2,
+        "hygiene_value": 0.7,
         "tools": [
           {
-            "name": "mlflow",
-            "usage": "moderate"
-          },
-          {
-            "name": "wandb",
+            "name": "TensorBoard",
             "usage": "moderate"
           }
         ],
         "metrics_logged": true,
-        "artifacts_logged": true
+        "artifacts_logged": false
       },
       "model_registry": {
-        "present": true,
+        "present": false,
         "registered_models_level": 0,
         "registered_models_count": 0
       },
       "pipeline_automation": {
         "orchestrators": [
-          "kfp"
+          "airflow"
         ],
-        "automation_level": 3,
-        "automation_value": 0.85,
-        "scheduling": true,
-        "pipelines_level": 3,
-        "pipelines_total": 10
+        "automation_level": 0,
+        "automation_value": 0.0,
+        "scheduling": false,
+        "pipelines_level": 0,
+        "pipelines_total": 0
       },
       "serving_endpoints": {
         "level": 0,
@@ -281,16 +224,16 @@
   },
   {
     "agent": "ml_ops_monitor",
-    "repo": "transformers",
+    "repo": "flyte",
     "platforms": {
-      "uses_mlflow": false,
-      "uses_sagemaker": true,
-      "uses_azureml": true,
-      "uses_kubeflow": false
+      "uses_mlflow": true,
+      "uses_sagemaker": false,
+      "uses_azureml": false,
+      "uses_kubeflow": true
     },
     "scores": {
-      "ai_ml_capabilities": 2.45,
-      "operations_maturity": 1.57
+      "ai_ml_capabilities": 3.16,
+      "operations_maturity": 2.95
     },
     "aimri_ops_summary": {
       "platform_surface_area": {
@@ -305,35 +248,31 @@
         "hygiene_value": 0.85,
         "tools": [
           {
-            "name": "Custom Tracking",
+            "name": "mlflow",
             "usage": "heavy"
           },
           {
-            "name": "TensorBoard",
-            "usage": "moderate"
-          },
-          {
-            "name": "MLflow",
-            "usage": "light"
+            "name": "wandb",
+            "usage": "heavy"
           }
         ],
         "metrics_logged": true,
         "artifacts_logged": true
       },
       "model_registry": {
-        "present": true,
+        "present": false,
         "registered_models_level": 0,
         "registered_models_count": 0
       },
       "pipeline_automation": {
         "orchestrators": [
-          "airflow"
+          "flyte"
         ],
-        "automation_level": 0,
-        "automation_value": 0.0,
-        "scheduling": false,
-        "pipelines_level": 0,
-        "pipelines_total": 0
+        "automation_level": 3,
+        "automation_value": 0.85,
+        "scheduling": true,
+        "pipelines_level": 3,
+        "pipelines_total": 8
       },
       "serving_endpoints": {
         "level": 0,
@@ -354,23 +293,23 @@
       "uses_mlflow": false,
       "uses_sagemaker": false,
       "uses_azureml": false,
-      "uses_kubeflow": true
+      "uses_kubeflow": false
     },
     "scores": {
-      "ai_ml_capabilities": 1.75,
-      "operations_maturity": 0.15
+      "ai_ml_capabilities": 0.38,
+      "operations_maturity": 0.0
     },
     "aimri_ops_summary": {
       "platform_surface_area": {
         "level": 0,
-        "value": 1,
+        "value": 0,
         "desc": "Distinct MLOps platforms detected (0\u20134)."
       },
       "experiment_tracking": {
-        "coverage_level": 2,
-        "coverage_value": 0.7,
+        "coverage_level": 0,
+        "coverage_value": 0.2,
         "hygiene_level": 1,
-        "hygiene_value": 0.5,
+        "hygiene_value": 0.3,
         "tools": [
           {
             "name": "TensorBoard",
@@ -391,7 +330,67 @@
         "automation_value": 0.0,
         "scheduling": false,
         "pipelines_level": 0,
-        "pipelines_total": 1
+        "pipelines_total": 0
+      },
+      "serving_endpoints": {
+        "level": 0,
+        "total": 0,
+        "sagemaker": 0,
+        "azureml": 0
+      },
+      "experiments_scale": {
+        "level": 0,
+        "count": 0
+      }
+    }
+  },
+  {
+    "agent": "ml_ops_monitor",
+    "repo": "transformers",
+    "platforms": {
+      "uses_mlflow": false,
+      "uses_sagemaker": false,
+      "uses_azureml": false,
+      "uses_kubeflow": false
+    },
+    "scores": {
+      "ai_ml_capabilities": 1.2,
+      "operations_maturity": 0.0
+    },
+    "aimri_ops_summary": {
+      "platform_surface_area": {
+        "level": 0,
+        "value": 0,
+        "desc": "Distinct MLOps platforms detected (0\u20134)."
+      },
+      "experiment_tracking": {
+        "coverage_level": 2,
+        "coverage_value": 0.75,
+        "hygiene_level": 3,
+        "hygiene_value": 0.85,
+        "tools": [
+          {
+            "name": "Custom Tracking",
+            "usage": "heavy"
+          }
+        ],
+        "metrics_logged": true,
+        "artifacts_logged": true
+      },
+      "model_registry": {
+        "present": false,
+        "registered_models_level": 0,
+        "registered_models_count": 0
+      },
+      "pipeline_automation": {
+        "orchestrators": [
+          "gha"
+        ],
+        "automation_level": 0,
+        "automation_value": 0.0,
+        "scheduling": false,
+        "pipelines_level": 0,
+        "pipelines_total": 0
       },
       "serving_endpoints": {
         "level": 0,

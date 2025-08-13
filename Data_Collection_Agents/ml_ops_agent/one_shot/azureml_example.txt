@@ -1,0 +1,23 @@
+# Example inspired by Azure ML v2 SDK usage
+from azure.identity import DefaultAzureCredential
+from azure.ai.ml import MLClient, command
+from azure.ai.ml.entities import ManagedOnlineEndpoint, ManagedOnlineDeployment
+
+ml_client = MLClient(DefaultAzureCredential(), subscription_id="sub", resource_group_name="rg", workspace_name="ws")
+
+# Submit a training job
+job = command(code=".", command="python train.py", compute="gpu-cluster", environment="AzureML-sklearn-1.2:1")
+ml_client.jobs.create_or_update(job)
+
+# Online endpoint and deployment
+endpoint = ManagedOnlineEndpoint(name="churn-endpoint")
+deployment = ManagedOnlineDeployment(name="blue", endpoint_name=endpoint.name, model="azureml:churn_model:1", instance_type="Standard_DS3_v2", instance_count=1)
+ml_client.online_endpoints.begin_create_or_update(endpoint).result()
+ml_client.online_deployments.begin_create_or_update(deployment).result()
+
+# Simple pipeline
+from azure.ai.ml.dsl import pipeline
+@pipeline()
+def train_score_pipeline():
+    return job
+ml_client.jobs.create_or_update(train_score_pipeline())

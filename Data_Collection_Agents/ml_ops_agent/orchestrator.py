@@ -45,7 +45,6 @@ def _read_sampled_texts(
         if count >= max_files:
             break
 
-    # Fallback to at least some source if none matched
     if not texts:
         src_files = list(list_source_files(repo_path))
         for p in src_files[:max_files]:
@@ -61,9 +60,6 @@ def _clamp01(x: float) -> float:
 
 
 def _score_ai_ml_capabilities(signals: Dict[str, Any]) -> float:
-    """
-    0–5: breadth/depth of platform usage + tracking coverage/quality.
-    """
     platform_flags = [
         signals.get("uses_mlflow"),
         signals.get("uses_sagemaker"),
@@ -93,9 +89,6 @@ def _score_ai_ml_capabilities(signals: Dict[str, Any]) -> float:
 
 
 def _score_operations_maturity(signals: Dict[str, Any]) -> float:
-    """
-    0–5: automation, scheduling, registry usage, ops quality averages.
-    """
     automation_quality = _clamp01(signals.get("pipeline_automation_quality", 0.0))
     scheduling = 1.0 if signals.get("pipeline_scheduling_present") else 0.0
 
@@ -103,9 +96,8 @@ def _score_operations_maturity(signals: Dict[str, Any]) -> float:
         [
             signals.get("sagemaker_registry_usage"),
             signals.get("azureml_registry_usage"),
-            signals.get("mlflow_registered_models_count", 0) > 0,
         ]
-    )
+    ) or (signals.get("mlflow_registered_models_count", 0) or 0) > 0
     registry_score = 1.0 if registry else 0.0
 
     ops_quals = [
@@ -117,7 +109,7 @@ def _score_operations_maturity(signals: Dict[str, Any]) -> float:
     ops_quality = sum(_clamp01(x) for x in ops_quals) / 4.0
 
     pipelines_defined = _clamp01(
-        min(1.0, signals.get("pipeline_pipelines_defined", 0) / 3.0)
+        min(1.0, (signals.get("pipeline_pipelines_defined", 0) or 0) / 3.0)
     )
 
     raw = (
@@ -131,10 +123,6 @@ def _score_operations_maturity(signals: Dict[str, Any]) -> float:
 
 
 def _level_from_value(value: float, bands: Tuple[float, float, float]) -> int:
-    """
-    Map a normalized 0..1 value to level 0..3 using three ascending band edges.
-    Example: bands=(0.25, 0.5, 0.75).
-    """
     if value <= bands[0]:
         return 0
     if value <= bands[1]:
@@ -145,12 +133,6 @@ def _level_from_value(value: float, bands: Tuple[float, float, float]) -> int:
 
 
 def _aimri_ops_summary(signals: Dict[str, Any]) -> Dict[str, Any]:
-    """
-    Compose an AIMRI-aligned summary block (subset of 75 dimensions) focused
-    on MLOps. We intentionally select dimensions that can be inferred from
-    this agent's signals without hardcoding repository details.
-    """
-    # Platform surface area
     platforms_used = sum(
         bool(x)
         for x in [
@@ -163,13 +145,11 @@ def _aimri_ops_summary(signals: Dict[str, Any]) -> Dict[str, Any]:
     platform_norm = platforms_used / 4.0
     platform_level = _level_from_value(platform_norm, (0.25, 0.5, 0.75))
 
-    # Experiment tracking
     tracking_cov = _clamp01(signals.get("tracking_coverage", 0.0))
     tracking_quality = _clamp01(signals.get("tracking_runs_quality", 0.0))
     tracking_cov_level = _level_from_value(tracking_cov, (0.25, 0.5, 0.75))
     tracking_hygiene_level = _level_from_value(tracking_quality, (0.25, 0.5, 0.75))
 
-    # Registry presence and scale
     registered_models = int(signals.get("mlflow_registered_models_count", 0) or 0)
     has_registry = any(
         [
@@ -181,7 +161,6 @@ def _aimri_ops_summary(signals: Dict[str, Any]) -> Dict[str, Any]:
     reg_scale = 1.0 - math.exp(-0.3 * max(0, registered_models))
     reg_level = _level_from_value(reg_scale, (0.1, 0.4, 0.7))
 
-    # Pipeline automation
     auto_q = _clamp01(signals.get("pipeline_automation_quality", 0.0))
     auto_level = _level_from_value(auto_q, (0.25, 0.5, 0.75))
     scheduling = bool(signals.get("pipeline_scheduling_present"))
@@ -195,14 +174,12 @@ def _aimri_ops_summary(signals: Dict[str, Any]) -> Dict[str, Any]:
     pipelines_norm = 1.0 - math.exp(-0.25 * max(0, total_pipelines))
     pipelines_level = _level_from_value(pipelines_norm, (0.25, 0.5, 0.75))
 
-    # Serving endpoints
     total_endpoints = int(signals.get("sagemaker_endpoints_count", 0) or 0) + int(
         signals.get("azureml_endpoints_count", 0) or 0
     )
     endpoints_norm = 1.0 - math.exp(-0.35 * max(0, total_endpoints))
     endpoints_level = _level_from_value(endpoints_norm, (0.15, 0.4, 0.7))
 
-    # Experiments scale
     experiments = int(signals.get("mlflow_experiments_count", 0) or 0)
     experiments_norm = 1.0 - math.exp(-0.25 * max(0, experiments))
     experiments_level = _level_from_value(experiments_norm, (0.2, 0.5, 0.8))
@@ -251,7 +228,10 @@ def _aimri_ops_summary(signals: Dict[str, Any]) -> Dict[str, Any]:
 class MLOpsOrchestrator:
     """
     Runs MLOps LLM micro-agents over a repo and returns signals + scores,
-    including an AIMRI-aligned summary block (subset of the 75 dimensions).
+    including an AIMRI-aligned summary block. Each agent uses ONE-SHOT prompts:
+    it loads a curated example snippet + gold JSON from
+    Data_Collection_Agents/ml_ops_agent/few_shot/<stem>_example.{txt,json}
+    and then evaluates the repo snippets.
     """
 
     def __init__(self, model: str = "gpt-4o-mini", temperature: float = 0.1):
@@ -271,15 +251,7 @@ class MLOpsOrchestrator:
         snippets = _read_sampled_texts(repo_path)
 
         signals: Dict[str, Any] = {}
-        order = [
-            "mlflow",
-            "sagemaker",
-            "azureml",
-            "kubeflow",
-            "tracking",
-            "automation",
-        ]
-        for key in order:
+        for key in ("mlflow", "sagemaker", "azureml", "kubeflow", "tracking", "automation"):
             agent = self.agents[key]
             try:
                 res = agent.evaluate(snippets)
@@ -293,7 +265,6 @@ class MLOpsOrchestrator:
             "operations_maturity": _score_operations_maturity(signals),
         }
 
-        # AIMRI-aligned (subset of the 75 dimensions, Ops-focused)
         aimri_ops_summary = _aimri_ops_summary(signals)
 
         return {
@@ -305,7 +276,6 @@ class MLOpsOrchestrator:
                 "uses_azureml": bool(signals.get("uses_azureml")),
                 "uses_kubeflow": bool(signals.get("uses_kubeflow")),
             },
-            # "signals": signals,
             "scores": scores,
             "aimri_ops_summary": aimri_ops_summary,
         }

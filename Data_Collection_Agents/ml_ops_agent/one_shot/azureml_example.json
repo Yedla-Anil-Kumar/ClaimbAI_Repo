@@ -1,0 +1,8 @@
+{
+  "uses_azureml": true,
+  "jobs_count": 2,
+  "endpoints_count": 1,
+  "pipelines_count": 1,
+  "registry_usage": false,
+  "ops_quality": 0.8
+}

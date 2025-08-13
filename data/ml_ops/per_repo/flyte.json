@@ -3,52 +3,52 @@
   "repo": "flyte",
   "platforms": {
     "uses_mlflow": true,
-    "uses_sagemaker": true,
+    "uses_sagemaker": false,
     "uses_azureml": false,
     "uses_kubeflow": true
   },
   "scores": {
-    "ai_ml_capabilities": 3.75,
-    "operations_maturity": 4.4
+    "ai_ml_capabilities": 3.16,
+    "operations_maturity": 2.95
   },
   "aimri_ops_summary": {
     "platform_surface_area": {
-      "level": 2,
-      "value": 3,
+      "level": 1,
+      "value": 2,
       "desc": "Distinct MLOps platforms detected (0\u20134)."
     },
     "experiment_tracking": {
       "coverage_level": 2,
       "coverage_value": 0.75,
       "hygiene_level": 3,
-      "hygiene_value": 0.8,
+      "hygiene_value": 0.85,
       "tools": [
         {
           "name": "mlflow",
-          "usage": "moderate"
+          "usage": "heavy"
         },
         {
           "name": "wandb",
-          "usage": "moderate"
+          "usage": "heavy"
         }
       ],
       "metrics_logged": true,
       "artifacts_logged": true
     },
     "model_registry": {
-      "present": true,
+      "present": false,
       "registered_models_level": 0,
       "registered_models_count": 0
     },
     "pipeline_automation": {
       "orchestrators": [
-        "kfp"
+        "flyte"
       ],
       "automation_level": 3,
       "automation_value": 0.85,
       "scheduling": true,
       "pipelines_level": 3,
-      "pipelines_total": 10
+      "pipelines_total": 8
     },
     "serving_endpoints": {
       "level": 0,

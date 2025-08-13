@@ -1,0 +1,20 @@
+# Example inspired by Kubeflow Pipelines DSL
+from kfp import dsl
+from kfp import compiler
+
+@dsl.component
+def preprocess_op(data_path: str) -> str:
+    return f"{data_path}/prepared.parquet"
+
+@dsl.component
+def train_op(dataset: str) -> str:
+    # training logic...
+    return "model.pkl"
+
+@dsl.pipeline(name="churn-pipeline", description="Preprocess -> Train")
+def churn_pipeline(data_path: str = "gs://bucket/data"):
+    prepared = preprocess_op(data_path)
+    model = train_op(prepared.output)
+
+if __name__ == "__main__":
+    compiler.Compiler().compile(churn_pipeline, "pipeline.yaml")

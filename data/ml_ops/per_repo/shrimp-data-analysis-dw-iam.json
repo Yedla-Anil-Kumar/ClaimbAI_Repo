@@ -3,26 +3,31 @@
   "repo": "shrimp-data-analysis-dw-iam",
   "platforms": {
     "uses_mlflow": false,
-    "uses_sagemaker": true,
-    "uses_azureml": true,
+    "uses_sagemaker": false,
+    "uses_azureml": false,
     "uses_kubeflow": false
   },
   "scores": {
-    "ai_ml_capabilities": 2.38,
-    "operations_maturity": 0.19
+    "ai_ml_capabilities": 1.16,
+    "operations_maturity": 0.0
   },
   "aimri_ops_summary": {
     "platform_surface_area": {
-      "level": 1,
-      "value": 2,
+      "level": 0,
+      "value": 0,
       "desc": "Distinct MLOps platforms detected (0\u20134)."
     },
     "experiment_tracking": {
-      "coverage_level": 2,
-      "coverage_value": 0.7,
-      "hygiene_level": 3,
-      "hygiene_value": 0.8,
-      "tools": [],
+      "coverage_level": 3,
+      "coverage_value": 0.85,
+      "hygiene_level": 2,
+      "hygiene_value": 0.7,
+      "tools": [
+        {
+          "name": "TensorBoard",
+          "usage": "moderate"
+        }
+      ],
       "metrics_logged": true,
       "artifacts_logged": false
     },
@@ -32,7 +37,9 @@
       "registered_models_count": 0
     },
     "pipeline_automation": {
-      "orchestrators": [],
+      "orchestrators": [
+        "airflow"
+      ],
       "automation_level": 0,
       "automation_value": 0.0,
       "scheduling": false,

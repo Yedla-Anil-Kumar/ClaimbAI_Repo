@@ -5,23 +5,23 @@
     "uses_mlflow": false,
     "uses_sagemaker": false,
     "uses_azureml": false,
-    "uses_kubeflow": true
+    "uses_kubeflow": false
   },
   "scores": {
-    "ai_ml_capabilities": 1.75,
-    "operations_maturity": 0.15
+    "ai_ml_capabilities": 0.38,
+    "operations_maturity": 0.0
   },
   "aimri_ops_summary": {
     "platform_surface_area": {
       "level": 0,
-      "value": 1,
+      "value": 0,
       "desc": "Distinct MLOps platforms detected (0\u20134)."
     },
     "experiment_tracking": {
-      "coverage_level": 2,
-      "coverage_value": 0.7,
+      "coverage_level": 0,
+      "coverage_value": 0.2,
       "hygiene_level": 1,
-      "hygiene_value": 0.5,
+      "hygiene_value": 0.3,
       "tools": [
         {
           "name": "TensorBoard",
@@ -42,7 +42,7 @@
       "automation_value": 0.0,
       "scheduling": false,
       "pipelines_level": 0,
-      "pipelines_total": 1
+      "pipelines_total": 0
     },
     "serving_endpoints": {
       "level": 0,

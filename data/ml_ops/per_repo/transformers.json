@@ -3,18 +3,18 @@
   "repo": "transformers",
   "platforms": {
     "uses_mlflow": false,
-    "uses_sagemaker": true,
-    "uses_azureml": true,
+    "uses_sagemaker": false,
+    "uses_azureml": false,
     "uses_kubeflow": false
   },
   "scores": {
-    "ai_ml_capabilities": 2.45,
-    "operations_maturity": 1.57
+    "ai_ml_capabilities": 1.2,
+    "operations_maturity": 0.0
   },
   "aimri_ops_summary": {
     "platform_surface_area": {
-      "level": 1,
-      "value": 2,
+      "level": 0,
+      "value": 0,
       "desc": "Distinct MLOps platforms detected (0\u20134)."
     },
     "experiment_tracking": {
@@ -26,27 +26,19 @@
         {
           "name": "Custom Tracking",
           "usage": "heavy"
-        },
-        {
-          "name": "TensorBoard",
-          "usage": "moderate"
-        },
-        {
-          "name": "MLflow",
-          "usage": "light"
         }
       ],
       "metrics_logged": true,
       "artifacts_logged": true
     },
     "model_registry": {
-      "present": true,
+      "present": false,
       "registered_models_level": 0,
       "registered_models_count": 0
     },
     "pipeline_automation": {
       "orchestrators": [
-        "airflow"
+        "gha"
       ],
       "automation_level": 0,
       "automation_value": 0.0,

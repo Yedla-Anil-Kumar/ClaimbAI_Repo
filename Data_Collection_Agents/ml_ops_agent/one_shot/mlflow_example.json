@@ -1,0 +1,11 @@
+{
+  "uses_mlflow": true,
+  "tracking_endpoints": ["http://mlflow.mycompany.internal"],
+  "experiments_count": 1,
+  "registered_models_count": 1,
+  "deployments": [
+    { "type": "k8s", "details": "MLflow model-serving image in Kubernetes" }
+  ],
+  "integration_points": ["github_actions"],
+  "ops_quality": 0.9
+}

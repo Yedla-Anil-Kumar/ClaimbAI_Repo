@@ -1,0 +1,9 @@
+{
+  "tools": [
+    { "name": "wandb", "usage": "heavy" }
+  ],
+  "metrics_logged": true,
+  "artifacts_logged": true,
+  "runs_structure_quality": 0.8,
+  "coverage": 0.7
+}

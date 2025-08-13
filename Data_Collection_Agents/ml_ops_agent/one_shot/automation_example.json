@@ -1,0 +1,6 @@
+{
+  "orchestrators": ["gha"],
+  "pipelines_defined": 2,
+  "scheduling_present": true,
+  "automation_quality": 0.85
+}
