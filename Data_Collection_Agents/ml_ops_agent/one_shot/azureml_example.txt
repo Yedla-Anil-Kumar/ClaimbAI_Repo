@@ -1,23 +1,42 @@
-# Example inspired by Azure ML v2 SDK usage
+# Azure ML SDK v2 + CLI v2 YAML + Managed Endpoint + Registry reuse
+
+from azure.ai.ml import MLClient, Input, command
 from azure.identity import DefaultAzureCredential
-from azure.ai.ml import MLClient, command
+from azure.ai.ml.dsl import pipeline
 from azure.ai.ml.entities import ManagedOnlineEndpoint, ManagedOnlineDeployment
 
-ml_client = MLClient(DefaultAzureCredential(), subscription_id="sub", resource_group_name="rg", workspace_name="ws")
+cred = DefaultAzureCredential()
+ml_client = MLClient(cred, subscription_id="xxxx", resource_group="rg-ml", workspace="ws-ml")
 
-# Submit a training job
-job = command(code=".", command="python train.py", compute="gpu-cluster", environment="AzureML-sklearn-1.2:1")
-ml_client.jobs.create_or_update(job)
+# Job via SDK
+train_job = command(
+    code="./src",
+    command="python train.py --epochs 10",
+    environment="azureml://registries/azureml/environments/sklearn-1.3/versions/5",
+    inputs={"train": Input(path="azureml:train_data@latest")}
+)
 
-# Online endpoint and deployment
-endpoint = ManagedOnlineEndpoint(name="churn-endpoint")
-deployment = ManagedOnlineDeployment(name="blue", endpoint_name=endpoint.name, model="azureml:churn_model:1", instance_type="Standard_DS3_v2", instance_count=1)
-ml_client.online_endpoints.begin_create_or_update(endpoint).result()
-ml_client.online_deployments.begin_create_or_update(deployment).result()
-
-# Simple pipeline
-from azure.ai.ml.dsl import pipeline
+# Pipeline DSL
 @pipeline()
-def train_score_pipeline():
-    return job
-ml_client.jobs.create_or_update(train_score_pipeline())
+def credit_pipe():
+    return train_job
+
+pipe_job = credit_pipe()
+ml_client.jobs.create_or_update(pipe_job)
+
+# Managed endpoint via Python
+ep = ManagedOnlineEndpoint(name="credit-risk", auth_mode="key")
+dp = ManagedOnlineDeployment(
+    name="blue",
+    endpoint_name=ep.name,
+    model="azureml:credit_risk_model@latest",
+    instance_type="Standard_DS3_v2",
+    instance_count=1
+)
+
+# YAML (CLI v2) example: endpoints/online/endpoint.yaml, deployment.yaml
+# az ml online-endpoint create -f endpoint.yaml
+# az ml online-deployment create -f deployment.yaml --all-traffic
+
+# Registry reuse above in environment/model references
+# ADO pipeline triggers jobs + deploy on main branch

@@ -1,20 +1,20 @@
-# Example inspired by Kubeflow Pipelines DSL
+# Kubeflow Pipelines: DSL + compiled YAML + scheduling hints
+
 from kfp import dsl
-from kfp import compiler
 
 @dsl.component
 def preprocess_op(data_path: str) -> str:
-    return f"{data_path}/prepared.parquet"
+    return data_path + "/prepared"
 
 @dsl.component
 def train_op(dataset: str) -> str:
-    # training logic...
-    return "model.pkl"
+    return "gs://acme/models/credit-risk/1"
 
-@dsl.pipeline(name="churn-pipeline", description="Preprocess -> Train")
-def churn_pipeline(data_path: str = "gs://bucket/data"):
+@dsl.pipeline(name="credit-risk-pipeline")
+def credit_pipeline(data_path: str = "gs://acme/data"):
     prepared = preprocess_op(data_path)
-    model = train_op(prepared.output)
+    model_uri = train_op(prepared.output)
 
-if __name__ == "__main__":
-    compiler.Compiler().compile(churn_pipeline, "pipeline.yaml")
+# Compiled manifest (already in repo): compiled/credit-pipeline.yaml
+# Argo CronWorkflow (schedules nightly) referencing compiled pipeline
+# CI compiles with kfp.compiler and uploads to KFP on merge to main

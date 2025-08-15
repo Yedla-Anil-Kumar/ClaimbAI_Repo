@@ -1,23 +1,34 @@
-# Example inspired by a GitHub Actions MLOps workflow
-name: mlops-pipeline
-on:
-  schedule:
-    - cron: "0 */6 * * *"   # every 6 hours
-  workflow_dispatch:
+# Automation: KFP + Airflow + GitHub Actions with scheduling and artifact promotion
 
-jobs:
-  train:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with: { python-version: "3.10" }
-      - run: pip install -r requirements.txt
-      - run: python pipelines/train.py
+# airflow/dags/credit_risk.py
+from airflow import DAG
+from airflow.operators.bash import BashOperator
+from datetime import datetime
+with DAG("credit_risk_nightly", schedule_interval="0 2 * * *", start_date=datetime(2024,1,1)) as dag:
+    compile_pipeline = BashOperator(task_id="compile", bash_command="python -m pipelines.compile_kfp")
+    run_pipeline = BashOperator(task_id="run", bash_command="python -m pipelines.run_kfp")
+    compile_pipeline >> run_pipeline
 
-  evaluate:
-    needs: train
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - run: python pipelines/evaluate.py
+# pipelines/compile_kfp.py (calls kfp.compiler to produce compiled/*.yaml)
+# pipelines/run_kfp.py (submits compiled pipeline to KFP)
+
+# .github/workflows/mlops.yml
+# name: mlops-nightly
+# on:
+#   schedule:
+#     - cron: "0 2 * * *"
+# jobs:
+#   build-and-run:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v4
+#       - name: Lint & test
+#         run: make ci
+#       - name: Compile KFP
+#         run: python -m pipelines.compile_kfp
+#       - name: Submit Pipeline
+#         run: python -m pipelines.run_kfp
+#       - name: Promote Artifact
+#         run: python scripts/promote_model.py
+
+# Notes: also supports manual trigger; artifacts promoted on main merges

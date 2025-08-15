@@ -2,33 +2,33 @@
   "agent": "ml_ops_monitor",
   "repo": "flyte",
   "platforms": {
-    "uses_mlflow": true,
-    "uses_sagemaker": false,
+    "uses_mlflow": false,
+    "uses_sagemaker": true,
     "uses_azureml": false,
-    "uses_kubeflow": true
+    "uses_kubeflow": false
   },
   "scores": {
-    "ai_ml_capabilities": 3.16,
-    "operations_maturity": 2.95
+    "ai_ml_capabilities": 2.21,
+    "operations_maturity": 3.99
   },
   "aimri_ops_summary": {
     "platform_surface_area": {
-      "level": 1,
-      "value": 2,
-      "desc": "Distinct MLOps platforms detected (0\u20134)."
+      "level": 0,
+      "value": 1,
+      "desc": "MLflow/SageMaker/AzureML/Kubeflow/Flyte"
     },
     "experiment_tracking": {
-      "coverage_level": 2,
-      "coverage_value": 0.75,
+      "coverage_level": 3,
+      "coverage_value": 0.85,
       "hygiene_level": 3,
-      "hygiene_value": 0.85,
+      "hygiene_value": 0.9,
       "tools": [
         {
-          "name": "mlflow",
+          "name": "Flyte",
           "usage": "heavy"
         },
         {
-          "name": "wandb",
+          "name": "Kubeflow",
           "usage": "heavy"
         }
       ],
@@ -36,24 +36,29 @@
       "artifacts_logged": true
     },
     "model_registry": {
-      "present": false,
+      "present": true,
       "registered_models_level": 0,
       "registered_models_count": 0
     },
     "pipeline_automation": {
       "orchestrators": [
-        "flyte"
+        "Airflow",
+        "Prefect",
+        "Dagster",
+        "KFP",
+        "Argo/Tekton",
+        "Step Functions"
       ],
       "automation_level": 3,
       "automation_value": 0.85,
       "scheduling": true,
-      "pipelines_level": 3,
-      "pipelines_total": 8
+      "pipelines_level": 1,
+      "pipelines_total": 2
     },
     "serving_endpoints": {
-      "level": 0,
-      "total": 0,
-      "sagemaker": 0,
+      "level": 1,
+      "total": 1,
+      "sagemaker": 1,
       "azureml": 0
     },
     "experiments_scale": {

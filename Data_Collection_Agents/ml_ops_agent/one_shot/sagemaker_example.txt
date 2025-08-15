@@ -1,23 +1,32 @@
-# Example inspired by AWS SageMaker SDK patterns
-import sagemaker
-from sagemaker.xgboost.estimator import XGBoost
+# SageMaker via SDK, boto3, and pipelines + registry + endpoints
 
-sess = sagemaker.Session()
-role = "SageMakerRole"
-
-est = XGBoost(
-    entry_point="train.py",
-    role=role,
-    instance_type="ml.m5.xlarge",
-    framework_version="1.7"
-)
-
-est.fit({"train": "s3://bucket/train/", "validation": "s3://bucket/val/"})
-predictor = est.deploy(initial_instance_count=2, instance_type="ml.m5.large")
-
-# Simple demo pipeline
+import boto3
+from sagemaker.sklearn import SKLearn
 from sagemaker.workflow.pipeline import Pipeline
 from sagemaker.workflow.steps import TrainingStep
-train_step = TrainingStep(name="XGBTrain", estimator=est, inputs={})
-pipe = Pipeline(name="credit-risk-pipeline", steps=[train_step])
-pipe.upsert()
+from sagemaker.model import Model
+from sagemaker.workflow.parameters import ParameterInteger
+
+sess = boto3.session.Session()
+sm = sess.client("sagemaker")
+
+est = SKLearn(entry_point="train.py", role="arn:aws:iam::123:role/ML", framework_version="1.2-1")
+train_step = TrainingStep(name="Train", estimator=est, inputs={"train": "s3://acme/data/train"})
+
+pipe = Pipeline(
+    name="credit-risk-pipeline",
+    parameters=[ParameterInteger(name="epochs", default_value=10)],
+    steps=[train_step],
+)
+
+# Registry usage
+sm.create_model_package_group(ModelPackageGroupName="credit-risk-registry", ModelPackageGroupDescription="prod models")
+
+# Endpoint (boto3 path)
+sm.create_endpoint_config(
+  EndpointConfigName="credit-risk-epc",
+  ProductionVariants=[{"ModelName": "credit-risk-model", "InstanceType": "ml.m5.large", "InitialInstanceCount": 2}]
+)
+sm.create_endpoint(EndpointName="credit-risk", EndpointConfigName="credit-risk-epc")
+
+# Ops hints: CloudWatch logs, EventBridge nightly schedule, CodeBuild in CodePipeline

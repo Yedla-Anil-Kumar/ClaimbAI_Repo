@@ -3,28 +3,36 @@
   "repo": "shrimp-data-analysis-dw-iam",
   "platforms": {
     "uses_mlflow": false,
-    "uses_sagemaker": false,
+    "uses_sagemaker": true,
     "uses_azureml": false,
     "uses_kubeflow": false
   },
   "scores": {
-    "ai_ml_capabilities": 1.16,
-    "operations_maturity": 0.0
+    "ai_ml_capabilities": 2.0,
+    "operations_maturity": 2.42
   },
   "aimri_ops_summary": {
     "platform_surface_area": {
       "level": 0,
-      "value": 0,
-      "desc": "Distinct MLOps platforms detected (0\u20134)."
+      "value": 1,
+      "desc": "MLflow/SageMaker/AzureML/Kubeflow/Flyte"
     },
     "experiment_tracking": {
       "coverage_level": 3,
-      "coverage_value": 0.85,
-      "hygiene_level": 2,
-      "hygiene_value": 0.7,
+      "coverage_value": 0.9,
+      "hygiene_level": 3,
+      "hygiene_value": 0.8,
       "tools": [
         {
-          "name": "TensorBoard",
+          "name": "TensorFlow",
+          "usage": "heavy"
+        },
+        {
+          "name": "Pandas",
+          "usage": "heavy"
+        },
+        {
+          "name": "Matplotlib",
           "usage": "moderate"
         }
       ],
@@ -32,24 +40,29 @@
       "artifacts_logged": false
     },
     "model_registry": {
-      "present": false,
+      "present": true,
       "registered_models_level": 0,
       "registered_models_count": 0
     },
     "pipeline_automation": {
       "orchestrators": [
-        "airflow"
+        "Airflow",
+        "Prefect",
+        "Dagster",
+        "KFP",
+        "Argo/Tekton",
+        "Step Functions"
       ],
       "automation_level": 0,
       "automation_value": 0.0,
-      "scheduling": false,
+      "scheduling": true,
       "pipelines_level": 0,
-      "pipelines_total": 0
+      "pipelines_total": 1
     },
     "serving_endpoints": {
-      "level": 0,
-      "total": 0,
-      "sagemaker": 0,
+      "level": 1,
+      "total": 1,
+      "sagemaker": 1,
       "azureml": 0
     },
     "experiments_scale": {

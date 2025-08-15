@@ -1,14 +1,41 @@
-# Example inspired by common MLflow usage in production repos
-import mlflow
-import mlflow.sklearn
+# Example: diverse MLflow usage patterns (SDK, autolog, client, env, CI, K8s)
+import os, json, mlflow, mlflow.sklearn
+from mlflow.tracking import MlflowClient
 
-mlflow.set_tracking_uri("http://mlflow.mycompany.internal")
+# env-based config (common in prod)
+os.environ["MLFLOW_TRACKING_URI"] = "https://mlflow.acme.internal"
+
 mlflow.set_experiment("credit_risk_v2")
 
-with mlflow.start_run(run_name="xgboost-2024-11-05") as run:
-    mlflow.log_param("max_depth", 6)
-    mlflow.log_metric("auc", 0.9123)
-    mlflow.sklearn.log_model(model, "model", registered_model_name="credit_risk")
+# autolog as an alternative to manual log_* calls
+mlflow.sklearn.autolog()
 
-# Integration note: this training job is triggered nightly by GitHub Actions
-# Deployment note: model is served via a Kubernetes deployment using the MLflow model-serving image
+with mlflow.start_run(run_name="xgb-nightly") as run:
+    # batch logging via client (equivalent to many log_* calls)
+    client = MlflowClient()
+    client.log_batch(
+        run_id=run.info.run_id,
+        metrics=[{"key": "auc", "value": 0.914, "timestamp": 1731000000000}],
+        params=[{"key": "tree_method", "value": "hist"}],
+        tags=[{"key": "stage", "value": "train"}],
+    )
+    # artifacts (metrics file) – also counts as structured logging
+    with open("metrics.json", "w") as f:
+        json.dump({"f1": 0.88, "precision": 0.91}, f)
+    mlflow.log_artifact("metrics.json", artifact_path="reports")
+
+# registry usage (promotion flow noted in CI)
+# mlflow.register_model(f"runs:/{run.info.run_id}/model", "credit_risk")
+# CI/CD (GitHub Actions) promotes to Staging, then K8s serve via mlflow model-serving image
+
+# MLproject indicator (alternate config style)
+# name: credit-risk
+# conda_env: conda.yaml
+# entry_points:
+#   train:
+#     parameters:
+#       max_depth: {type: int, default: 6}
+#     command: "python train.py --max_depth {max_depth}"
+
+# K8s hints (helm chart referencing MLflow model server)
+# charts/mlflow-serving/values.yaml -> image: mlflow/model-server:latest

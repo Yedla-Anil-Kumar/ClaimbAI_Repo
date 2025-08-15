@@ -1,11 +1,11 @@
 {
   "uses_mlflow": true,
-  "tracking_endpoints": ["http://mlflow.mycompany.internal"],
+  "tracking_endpoints": ["https://mlflow.acme.internal"],
   "experiments_count": 1,
   "registered_models_count": 1,
   "deployments": [
-    { "type": "k8s", "details": "MLflow model-serving image in Kubernetes" }
+    { "type": "k8s", "details": "MLflow model-serving image via Helm chart" }
   ],
-  "integration_points": ["github_actions"],
-  "ops_quality": 0.9
+  "integration_points": ["github_actions", "mlproject"],
+  "ops_quality": 0.92
 }

@@ -9,35 +9,46 @@
       "uses_kubeflow": false
     },
     "scores": {
-      "ai_ml_capabilities": 0.97,
-      "operations_maturity": 4.21
+      "ai_ml_capabilities": 1.91,
+      "operations_maturity": 2.65
     },
     "aimri_ops_summary": {
       "platform_surface_area": {
         "level": 0,
         "value": 0,
-        "desc": "Distinct MLOps platforms detected (0\u20134)."
+        "desc": "MLflow/SageMaker/AzureML/Kubeflow/Flyte"
       },
       "experiment_tracking": {
         "coverage_level": 2,
-        "coverage_value": 0.6,
-        "hygiene_level": 2,
-        "hygiene_value": 0.7,
-        "tools": [],
-        "metrics_logged": false,
+        "coverage_value": 0.75,
+        "hygiene_level": 3,
+        "hygiene_value": 0.85,
+        "tools": [
+          {
+            "name": "GitLab CI",
+            "usage": "heavy"
+          },
+          {
+            "name": "Docker",
+            "usage": "moderate"
+          },
+          {
+            "name": "Papermill",
+            "usage": "moderate"
+          }
+        ],
+        "metrics_logged": true,
         "artifacts_logged": true
       },
       "model_registry": {
-        "present": true,
+        "present": false,
         "registered_models_level": 0,
         "registered_models_count": 0
       },
       "pipeline_automation": {
-        "orchestrators": [
-          "gitlab_ci"
-        ],
+        "orchestrators": [],
         "automation_level": 3,
-        "automation_value": 0.85,
+        "automation_value": 0.8,
         "scheduling": true,
         "pipelines_level": 2,
         "pipelines_total": 5
@@ -56,51 +67,69 @@
   },
   {
     "agent": "ml_ops_monitor",
-    "repo": "ds-salary-prediction",
+    "repo": "shrimp-data-analysis-dw-iam",
     "platforms": {
       "uses_mlflow": false,
-      "uses_sagemaker": false,
+      "uses_sagemaker": true,
       "uses_azureml": false,
       "uses_kubeflow": false
     },
     "scores": {
-      "ai_ml_capabilities": 0.0,
-      "operations_maturity": 1.4
+      "ai_ml_capabilities": 2.0,
+      "operations_maturity": 2.42
     },
     "aimri_ops_summary": {
       "platform_surface_area": {
         "level": 0,
-        "value": 0,
-        "desc": "Distinct MLOps platforms detected (0\u20134)."
+        "value": 1,
+        "desc": "MLflow/SageMaker/AzureML/Kubeflow/Flyte"
       },
       "experiment_tracking": {
-        "coverage_level": 0,
-        "coverage_value": 0.0,
-        "hygiene_level": 0,
-        "hygiene_value": 0.0,
-        "tools": [],
-        "metrics_logged": false,
-        "artifacts_logged": true
+        "coverage_level": 3,
+        "coverage_value": 0.9,
+        "hygiene_level": 3,
+        "hygiene_value": 0.8,
+        "tools": [
+          {
+            "name": "TensorFlow",
+            "usage": "heavy"
+          },
+          {
+            "name": "Pandas",
+            "usage": "heavy"
+          },
+          {
+            "name": "Matplotlib",
+            "usage": "moderate"
+          }
+        ],
+        "metrics_logged": true,
+        "artifacts_logged": false
       },
       "model_registry": {
-        "present": false,
+        "present": true,
         "registered_models_level": 0,
         "registered_models_count": 0
       },
       "pipeline_automation": {
         "orchestrators": [
-          "gitlab_ci"
+          "Airflow",
+          "Prefect",
+          "Dagster",
+          "KFP",
+          "Argo/Tekton",
+          "Step Functions"
         ],
-        "automation_level": 2,
-        "automation_value": 0.75,
-        "scheduling": false,
+        "automation_level": 0,
+        "automation_value": 0.0,
+        "scheduling": true,
         "pipelines_level": 0,
         "pipelines_total": 1
       },
       "serving_endpoints": {
-        "level": 0,
-        "total": 0,
-        "sagemaker": 0,
+        "level": 1,
+        "total": 1,
+        "sagemaker": 1,
         "azureml": 0
       },
       "experiments_scale": {
@@ -111,56 +140,70 @@
   },
   {
     "agent": "ml_ops_monitor",
-    "repo": "shrimp-data-analysis-dw-iam",
+    "repo": "ds-salary-prediction",
     "platforms": {
       "uses_mlflow": false,
-      "uses_sagemaker": false,
+      "uses_sagemaker": true,
       "uses_azureml": false,
       "uses_kubeflow": false
     },
     "scores": {
-      "ai_ml_capabilities": 1.16,
-      "operations_maturity": 0.0
+      "ai_ml_capabilities": 2.0,
+      "operations_maturity": 1.42
     },
     "aimri_ops_summary": {
       "platform_surface_area": {
         "level": 0,
-        "value": 0,
-        "desc": "Distinct MLOps platforms detected (0\u20134)."
+        "value": 1,
+        "desc": "MLflow/SageMaker/AzureML/Kubeflow/Flyte"
       },
       "experiment_tracking": {
         "coverage_level": 3,
-        "coverage_value": 0.85,
-        "hygiene_level": 2,
-        "hygiene_value": 0.7,
+        "coverage_value": 0.9,
+        "hygiene_level": 3,
+        "hygiene_value": 0.8,
         "tools": [
           {
-            "name": "TensorBoard",
+            "name": "Flask",
             "usage": "moderate"
+          },
+          {
+            "name": "Pandas",
+            "usage": "heavy"
+          },
+          {
+            "name": "Scikit-learn",
+            "usage": "heavy"
+          },
+          {
+            "name": "Selenium",
+            "usage": "moderate"
+          },
+          {
+            "name": "Pickle",
+            "usage": "light"
           }
         ],
         "metrics_logged": true,
-        "artifacts_logged": false
+        "artifacts_logged": true
       },
       "model_registry": {
-        "present": false,
+        "present": true,
         "registered_models_level": 0,
         "registered_models_count": 0
       },
       "pipeline_automation": {
-        "orchestrators": [
-          "airflow"
-        ],
+        "orchestrators": [],
         "automation_level": 0,
         "automation_value": 0.0,
         "scheduling": false,
         "pipelines_level": 0,
-        "pipelines_total": 0
+        "pipelines_total": 1
       },
       "serving_endpoints": {
-        "level": 0,
-        "total": 0,
-        "sagemaker": 0,
+        "level": 1,
+        "total": 1,
+        "sagemaker": 1,
         "azureml": 0
       },
       "experiments_scale": {
@@ -179,23 +222,44 @@
       "uses_kubeflow": false
     },
     "scores": {
-      "ai_ml_capabilities": 0.0,
+      "ai_ml_capabilities": 1.05,
       "operations_maturity": 0.0
     },
     "aimri_ops_summary": {
       "platform_surface_area": {
         "level": 0,
         "value": 0,
-        "desc": "Distinct MLOps platforms detected (0\u20134)."
+        "desc": "MLflow/SageMaker/AzureML/Kubeflow/Flyte"
       },
       "experiment_tracking": {
-        "coverage_level": 0,
-        "coverage_value": 0.0,
-        "hygiene_level": 0,
-        "hygiene_value": 0.0,
-        "tools": [],
+        "coverage_level": 3,
+        "coverage_value": 0.8,
+        "hygiene_level": 2,
+        "hygiene_value": 0.6,
+        "tools": [
+          {
+            "name": "Streamlit",
+            "usage": "heavy"
+          },
+          {
+            "name": "pandas",
+            "usage": "moderate"
+          },
+          {
+            "name": "pymysql",
+            "usage": "moderate"
+          },
+          {
+            "name": "spacy",
+            "usage": "moderate"
+          },
+          {
+            "name": "plotly",
+            "usage": "light"
+          }
+        ],
         "metrics_logged": false,
-        "artifacts_logged": false
+        "artifacts_logged": true
       },
       "model_registry": {
         "present": false,
@@ -203,7 +267,14 @@
         "registered_models_count": 0
       },
       "pipeline_automation": {
-        "orchestrators": [],
+        "orchestrators": [
+          "Airflow",
+          "Prefect",
+          "Dagster",
+          "KFP",
+          "Argo/Tekton",
+          "Step Functions"
+        ],
         "automation_level": 0,
         "automation_value": 0.0,
         "scheduling": false,
@@ -226,33 +297,33 @@
     "agent": "ml_ops_monitor",
     "repo": "flyte",
     "platforms": {
-      "uses_mlflow": true,
-      "uses_sagemaker": false,
+      "uses_mlflow": false,
+      "uses_sagemaker": true,
       "uses_azureml": false,
-      "uses_kubeflow": true
+      "uses_kubeflow": false
     },
     "scores": {
-      "ai_ml_capabilities": 3.16,
-      "operations_maturity": 2.95
+      "ai_ml_capabilities": 2.21,
+      "operations_maturity": 3.99
     },
     "aimri_ops_summary": {
       "platform_surface_area": {
-        "level": 1,
-        "value": 2,
-        "desc": "Distinct MLOps platforms detected (0\u20134)."
+        "level": 0,
+        "value": 1,
+        "desc": "MLflow/SageMaker/AzureML/Kubeflow/Flyte"
       },
       "experiment_tracking": {
-        "coverage_level": 2,
-        "coverage_value": 0.75,
+        "coverage_level": 3,
+        "coverage_value": 0.85,
         "hygiene_level": 3,
-        "hygiene_value": 0.85,
+        "hygiene_value": 0.9,
         "tools": [
           {
-            "name": "mlflow",
+            "name": "Flyte",
             "usage": "heavy"
           },
           {
-            "name": "wandb",
+            "name": "Kubeflow",
             "usage": "heavy"
           }
         ],
@@ -260,24 +331,29 @@
         "artifacts_logged": true
       },
       "model_registry": {
-        "present": false,
+        "present": true,
         "registered_models_level": 0,
         "registered_models_count": 0
       },
       "pipeline_automation": {
         "orchestrators": [
-          "flyte"
+          "Airflow",
+          "Prefect",
+          "Dagster",
+          "KFP",
+          "Argo/Tekton",
+          "Step Functions"
         ],
         "automation_level": 3,
         "automation_value": 0.85,
         "scheduling": true,
-        "pipelines_level": 3,
-        "pipelines_total": 8
+        "pipelines_level": 1,
+        "pipelines_total": 2
       },
       "serving_endpoints": {
-        "level": 0,
-        "total": 0,
-        "sagemaker": 0,
+        "level": 1,
+        "total": 1,
+        "sagemaker": 1,
         "azureml": 0
       },
       "experiments_scale": {
@@ -296,28 +372,36 @@
       "uses_kubeflow": false
     },
     "scores": {
-      "ai_ml_capabilities": 0.38,
-      "operations_maturity": 0.0
+      "ai_ml_capabilities": 1.38,
+      "operations_maturity": 0.96
     },
     "aimri_ops_summary": {
       "platform_surface_area": {
         "level": 0,
         "value": 0,
-        "desc": "Distinct MLOps platforms detected (0\u20134)."
+        "desc": "MLflow/SageMaker/AzureML/Kubeflow/Flyte"
       },
       "experiment_tracking": {
-        "coverage_level": 0,
-        "coverage_value": 0.2,
-        "hygiene_level": 1,
-        "hygiene_value": 0.3,
+        "coverage_level": 2,
+        "coverage_value": 0.75,
+        "hygiene_level": 3,
+        "hygiene_value": 0.8,
         "tools": [
           {
-            "name": "TensorBoard",
+            "name": "TensorFlow",
+            "usage": "heavy"
+          },
+          {
+            "name": "Jupyter",
             "usage": "moderate"
+          },
+          {
+            "name": "Docker",
+            "usage": "light"
           }
         ],
-        "metrics_logged": false,
-        "artifacts_logged": false
+        "metrics_logged": true,
+        "artifacts_logged": true
       },
       "model_registry": {
         "present": false,
@@ -326,11 +410,11 @@
       },
       "pipeline_automation": {
         "orchestrators": [],
-        "automation_level": 0,
-        "automation_value": 0.0,
+        "automation_level": 1,
+        "automation_value": 0.5,
         "scheduling": false,
         "pipelines_level": 0,
-        "pipelines_total": 0
+        "pipelines_total": 1
       },
       "serving_endpoints": {
         "level": 0,
@@ -349,19 +433,19 @@
     "repo": "transformers",
     "platforms": {
       "uses_mlflow": false,
-      "uses_sagemaker": false,
+      "uses_sagemaker": true,
       "uses_azureml": false,
       "uses_kubeflow": false
     },
     "scores": {
-      "ai_ml_capabilities": 1.2,
-      "operations_maturity": 0.0
+      "ai_ml_capabilities": 1.92,
+      "operations_maturity": 2.42
     },
     "aimri_ops_summary": {
       "platform_surface_area": {
         "level": 0,
-        "value": 0,
-        "desc": "Distinct MLOps platforms detected (0\u20134)."
+        "value": 1,
+        "desc": "MLflow/SageMaker/AzureML/Kubeflow/Flyte"
       },
       "experiment_tracking": {
         "coverage_level": 2,
@@ -370,7 +454,7 @@
         "hygiene_value": 0.85,
         "tools": [
           {
-            "name": "Custom Tracking",
+            "name": "CircleCI",
             "usage": "heavy"
           }
         ],
@@ -378,24 +462,29 @@
         "artifacts_logged": true
       },
       "model_registry": {
-        "present": false,
+        "present": true,
         "registered_models_level": 0,
         "registered_models_count": 0
       },
       "pipeline_automation": {
         "orchestrators": [
-          "gha"
+          "Airflow",
+          "Prefect",
+          "Dagster",
+          "KFP",
+          "Argo/Tekton",
+          "Step Functions"
         ],
         "automation_level": 0,
         "automation_value": 0.0,
-        "scheduling": false,
+        "scheduling": true,
         "pipelines_level": 0,
-        "pipelines_total": 0
+        "pipelines_total": 1
       },
       "serving_endpoints": {
-        "level": 0,
-        "total": 0,
-        "sagemaker": 0,
+        "level": 1,
+        "total": 1,
+        "sagemaker": 1,
         "azureml": 0
       },
       "experiments_scale": {
