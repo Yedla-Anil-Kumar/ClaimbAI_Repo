@@ -1,0 +1,83 @@
+mlflow:
+  patterns:
+    - "\\bmlflow\\b"
+    - "\\bMLproject\\b"
+    - "\\bMLmodel\\b"
+    - "\\bmlruns\\b"
+    - "MlflowClient"
+  uri: "mlflow\\.set_tracking_uri\\(['\\\"]([^'\\\"]+)['\\\"]\\)"
+  registry: "register_model\\(|model[-_ ]registry|mlflow\\.models"
+
+sagemaker:
+  patterns:
+    - "\\bsagemaker\\b"
+    - "boto3\\.client\\(['\\\"]sagemaker['\\\"]\\)"
+  endpoint: "create_endpoint|Model\\s*\\.\\s*deploy|sage.*endpoint"
+  pipeline: "sagemaker\\.workflow\\.Pipeline|step functions"
+  registry: "ModelPackage|ModelPackageGroup|create_model_package"
+
+azureml:
+  patterns:
+    - "\\bazure\\.ai\\.ml\\b"
+    - "mlclient"
+    - "azureml:"
+  endpoint: "ManagedOnlineEndpoint|online-endpoint|endpoint:.*azureml"
+  pipeline: "@dsl\\.pipeline|pipeline:|ml\\s+pipeline\\s+create"
+  registry: "\\bregistry\\b.*(model|environment)|register.*azureml"
+
+kubeflow:
+  patterns:
+    - "\\bkfp\\b"
+    - "@dsl\\.pipeline"
+    - "@dsl\\.component"
+  yaml: "apiVersion:\\s*(argoproj\\.io|tekton.dev)/"
+
+wandb:
+  patterns:
+    - "\\bwandb\\b"
+
+tensorboard:
+  patterns:
+    - "tensorboard"
+    - "SummaryWriter"
+
+comet_ml:
+  patterns:
+    - "\\bcomet_ml\\b"
+
+neptune:
+  patterns:
+    - "\\bneptune\\b"
+
+metrics_generic:
+  patterns:
+    - "log_metric"
+    - "log_metrics"
+    - "\\bmetrics\\.json\\b"
+    - "\\bmetrics\\.csv\\b"
+
+artifacts_generic:
+  patterns:
+    - "log_artifact"
+    - "artifacts?/"
+    - "MLmodel"
+    - "model\\.pkl"
+    - "model\\.pt"
+    - "conda\\.yaml"
+    - "requirements\\.txt"
+
+ci_cd:
+  github_actions: "\\.github/workflows/.*\\.(yml|yaml)$"
+  gitlab: "\\.gitlab-ci\\.yml$"
+  azure_pipelines: "azure-pipelines\\.(yml|yaml)$"
+  jenkins: "jenkinsfile$"
+  circleci: "\\.circleci/config\\.(yml|yaml)$"
+
+cron:
+  pattern: "cron:\\s*['\\\"][^'\\\"]+['\\\"]|schedule_interval\\s*=\\s*['\\\"][^'\\\"]+['\\\"]|@daily|@hourly"
+
+serving:
+  patterns:
+    - "\\b(kserve|inference|serve|serving|endpoint)\\b"
+    - "\\bFastAPI\\(|fastapi\\b"
+    - "\\bFlask\\(|flask\\b"

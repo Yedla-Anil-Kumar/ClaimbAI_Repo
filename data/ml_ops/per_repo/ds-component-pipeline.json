@@ -8,35 +8,22 @@
     "uses_kubeflow": false
   },
   "scores": {
-    "ai_ml_capabilities": 1.91,
-    "operations_maturity": 2.65
+    "ai_ml_capabilities": 0.93,
+    "operations_maturity": 1.27
   },
   "aimri_ops_summary": {
     "platform_surface_area": {
       "level": 0,
       "value": 0,
-      "desc": "MLflow/SageMaker/AzureML/Kubeflow/Flyte"
+      "desc": "Distinct MLOps platforms detected (0\u20134)."
     },
     "experiment_tracking": {
-      "coverage_level": 2,
-      "coverage_value": 0.75,
-      "hygiene_level": 3,
-      "hygiene_value": 0.85,
-      "tools": [
-        {
-          "name": "GitLab CI",
-          "usage": "heavy"
-        },
-        {
-          "name": "Docker",
-          "usage": "moderate"
-        },
-        {
-          "name": "Papermill",
-          "usage": "moderate"
-        }
-      ],
-      "metrics_logged": true,
+      "coverage_level": 1,
+      "coverage_value": 0.4,
+      "hygiene_level": 0,
+      "hygiene_value": 0.0,
+      "tools": [],
+      "metrics_logged": false,
       "artifacts_logged": true
     },
     "model_registry": {
@@ -45,10 +32,13 @@
       "registered_models_count": 0
     },
     "pipeline_automation": {
-      "orchestrators": [],
-      "automation_level": 3,
-      "automation_value": 0.8,
-      "scheduling": true,
+      "orchestrators": [
+        "azureml_pipelines",
+        "gitlab_ci"
+      ],
+      "automation_level": 1,
+      "automation_value": 0.5,
+      "scheduling": false,
       "pipelines_level": 2,
       "pipelines_total": 5
     },
@@ -62,5 +52,38 @@
       "level": 0,
       "count": 0
     }
-  }
+  },
+  "grading_notes": {
+    "mlflow": {
+      "band": 1,
+      "rationale": "There is no meaningful evidence of MLflow usage, as indicated by the absence of experiments, registered models, and tracking endpoints.",
+      "flags": []
+    },
+    "sagemaker": {
+      "band": 1,
+      "rationale": "There is no evidence of SageMaker usage, including jobs, endpoints, pipelines, or registry usage.",
+      "flags": []
+    },
+    "azureml": {
+      "band": 1,
+      "rationale": "There is no evidence of managed endpoints, jobs, or registry usage. Only one pipeline is present, which does not meet the criteria for a higher band.",
+      "flags": []
+    },
+    "kubeflow": {
+      "band": 1,
+      "rationale": "There is no evidence of using Kubeflow, no pipelines or components present, and no manifests available.",
+      "flags": []
+    },
+    "cicd_policy_gates": {
+      "band": 1,
+      "rationale": "There is no evidence of any CI/CD policy gates being enforced or scheduled, as all metrics indicate false for tests and validations.",
+      "flags": []
+    },
+    "tracking_maturity": {
+      "band": 1,
+      "rationale": "There is no evidence of metrics logged, and while artifacts are logged, the overall structure and coverage are insufficient to meet basic logging standards.",
+      "flags": []
+    }
+  },
+  "mode": "repo_only_builtins"
 }

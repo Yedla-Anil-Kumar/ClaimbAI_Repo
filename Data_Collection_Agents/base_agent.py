@@ -1,3 +1,4 @@
+# Data_Collection_Agents/base_agent.py
 import os
 import json
 import time
@@ -6,10 +7,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Dict, List, Optional
 from openai import OpenAI
 
-
 class BaseMicroAgent(ABC):
-    """Base class for all micro-agents (with retry + low-variance defaults)."""
-
     def __init__(self, model: str = "gpt-4o-mini", temperature: float = 0.0, api_key: Optional[str] = None):
         self._api_key = api_key
         self._client: Optional[OpenAI] = None
@@ -35,11 +33,8 @@ class BaseMicroAgent(ABC):
             messages.append({"role": "system", "content": system_prompt})
         messages.append({"role": "user", "content": prompt})
 
-        # tiny jitter to de-sync parallel workers
-        time.sleep(random.uniform(0.03, 0.12))
-
-        attempts = 0
-        delay = 0.35
+        time.sleep(random.uniform(0.03, 0.12))  # jitter for parallel calls
+        attempts, delay = 0, 0.35
         while True:
             attempts += 1
             try:
@@ -52,8 +47,8 @@ class BaseMicroAgent(ABC):
                 return (resp.choices[0].message.content or "").strip()
             except Exception as e:
                 msg = str(e).lower()
-                if attempts < 3 and ("429" in msg or "rate" in msg or "timeout" in msg or "gateway" in msg or "500" in msg):
-                    time.sleep(delay * (2 ** (attempts - 1)) + random.uniform(0.05, 0.2))
+                if attempts < 3 and any(k in msg for k in ("429", "rate", "timeout", "gateway", "500")):
+                    time.sleep(delay*(2**(attempts-1)) + random.uniform(0.05, 0.2))
                     continue
                 print(f"LLM call failed: {e}")
                 return ""
@@ -74,8 +69,7 @@ class BaseMicroAgent(ABC):
             return json.loads(response)
         except Exception:
             try:
-                s = response.find("{")
-                e = response.rfind("}")
+                s = response.find("{"); e = response.rfind("}")
                 if s != -1 and e != -1 and e > s:
                     return json.loads(response[s:e+1])
             except Exception:

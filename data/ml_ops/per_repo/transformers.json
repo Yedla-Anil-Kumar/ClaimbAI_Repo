@@ -2,34 +2,46 @@
   "agent": "ml_ops_monitor",
   "repo": "transformers",
   "platforms": {
-    "uses_mlflow": false,
+    "uses_mlflow": true,
     "uses_sagemaker": true,
     "uses_azureml": false,
     "uses_kubeflow": false
   },
   "scores": {
-    "ai_ml_capabilities": 2.09,
-    "operations_maturity": 3.99
+    "ai_ml_capabilities": 3.64,
+    "operations_maturity": 4.55
   },
   "aimri_ops_summary": {
     "platform_surface_area": {
-      "level": 0,
-      "value": 1,
-      "desc": "MLflow/SageMaker/AzureML/Kubeflow/Flyte"
+      "level": 1,
+      "value": 2,
+      "desc": "Distinct MLOps platforms detected (0\u20134)."
     },
     "experiment_tracking": {
-      "coverage_level": 2,
-      "coverage_value": 0.75,
+      "coverage_level": 3,
+      "coverage_value": 1.0,
       "hygiene_level": 3,
       "hygiene_value": 0.85,
       "tools": [
         {
-          "name": "CircleCI",
+          "name": "comet_ml",
           "usage": "moderate"
         },
         {
-          "name": "Hugging Face Hub",
-          "usage": "heavy"
+          "name": "mlflow",
+          "usage": "moderate"
+        },
+        {
+          "name": "neptune",
+          "usage": "moderate"
+        },
+        {
+          "name": "tensorboard",
+          "usage": "moderate"
+        },
+        {
+          "name": "wandb",
+          "usage": "moderate"
         }
       ],
       "metrics_logged": true,
@@ -42,28 +54,58 @@
     },
     "pipeline_automation": {
       "orchestrators": [
-        "Airflow",
-        "Prefect",
-        "Dagster",
-        "KFP",
-        "Argo/Tekton",
-        "Step Functions"
+        "azureml_pipelines",
+        "gha",
+        "sagemaker_pipelines"
       ],
       "automation_level": 3,
-      "automation_value": 0.85,
+      "automation_value": 1.0,
       "scheduling": true,
-      "pipelines_level": 1,
-      "pipelines_total": 2
+      "pipelines_level": 3,
+      "pipelines_total": 119
     },
     "serving_endpoints": {
-      "level": 1,
-      "total": 1,
-      "sagemaker": 1,
+      "level": 0,
+      "total": 0,
+      "sagemaker": 0,
       "azureml": 0
     },
     "experiments_scale": {
       "level": 0,
-      "count": 0
+      "count": 1
     }
-  }
+  },
+  "grading_notes": {
+    "mlflow": {
+      "band": 2,
+      "rationale": "The evidence shows minimal MLflow usage with only one experiment and no registered models. CI/CD and serving signals are present, but overall operational maturity is limited.",
+      "flags": []
+    },
+    "sagemaker": {
+      "band": 3,
+      "rationale": "The evidence shows some training jobs and pipelines, but no endpoints or registry usage, aligning with the criteria for a score of 3.",
+      "flags": []
+    },
+    "azureml": {
+      "band": 2,
+      "rationale": "The evidence shows 19 pipelines and registry usage, but no jobs or endpoints are present, indicating weak and scattered references.",
+      "flags": []
+    },
+    "kubeflow": {
+      "band": 1,
+      "rationale": "There is no evidence of using Kubeflow, no pipelines or components present, and no manifests available.",
+      "flags": []
+    },
+    "cicd_policy_gates": {
+      "band": 2,
+      "rationale": "The evidence shows minimal CI/CD with only basic tests (pytest) and no additional gates or scheduling for security scans, data validation, or bias checks.",
+      "flags": []
+    },
+    "tracking_maturity": {
+      "band": 4,
+      "rationale": "The evidence shows consistent use of multiple tools for tracking, with metrics and artifacts logged effectively. Coverage is complete, and the quality of run structure is high, indicating a mature tracking process.",
+      "flags": []
+    }
+  },
+  "mode": "repo_only_builtins"
 }

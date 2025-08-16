@@ -1,0 +1,48 @@
+# regex library (case-insensitive); tweak anytime without code changes
+patterns:
+  # MLflow
+  mlflow_all:        "\\bmlflow\\b|\\bMLproject\\b|\\bMLmodel\\b|\\bmlruns\\b|MlflowClient"
+  mlflow_uri:        "mlflow\\.set_tracking_uri\\(['\\\"]([^'\\\"]+)['\\\"]\\)"
+  mlflow_registry:   "register_model\\(|model[-_ ]registry|mlflow\\.models"
+
+  # SageMaker
+  sm_all:            "\\bsagemaker\\b|boto3\\.client\\(['\\\"]sagemaker['\\\"]\\)"
+  sm_endpoint:       "create_endpoint|Model\\s*\\.\\s*deploy|sage.*endpoint"
+  sm_pipeline:       "sagemaker\\.workflow\\.Pipeline|step functions"
+  sm_registry:       "ModelPackage|ModelPackageGroup|create_model_package"
+
+  # AzureML
+  aml_all:           "\\bazure\\.ai\\.ml\\b|mlclient|azureml:"
+  aml_endpoint:      "ManagedOnlineEndpoint|online-endpoint|endpoint:.*azureml"
+  aml_pipeline:      "@dsl\\.pipeline|pipeline:|ml\\s+pipeline\\s+create"
+  aml_registry:      "\\bregistry\\b.*(model|environment)|register.*azureml"
+
+  # Kubeflow
+  kfp_all:           "\\bkfp\\b|@dsl\\.pipeline|@dsl\\.component|kfp\\.dsl"
+  kfp_compiled:      "apiVersion:\\s*(argoproj\\.io|tekton.dev)/"
+
+  # Tracking
+  wandb:             "\\bwandb\\b"
+  tb:                "(tensorboard|SummaryWriter)"
+  comet:             "\\bcomet_ml\\b"
+  neptune:           "\\bneptune\\b"
+  mlflow_word:       "\\bmlflow\\b"
+  metrics_generic:   "log_metric|log_metrics|\\bmetrics\\.json\\b|\\bmetrics\\.csv\\b"
+  artifacts_generic: "log_artifact|artifacts?/|MLmodel|model\\.pkl|model\\.pt|conda\\.yaml|requirements\\.txt"
+
+  # CI/CD path matchers (apply to path, not file text)
+  gha_path:          "\\.github/workflows/.*\\.(yml|yaml)$"
+  gitlab_path:       "\\.gitlab-ci\\.yml$"
+  ado_path:          "azure-pipelines\\.(yml|yaml)$"
+  jenkins_path:      "(?i)jenkinsfile$"
+  circle_path:       "\\.circleci/config\\.(yml|yaml)$"
+
+  # Schedules (file text)
+  cron:              "cron:\\s*['\\\"][^'\\\"]+['\\\"]|schedule_interval\\s*=\\s*['\\\"][^'\\\"]+['\\\"]|@daily|@hourly"
+
+  # Serving cues
+  serve:             "\\b(kserve|inference|serve|serving|endpoint)\\b"
+  fastapi:           "\\bFastAPI\\(|\\bfastapi\\b"
+  flask:             "\\bFlask\\(|\\bflask\\b"
+
+policy_gates: ["pytest","integration","bandit","trivy","bias","data_validation"]

@@ -1,0 +1,90 @@
+# tunables for proxy → counts
+proxy_tunables:
+  mlflow_hits_per_experiment: 10
+  sagemaker_hits_per_training: 15
+  azureml_hits_per_job: 15
+
+# weights for scoring (kept configurable)
+scoring_weights:
+  ai.platforms: 0.5
+  ai.tracking:  0.3
+  ai.depth:     0.2
+  ops.auto:     0.35
+  ops.sched:    0.2
+  ops.registry: 0.25
+  ops.quality:  0.15
+  ops.pipes:    0.05
+
+# rubric-driven one-shot graders (no CSV at runtime)
+metric_specs:
+  - metric_id: "mlflow.ops_quality_band"
+    stem: "mlflow"
+    group: "platform"
+    methodology: "Grade MLflow operational maturity from repo-only evidence (tracking, registry, CI/CD, serving)."
+    return_shape_hint: '{"band":1..5,"rationale":str,"flags":[]}'
+    rubric:
+      "5": "Remote tracking + consistent metrics/artifacts + registry promotion + CI/CD + serving/infra signals."
+      "4": "Remote tracking + artifacts + (registry or CI/CD)."
+      "3": "Tracking present (local or remote) but limited artifacts or ops integration."
+      "2": "Minimal/partial evidence (ad hoc references)."
+      "1": "No meaningful evidence of MLflow usage."
+
+  - metric_id: "sagemaker.ops_quality_band"
+    stem: "sagemaker"
+    group: "platform"
+    methodology: "Grade SageMaker usage (jobs, endpoints, pipelines, registry) from repo-only signals."
+    return_shape_hint: '{"band":1..5,"rationale":str,"flags":[]}'
+    rubric:
+      "5": "Endpoints + pipelines + registry present; CI/CD or IaC shows promotion/deploy."
+      "4": "Endpoints + pipelines present; registry optional."
+      "3": "Some jobs or partial pipelines; no endpoints."
+      "2": "Weak, scattered references only."
+      "1": "No evidence."
+
+  - metric_id: "azureml.ops_quality_band"
+    stem: "azureml"
+    group: "platform"
+    methodology: "Grade Azure ML maturity (jobs, pipelines, endpoints, registry) using SDK v2/CLI YAML cues."
+    return_shape_hint: '{"band":1..5,"rationale":str,"flags":[]}'
+    rubric:
+      "5": "Managed endpoints + pipelines + registry present; CI/CD shows automation."
+      "4": "Endpoints + pipelines present; registry optional."
+      "3": "Jobs or partial pipelines only."
+      "2": "Weak, scattered references."
+      "1": "No evidence."
+
+  - metric_id: "kubeflow.ops_quality_band"
+    stem: "kubeflow"
+    group: "platform"
+    methodology: "Grade KFP maturity (DSL components/pipelines, compiled manifests, scheduling)."
+    return_shape_hint: '{"band":1..5,"rationale":str,"flags":[]}'
+    rubric:
+      "5": "Pipelines + compiled manifests + scheduling/automation."
+      "4": "Pipelines + compiled manifests."
+      "3": "Pipelines only (DSL)."
+      "2": "Minimal references."
+      "1": "No evidence."
+
+  - metric_id: "cicd.policy_gates"
+    stem: "automation"
+    group: "cicd"
+    methodology: "Grade CI/CD policy gates strength (tests, security scans, data validation, bias checks)."
+    return_shape_hint: '{"band":1..5,"rationale":str,"flags":[]}'
+    rubric:
+      "5": "Multiple gates (tests + security + data validation/bias) enforced and scheduled."
+      "4": "Tests plus at least one additional gate; some scheduling."
+      "3": "Basic tests only or ad-hoc gates; little scheduling."
+      "2": "Minimal CI/CD without gates."
+      "1": "No CI/CD evidence."
+
+  - metric_id: "tracking.maturity_band"
+    stem: "tracking"
+    group: "tracking"
+    methodology: "Grade experiment tracking maturity (tools, metrics, artifacts, coverage)."
+    return_shape_hint: '{"band":1..5,"rationale":str,"flags":[]}'
+    rubric:
+      "5": "Rich metrics + artifacts + structured runs; references from CI/nb; multi-tool okay."
+      "4": "Consistent metrics + artifacts; partial coverage."
+      "3": "Metrics yes, artifacts spotty or vice versa."
+      "2": "Sporadic/basic logging."
+      "1": "No evidence."
