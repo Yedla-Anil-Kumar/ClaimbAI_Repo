@@ -1,0 +1,6 @@
+{
+  "metric_id": "validation_artifacts_readiness_band",
+  "band": 5,
+  "rationale": "All elements present: explainability, bias reports, schemas, and a model card.",
+  "flags": []
+}

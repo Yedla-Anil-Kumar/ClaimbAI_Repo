@@ -1,156 +1,90 @@
 # Data_Collection_Agents/ml_ops_agent/canonical.py
 from __future__ import annotations
 from dataclasses import dataclass, field
-from typing import Dict, List, Optional
+from typing import Dict, List
 
 
-# ----------------------
-# Evidence (repo-only)
-# ----------------------
 @dataclass
 class RepoEvidence:
-    # MLflow
+    """
+    Canonical evidence collected purely from the repository.
+    These are deterministic facts — no LLM here. LLM graders only see structured payloads derived from this.
+    """
+
+    # ------- Platform signals (as before) -------
     mlflow_hits: List[str] = field(default_factory=list)
     mlflow_registry_hits: List[str] = field(default_factory=list)
     mlflow_tracking_uri_values: List[str] = field(default_factory=list)
 
-    # SageMaker
     sagemaker_hits: List[str] = field(default_factory=list)
     sagemaker_endpoint_hits: List[str] = field(default_factory=list)
     sagemaker_pipeline_hits: List[str] = field(default_factory=list)
     sagemaker_registry_hits: List[str] = field(default_factory=list)
 
-    # AzureML
     azureml_hits: List[str] = field(default_factory=list)
     azureml_endpoint_hits: List[str] = field(default_factory=list)
     azureml_pipeline_hits: List[str] = field(default_factory=list)
     azureml_registry_hits: List[str] = field(default_factory=list)
 
-    # Kubeflow
     kfp_hits: List[str] = field(default_factory=list)
     kfp_compiled_yaml: List[str] = field(default_factory=list)
 
-    # Tracking
-    tracking_tools: List[str] = field(default_factory=list)  # ["mlflow","wandb","tensorboard","comet_ml","neptune","custom", ...]
-    tracking_metrics_signals: List[str] = field(default_factory=list)
+    # ------- Experiment tracking (generic) -------
+    tracking_tools: List[str] = field(default_factory=list)  # ["mlflow","wandb","tensorboard","comet_ml","neptune",...]
+    tracking_metrics_signals: List[str] = field(default_factory=list)   # files or lines
     tracking_artifact_signals: List[str] = field(default_factory=list)
 
-    # CI/CD & scheduling
-    cicd_workflows: List[str] = field(default_factory=list)
-    cicd_schedules: List[str] = field(default_factory=list)
-    cicd_policy_gates: Dict[str, bool] = field(default_factory=dict)  # pytest/bandit/trivy/bias/data_validation
+    # ------- CI/CD (workflows + raw content) -------
+    cicd_workflows: List[str] = field(default_factory=list)                # workflow file paths
+    cicd_workflow_texts: Dict[str, str] = field(default_factory=dict)      # path -> truncated text
+    cicd_schedules: List[str] = field(default_factory=list)                # cron strings
+    cicd_policy_gates: Dict[str, bool] = field(default_factory=dict)       # pytest/bandit/trivy/... booleans
+    cicd_deploy_job_names: List[str] = field(default_factory=list)         # job names likely to deploy/promote
+    cicd_environments: List[str] = field(default_factory=list)             # e.g., ["staging","production"]
+    cicd_concurrency_signals: List[str] = field(default_factory=list)      # e.g., "concurrency:" lines
+    cicd_rollback_signals: List[str] = field(default_factory=list)         # "rollback", "rollout undo", "canary" etc.
+    cicd_healthcheck_signals: List[str] = field(default_factory=list)      # health checks / smoke tests before deploy
+    codeowners_present: bool = False
 
-    # Serving & manifests (coarse)
-    serving_signals: List[str] = field(default_factory=list)
+    # ------- Serving / deployment signals -------
+    serving_signals: List[str] = field(default_factory=list)               # kserve, endpoint, FastAPI/Flask, inference
+
+    # ------- Manifests (rough) -------
     endpoint_manifests: List[str] = field(default_factory=list)
     pipeline_manifests: List[str] = field(default_factory=list)
 
+    # ------- Artifact lineage / integrity readiness -------
+    image_digest_pins: List[str] = field(default_factory=list)             # image@sha256:...
+    unpinned_images: List[str] = field(default_factory=list)               # image:tag (no digest)
+    sbom_signals: List[str] = field(default_factory=list)                  # sbom generation/upload steps
+    signing_signals: List[str] = field(default_factory=list)               # cosign/sigstore/attestation
+    k8s_probe_signals: List[str] = field(default_factory=list)             # readinessProbe/livenessProbe
+
+    # ------- Monitoring / alerting readiness -------
+    monitoring_rule_files: List[str] = field(default_factory=list)
+    monitoring_rule_texts: Dict[str, str] = field(default_factory=dict)    # path -> truncated text
+    alert_channel_signals: List[str] = field(default_factory=list)         # slack/webhook/email in CI
+
+    # ------- Validation / explainability / bias readiness -------
+    explainability_signals: List[str] = field(default_factory=list)        # shap, lime, captum
+    bias_signals: List[str] = field(default_factory=list)                  # clarify, fairness
+    validation_schema_files: List[str] = field(default_factory=list)       # validation.json/yaml, pandera, GE suites
+    model_card_files: List[str] = field(default_factory=list)              # model_card.md/.mdx
+    data_validation_libs: List[str] = field(default_factory=list)          # great_expectations, evidently, pandera
+
+    # ------- Lineage practices readiness -------
+    lineage_code_signals: List[str] = field(default_factory=list)          # git sha logging/tagging patterns
+    data_ref_signals: List[str] = field(default_factory=list)              # dataset/feature-store refs tagging
+    env_lock_signals: List[str] = field(default_factory=list)              # conda.yaml/requirements.txt lock & logging
+
+    # ------- Cost tagging / attribution readiness -------
+    iac_tag_lines: List[str] = field(default_factory=list)                 # terraform/helm tags & labels
+    iac_tag_keys_detected: List[str] = field(default_factory=list)         # flattened tag keys
+
+    # ------- SLO declaration readiness -------
+    slo_docs: List[str] = field(default_factory=list)                      # slo.yaml, docs with SLO tables
+    slo_env_vars: List[str] = field(default_factory=list)                  # AVAILABILITY_SLO/P95_MS_SLO from CI/env
+    slo_texts: Dict[str, str] = field(default_factory=dict)                # path -> truncated text
+
+    # repo-only flag
     repo_only_mode: bool = True
-
-
-# ----------------------
-# Built-in rubric specs (CSV-inspired, no CSV I/O)
-# ----------------------
-@dataclass
-class MetricSpec:
-    metric_id: str              # e.g., "mlflow.ops_quality_band"
-    stem: str                   # few_shot file stem: mlflow|sagemaker|azureml|kubeflow|automation|tracking
-    group: str                  # for organization/reporting
-    methodology: str            # short human explanation (optional, used in prompt context)
-    rubric: Dict[str, str]      # band "5".."1" textual criteria
-    return_shape_hint: str      # schema reminder (fed into prompt as guardrail)
-
-
-BUILTIN_METRIC_SPECS: List[MetricSpec] = [
-    MetricSpec(
-        metric_id="mlflow.ops_quality_band",
-        stem="mlflow",
-        group="platform",
-        methodology="Grade MLflow operational maturity from repo-only evidence (tracking, registry, CI/CD, serving).",
-        rubric={
-            "5": "Remote tracking + consistent metrics/artifacts + registry promotion + CI/CD + serving/infra signals.",
-            "4": "Remote tracking + artifacts + (registry or CI/CD).",
-            "3": "Tracking present (local or remote) but limited artifacts or ops integration.",
-            "2": "Minimal/partial evidence (ad hoc references).",
-            "1": "No meaningful evidence of MLflow usage.",
-        },
-        return_shape_hint='{"band":1..5,"rationale":str,"flags":[]}',
-    ),
-    MetricSpec(
-        metric_id="sagemaker.ops_quality_band",
-        stem="sagemaker",
-        group="platform",
-        methodology="Grade SageMaker usage (jobs, endpoints, pipelines, registry) from repo-only signals.",
-        rubric={
-            "5": "Endpoints + pipelines + registry present; CI/CD or IaC shows promotion/deploy.",
-            "4": "Endpoints + pipelines present; registry optional.",
-            "3": "Some jobs or partial pipelines; no endpoints.",
-            "2": "Weak, scattered references only.",
-            "1": "No evidence.",
-        },
-        return_shape_hint='{"band":1..5,"rationale":str,"flags":[]}',
-    ),
-    MetricSpec(
-        metric_id="azureml.ops_quality_band",
-        stem="azureml",
-        group="platform",
-        methodology="Grade Azure ML maturity (jobs, pipelines, endpoints, registry) using SDK v2/CLI YAML cues.",
-        rubric={
-            "5": "Managed endpoints + pipelines + registry present; CI/CD shows automation.",
-            "4": "Endpoints + pipelines present; registry optional.",
-            "3": "Jobs or partial pipelines only.",
-            "2": "Weak, scattered references.",
-            "1": "No evidence.",
-        },
-        return_shape_hint='{"band":1..5,"rationale":str,"flags":[]}',
-    ),
-    MetricSpec(
-        metric_id="kubeflow.ops_quality_band",
-        stem="kubeflow",
-        group="platform",
-        methodology="Grade KFP maturity (DSL components/pipelines, compiled manifests, scheduling).",
-        rubric={
-            "5": "Pipelines + compiled manifests + scheduling/automation.",
-            "4": "Pipelines + compiled manifests.",
-            "3": "Pipelines only (DSL).",
-            "2": "Minimal references.",
-            "1": "No evidence.",
-        },
-        return_shape_hint='{"band":1..5,"rationale":str,"flags":[]}',
-    ),
-    MetricSpec(
-        metric_id="cicd.policy_gates",
-        stem="automation",
-        group="cicd",
-        methodology="Grade CI/CD policy gates strength (tests, security scans, data validation, bias checks).",
-        rubric={
-            "5": "Multiple gates (tests + security + data validation/bias) enforced and scheduled.",
-            "4": "Tests plus at least one additional gate; some scheduling.",
-            "3": "Basic tests only or ad-hoc gates; little scheduling.",
-            "2": "Minimal CI/CD without gates.",
-            "1": "No CI/CD evidence.",
-        },
-        return_shape_hint='{"band":1..5,"rationale":str,"flags":[]}',
-    ),
-    MetricSpec(
-        metric_id="tracking.maturity_band",
-        stem="tracking",
-        group="tracking",
-        methodology="Grade experiment tracking maturity (tools, metrics, artifacts, coverage).",
-        rubric={
-            "5": "Rich metrics + artifacts + structured runs; references from CI/nb; multi-tool okay.",
-            "4": "Consistent metrics + artifacts; partial coverage.",
-            "3": "Metrics yes, artifacts spotty or vice versa.",
-            "2": "Sporadic/basic logging.",
-            "1": "No evidence.",
-        },
-        return_shape_hint='{"band":1..5,"rationale":str,"flags":[]}',
-    ),
-]
-
-
-def get_builtin_metric_spec(metric_id: str) -> Optional[MetricSpec]:
-    for s in BUILTIN_METRIC_SPECS:
-        if s.metric_id == metric_id:
-            return s
-    return None

@@ -1,0 +1,17 @@
+Example payload (cost attribution readiness):
+
+{
+  "metric_id": "cost_attribution_readiness_band",
+  "evidence": {
+    "tag_keys_detected": ["service","env","owner","model","endpoint_id"],
+    "missing_required": [],
+    "sample_lines": ["tags = { service = \"rec\", env = \"prod\", owner = \"ml\" }"]
+  },
+  "rubric": {
+    "5": "all required keys present and consistent",
+    "4": "most keys present",
+    "3": "some present",
+    "2": "few present",
+    "1": "none"
+  }
+}

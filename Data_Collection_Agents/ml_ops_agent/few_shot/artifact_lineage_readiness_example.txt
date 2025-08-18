@@ -1,0 +1,19 @@
+Example payload (artifact lineage & supply chain readiness):
+
+{
+  "metric_id": "artifact_lineage_readiness_band",
+  "evidence": {
+    "image_digests": ["image: repo/app@sha256:abcd..."],
+    "unpinned_images": [],
+    "sbom": ["ci/sbom.yaml"],
+    "signing": ["cosign sign ..."],
+    "k8s_probes": ["readinessProbe","livenessProbe"]
+  },
+  "rubric": {
+    "5": "images pinned by digest + signing/SBOM + probes",
+    "4": "pinned images + either signing or SBOM",
+    "3": "some pinning, missing supply-chain pieces",
+    "2": "unpinned images dominate",
+    "1": "no integrity signals"
+  }
+}

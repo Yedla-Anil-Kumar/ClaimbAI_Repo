@@ -1,0 +1,6 @@
+{
+  "metric_id": "cicd.policy_gates_band",
+  "band": 3,
+  "rationale": "Testing and security gates present (pytest, bandit, trivy) but integration, bias, and data validation are missing.",
+  "flags": ["missing_integration","missing_bias_check","missing_data_validation"]
+}

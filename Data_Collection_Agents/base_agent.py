@@ -7,7 +7,10 @@ from abc import ABC, abstractmethod
 from typing import Any, Dict, List, Optional
 from openai import OpenAI
 
+
 class BaseMicroAgent(ABC):
+    """Base for micro-agents (with retry & low variance defaults)."""
+
     def __init__(self, model: str = "gpt-4o-mini", temperature: float = 0.0, api_key: Optional[str] = None):
         self._api_key = api_key
         self._client: Optional[OpenAI] = None
@@ -33,8 +36,11 @@ class BaseMicroAgent(ABC):
             messages.append({"role": "system", "content": system_prompt})
         messages.append({"role": "user", "content": prompt})
 
-        time.sleep(random.uniform(0.03, 0.12))  # jitter for parallel calls
-        attempts, delay = 0, 0.35
+        # jitter to desync threads
+        time.sleep(random.uniform(0.03, 0.12))
+
+        attempts = 0
+        delay = 0.35
         while True:
             attempts += 1
             try:
@@ -47,8 +53,8 @@ class BaseMicroAgent(ABC):
                 return (resp.choices[0].message.content or "").strip()
             except Exception as e:
                 msg = str(e).lower()
-                if attempts < 3 and any(k in msg for k in ("429", "rate", "timeout", "gateway", "500")):
-                    time.sleep(delay*(2**(attempts-1)) + random.uniform(0.05, 0.2))
+                if attempts < 3 and any(t in msg for t in ("429", "rate", "timeout", "gateway", "500")):
+                    time.sleep(delay * (2 ** (attempts - 1)) + random.uniform(0.05, 0.2))
                     continue
                 print(f"LLM call failed: {e}")
                 return ""

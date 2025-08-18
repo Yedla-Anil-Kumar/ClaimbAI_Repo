@@ -1,0 +1,17 @@
+Example payload (monitoring coverage readiness):
+
+{
+  "metric_id": "monitoring_coverage_readiness_band",
+  "evidence": {
+    "rule_files": ["k8s/prometheus-rules.yaml"],
+    "rule_snippets": ["- alert: HighErrorRate\n  expr: rate(http_requests_total{status=~\"5..\"}[5m]) > 0.02"],
+    "alert_channels": ["slack","pagerduty"]
+  },
+  "rubric": {
+    "5": "clear prod alert rules + alert channels configured",
+    "4": "rules present with some channels",
+    "3": "basic rules only",
+    "2": "stubs only",
+    "1": "no monitoring config"
+  }
+}

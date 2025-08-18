@@ -1,0 +1,6 @@
+{
+  "metric_id": "monitoring_coverage_readiness_band",
+  "band": 5,
+  "rationale": "Meaningful alert rules and multiple alerting channels configured for production.",
+  "flags": []
+}

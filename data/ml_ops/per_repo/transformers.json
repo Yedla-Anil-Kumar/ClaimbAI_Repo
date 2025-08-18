@@ -9,7 +9,7 @@
   },
   "scores": {
     "ai_ml_capabilities": 3.64,
-    "operations_maturity": 4.55
+    "operations_maturity": 4.31
   },
   "aimri_ops_summary": {
     "platform_surface_area": {
@@ -69,43 +69,69 @@
       "total": 0,
       "sagemaker": 0,
       "azureml": 0
-    },
-    "experiments_scale": {
-      "level": 0,
-      "count": 1
     }
   },
   "grading_notes": {
-    "mlflow": {
+    "policy_gates": {
+      "metric_id": "cicd.policy_gates_band",
       "band": 2,
-      "rationale": "The evidence shows minimal MLflow usage with only one experiment and no registered models. CI/CD and serving signals are present, but overall operational maturity is limited.",
-      "flags": []
+      "rationale": "Only pytest is present, while integration, bandit, trivy, bias check, and data validation are all missing.",
+      "flags": [
+        "missing_integration",
+        "missing_bandit",
+        "missing_trivy",
+        "missing_bias_check",
+        "missing_data_validation"
+      ]
     },
-    "sagemaker": {
-      "band": 3,
-      "rationale": "The evidence shows some training jobs and pipelines, but no endpoints or registry usage, aligning with the criteria for a score of 3.",
-      "flags": []
-    },
-    "azureml": {
-      "band": 2,
-      "rationale": "The evidence shows 19 pipelines and registry usage, but no jobs or endpoints are present, indicating weak and scattered references.",
-      "flags": []
-    },
-    "kubeflow": {
+    "registry_governance": {
+      "metric_id": "registry_governance_readiness_band",
       "band": 1,
-      "rationale": "There is no evidence of using Kubeflow, no pipelines or components present, and no manifests available.",
+      "rationale": "No CODEOWNERS present, no production environment, and weak policy gates with only one test gate present.",
       "flags": []
     },
-    "cicd_policy_gates": {
+    "artifact_lineage": {
+      "metric_id": "artifact_lineage_readiness_band",
       "band": 2,
-      "rationale": "The evidence shows minimal CI/CD with only basic tests (pytest) and no additional gates or scheduling for security scans, data validation, or bias checks.",
+      "rationale": "The evidence shows that unpinned images dominate, with no SBOM or k8s probes present, indicating a weak artifact lineage and integrity posture.",
       "flags": []
     },
-    "tracking_maturity": {
+    "monitoring": {
+      "metric_id": "monitoring_coverage_readiness_band",
       "band": 4,
-      "rationale": "The evidence shows consistent use of multiple tools for tracking, with metrics and artifacts logged effectively. Coverage is complete, and the quality of run structure is high, indicating a mature tracking process.",
+      "rationale": "Multiple rule files and snippets present, along with a variety of alert channels, indicating a good level of monitoring configuration.",
+      "flags": []
+    },
+    "validation": {
+      "metric_id": "validation_artifacts_readiness_band",
+      "band": 2,
+      "rationale": "Evidence includes explainability and bias reports, but lacks validation schemas and model cards.",
+      "flags": []
+    },
+    "lineage": {
+      "metric_id": "lineage_practices_readiness_band",
+      "band": 2,
+      "rationale": "Only weak hints of lineage practices are present; no clear logging of git SHA or environment locks.",
+      "flags": []
+    },
+    "dora": {
+      "metric_id": "dora_readiness_band",
+      "band": 4,
+      "rationale": "Multiple environments with extensive concurrency controls and multiple scheduled runs, but lacking rollback strategy and health checks.",
+      "flags": []
+    },
+    "cost_attribution": {
+      "metric_id": "cost_attribution_readiness_band",
+      "band": 2,
+      "rationale": "Few required cost attribution tags are present; several key tags are missing.",
+      "flags": []
+    },
+    "slo_declared": {
+      "metric_id": "slo_declared_band",
+      "band": 1,
+      "rationale": "No SLO documentation or thresholds provided.",
       "flags": []
     }
   },
-  "mode": "repo_only_builtins"
+  "mode": "repo_only"
 }

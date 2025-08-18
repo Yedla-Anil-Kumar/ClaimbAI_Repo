@@ -1,0 +1,19 @@
+Example payload (validation & XAI readiness):
+
+{
+  "metric_id": "validation_artifacts_readiness_band",
+  "evidence": {
+    "explainability": ["shap/summary_plot.py"],
+    "bias": ["clarify/bias_report.yaml"],
+    "validation_schemas": ["validation/schema.yaml"],
+    "model_cards": ["docs/model_card.md"],
+    "data_validation_libs": ["great_expectations"]
+  },
+  "rubric": {
+    "5": "bias + explainability + validation schema + model card",
+    "4": "three of the above",
+    "3": "two of the above",
+    "2": "one present",
+    "1": "none present"
+  }
+}

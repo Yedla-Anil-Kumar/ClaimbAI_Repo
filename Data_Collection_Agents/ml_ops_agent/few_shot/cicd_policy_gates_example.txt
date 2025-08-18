@@ -1,0 +1,15 @@
+Example payload (CI/CD policy gates):
+
+{
+  "metric_id": "cicd.policy_gates_band",
+  "required_checks": ["pytest","integration-tests","bandit","trivy","bias_check","data_validation"],
+  "workflow_files": [".github/workflows/ci.yml"],
+  "workflow_yaml": ["jobs:\n  test:\n    steps:\n      - run: pytest\n  security:\n    steps:\n      - run: bandit -r .\n      - run: trivy fs .\n  deploy:\n    needs: [test, security]\n    steps:\n      - run: echo deploy"],
+  "evidence": {
+    "present_flags": {"pytest": true, "integration": false, "bandit": true, "trivy": true, "bias": false, "data_validation": false},
+    "schedules": ["on: schedule"],
+    "deploy_jobs": ["deploy"],
+    "environments": ["staging","production"]
+  },
+  "rubric": "5 if all required checks exist and run before deploy; 4 if most present; 3 if partial; 2 minimal; 1 if missing."
+}

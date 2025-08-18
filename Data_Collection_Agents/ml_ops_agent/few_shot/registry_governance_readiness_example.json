@@ -1,0 +1,6 @@
+{
+  "metric_id": "registry_governance_readiness_band",
+  "band": 5,
+  "rationale": "CODEOWNERS present, promotion to production explicit, and strong policy gates across test/security/bias/data validation.",
+  "flags": []
+}

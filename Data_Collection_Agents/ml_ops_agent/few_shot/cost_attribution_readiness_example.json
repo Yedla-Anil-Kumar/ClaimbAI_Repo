@@ -1,0 +1,6 @@
+{
+  "metric_id": "cost_attribution_readiness_band",
+  "band": 5,
+  "rationale": "All required cost attribution tags present; examples show consistent usage in IaC.",
+  "flags": []
+}

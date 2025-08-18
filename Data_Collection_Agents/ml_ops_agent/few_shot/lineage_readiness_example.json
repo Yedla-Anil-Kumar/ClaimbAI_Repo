@@ -1,0 +1,6 @@
+{
+  "metric_id": "lineage_practices_readiness_band",
+  "band": 5,
+  "rationale": "Complete lineage: code, data, and environment are captured.",
+  "flags": []
+}

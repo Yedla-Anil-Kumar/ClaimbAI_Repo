@@ -9,7 +9,7 @@
   },
   "scores": {
     "ai_ml_capabilities": 2.73,
-    "operations_maturity": 2.45
+    "operations_maturity": 1.99
   },
   "aimri_ops_summary": {
     "platform_surface_area": {
@@ -59,43 +59,70 @@
       "total": 1,
       "sagemaker": 1,
       "azureml": 0
-    },
-    "experiments_scale": {
-      "level": 0,
-      "count": 1
     }
   },
   "grading_notes": {
-    "mlflow": {
+    "policy_gates": {
+      "metric_id": "cicd.policy_gates_band",
+      "band": 1,
+      "rationale": "All required checks are missing (pytest, integration-tests, bandit, trivy, bias_check, data_validation).",
+      "flags": [
+        "missing_pytest",
+        "missing_integration-tests",
+        "missing_bandit",
+        "missing_trivy",
+        "missing_bias_check",
+        "missing_data_validation"
+      ]
+    },
+    "registry_governance": {
+      "metric_id": "registry_governance_readiness_band",
+      "band": 1,
+      "rationale": "No governance indicators present; no environments defined and all policy gates are absent.",
+      "flags": []
+    },
+    "artifact_lineage": {
+      "metric_id": "artifact_lineage_readiness_band",
+      "band": 1,
+      "rationale": "There are no pinned images, no signing, no SBOM, and only k8s probes are present, indicating a lack of integrity signals.",
+      "flags": []
+    },
+    "monitoring": {
+      "metric_id": "monitoring_coverage_readiness_band",
       "band": 2,
-      "rationale": "The evidence shows minimal usage of MLflow with only one experiment and no registered models. CI/CD and serving signals are present, but overall integration is limited.",
+      "rationale": "The evidence includes multiple rule files and snippets, but they appear to be stubs or incomplete configurations without clear production alert rules or defined alert channels.",
       "flags": []
     },
-    "sagemaker": {
+    "validation": {
+      "metric_id": "validation_artifacts_readiness_band",
+      "band": 1,
+      "rationale": "Only bias reports are present, with no explainability, validation schemas, or model cards.",
+      "flags": []
+    },
+    "lineage": {
+      "metric_id": "lineage_practices_readiness_band",
+      "band": 5,
+      "rationale": "Complete lineage: code, data, and environment are captured.",
+      "flags": []
+    },
+    "dora": {
+      "metric_id": "dora_readiness_band",
       "band": 2,
-      "rationale": "The evidence shows usage of SageMaker with one training job and one endpoint, but no pipelines or registry usage, indicating weak and scattered references.",
+      "rationale": "Evidence shows multiple concurrency entries and scheduled runs, but lacks environments, rollback strategy, and health checks.",
       "flags": []
     },
-    "azureml": {
+    "cost_attribution": {
+      "metric_id": "cost_attribution_readiness_band",
+      "band": 2,
+      "rationale": "Few required cost attribution tags are present; missing 'model' and 'endpoint_id'.",
+      "flags": []
+    },
+    "slo_declared": {
+      "metric_id": "slo_declared_band",
       "band": 1,
-      "rationale": "No evidence of using Azure ML features such as jobs, pipelines, or endpoints. The metrics indicate a complete absence of activity.",
-      "flags": []
-    },
-    "kubeflow": {
-      "band": 1,
-      "rationale": "There is no evidence of using Kubeflow, no pipelines or components present, and no manifests available.",
-      "flags": []
-    },
-    "cicd_policy_gates": {
-      "band": 1,
-      "rationale": "There is no evidence of any CI/CD policy gates being implemented, as all gates are marked false.",
-      "flags": []
-    },
-    "tracking_maturity": {
-      "band": 3,
-      "rationale": "Moderate usage of multiple tools and some artifacts logged indicate a basic level of maturity. However, the absence of logged metrics and only partial coverage prevent a higher score.",
+      "rationale": "No SLO documentation or thresholds provided.",
       "flags": []
     }
   },
-  "mode": "repo_only_builtins"
+  "mode": "repo_only"
 }

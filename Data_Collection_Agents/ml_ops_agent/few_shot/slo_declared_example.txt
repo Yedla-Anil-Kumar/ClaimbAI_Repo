@@ -1,0 +1,17 @@
+Example payload (SLO declared readiness):
+
+{
+  "metric_id": "slo_declared_band",
+  "evidence": {
+    "slo_docs": ["ops/slo.yaml"],
+    "slo_env_vars": ["AVAILABILITY_SLO: 0.995", "P95_MS_SLO: 300"],
+    "samples": ["availability: 99.5%\nlatencyP95Ms: 300\nerrorRate: 1%"]
+  },
+  "rubric": {
+    "5": "SLO docs + thresholds in env/alerts",
+    "4": "SLO docs only",
+    "3": "scattered thresholds",
+    "2": "mentions only",
+    "1": "none"
+  }
+}

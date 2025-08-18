@@ -1,0 +1,19 @@
+Example payload (DORA/devops readiness):
+
+{
+  "metric_id": "dora_readiness_band",
+  "evidence": {
+    "environments": ["dev","staging","production"],
+    "concurrency": ["concurrency"],
+    "rollback": ["rollout undo"],
+    "health_checks": ["smoke","readiness"],
+    "schedules": ["cron: '0 2 * * *'"]
+  },
+  "rubric": {
+    "5": "env promotion + concurrency + rollback + health checks + schedules",
+    "4": "envs + two of (concurrency, rollback, health checks)",
+    "3": "envs + one",
+    "2": "weak hints only",
+    "1": "none"
+  }
+}

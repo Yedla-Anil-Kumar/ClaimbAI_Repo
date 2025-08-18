@@ -1,0 +1,10 @@
+{
+  "tools": [
+    {"name": "wandb", "usage": "heavy"},
+    {"name": "tensorboard", "usage": "moderate"}
+  ],
+  "metrics_logged": true,
+  "artifacts_logged": true,
+  "runs_structure_quality": 0.8,
+  "coverage": 0.75
+}

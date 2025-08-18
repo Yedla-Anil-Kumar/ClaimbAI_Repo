@@ -1,0 +1,6 @@
+{
+  "metric_id": "artifact_lineage_readiness_band",
+  "band": 5,
+  "rationale": "Digest pinning plus SBOM, signing, and k8s probes indicate excellent artifact lineage and integrity posture.",
+  "flags": []
+}

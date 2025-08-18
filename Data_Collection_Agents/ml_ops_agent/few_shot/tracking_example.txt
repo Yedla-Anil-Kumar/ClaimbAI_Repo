@@ -1,0 +1,19 @@
+# Mixed tracking: W&B + TensorBoard + custom JSON logging and artifacts
+
+import wandb
+from torch.utils.tensorboard import SummaryWriter
+import json, os
+
+wandb.init(project="credit-risk", job_type="train", tags=["nightly", "xgb"])
+wandb.log({"auc": 0.913, "f1": 0.879})
+
+writer = SummaryWriter(log_dir="runs/credit-risk")
+writer.add_scalar("loss/train", 0.42, 1)
+
+os.makedirs("artifacts/reports", exist_ok=True)
+with open("artifacts/reports/metrics.json", "w") as f:
+    json.dump({"precision": 0.91, "recall": 0.85}, f)
+
+wandb.save("artifacts/reports/metrics.json")
+
+# CI links to run pages; notebooks reference run URLs; evaluation artifacts stored consistently

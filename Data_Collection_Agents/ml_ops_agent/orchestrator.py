@@ -7,10 +7,12 @@ from typing import Any, Dict
 from .repo_extractors import scan_repo
 from .metrics_engine import (
     mlflow_proxy_metrics, sagemaker_proxy_metrics, azureml_proxy_metrics, kubeflow_proxy_metrics,
-    tracking_proxy_metrics, automation_proxy_metrics
+    tracking_proxy_metrics, automation_proxy_metrics,
+    payload_cicd_policy_gates, payload_registry_governance_readiness, payload_artifact_lineage_readiness,
+    payload_monitoring_readiness, payload_validation_readiness, payload_lineage_practices,
+    payload_dora_readiness, payload_cost_attribution, payload_slo_declared
 )
 from .llm_graders import LLMGrader
-from .canonical import get_builtin_metric_spec
 
 def _clamp01(x: float) -> float: return max(0.0, min(1.0, float(x)))
 
@@ -37,6 +39,7 @@ def _score_ai_ml_capabilities(signals: Dict[str, Any]) -> float:
     return round(5.0 * _clamp01(raw), 2)
 
 def _score_operations_maturity(signals: Dict[str, Any]) -> float:
+    # New: include readiness bands average
     automation_quality = _clamp01(signals.get("pipeline_automation_quality", 0.0))
     scheduling = 1.0 if signals.get("pipeline_scheduling_present") else 0.0
     registry = any([
@@ -44,17 +47,29 @@ def _score_operations_maturity(signals: Dict[str, Any]) -> float:
         signals.get("azureml_registry_usage"),
         (signals.get("mlflow_registered_models_count", 0) or 0) > 0
     ])
-    ops_quality = sum(_clamp01(signals.get(k, 0.0)) for k in (
-        "mlflow_ops_quality", "sagemaker_ops_quality", "azureml_ops_quality", "kubeflow_ops_quality"
-    )) / 4.0
     pipelines_defined = _clamp01(min(1.0, (signals.get("pipeline_pipelines_defined", 0) or 0) / 3.0))
-    raw = 0.35*automation_quality + 0.2*scheduling + 0.25*(1.0 if registry else 0.0) + 0.15*ops_quality + 0.05*pipelines_defined
+
+    readiness_keys = [
+        "band_policy_gates", "band_registry_gov", "band_artifact_lineage",
+        "band_monitoring", "band_validation", "band_lineage_practices",
+        "band_dora", "band_cost_attr", "band_slo_declared",
+    ]
+    readiness_vals = [signals.get(k, 0.0) for k in readiness_keys]
+    readiness_avg = sum(readiness_vals) / len(readiness_vals) if readiness_vals else 0.0
+
+    raw = (
+        0.30 * automation_quality +
+        0.15 * scheduling +
+        0.20 * (1.0 if registry else 0.0) +
+        0.15 * pipelines_defined +
+        0.20 * readiness_avg
+    )
     return round(5.0 * _clamp01(raw), 2)
 
-def _lvl(value: float, bands=(0.25, 0.5, 0.75)) -> int:
-    if value <= bands[0]: return 0
-    if value <= bands[1]: return 1
-    if value <= bands[2]: return 2
+def _lvl(val: float, bands=(0.25, 0.5, 0.75)) -> int:
+    if val <= bands[0]: return 0
+    if val <= bands[1]: return 1
+    if val <= bands[2]: return 2
     return 3
 
 def _aimri_ops_summary(signals: Dict[str, Any]) -> Dict[str, Any]:
@@ -68,9 +83,7 @@ def _aimri_ops_summary(signals: Dict[str, Any]) -> Dict[str, Any]:
     tracking_cov = _clamp01(signals.get("tracking_coverage", 0.0))
     tracking_quality = _clamp01(signals.get("tracking_runs_quality", 0.0))
     registered_models = int(signals.get("mlflow_registered_models_count", 0) or 0)
-    has_registry = any([signals.get("sagemaker_registry_usage"),
-                        signals.get("azureml_registry_usage"),
-                        registered_models > 0])
+    has_registry = any([signals.get("sagemaker_registry_usage"), signals.get("azureml_registry_usage"), registered_models > 0])
     reg_scale = 1.0 - math.exp(-0.3 * max(0, registered_models))
     total_pipelines = int(signals.get("pipeline_pipelines_defined", 0) or 0) \
                     + int(signals.get("sagemaker_pipelines_count", 0) or 0) \
@@ -90,7 +103,7 @@ def _aimri_ops_summary(signals: Dict[str, Any]) -> Dict[str, Any]:
             "metrics_logged": bool(signals.get("tracking_metrics_logged")),
             "artifacts_logged": bool(signals.get("tracking_artifacts_logged")),
         },
-        "model_registry": {"present": has_registry, "registered_models_level": _lvl(1.0 - math.exp(-0.3 * max(0, registered_models)), (0.1,0.4,0.7)), "registered_models_count": registered_models},
+        "model_registry": {"present": has_registry, "registered_models_level": _lvl(reg_scale, (0.1,0.4,0.7)), "registered_models_count": registered_models},
         "pipeline_automation": {
             "orchestrators": signals.get("pipeline_orchestrators", []),
             "automation_level": _lvl(_clamp01(signals.get("pipeline_automation_quality",0.0))),
@@ -105,45 +118,28 @@ def _aimri_ops_summary(signals: Dict[str, Any]) -> Dict[str, Any]:
             "sagemaker": int(signals.get("sagemaker_endpoints_count",0) or 0),
             "azureml": int(signals.get("azureml_endpoints_count",0) or 0)
         },
-        "experiments_scale": {
-            "level": _lvl(1.0 - math.exp(-0.25 * max(0, int(signals.get("mlflow_experiments_count",0) or 0)))),
-            "count": int(signals.get("mlflow_experiments_count",0) or 0),
-        },
     }
 
-
 class MLOpsOrchestrator:
-    """
-    Repo-only pipeline (no CSV I/O):
-      Extract → Proxy metrics → One-shot LLM grading (with built-in rubrics) → Scores
-    """
+    """Repo-only pipeline: Extract → Metrics/Proxies → One-shot LLM grading → Scores."""
     def __init__(self, model: str = "gpt-4o-mini", temperature: float = 0.0, max_tokens: int = 512):
         self.model = model
         self.temperature = temperature
         self.max_tokens = max_tokens
         self.grader = LLMGrader(model=model, temperature=temperature, max_tokens=max_tokens)
 
-    def _grade_with_spec(self, spec_id: str, payload_metrics: Dict[str, Any], stem_override: str | None = None) -> Dict[str, Any]:
-        spec = get_builtin_metric_spec(spec_id)
-        if not spec:
-            return {"band": 3, "rationale": f"Spec {spec_id} not found.", "flags": ["missing_spec"]}
-
-        payload = {
-            "metric_id": spec.metric_id,
-            "methodology": spec.methodology,
-            "return_shape_hint": spec.return_shape_hint,
-            "metrics": payload_metrics,
-            "rubric": spec.rubric,
-        }
-        return self.grader.grade(stem_override or spec.stem, payload, max_tokens=self.max_tokens)
+    @staticmethod
+    def _band01(band: int) -> float:
+        # convert 1..5 to 0..1
+        return max(0.0, min(1.0, (band - 1) / 4.0))
 
     def analyze_repo(self, repo_path: str) -> Dict[str, Any]:
         root = Path(repo_path)
 
-        # 1) Extract raw signals
+        # 1) Extract deterministic evidence
         ev = scan_repo(repo_path)
 
-        # 2) Deterministic proxies
+        # 2) Deterministic platform/tracking/automation proxies
         mlflow_m = mlflow_proxy_metrics(ev)
         sm_m     = sagemaker_proxy_metrics(ev)
         aml_m    = azureml_proxy_metrics(ev)
@@ -151,73 +147,71 @@ class MLOpsOrchestrator:
         trk_m    = tracking_proxy_metrics(ev)
         auto_m   = automation_proxy_metrics(ev)
 
-        # 3) One-shot grading (built-in rubrics; no CSV)
-        mlflow_grade = self._grade_with_spec(
-            "mlflow.ops_quality_band",
-            {**mlflow_m,
-             "tools": [t["name"] for t in trk_m["tools"]],
-             "registry_signals": mlflow_m["registered_models_count"] > 0,
-             "ci_cd": bool(auto_m["orchestrators"]),
-             "serving_signals": bool(ev.serving_signals)}
-        )
-        sm_grade = self._grade_with_spec("sagemaker.ops_quality_band", sm_m)
-        aml_grade = self._grade_with_spec("azureml.ops_quality_band", aml_m)
-        kfp_grade = self._grade_with_spec("kubeflow.ops_quality_band", kfp_m)
-        cicd_grade = self._grade_with_spec(
-            "cicd.policy_gates",
-            {"workflows": auto_m["orchestrators"], "scheduling": auto_m["scheduling_present"], "policy_gates": ev.cicd_policy_gates}
-        )
-        tracking_grade = self._grade_with_spec(
-            "tracking.maturity_band",
-            trk_m | {"tools_flat": [t["name"] for t in trk_m["tools"]]}
-        )
+        # 3) One-shot LLM grading for readiness
+        g = self.grader
+        gkw = dict(max_tokens=self.max_tokens)
 
-        # 4) Merge signals → scoring
+        policy = g.grade("cicd_policy_gates", payload_cicd_policy_gates(ev), **gkw)
+        reggov = g.grade("registry_governance_readiness", payload_registry_governance_readiness(ev), **gkw)
+        artlin = g.grade("artifact_lineage_readiness", payload_artifact_lineage_readiness(ev), **gkw)
+        mon    = g.grade("monitoring_readiness", payload_monitoring_readiness(ev), **gkw)
+        valid  = g.grade("validation_readiness", payload_validation_readiness(ev), **gkw)
+        lineag = g.grade("lineage_readiness", payload_lineage_practices(ev), **gkw)
+        dora   = g.grade("dora_readiness", payload_dora_readiness(ev), **gkw)
+        cost   = g.grade("cost_attribution_readiness", payload_cost_attribution(ev), **gkw)
+        slo    = g.grade("slo_declared", payload_slo_declared(ev), **gkw)
+
+        # 4) Merge signals → scores
         signals: Dict[str, Any] = {
-            # Platforms
+            # platform presence
             "uses_mlflow": mlflow_m["uses_mlflow"],
             "uses_sagemaker": sm_m["uses_sagemaker"],
             "uses_azureml": aml_m["uses_azureml"],
             "uses_kubeflow": kfp_m["uses_kubeflow"],
 
-            # MLflow specifics
+            # mlflow details
             "mlflow_tracking_endpoints": mlflow_m["tracking_endpoints"],
             "mlflow_experiments_count": mlflow_m["experiments_count"],
             "mlflow_registered_models_count": mlflow_m["registered_models_count"],
-            "mlflow_ops_quality": mlflow_grade["band"] / 5.0,
 
-            # SageMaker specifics
+            # sagemaker details
             "sagemaker_training_jobs_count": sm_m["training_jobs_count"],
             "sagemaker_endpoints_count": sm_m["endpoints_count"],
             "sagemaker_pipelines_count": sm_m["pipelines_count"],
             "sagemaker_registry_usage": sm_m["registry_usage"],
-            "sagemaker_ops_quality": sm_grade["band"] / 5.0,
 
-            # AzureML specifics
+            # azureml details
             "azureml_jobs_count": aml_m["jobs_count"],
             "azureml_endpoints_count": aml_m["endpoints_count"],
             "azureml_pipelines_count": aml_m["pipelines_count"],
             "azureml_registry_usage": aml_m["registry_usage"],
-            "azureml_ops_quality": aml_grade["band"] / 5.0,
 
-            # Kubeflow specifics
+            # kubeflow details
             "kubeflow_pipelines_count": kfp_m["pipelines_count"],
             "kubeflow_components_count": kfp_m["components_count"],
             "kubeflow_manifests_present": kfp_m["manifests_present"],
-            "kubeflow_ops_quality": kfp_grade["band"] / 5.0,
 
-            # Tracking (deterministic proxies also surfaced)
+            # tracking & automation (deterministic)
             "tracking_tools": trk_m["tools"],
             "tracking_metrics_logged": trk_m["metrics_logged"],
             "tracking_artifacts_logged": trk_m["artifacts_logged"],
             "tracking_runs_quality": trk_m["runs_structure_quality"],
             "tracking_coverage": trk_m["coverage"],
-
-            # Automation
             "pipeline_orchestrators": auto_m["orchestrators"],
             "pipeline_pipelines_defined": auto_m["pipelines_defined"],
             "pipeline_scheduling_present": auto_m["scheduling_present"],
             "pipeline_automation_quality": auto_m["automation_quality"],
+
+            # readiness bands (normalized 0..1 for scoring)
+            "band_policy_gates":        self._band01(policy["band"]),
+            "band_registry_gov":        self._band01(reggov["band"]),
+            "band_artifact_lineage":    self._band01(artlin["band"]),
+            "band_monitoring":          self._band01(mon["band"]),
+            "band_validation":          self._band01(valid["band"]),
+            "band_lineage_practices":   self._band01(lineag["band"]),
+            "band_dora":                self._band01(dora["band"]),
+            "band_cost_attr":           self._band01(cost["band"]),
+            "band_slo_declared":        self._band01(slo["band"]),
         }
 
         scores = {
@@ -237,12 +231,15 @@ class MLOpsOrchestrator:
             "scores": scores,
             "aimri_ops_summary": _aimri_ops_summary(signals),
             "grading_notes": {
-                "mlflow": mlflow_grade,
-                "sagemaker": sm_grade,
-                "azureml": aml_grade,
-                "kubeflow": kfp_grade,
-                "cicd_policy_gates": cicd_grade,
-                "tracking_maturity": tracking_grade,
+                "policy_gates": policy,
+                "registry_governance": reggov,
+                "artifact_lineage": artlin,
+                "monitoring": mon,
+                "validation": valid,
+                "lineage": lineag,
+                "dora": dora,
+                "cost_attribution": cost,
+                "slo_declared": slo,
             },
-            "mode": "repo_only_builtins",
+            "mode": "repo_only",
         }

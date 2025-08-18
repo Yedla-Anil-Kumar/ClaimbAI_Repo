@@ -1,0 +1,6 @@
+{
+  "metric_id": "dora_readiness_band",
+  "band": 5,
+  "rationale": "Multiple environments with concurrency controls, rollback strategy, health checks, and scheduled runs.",
+  "flags": []
+}

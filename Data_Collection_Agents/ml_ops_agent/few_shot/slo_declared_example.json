@@ -1,0 +1,6 @@
+{
+  "metric_id": "slo_declared_band",
+  "band": 5,
+  "rationale": "Formal SLO doc plus explicit thresholds in configuration.",
+  "flags": []
+}
