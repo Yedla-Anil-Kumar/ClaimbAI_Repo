@@ -6,7 +6,6 @@ psycopg2-binary
 redis
 kafka-python
 pyyaml
-gitpython
 openai
 langchain
 weaviate-client
