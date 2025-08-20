@@ -1,0 +1,601 @@
+[
+  {
+    "agent": "bi_tracker",
+    "repo": "ds-component-pipeline",
+    "platforms": {
+      "tableau": false,
+      "powerbi": false,
+      "looker": false
+    },
+    "scores": {
+      "business_integration": 0.0,
+      "decision_making": 0.0
+    },
+    "bi_summary": {
+      "asset_footprint": {
+        "tableau": 0,
+        "powerbi": 0,
+        "looker": 0
+      },
+      "deploy_automation": {
+        "present": true,
+        "workflows": [
+          "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Gitlab_repos/ds-component-pipeline/.gitlab-ci.yml"
+        ],
+        "commands": [],
+        "schedules": []
+      },
+      "refresh_scheduling": {
+        "present": false,
+        "quality_tools": [],
+        "validation_schemas": []
+      },
+      "kpi_semantic": {
+        "kpi_catalogs": [],
+        "lookml_measures": 0,
+        "dbt_metrics_files": []
+      },
+      "docs_governance": {
+        "readmes": [],
+        "codeowners": false,
+        "review_gates": false
+      },
+      "access_privacy": {
+        "role_maps": [],
+        "pii_tags": [],
+        "privacy_docs": []
+      }
+    },
+    "grading_notes": {
+      "bi_deploy_readiness": {
+        "metric_id": "bi.deploy_readiness_band",
+        "band": 1,
+        "rationale": "There is no deployment automation evidence as the deploy_commands and schedules are empty, and there are no review gates present.",
+        "flags": []
+      },
+      "bi_data_freshness_practices": {
+        "metric_id": "bi.data_freshness_practices_band",
+        "band": 1,
+        "rationale": "There is no refresh scheduling as indicated by the absence of schedules and the 'has_schedule' flag being false.",
+        "flags": []
+      },
+      "bi_kpi_semantic_quality": {
+        "metric_id": "bi.kpi_semantic_quality_band",
+        "band": 1,
+        "rationale": "There is no evidence of KPI catalogs, LookML measures, or dbt metrics files, indicating a lack of any KPI/semantic layer evidence.",
+        "flags": []
+      },
+      "bi_docs_governance": {
+        "metric_id": "bi.docs_governance_band",
+        "band": 1,
+        "rationale": "There are no documentation or governance elements present, as indicated by the absence of dashboard READMEs, ownership lines, and the lack of CODEOWNERS.",
+        "flags": []
+      },
+      "bi_access_privacy_readiness": {
+        "metric_id": "bi.access_privacy_readiness_band",
+        "band": 1,
+        "rationale": "None of the required elements (role maps, PII tags, privacy docs) are present.",
+        "flags": []
+      }
+    },
+    "mode": "repo_only"
+  },
+  {
+    "agent": "bi_tracker",
+    "repo": "shrimp-data-analysis-dw-iam",
+    "platforms": {
+      "tableau": false,
+      "powerbi": false,
+      "looker": false
+    },
+    "scores": {
+      "business_integration": 0.0,
+      "decision_making": 0.0
+    },
+    "bi_summary": {
+      "asset_footprint": {
+        "tableau": 0,
+        "powerbi": 0,
+        "looker": 0
+      },
+      "deploy_automation": {
+        "present": false,
+        "workflows": [],
+        "commands": [],
+        "schedules": []
+      },
+      "refresh_scheduling": {
+        "present": false,
+        "quality_tools": [],
+        "validation_schemas": []
+      },
+      "kpi_semantic": {
+        "kpi_catalogs": [],
+        "lookml_measures": 0,
+        "dbt_metrics_files": []
+      },
+      "docs_governance": {
+        "readmes": [],
+        "codeowners": false,
+        "review_gates": false
+      },
+      "access_privacy": {
+        "role_maps": [],
+        "pii_tags": [],
+        "privacy_docs": []
+      }
+    },
+    "grading_notes": {
+      "bi_deploy_readiness": {
+        "metric_id": "bi.deploy_readiness_band",
+        "band": 1,
+        "rationale": "There is no deployment automation evidence present, as indicated by the absence of workflow files, deploy commands, schedules, and the lack of codeowners or required reviewers.",
+        "flags": []
+      },
+      "bi_data_freshness_practices": {
+        "metric_id": "bi.data_freshness_practices_band",
+        "band": 1,
+        "rationale": "There is no refresh scheduling as indicated by the absence of schedules and the 'has_schedule' flag being false.",
+        "flags": []
+      },
+      "bi_kpi_semantic_quality": {
+        "metric_id": "bi.kpi_semantic_quality_band",
+        "band": 1,
+        "rationale": "There is no evidence of KPI catalogs, LookML measures, or dbt metrics files, indicating a lack of any KPI or semantic layer evidence.",
+        "flags": []
+      },
+      "bi_docs_governance": {
+        "metric_id": "bi.docs_governance_band",
+        "band": 1,
+        "rationale": "There are no documentation or governance elements present, as indicated by the absence of dashboard READMEs, ownership lines, and the lack of CODEOWNERS or review gates.",
+        "flags": []
+      },
+      "bi_access_privacy_readiness": {
+        "metric_id": "bi.access_privacy_readiness_band",
+        "band": 1,
+        "rationale": "None of the required elements (role maps, PII tags, privacy docs) are present.",
+        "flags": []
+      }
+    },
+    "mode": "repo_only"
+  },
+  {
+    "agent": "bi_tracker",
+    "repo": "ds-salary-prediction",
+    "platforms": {
+      "tableau": false,
+      "powerbi": false,
+      "looker": false
+    },
+    "scores": {
+      "business_integration": 0.0,
+      "decision_making": 0.0
+    },
+    "bi_summary": {
+      "asset_footprint": {
+        "tableau": 0,
+        "powerbi": 0,
+        "looker": 0
+      },
+      "deploy_automation": {
+        "present": true,
+        "workflows": [
+          "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Gitlab_repos/ds-salary-prediction/.gitlab-ci.yml"
+        ],
+        "commands": [],
+        "schedules": []
+      },
+      "refresh_scheduling": {
+        "present": false,
+        "quality_tools": [],
+        "validation_schemas": []
+      },
+      "kpi_semantic": {
+        "kpi_catalogs": [],
+        "lookml_measures": 0,
+        "dbt_metrics_files": []
+      },
+      "docs_governance": {
+        "readmes": [],
+        "codeowners": false,
+        "review_gates": false
+      },
+      "access_privacy": {
+        "role_maps": [],
+        "pii_tags": [],
+        "privacy_docs": []
+      }
+    },
+    "grading_notes": {
+      "bi_deploy_readiness": {
+        "metric_id": "bi.deploy_readiness_band",
+        "band": 1,
+        "rationale": "There is no deployment automation evidence as the deploy_commands and schedules are empty, and there are no review gates present.",
+        "flags": []
+      },
+      "bi_data_freshness_practices": {
+        "metric_id": "bi.data_freshness_practices_band",
+        "band": 1,
+        "rationale": "There is no refresh scheduling as indicated by the absence of schedules and the 'has_schedule' flag being false.",
+        "flags": []
+      },
+      "bi_kpi_semantic_quality": {
+        "metric_id": "bi.kpi_semantic_quality_band",
+        "band": 1,
+        "rationale": "There is no evidence of KPI catalogs, LookML measures, or dbt metrics files, indicating a lack of any KPI or semantic layer evidence.",
+        "flags": []
+      },
+      "bi_docs_governance": {
+        "metric_id": "bi.docs_governance_band",
+        "band": 1,
+        "rationale": "There are no documentation or governance elements present, as indicated by the absence of dashboard READMEs, ownership lines, and the lack of CODEOWNERS.",
+        "flags": []
+      },
+      "bi_access_privacy_readiness": {
+        "metric_id": "bi.access_privacy_readiness_band",
+        "band": 1,
+        "rationale": "None of the required elements (role maps, PII tags, privacy docs) are present.",
+        "flags": []
+      }
+    },
+    "mode": "repo_only"
+  },
+  {
+    "agent": "bi_tracker",
+    "repo": "AI-Resume-Analyzer",
+    "platforms": {
+      "tableau": false,
+      "powerbi": false,
+      "looker": false
+    },
+    "scores": {
+      "business_integration": 0.0,
+      "decision_making": 0.0
+    },
+    "bi_summary": {
+      "asset_footprint": {
+        "tableau": 0,
+        "powerbi": 0,
+        "looker": 0
+      },
+      "deploy_automation": {
+        "present": false,
+        "workflows": [],
+        "commands": [],
+        "schedules": []
+      },
+      "refresh_scheduling": {
+        "present": false,
+        "quality_tools": [],
+        "validation_schemas": []
+      },
+      "kpi_semantic": {
+        "kpi_catalogs": [],
+        "lookml_measures": 0,
+        "dbt_metrics_files": []
+      },
+      "docs_governance": {
+        "readmes": [],
+        "codeowners": false,
+        "review_gates": false
+      },
+      "access_privacy": {
+        "role_maps": [],
+        "pii_tags": [],
+        "privacy_docs": []
+      }
+    },
+    "grading_notes": {
+      "bi_deploy_readiness": {
+        "metric_id": "bi.deploy_readiness_band",
+        "band": 1,
+        "rationale": "No deployment automation evidence.",
+        "flags": []
+      },
+      "bi_data_freshness_practices": {
+        "metric_id": "bi.data_freshness_practices_band",
+        "band": 1,
+        "rationale": "There is no refresh scheduling as indicated by the absence of schedules and the 'has_schedule' flag being false.",
+        "flags": []
+      },
+      "bi_kpi_semantic_quality": {
+        "metric_id": "bi.kpi_semantic_quality_band",
+        "band": 1,
+        "rationale": "There is no evidence of KPI catalogs, LookML measures, or dbt metrics files, indicating a lack of any KPI or semantic layer evidence.",
+        "flags": []
+      },
+      "bi_docs_governance": {
+        "metric_id": "bi.docs_governance_band",
+        "band": 1,
+        "rationale": "There are no dashboard READMEs, limited ownership lines, and no CODEOWNERS or review gates present, indicating a lack of documentation.",
+        "flags": []
+      },
+      "bi_access_privacy_readiness": {
+        "metric_id": "bi.access_privacy_readiness_band",
+        "band": 1,
+        "rationale": "None of the required elements (role maps, PII tags, privacy docs) are present.",
+        "flags": []
+      }
+    },
+    "mode": "repo_only"
+  },
+  {
+    "agent": "bi_tracker",
+    "repo": "flyte",
+    "platforms": {
+      "tableau": false,
+      "powerbi": false,
+      "looker": false
+    },
+    "scores": {
+      "business_integration": 3.5,
+      "decision_making": 2.06
+    },
+    "bi_summary": {
+      "asset_footprint": {
+        "tableau": 0,
+        "powerbi": 0,
+        "looker": 0
+      },
+      "deploy_automation": {
+        "present": true,
+        "workflows": [
+          "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/.github/workflows/publish.yml",
+          "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/.github/workflows/update_site.yml",
+          "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/.github/workflows/single-binary.yml",
+          "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/.github/workflows/lint.yml",
+          "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/.github/workflows/create_release.yml"
+        ],
+        "commands": [],
+        "schedules": [
+          "cron: \"0 0 * * *\"",
+          "cron: '0 12 * * 1'",
+          "on:\n  schedule"
+        ]
+      },
+      "refresh_scheduling": {
+        "present": true,
+        "quality_tools": [
+          "pandera"
+        ],
+        "validation_schemas": []
+      },
+      "kpi_semantic": {
+        "kpi_catalogs": [],
+        "lookml_measures": 0,
+        "dbt_metrics_files": [
+          "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/charts/flyte-core/values.yaml",
+          "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/charts/flyte-core/templates/propeller/webhook-hpa.yaml",
+          "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/deployment/sandbox/flyte_helm_generated.yaml"
+        ]
+      },
+      "docs_governance": {
+        "readmes": [],
+        "codeowners": true,
+        "review_gates": false
+      },
+      "access_privacy": {
+        "role_maps": [],
+        "pii_tags": [
+          "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/charts/flyte/README.md",
+          "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/charts/flyte/values.yaml",
+          "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/charts/flyte-core/README.md",
+          "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/charts/flyte-core/values.yaml",
+          "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/charts/flyte-core/values-keycloak-idp-flyteclients-without-browser.yaml",
+          "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/charts/flyte-core/values-sandbox.yaml",
+          "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/charts/flyteconnector/README.md",
+          "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/charts/flyteconnector/values.yaml"
+        ],
+        "privacy_docs": []
+      }
+    },
+    "grading_notes": {
+      "bi_deploy_readiness": {
+        "metric_id": "bi.deploy_readiness_band",
+        "band": 4,
+        "rationale": "The evidence shows automated deployment workflows and schedules are present, along with a CODEOWNERS file indicating some level of review gate. However, there are no specific reviewer requirements indicated.",
+        "flags": []
+      },
+      "bi_data_freshness_practices": {
+        "metric_id": "bi.data_freshness_practices_band",
+        "band": 4,
+        "rationale": "The evidence includes schedules and some quality tools (Pandera and dbt tests), but lacks validation schemas.",
+        "flags": []
+      },
+      "bi_kpi_semantic_quality": {
+        "metric_id": "bi.kpi_semantic_quality_band",
+        "band": 1,
+        "rationale": "There is no KPI catalog or any semantic layer evidence provided. The evidence includes dbt metrics files, but they do not constitute substantial KPI or semantic layer definitions.",
+        "flags": []
+      },
+      "bi_docs_governance": {
+        "metric_id": "bi.docs_governance_band",
+        "band": 4,
+        "rationale": "The evidence includes ownership lines and the presence of CODEOWNERS, but lacks a review gate.",
+        "flags": []
+      },
+      "bi_access_privacy_readiness": {
+        "metric_id": "bi.access_privacy_readiness_band",
+        "band": 3,
+        "rationale": "Only PII tags are present, while role maps and privacy documents are absent.",
+        "flags": []
+      }
+    },
+    "mode": "repo_only"
+  },
+  {
+    "agent": "bi_tracker",
+    "repo": "transformers",
+    "platforms": {
+      "tableau": false,
+      "powerbi": false,
+      "looker": false
+    },
+    "scores": {
+      "business_integration": 2.69,
+      "decision_making": 1.38
+    },
+    "bi_summary": {
+      "asset_footprint": {
+        "tableau": 0,
+        "powerbi": 0,
+        "looker": 0
+      },
+      "deploy_automation": {
+        "present": true,
+        "workflows": [
+          "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/transformers/.github/workflows/self-push-amd.yml",
+          "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/transformers/.github/workflows/self-push-amd-mi300-caller.yml",
+          "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/transformers/.github/workflows/self-push-amd-mi250-caller.yml",
+          "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/transformers/.github/workflows/pr-style-bot.yml",
+          "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/transformers/.github/workflows/model_jobs_intel_gaudi.yml"
+        ],
+        "commands": [],
+        "schedules": [
+          "cron: \"0 2 * * *\"",
+          "cron: \"0 8 * * *\"",
+          "cron: \"17 0 * * *\""
+        ]
+      },
+      "refresh_scheduling": {
+        "present": true,
+        "quality_tools": [],
+        "validation_schemas": []
+      },
+      "kpi_semantic": {
+        "kpi_catalogs": [],
+        "lookml_measures": 0,
+        "dbt_metrics_files": [
+          "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/transformers/examples/metrics-monitoring/tempo.yaml"
+        ]
+      },
+      "docs_governance": {
+        "readmes": [],
+        "codeowners": false,
+        "review_gates": false
+      },
+      "access_privacy": {
+        "role_maps": [],
+        "pii_tags": [
+          "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/transformers/tests/models/bigbird_pegasus/test_modeling_bigbird_pegasus.py",
+          "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/transformers/tests/models/led/test_modeling_led.py",
+          "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/transformers/docs/source/en/tasks/prompting.md",
+          "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/transformers/docs/source/en/model_doc/gpt_bigcode.md"
+        ],
+        "privacy_docs": []
+      }
+    },
+    "grading_notes": {
+      "bi_deploy_readiness": {
+        "metric_id": "bi.deploy_readiness_band",
+        "band": 4,
+        "rationale": "Automated deploy is present and scheduled, but there are no review gates (CODEOWNERS or required review).",
+        "flags": []
+      },
+      "bi_data_freshness_practices": {
+        "metric_id": "bi.data_freshness_practices_band",
+        "band": 3,
+        "rationale": "The evidence includes multiple schedules for data freshness, but lacks any quality tools or validation schemas.",
+        "flags": []
+      },
+      "bi_kpi_semantic_quality": {
+        "metric_id": "bi.kpi_semantic_quality_band",
+        "band": 1,
+        "rationale": "There is no KPI catalog or LookML measures, and the evidence only includes a single dbt metrics file without substantial definitions.",
+        "flags": []
+      },
+      "bi_docs_governance": {
+        "metric_id": "bi.docs_governance_band",
+        "band": 3,
+        "rationale": "The evidence includes ownership lines but lacks CODEOWNERS and review gates, indicating limited ownership and gates.",
+        "flags": []
+      },
+      "bi_access_privacy_readiness": {
+        "metric_id": "bi.access_privacy_readiness_band",
+        "band": 2,
+        "rationale": "There are PII tags present, but no role maps or privacy documents, indicating weak hints of privacy readiness.",
+        "flags": []
+      }
+    },
+    "mode": "repo_only"
+  },
+  {
+    "agent": "bi_tracker",
+    "repo": "handson-ml2",
+    "platforms": {
+      "tableau": false,
+      "powerbi": false,
+      "looker": false
+    },
+    "scores": {
+      "business_integration": 0.0,
+      "decision_making": 0.0
+    },
+    "bi_summary": {
+      "asset_footprint": {
+        "tableau": 0,
+        "powerbi": 0,
+        "looker": 0
+      },
+      "deploy_automation": {
+        "present": false,
+        "workflows": [],
+        "commands": [],
+        "schedules": []
+      },
+      "refresh_scheduling": {
+        "present": false,
+        "quality_tools": [],
+        "validation_schemas": []
+      },
+      "kpi_semantic": {
+        "kpi_catalogs": [],
+        "lookml_measures": 0,
+        "dbt_metrics_files": []
+      },
+      "docs_governance": {
+        "readmes": [],
+        "codeowners": false,
+        "review_gates": false
+      },
+      "access_privacy": {
+        "role_maps": [],
+        "pii_tags": [],
+        "privacy_docs": []
+      }
+    },
+    "grading_notes": {
+      "bi_deploy_readiness": {
+        "metric_id": "bi.deploy_readiness_band",
+        "band": 1,
+        "rationale": "There is no deployment automation evidence present, as indicated by the absence of workflow files, deploy commands, schedules, and the lack of codeowners or required reviewers.",
+        "flags": []
+      },
+      "bi_data_freshness_practices": {
+        "metric_id": "bi.data_freshness_practices_band",
+        "band": 1,
+        "rationale": "There is no refresh scheduling as indicated by the absence of schedules and the 'has_schedule' flag being false.",
+        "flags": []
+      },
+      "bi_kpi_semantic_quality": {
+        "metric_id": "bi.kpi_semantic_quality_band",
+        "band": 1,
+        "rationale": "There is no evidence of KPI catalogs, LookML measures, or dbt metrics files, indicating a lack of any KPI or semantic layer evidence.",
+        "flags": []
+      },
+      "bi_docs_governance": {
+        "metric_id": "bi.docs_governance_band",
+        "band": 1,
+        "rationale": "There are no documentation or governance elements present, as indicated by the absence of dashboard READMEs, ownership lines, and the lack of a CODEOWNERS file.",
+        "flags": []
+      },
+      "bi_access_privacy_readiness": {
+        "metric_id": "bi.access_privacy_readiness_band",
+        "band": 1,
+        "rationale": "None of the required elements (role maps, PII tags, privacy docs) are present.",
+        "flags": []
+      }
+    },
+    "mode": "repo_only"
+  }
+]

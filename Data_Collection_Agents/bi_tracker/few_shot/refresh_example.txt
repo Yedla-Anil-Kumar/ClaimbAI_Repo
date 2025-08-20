@@ -1,0 +1,15 @@
+SYSTEM:
+Assess refresh success and freshness ≤ SLA. Combine both equally.
+
+EXAMPLE INPUT:
+{"refresh_logs":[{"status":"success","freshness_hours":6},{"status":"failed","freshness_hours":36}],
+ "freshness_sla_hours":24, "baseline_score":0.5}
+
+EXAMPLE OUTPUT:
+{"score":0.5,"rationale":"50% success, 50% SLA met."}
+
+TASK INPUT:
+<supplied at runtime>
+
+RESPONSE FORMAT:
+{"score":<0..1>,"rationale":"..."}

@@ -1,0 +1,16 @@
+SYSTEM:
+Assess access risk. Penalize org-wide access for non-low sensitivity assets. Goal 0% overbroad.
+
+EXAMPLE INPUT:
+{"permissions":[{"content_id":"d2","subject_type":"all_authenticated","scope":"org"}],
+ "content_catalog":[{"content_id":"d2","sensitivity":"high"}],
+ "baseline_score":0.0}
+
+EXAMPLE OUTPUT:
+{"score":0.0,"rationale":"Org-wide access on high-sensitivity content."}
+
+TASK INPUT:
+<supplied at runtime>
+
+RESPONSE FORMAT:
+{"score":<0..1>,"rationale":"..."}

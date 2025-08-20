@@ -1,0 +1,96 @@
+{
+  "agent": "bi_tracker",
+  "repo": "transformers",
+  "platforms": {
+    "tableau": false,
+    "powerbi": false,
+    "looker": false
+  },
+  "scores": {
+    "business_integration": 2.69,
+    "decision_making": 1.38
+  },
+  "bi_summary": {
+    "asset_footprint": {
+      "tableau": 0,
+      "powerbi": 0,
+      "looker": 0
+    },
+    "deploy_automation": {
+      "present": true,
+      "workflows": [
+        "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/transformers/.github/workflows/self-push-amd.yml",
+        "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/transformers/.github/workflows/self-push-amd-mi300-caller.yml",
+        "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/transformers/.github/workflows/self-push-amd-mi250-caller.yml",
+        "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/transformers/.github/workflows/pr-style-bot.yml",
+        "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/transformers/.github/workflows/model_jobs_intel_gaudi.yml"
+      ],
+      "commands": [],
+      "schedules": [
+        "cron: \"0 2 * * *\"",
+        "cron: \"0 8 * * *\"",
+        "cron: \"17 0 * * *\""
+      ]
+    },
+    "refresh_scheduling": {
+      "present": true,
+      "quality_tools": [],
+      "validation_schemas": []
+    },
+    "kpi_semantic": {
+      "kpi_catalogs": [],
+      "lookml_measures": 0,
+      "dbt_metrics_files": [
+        "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/transformers/examples/metrics-monitoring/tempo.yaml"
+      ]
+    },
+    "docs_governance": {
+      "readmes": [],
+      "codeowners": false,
+      "review_gates": false
+    },
+    "access_privacy": {
+      "role_maps": [],
+      "pii_tags": [
+        "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/transformers/tests/models/bigbird_pegasus/test_modeling_bigbird_pegasus.py",
+        "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/transformers/tests/models/led/test_modeling_led.py",
+        "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/transformers/docs/source/en/tasks/prompting.md",
+        "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/transformers/docs/source/en/model_doc/gpt_bigcode.md"
+      ],
+      "privacy_docs": []
+    }
+  },
+  "grading_notes": {
+    "bi_deploy_readiness": {
+      "metric_id": "bi.deploy_readiness_band",
+      "band": 4,
+      "rationale": "Automated deploy is present and scheduled, but there are no review gates (CODEOWNERS or required review).",
+      "flags": []
+    },
+    "bi_data_freshness_practices": {
+      "metric_id": "bi.data_freshness_practices_band",
+      "band": 3,
+      "rationale": "The evidence includes multiple schedules for data freshness, but lacks any quality tools or validation schemas.",
+      "flags": []
+    },
+    "bi_kpi_semantic_quality": {
+      "metric_id": "bi.kpi_semantic_quality_band",
+      "band": 1,
+      "rationale": "There is no KPI catalog or LookML measures, and the evidence only includes a single dbt metrics file without substantial definitions.",
+      "flags": []
+    },
+    "bi_docs_governance": {
+      "metric_id": "bi.docs_governance_band",
+      "band": 3,
+      "rationale": "The evidence includes ownership lines but lacks CODEOWNERS and review gates, indicating limited ownership and gates.",
+      "flags": []
+    },
+    "bi_access_privacy_readiness": {
+      "metric_id": "bi.access_privacy_readiness_band",
+      "band": 2,
+      "rationale": "There are PII tags present, but no role maps or privacy documents, indicating weak hints of privacy readiness.",
+      "flags": []
+    }
+  },
+  "mode": "repo_only"
+}

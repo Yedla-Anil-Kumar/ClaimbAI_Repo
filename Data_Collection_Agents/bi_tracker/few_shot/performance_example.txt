@@ -1,0 +1,15 @@
+SYSTEM:
+Assess performance. Target p95 ≤ 2000ms and cache hit ≥ 0.60.
+
+EXAMPLE INPUT:
+{"performance_logs":[{"latency_ms":700,"cache_hit":true},{"latency_ms":2300,"cache_hit":false}],
+ "baseline_score":0.859}
+
+EXAMPLE OUTPUT:
+{"score":0.859,"rationale":"p95 ~2300ms (above target), cache 0.50 (below). Acceptable but not top-tier."}
+
+TASK INPUT:
+<supplied at runtime>
+
+RESPONSE FORMAT:
+{"score":<0..1>,"rationale":"..."}

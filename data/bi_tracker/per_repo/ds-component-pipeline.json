@@ -1,0 +1,81 @@
+{
+  "agent": "bi_tracker",
+  "repo": "ds-component-pipeline",
+  "platforms": {
+    "tableau": false,
+    "powerbi": false,
+    "looker": false
+  },
+  "scores": {
+    "business_integration": 0.0,
+    "decision_making": 0.0
+  },
+  "bi_summary": {
+    "asset_footprint": {
+      "tableau": 0,
+      "powerbi": 0,
+      "looker": 0
+    },
+    "deploy_automation": {
+      "present": true,
+      "workflows": [
+        "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Gitlab_repos/ds-component-pipeline/.gitlab-ci.yml"
+      ],
+      "commands": [],
+      "schedules": []
+    },
+    "refresh_scheduling": {
+      "present": false,
+      "quality_tools": [],
+      "validation_schemas": []
+    },
+    "kpi_semantic": {
+      "kpi_catalogs": [],
+      "lookml_measures": 0,
+      "dbt_metrics_files": []
+    },
+    "docs_governance": {
+      "readmes": [],
+      "codeowners": false,
+      "review_gates": false
+    },
+    "access_privacy": {
+      "role_maps": [],
+      "pii_tags": [],
+      "privacy_docs": []
+    }
+  },
+  "grading_notes": {
+    "bi_deploy_readiness": {
+      "metric_id": "bi.deploy_readiness_band",
+      "band": 1,
+      "rationale": "There is no deployment automation evidence as the deploy_commands and schedules are empty, and there are no review gates present.",
+      "flags": []
+    },
+    "bi_data_freshness_practices": {
+      "metric_id": "bi.data_freshness_practices_band",
+      "band": 1,
+      "rationale": "There is no refresh scheduling as indicated by the absence of schedules and the 'has_schedule' flag being false.",
+      "flags": []
+    },
+    "bi_kpi_semantic_quality": {
+      "metric_id": "bi.kpi_semantic_quality_band",
+      "band": 1,
+      "rationale": "There is no evidence of KPI catalogs, LookML measures, or dbt metrics files, indicating a lack of any KPI/semantic layer evidence.",
+      "flags": []
+    },
+    "bi_docs_governance": {
+      "metric_id": "bi.docs_governance_band",
+      "band": 1,
+      "rationale": "There are no documentation or governance elements present, as indicated by the absence of dashboard READMEs, ownership lines, and the lack of CODEOWNERS.",
+      "flags": []
+    },
+    "bi_access_privacy_readiness": {
+      "metric_id": "bi.access_privacy_readiness_band",
+      "band": 1,
+      "rationale": "None of the required elements (role maps, PII tags, privacy docs) are present.",
+      "flags": []
+    }
+  },
+  "mode": "repo_only"
+}

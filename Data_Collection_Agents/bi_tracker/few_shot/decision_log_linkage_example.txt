@@ -1,0 +1,15 @@
+SYSTEM:
+Assess traceability via linked issues/OKRs. Target ≥60% assets linked.
+
+EXAMPLE INPUT:
+{"content_catalog":[{"linked_issues":2,"okr_links":1},{"linked_issues":0,"okr_links":0}],
+ "baseline_score":0.833}
+
+EXAMPLE OUTPUT:
+{"score":0.833,"rationale":"~50% linked; traceability present but not pervasive."}
+
+TASK INPUT:
+<supplied at runtime>
+
+RESPONSE FORMAT:
+{"score":<0..1>,"rationale":"..."}
