@@ -7,7 +7,7 @@ from typing import Any, Dict, List, Optional
 from Data_Collection_Agents.base_agent import BaseMicroAgent
 
 """
-BI Metric Prompt Builder (aligned with your Cloud Infra pattern)
+BI Metric Prompt Builder
 - Universal preamble & unified response JSON (1–5 scale)
 - Each metric has: system rubric, example_input, input_key_meanings, example_output
 - build_prompt prints RESPONSE FORMAT before EXAMPLES (reduces anchoring)
