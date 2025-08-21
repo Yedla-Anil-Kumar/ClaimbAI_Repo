@@ -1,0 +1,31 @@
+{
+  "metric_id": "cicd.policy_gates_band",
+  "required_checks": [
+    "pytest",
+    "integration-tests",
+    "bandit",
+    "trivy",
+    "bias_check",
+    "data_validation"
+  ],
+  "workflow_files": [
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Gitlab_repos/ds-salary-prediction/.gitlab-ci.yml"
+  ],
+  "workflow_yaml": [
+    "# You can override the included template(s) by including variable overrides\n# SAST customization: https://docs.gitlab.com/ee/user/application_security/sast/#customizing-the-sast-settings\n# Secret Detection customization: https://docs.gitlab.com/ee/user/application_security/secret_detection/#customizing-settings\n# Dependency Scanning customization: https://docs.gitlab.com/ee/user/application_security/dependency_scanning/#customizing-the-dependency-scanning-settings\n# Container Scanning customization: https://docs.gitlab.com/ee/user/application_security/container_scanning/#customizing-the-container-scanning-settings\n# Note that environment variables can be set in several places\n# See https://docs.gitlab.com/ee/ci/variables/#cicd-variable-precedence\nstages:\n- test\nsast:\n  stage: test\ninclude:\n- template: Security/SAST.gitlab-ci.yml\n"
+  ],
+  "evidence": {
+    "present_flags": {
+      "pytest": false,
+      "integration": false,
+      "bandit": false,
+      "trivy": false,
+      "bias": false,
+      "data_validation": false
+    },
+    "schedules": [],
+    "deploy_jobs": [],
+    "environments": []
+  },
+  "rubric": "5 if all required checks exist and run before deploy; 4 if most present; 3 if partial; 2 minimal; 1 if missing."
+}

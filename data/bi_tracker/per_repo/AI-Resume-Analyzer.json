@@ -47,7 +47,7 @@
     "bi_deploy_readiness": {
       "metric_id": "bi.deploy_readiness_band",
       "band": 1,
-      "rationale": "No deployment automation evidence.",
+      "rationale": "There is no deployment automation evidence present, as indicated by the absence of workflow files, deploy commands, schedules, and the lack of codeowners or required reviewers.",
       "flags": []
     },
     "bi_data_freshness_practices": {

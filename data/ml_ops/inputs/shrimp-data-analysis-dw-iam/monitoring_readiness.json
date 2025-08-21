@@ -1,0 +1,15 @@
+{
+  "metric_id": "monitoring_coverage_readiness_band",
+  "evidence": {
+    "rule_files": [],
+    "rule_snippets": [],
+    "alert_channels": []
+  },
+  "rubric": {
+    "5": "clear prod alert rules + alert channels configured",
+    "4": "rules present with some channels",
+    "3": "basic rules only",
+    "2": "stubs only",
+    "1": "no monitoring config"
+  }
+}

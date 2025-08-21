@@ -1,0 +1,21 @@
+{
+  "metric_id": "cost_attribution_readiness_band",
+  "evidence": {
+    "tag_keys_detected": [],
+    "missing_required": [
+      "service",
+      "env",
+      "owner",
+      "model",
+      "endpoint_id"
+    ],
+    "sample_lines": []
+  },
+  "rubric": {
+    "5": "all required keys present and consistent",
+    "4": "most keys present",
+    "3": "some present",
+    "2": "few present",
+    "1": "none"
+  }
+}

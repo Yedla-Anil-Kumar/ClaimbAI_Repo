@@ -1,0 +1,37 @@
+{
+  "cicd_workflows": [
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Gitlab_repos/ds-component-pipeline/.gitlab-ci.yml"
+  ],
+  "cicd_policy_gates": {
+    "pytest": false,
+    "integration": false,
+    "bandit": false,
+    "trivy": false,
+    "bias": false,
+    "data_validation": false
+  },
+  "cicd_schedules": [],
+  "deploy_jobs": [
+    "release",
+    "release",
+    "release",
+    "release",
+    "release",
+    "release",
+    "release",
+    "Release"
+  ],
+  "environments": [],
+  "image_digest_pins": [],
+  "unpinned_images": [
+    "image: registry.gitlab.com/gitlab-org/release-cli:latest",
+    "image: registry.gitlab.com/gitlab-org/release-cli:latest",
+    "image: alpine:latest",
+    "image: \"${CONTAINER_IMAGE}:production-",
+    "image: dvcorg/cml-py3:latest"
+  ],
+  "monitoring_rule_files": [],
+  "alert_channel_signals": [],
+  "model_card_files": [],
+  "tracking_tools": []
+}

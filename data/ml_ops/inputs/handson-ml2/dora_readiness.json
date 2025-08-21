@@ -1,0 +1,17 @@
+{
+  "metric_id": "dora_readiness_band",
+  "evidence": {
+    "environments": [],
+    "concurrency": [],
+    "rollback": [],
+    "health_checks": [],
+    "schedules": []
+  },
+  "rubric": {
+    "5": "env promotion + concurrency + rollback + health checks + schedules",
+    "4": "envs + two of (concurrency, rollback, health checks)",
+    "3": "envs + one",
+    "2": "weak hints only",
+    "1": "none"
+  }
+}

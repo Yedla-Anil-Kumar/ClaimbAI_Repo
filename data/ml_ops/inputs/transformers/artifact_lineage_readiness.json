@@ -1,0 +1,35 @@
+{
+  "metric_id": "artifact_lineage_readiness_band",
+  "evidence": {
+    "image_digests": [],
+    "unpinned_images": [
+      "image: memcached:1.6.29",
+      "image: prom/prometheus:latest",
+      "image: grafana/tempo:latest",
+      "image: grafana/grafana:latest",
+      "image: vault.habana.ai/gaudi-docker/1.21.1/ubuntu22.04/habanalabs/pytorch-installer-2.6.0:latest",
+      "image: vault.habana.ai/gaudi-docker/1.21.1/ubuntu22.04/habanalabs/pytorch-installer-2.6.0:latest",
+      "image: vault.habana.ai/gaudi-docker/1.21.1/ubuntu22.04/habanalabs/pytorch-installer-2.6.0:latest",
+      "image: vault.habana.ai/gaudi-docker/1.21.1/ubuntu22.04/habanalabs/pytorch-installer-2.6.0:latest",
+      "image: python:3.10-slim"
+    ],
+    "sbom": [],
+    "signing": [
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/transformers/tests/test_image_processing_common.py",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/transformers/tests/pipelines/test_pipelines_common.py",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/transformers/tests/models/conditional_detr/test_image_processing_conditional_detr.py",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/transformers/tests/models/grounding_dino/test_image_processing_grounding_dino.py",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/transformers/tests/models/deformable_detr/test_image_processing_deformable_detr.py",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/transformers/tests/models/yolos/test_image_processing_yolos.py",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/transformers/tests/models/detr/test_image_processing_detr.py"
+    ],
+    "k8s_probes": []
+  },
+  "rubric": {
+    "5": "images pinned by digest + signing/SBOM + probes",
+    "4": "pinned images + either signing or SBOM",
+    "3": "some pinning, missing supply-chain pieces",
+    "2": "unpinned images dominate",
+    "1": "no integrity signals"
+  }
+}

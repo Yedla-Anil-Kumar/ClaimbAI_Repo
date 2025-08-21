@@ -7,7 +7,7 @@
     "looker": false
   },
   "scores": {
-    "business_integration": 3.5,
+    "business_integration": 3.25,
     "decision_making": 2.06
   },
   "bi_summary": {
@@ -72,7 +72,7 @@
     "bi_deploy_readiness": {
       "metric_id": "bi.deploy_readiness_band",
       "band": 4,
-      "rationale": "The evidence shows automated deployment workflows and schedules are present, along with a CODEOWNERS file indicating some level of review gate. However, there are no specific reviewer requirements indicated.",
+      "rationale": "The evidence shows automated deployment workflows and schedules, but lacks required review gates as indicated by the absence of reviewers required hint.",
       "flags": []
     },
     "bi_data_freshness_practices": {
@@ -84,19 +84,19 @@
     "bi_kpi_semantic_quality": {
       "metric_id": "bi.kpi_semantic_quality_band",
       "band": 1,
-      "rationale": "There is no KPI catalog or any semantic layer evidence provided. The evidence includes dbt metrics files, but they do not constitute substantial KPI or semantic layer definitions.",
+      "rationale": "There is no KPI catalog or any LookML measures present, and the evidence only includes dbt metrics files without substantial definitions.",
       "flags": []
     },
     "bi_docs_governance": {
       "metric_id": "bi.docs_governance_band",
       "band": 4,
-      "rationale": "The evidence includes ownership lines and the presence of CODEOWNERS, but lacks a review gate.",
+      "rationale": "The evidence includes ownership lines and the presence of CODEOWNERS, but lacks a review gate, which aligns with the criteria for a band 4.",
       "flags": []
     },
     "bi_access_privacy_readiness": {
       "metric_id": "bi.access_privacy_readiness_band",
-      "band": 3,
-      "rationale": "Only PII tags are present, while role maps and privacy documents are absent.",
+      "band": 2,
+      "rationale": "There are PII tags present, but no role maps or privacy documents, indicating weak hints.",
       "flags": []
     }
   },

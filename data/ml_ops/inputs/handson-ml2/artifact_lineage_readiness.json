@@ -1,0 +1,21 @@
+{
+  "metric_id": "artifact_lineage_readiness_band",
+  "evidence": {
+    "image_digests": [],
+    "unpinned_images": [
+      "image: ageron/handson-ml2:latest",
+      "image: ageron/handson-ml2:latest-gpu",
+      "image: ageron/handson-ml2:latest"
+    ],
+    "sbom": [],
+    "signing": [],
+    "k8s_probes": []
+  },
+  "rubric": {
+    "5": "images pinned by digest + signing/SBOM + probes",
+    "4": "pinned images + either signing or SBOM",
+    "3": "some pinning, missing supply-chain pieces",
+    "2": "unpinned images dominate",
+    "1": "no integrity signals"
+  }
+}

@@ -7,7 +7,7 @@
     "looker": false
   },
   "scores": {
-    "business_integration": 2.69,
+    "business_integration": 2.25,
     "decision_making": 1.38
   },
   "bi_summary": {
@@ -63,8 +63,8 @@
   "grading_notes": {
     "bi_deploy_readiness": {
       "metric_id": "bi.deploy_readiness_band",
-      "band": 4,
-      "rationale": "Automated deploy is present and scheduled, but there are no review gates (CODEOWNERS or required review).",
+      "band": 3,
+      "rationale": "The evidence shows multiple workflow files indicating some level of automation, but there are no deploy commands or review gates present. The schedules indicate some automation, but it is not fully comprehensive.",
       "flags": []
     },
     "bi_data_freshness_practices": {
@@ -76,13 +76,13 @@
     "bi_kpi_semantic_quality": {
       "metric_id": "bi.kpi_semantic_quality_band",
       "band": 1,
-      "rationale": "There is no KPI catalog or LookML measures, and the evidence only includes a single dbt metrics file without substantial definitions.",
+      "rationale": "There is no KPI catalog or LookML measures present, and the evidence only includes a single dbt metrics file without substantial definitions.",
       "flags": []
     },
     "bi_docs_governance": {
       "metric_id": "bi.docs_governance_band",
       "band": 3,
-      "rationale": "The evidence includes ownership lines but lacks CODEOWNERS and review gates, indicating limited ownership and gates.",
+      "rationale": "The evidence includes multiple ownership lines but lacks a CODEOWNERS file and review gates, indicating limited ownership and governance documentation.",
       "flags": []
     },
     "bi_access_privacy_readiness": {

@@ -1,0 +1,25 @@
+{
+  "metric_id": "artifact_lineage_readiness_band",
+  "evidence": {
+    "image_digests": [],
+    "unpinned_images": [
+      "image: registry.gitlab.com/gitlab-org/release-cli:latest",
+      "image: registry.gitlab.com/gitlab-org/release-cli:latest",
+      "image: alpine:latest",
+      "image: \"${CONTAINER_IMAGE}:production-",
+      "image: dvcorg/cml-py3:latest",
+      "image: dvcorg/cml-py3:latest",
+      "image: registry.gitlab.com/gitlab-org/release-cli:latest"
+    ],
+    "sbom": [],
+    "signing": [],
+    "k8s_probes": []
+  },
+  "rubric": {
+    "5": "images pinned by digest + signing/SBOM + probes",
+    "4": "pinned images + either signing or SBOM",
+    "3": "some pinning, missing supply-chain pieces",
+    "2": "unpinned images dominate",
+    "1": "no integrity signals"
+  }
+}

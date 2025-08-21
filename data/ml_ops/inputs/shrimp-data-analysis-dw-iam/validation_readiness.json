@@ -1,0 +1,17 @@
+{
+  "metric_id": "validation_artifacts_readiness_band",
+  "evidence": {
+    "explainability": [],
+    "bias": [],
+    "validation_schemas": [],
+    "model_cards": [],
+    "data_validation_libs": []
+  },
+  "rubric": {
+    "5": "bias + explainability + validation schema + model card",
+    "4": "three of the above",
+    "3": "two of the above",
+    "2": "one present",
+    "1": "none present"
+  }
+}

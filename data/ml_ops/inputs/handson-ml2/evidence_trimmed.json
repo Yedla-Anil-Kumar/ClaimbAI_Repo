@@ -1,0 +1,21 @@
+{
+  "cicd_workflows": [],
+  "cicd_policy_gates": {},
+  "cicd_schedules": [],
+  "deploy_jobs": [],
+  "environments": [],
+  "image_digest_pins": [],
+  "unpinned_images": [
+    "image: ageron/handson-ml2:latest",
+    "image: ageron/handson-ml2:latest-gpu",
+    "image: ageron/handson-ml2:latest"
+  ],
+  "monitoring_rule_files": [
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/handson-ml2/ml-project-checklist.md"
+  ],
+  "alert_channel_signals": [],
+  "model_card_files": [],
+  "tracking_tools": [
+    "tensorboard"
+  ]
+}

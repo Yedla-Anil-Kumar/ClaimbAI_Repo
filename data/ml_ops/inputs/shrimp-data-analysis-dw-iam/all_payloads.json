@@ -1,0 +1,155 @@
+{
+  "cicd_policy_gates": {
+    "metric_id": "cicd.policy_gates_band",
+    "required_checks": [
+      "pytest",
+      "integration-tests",
+      "bandit",
+      "trivy",
+      "bias_check",
+      "data_validation"
+    ],
+    "workflow_files": [],
+    "workflow_yaml": [],
+    "evidence": {
+      "present_flags": {},
+      "schedules": [],
+      "deploy_jobs": [],
+      "environments": []
+    },
+    "rubric": "5 if all required checks exist and run before deploy; 4 if most present; 3 if partial; 2 minimal; 1 if missing."
+  },
+  "registry_governance_readiness": {
+    "metric_id": "registry_governance_readiness_band",
+    "evidence": {
+      "codeowners_present": false,
+      "deploy_jobs": [],
+      "environments": [],
+      "policy_gates": {}
+    },
+    "rubric": {
+      "5": "CODEOWNERS + prod environment gating + security tests + explicit promote steps",
+      "4": "prod env + policy gates present",
+      "3": "some gates or envs",
+      "2": "weak hints only",
+      "1": "no governance indicators"
+    }
+  },
+  "artifact_lineage_readiness": {
+    "metric_id": "artifact_lineage_readiness_band",
+    "evidence": {
+      "image_digests": [],
+      "unpinned_images": [],
+      "sbom": [],
+      "signing": [],
+      "k8s_probes": []
+    },
+    "rubric": {
+      "5": "images pinned by digest + signing/SBOM + probes",
+      "4": "pinned images + either signing or SBOM",
+      "3": "some pinning, missing supply-chain pieces",
+      "2": "unpinned images dominate",
+      "1": "no integrity signals"
+    }
+  },
+  "monitoring_readiness": {
+    "metric_id": "monitoring_coverage_readiness_band",
+    "evidence": {
+      "rule_files": [],
+      "rule_snippets": [],
+      "alert_channels": []
+    },
+    "rubric": {
+      "5": "clear prod alert rules + alert channels configured",
+      "4": "rules present with some channels",
+      "3": "basic rules only",
+      "2": "stubs only",
+      "1": "no monitoring config"
+    }
+  },
+  "validation_readiness": {
+    "metric_id": "validation_artifacts_readiness_band",
+    "evidence": {
+      "explainability": [],
+      "bias": [],
+      "validation_schemas": [],
+      "model_cards": [],
+      "data_validation_libs": []
+    },
+    "rubric": {
+      "5": "bias + explainability + validation schema + model card",
+      "4": "three of the above",
+      "3": "two of the above",
+      "2": "one present",
+      "1": "none present"
+    }
+  },
+  "lineage_readiness": {
+    "metric_id": "lineage_practices_readiness_band",
+    "evidence": {
+      "git_sha_logging": [],
+      "data_refs": [],
+      "env_locks": []
+    },
+    "rubric": {
+      "5": "git_sha + data_ref + env lock all logged",
+      "4": "two present",
+      "3": "one present",
+      "2": "weak hints",
+      "1": "none"
+    }
+  },
+  "dora_readiness": {
+    "metric_id": "dora_readiness_band",
+    "evidence": {
+      "environments": [],
+      "concurrency": [],
+      "rollback": [],
+      "health_checks": [],
+      "schedules": []
+    },
+    "rubric": {
+      "5": "env promotion + concurrency + rollback + health checks + schedules",
+      "4": "envs + two of (concurrency, rollback, health checks)",
+      "3": "envs + one",
+      "2": "weak hints only",
+      "1": "none"
+    }
+  },
+  "cost_attribution_readiness": {
+    "metric_id": "cost_attribution_readiness_band",
+    "evidence": {
+      "tag_keys_detected": [],
+      "missing_required": [
+        "service",
+        "env",
+        "owner",
+        "model",
+        "endpoint_id"
+      ],
+      "sample_lines": []
+    },
+    "rubric": {
+      "5": "all required keys present and consistent",
+      "4": "most keys present",
+      "3": "some present",
+      "2": "few present",
+      "1": "none"
+    }
+  },
+  "slo_declared": {
+    "metric_id": "slo_declared_band",
+    "evidence": {
+      "slo_docs": [],
+      "slo_env_vars": [],
+      "samples": []
+    },
+    "rubric": {
+      "5": "SLO docs + thresholds in env/alerts",
+      "4": "SLO docs only",
+      "3": "scattered thresholds",
+      "2": "mentions only",
+      "1": "none"
+    }
+  }
+}

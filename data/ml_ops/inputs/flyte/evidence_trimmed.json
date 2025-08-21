@@ -1,0 +1,96 @@
+{
+  "cicd_workflows": [
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/.github/workflows/publish.yml",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/.github/workflows/update_site.yml",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/.github/workflows/single-binary.yml",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/.github/workflows/lint.yml",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/.github/workflows/create_release.yml",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/.github/workflows/go_generate.yml",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/.github/workflows/checks.yml",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/.github/workflows/dependency-review.yml",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/.github/workflows/sandbox.yml",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/.github/workflows/stale.yml",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/.github/workflows/contributors.yaml",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/.github/workflows/flyteidl-release.yml",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/.github/workflows/flytectl-install.yml",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/.github/workflows/integration.yml",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/.github/workflows/unit-tests.yml",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/.github/workflows/flytectl-release.yml",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/.github/workflows/flyteidl-checks.yml",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/.github/workflows/upgrade_automation.yml",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/.github/workflows/flyteidl-buf-publish.yml",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/.github/workflows/codespell.yml",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/.github/workflows/helm-charts.yaml",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/.github/workflows/validate-helm-charts.yaml",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/.github/workflows/component_docker_build.yml",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/.github/workflows/tests.yml",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/.github/workflows/publish-images.yml",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/.github/workflows/selfassign.yml",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/.github/workflows/generate_flyte_manifest.yml"
+  ],
+  "cicd_policy_gates": {
+    "pytest": false,
+    "integration": false,
+    "bandit": false,
+    "trivy": false,
+    "bias": false,
+    "data_validation": false
+  },
+  "cicd_schedules": [
+    "on:\n  schedule",
+    "cron: \"0 0 * * *\"",
+    "on:\n  schedule",
+    "cron: '0 12 * * 1'"
+  ],
+  "deploy_jobs": [
+    "release",
+    "release",
+    "release",
+    "release",
+    "release",
+    "release",
+    "release",
+    "release",
+    "release",
+    "release"
+  ],
+  "environments": [],
+  "image_digest_pins": [],
+  "unpinned_images": [
+    "image: test:test",
+    "image: \"cr.flyte.org/flyteorg/flytecopilot:v1.16.0-b4",
+    "image: flyte-binary:sandbox",
+    "image: bitnami/postgresql:sandbox",
+    "image: moby/buildkit:sandbox"
+  ],
+  "monitoring_rule_files": [
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/Makefile",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/flyte-single-binary-local.yaml",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/docker/sandbox-bundled/manifests/complete-connector.yaml",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/docker/sandbox-bundled/manifests/dev.yaml",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/docker/sandbox-bundled/manifests/complete.yaml",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/flytestdlib/README.md",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/flytestdlib/flytestdlib.json",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/flytestdlib/.goreleaser.yml",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/CHANGELOG/CHANGELOG-v1.13.1.md",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/CHANGELOG/CHANGELOG-v1.13.0.md"
+  ],
+  "alert_channel_signals": [
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/README.md",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/flyte-single-binary-local.yaml",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/docker/sandbox-bundled/manifests/complete-connector.yaml",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/docker/sandbox-bundled/manifests/dev.yaml",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/docker/sandbox-bundled/manifests/complete.yaml",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/flytestdlib/README.md",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/CHANGELOG/CHANGELOG-v1.10.6.md",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/CHANGELOG/CHANGELOG-v1.6.0-b1.md",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/CHANGELOG/CHANGELOG-v1.10.7.md",
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/CHANGELOG/CHANGELOG-v1.13.0.md"
+  ],
+  "model_card_files": [],
+  "tracking_tools": [
+    "mlflow",
+    "neptune",
+    "wandb"
+  ]
+}

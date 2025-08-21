@@ -1,0 +1,40 @@
+{
+  "metric_id": "cicd.policy_gates_band",
+  "required_checks": [
+    "pytest",
+    "integration-tests",
+    "bandit",
+    "trivy",
+    "bias_check",
+    "data_validation"
+  ],
+  "workflow_files": [
+    "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Gitlab_repos/ds-component-pipeline/.gitlab-ci.yml"
+  ],
+  "workflow_yaml": [
+    "stages: [build, test, release]\n\nbuild-pipeline:\n  stage: build\n  image: registry.gitlab.com/gitlab-org/release-cli:latest\n  rules:\n    - if: '$CI_PIPELINE_SOURCE == \"merge_request_event\" && $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH'\n  script: echo \"Testing pipeline in MR\"\n\n\ncreate-release:\n  stage: release\n  image: registry.gitlab.com/gitlab-org/release-cli:latest\n  rules:\n    # Only create releases for production tags (not dev/rc/alpha/beta)\n    - if: '$CI_COMMIT_TAG && $CI_COMMIT_TAG !~ /^(dev|rc|alpha|beta)-/'\n  script: echo \"Creating release for DS Pipeline with $CI_COMMIT_TAG\"\n  release:\n    tag_name: $CI_COMMIT_TAG\n    description: \"Release $CI_COMMIT_TAG of components repository $CI_PROJECT_PATH\""
+  ],
+  "evidence": {
+    "present_flags": {
+      "pytest": false,
+      "integration": false,
+      "bandit": false,
+      "trivy": false,
+      "bias": false,
+      "data_validation": false
+    },
+    "schedules": [],
+    "deploy_jobs": [
+      "release",
+      "release",
+      "release",
+      "release",
+      "release",
+      "release",
+      "release",
+      "Release"
+    ],
+    "environments": []
+  },
+  "rubric": "5 if all required checks exist and run before deploy; 4 if most present; 3 if partial; 2 minimal; 1 if missing."
+}

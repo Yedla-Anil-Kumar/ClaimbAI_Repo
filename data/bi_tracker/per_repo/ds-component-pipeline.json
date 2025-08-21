@@ -49,7 +49,7 @@
     "bi_deploy_readiness": {
       "metric_id": "bi.deploy_readiness_band",
       "band": 1,
-      "rationale": "There is no deployment automation evidence as the deploy_commands and schedules are empty, and there are no review gates present.",
+      "rationale": "There is no deployment automation evidence as there are no deploy commands or schedules present, and the required review gates are not in place.",
       "flags": []
     },
     "bi_data_freshness_practices": {
@@ -61,7 +61,7 @@
     "bi_kpi_semantic_quality": {
       "metric_id": "bi.kpi_semantic_quality_band",
       "band": 1,
-      "rationale": "There is no evidence of KPI catalogs, LookML measures, or dbt metrics files, indicating a lack of any KPI/semantic layer evidence.",
+      "rationale": "There is no evidence of KPI catalogs, LookML measures, or dbt metrics files, indicating a lack of any KPI or semantic layer evidence.",
       "flags": []
     },
     "bi_docs_governance": {

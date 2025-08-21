@@ -1,0 +1,19 @@
+{
+  "metric_id": "validation_artifacts_readiness_band",
+  "evidence": {
+    "explainability": [],
+    "bias": [
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/handson-ml2/changes_in_2nd_edition.md"
+    ],
+    "validation_schemas": [],
+    "model_cards": [],
+    "data_validation_libs": []
+  },
+  "rubric": {
+    "5": "bias + explainability + validation schema + model card",
+    "4": "three of the above",
+    "3": "two of the above",
+    "2": "one present",
+    "1": "none present"
+  }
+}

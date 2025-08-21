@@ -65,13 +65,13 @@
     "bi_docs_governance": {
       "metric_id": "bi.docs_governance_band",
       "band": 1,
-      "rationale": "There are no documentation or governance elements present, as indicated by the absence of dashboard READMEs, ownership lines, and the lack of CODEOWNERS or review gates.",
+      "rationale": "There are no documentation or governance elements present, as indicated by the absence of dashboard READMEs, ownership lines, and the lack of CODEOWNERS.",
       "flags": []
     },
     "bi_access_privacy_readiness": {
       "metric_id": "bi.access_privacy_readiness_band",
       "band": 1,
-      "rationale": "None of the required elements (role maps, PII tags, privacy docs) are present.",
+      "rationale": "There are no role maps, PII tags, or privacy documents present, indicating a lack of readiness in access privacy.",
       "flags": []
     }
   },

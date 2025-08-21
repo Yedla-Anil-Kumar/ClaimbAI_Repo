@@ -1,0 +1,66 @@
+{
+  "metric_id": "lineage_practices_readiness_band",
+  "evidence": {
+    "git_sha_logging": [
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/Makefile",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/flyteadmin/Makefile",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/docs/user_guide/flyte_fundamentals/registering_workflows.md",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/flytectl/Makefile"
+    ],
+    "data_refs": [
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/flyte-single-binary-local.yaml",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/docker/sandbox-bundled/manifests/complete-connector.yaml",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/docker/sandbox-bundled/manifests/complete.yaml",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/flyteplugins/go/tasks/plugins/array/awsbatch/testdata/cr.yaml",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/flyteplugins/go/tasks/pluginmachinery/flytek8s/testdata/imagepull-failurepod.json",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/flyteidl/gen/pb-go/gateway/flyteidl/cacheservice/cacheservice.swagger.json",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/flyteidl/gen/pb-go/gateway/flyteidl/service/signal.swagger.json",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/flyteidl/gen/pb-go/gateway/flyteidl/service/agent.swagger.json",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/flyteidl/gen/pb-go/gateway/flyteidl/service/external_plugin_service.swagger.json",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/flyteidl/gen/pb-go/gateway/flyteidl/service/dataproxy.swagger.json",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/flyteidl/gen/pb-go/gateway/flyteidl/datacatalog/datacatalog.swagger.json",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/flyteidl/gen/pb_python/flyteidl/core/catalog_pb2.py",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/flyteidl/gen/pb_python/flyteidl/datacatalog/datacatalog_pb2.py",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/flyteidl/gen/pb_python/flyteidl/datacatalog/datacatalog_pb2_grpc.py",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/charts/flyte/README.md",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/charts/flyte/values.yaml",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/charts/flyte-core/values-gcp.yaml",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/charts/flyte-core/values-eks.yaml",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/charts/flyte-core/README.md",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/charts/flyte-core/values.yaml",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/charts/flyte-core/values-keycloak-idp-flyteclients-without-browser.yaml",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/docs/user_guide/data_types_and_io/structureddataset.md",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/docs/user_guide/development_lifecycle/inspecting_executions.md",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/docs/user_guide/extending/prebuilt_container_task_plugins.md",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/docs/user_guide/extending/container_interface.md",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/docs/user_guide/flyte_agents/testing_agents_in_a_local_python_environment.md",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/rfc/core language/1461-cache-serialize-api.md",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/deployment/test/flyte_generated.yaml",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/deployment/sandbox-binary/flyte_sandbox_binary_helm_generated.yaml",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/deployment/gcp/flyte_helm_generated.yaml",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/deployment/gcp/flyte_helm_dataplane_generated.yaml",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/deployment/eks/flyte_helm_generated.yaml",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/deployment/eks/flyte_helm_dataplane_generated.yaml",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/deployment/eks/flyte_aws_scheduler_helm_generated.yaml",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/deployment/sandbox/flyte_helm_generated.yaml",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/flytepropeller/propeller-config.yaml"
+    ],
+    "env_locks": [
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/flyteidl/protos/docs/contributing.md",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/docs/user_guide/flyte_fundamentals/registering_workflows.md",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/docs/user_guide/getting_started_with_workflow_development/creating_a_flyte_project.md",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/docs/user_guide/getting_started_with_workflow_development/flyte_project_components.md",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/docs/community/contribute/contribute_examples.md",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/.github/workflows/codespell.yml",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/flytectl/docs/docs-requirements.txt",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/stats/README.md"
+    ]
+  },
+  "rubric": {
+    "5": "git_sha + data_ref + env lock all logged",
+    "4": "two present",
+    "3": "one present",
+    "2": "weak hints",
+    "1": "none"
+  }
+}

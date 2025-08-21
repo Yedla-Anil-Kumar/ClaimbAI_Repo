@@ -1,0 +1,23 @@
+{
+  "metric_id": "registry_governance_readiness_band",
+  "evidence": {
+    "codeowners_present": false,
+    "deploy_jobs": [],
+    "environments": [],
+    "policy_gates": {
+      "pytest": false,
+      "integration": false,
+      "bandit": false,
+      "trivy": false,
+      "bias": false,
+      "data_validation": false
+    }
+  },
+  "rubric": {
+    "5": "CODEOWNERS + prod environment gating + security tests + explicit promote steps",
+    "4": "prod env + policy gates present",
+    "3": "some gates or envs",
+    "2": "weak hints only",
+    "1": "no governance indicators"
+  }
+}

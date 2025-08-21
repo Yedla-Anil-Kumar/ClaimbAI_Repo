@@ -1,0 +1,15 @@
+{
+  "metric_id": "lineage_practices_readiness_band",
+  "evidence": {
+    "git_sha_logging": [],
+    "data_refs": [],
+    "env_locks": []
+  },
+  "rubric": {
+    "5": "git_sha + data_ref + env lock all logged",
+    "4": "two present",
+    "3": "one present",
+    "2": "weak hints",
+    "1": "none"
+  }
+}

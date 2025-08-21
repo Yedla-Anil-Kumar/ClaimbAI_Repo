@@ -1,0 +1,20 @@
+{
+  "metric_id": "cicd.policy_gates_band",
+  "required_checks": [
+    "pytest",
+    "integration-tests",
+    "bandit",
+    "trivy",
+    "bias_check",
+    "data_validation"
+  ],
+  "workflow_files": [],
+  "workflow_yaml": [],
+  "evidence": {
+    "present_flags": {},
+    "schedules": [],
+    "deploy_jobs": [],
+    "environments": []
+  },
+  "rubric": "5 if all required checks exist and run before deploy; 4 if most present; 3 if partial; 2 minimal; 1 if missing."
+}

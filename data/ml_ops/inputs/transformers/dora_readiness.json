@@ -1,0 +1,43 @@
+{
+  "metric_id": "dora_readiness_band",
+  "evidence": {
+    "environments": [
+      "build",
+      "transformers_is_ci"
+    ],
+    "concurrency": [
+      "concurrency",
+      "concurrency",
+      "concurrency",
+      "concurrency",
+      "concurrency",
+      "concurrency",
+      "concurrency",
+      "concurrency"
+    ],
+    "rollback": [],
+    "health_checks": [],
+    "schedules": [
+      "on:\n  schedule",
+      "cron: \"17 2,14 * * *\"",
+      "cron: \"6 0 * * *\"",
+      "on:\n  schedule",
+      "cron: \"0 8 * * *\"",
+      "cron: \"17 2 * * *\"",
+      "cron: \"17 0 * * *\"",
+      "cron: \"17 2 * * *\"",
+      "on:\n  schedule",
+      "cron: \"17 2 * * *\"",
+      "cron: \"0 2 * * *\"",
+      "cron: \"17 2 * * *\"",
+      "cron: \"17 2 * * *\""
+    ]
+  },
+  "rubric": {
+    "5": "env promotion + concurrency + rollback + health checks + schedules",
+    "4": "envs + two of (concurrency, rollback, health checks)",
+    "3": "envs + one",
+    "2": "weak hints only",
+    "1": "none"
+  }
+}

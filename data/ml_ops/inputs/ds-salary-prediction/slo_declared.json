@@ -1,0 +1,15 @@
+{
+  "metric_id": "slo_declared_band",
+  "evidence": {
+    "slo_docs": [],
+    "slo_env_vars": [],
+    "samples": []
+  },
+  "rubric": {
+    "5": "SLO docs + thresholds in env/alerts",
+    "4": "SLO docs only",
+    "3": "scattered thresholds",
+    "2": "mentions only",
+    "1": "none"
+  }
+}

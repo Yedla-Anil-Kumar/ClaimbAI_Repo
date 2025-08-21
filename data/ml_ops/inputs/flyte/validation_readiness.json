@@ -1,0 +1,29 @@
+{
+  "metric_id": "validation_artifacts_readiness_band",
+  "evidence": {
+    "explainability": [],
+    "bias": [
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/CHANGELOG/CHANGELOG-v1.14.0.md",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/CHANGELOG/CHANGELOG-v1.13.1.md",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/CHANGELOG/CHANGELOG-v1.10.7.md",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/CHANGELOG/CHANGELOG-v1.13.0.md",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/CHANGELOG/CHANGELOG-v1.13.1-rc0.md",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/.github/PULL_REQUEST_TEMPLATE.md"
+    ],
+    "validation_schemas": [],
+    "model_cards": [],
+    "data_validation_libs": [
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/monodocs-environment.yaml",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/docs/conf.py",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/docs/user_guide/data_types_and_io/structureddataset.md",
+      "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/docs/user_guide/extending/index.md"
+    ]
+  },
+  "rubric": {
+    "5": "bias + explainability + validation schema + model card",
+    "4": "three of the above",
+    "3": "two of the above",
+    "2": "one present",
+    "1": "none present"
+  }
+}
