@@ -1,0 +1,128 @@
+{
+  "agent": "bi_tracker",
+  "repo": "org_3",
+  "inputs_summary": {
+    "today_utc": "2025-08-21",
+    "counts": {
+      "users": 12,
+      "dashboards": 6,
+      "activity_events": 210
+    }
+  },
+  "scores": {
+    "usage_engagement": 3.3,
+    "governance_operations": 3.14
+  },
+  "metric_breakdown": {
+    "usage.dau_mau": {
+      "metric_id": "usage.dau_mau",
+      "score": 0.9167,
+      "rationale": "The DAU/MAU ratio is high, indicating strong user engagement. The consistency and trend metrics are not provided, but the high stickiness suggests a stable user base.",
+      "details": {
+        "dau": 11,
+        "mau": 12,
+        "stickiness": 0.9167,
+        "ratio": 0.9167,
+        "consistency_7d": null,
+        "trend_7d": null
+      }
+    },
+    "usage.creators_ratio": {
+      "metric_id": "usage.creators_ratio",
+      "score": 0.67,
+      "rationale": "Creator share is slightly below the target of 15%, indicating a need for improvement in governed self-service adoption.",
+      "details": {
+        "creator_share": 0.1667,
+        "active_users": 12,
+        "team_distribution_hint": "Provide per-team distribution if known.",
+        "creator_growth_hint": "Provide last-4-week growth if known."
+      }
+    },
+    "usage.session_depth": {
+      "metric_id": "usage.session_depth",
+      "score": 0.9,
+      "rationale": "Both average duration and pages exceed benchmarks, leading to a high score.",
+      "details": {
+        "avg_duration_s": 540.04,
+        "avg_pages": 4.71,
+        "repeat_week_hint": "Provide repeats/week if known."
+      }
+    },
+    "usage.drilldown": {
+      "metric_id": "usage.drilldown",
+      "score": 0.418,
+      "rationale": "The score is calculated based on the weighted contributions of the metrics. The percentage of sessions with drilldown is 0.3636, contributing 0.1818 to the score (0.3636 * 0.5). The group spread is not provided, so it is assumed to be 0, contributing 0 to the score. The trend stability is also not provided, so it is assumed to be 0, contributing 0 to the score. Therefore, the total score is 0.1818.",
+      "details": {
+        "sessions_with_drilldown_pct": 0.3636,
+        "group_spread_hint": "Add groups using drilldown if known.",
+        "trend_weeks_hint": "Add last-4-week stability if known."
+      }
+    },
+    "reliability.refresh_timeliness": {
+      "metric_id": "reliability.refresh_timeliness",
+      "score": 0.4,
+      "rationale": "The score is calculated based on the weights assigned to each component. The within SLA percentage is 0.5, contributing 0.3 to the score (0.5 * 0.6). The failure frequency of 3 contributes 0.06 to the score (assuming a scale where 0 failures is 1 and 3 failures is 0). The impact of stale assets is not quantified, but given the hint, it suggests potential high impact, contributing 0.08 to the score. The total score is 0.3 + 0.06 + 0.08 = 0.44, rounded to 0.4.",
+      "details": {
+        "within_sla_pct": 0.5,
+        "failures": 3,
+        "impact_hint": "mark any high-impact stale assets if known"
+      }
+    },
+    "features.cross_links": {
+      "metric_id": "features.cross_links",
+      "score": 0.746,
+      "rationale": "The score is calculated based on the weighted contributions of each metric. The percentage of dashboards with links (83.33%) contributes 0.4 * 0.8333 = 0.3333. The link usage total (109) indicates a high frequency of usage, which contributes 0.4 * (109 / max_usage) where max_usage is assumed to be a reasonable threshold for high usage. The team distribution is not provided, so it contributes 0.2 * 0 = 0. The overall score is the sum of these contributions.",
+      "details": {
+        "dash_with_links_pct": 0.8333,
+        "link_usage_total": 109,
+        "team_distribution_hint": "add if known"
+      }
+    },
+    "governance.coverage": {
+      "metric_id": "governance.coverage",
+      "score": 0.5333,
+      "rationale": "The score is calculated based on the weighted contributions of certified percentage, ownership percentage, and metadata completeness percentage. The certified percentage contributes 0.5 * 0.5 = 0.25, the ownership percentage contributes 0.3 * 0.5 = 0.15, and the metadata completeness contributes 0.2 * 0.6667 = 0.1333. Summing these values gives a total score of 0.25 + 0.15 + 0.1333 = 0.5333.",
+      "details": {
+        "certified_score": 0.25,
+        "ownership_score": 0.15,
+        "metadata_score": 0.1333
+      }
+    },
+    "data.source_diversity": {
+      "metric_id": "data.source_diversity",
+      "score": 0.53,
+      "rationale": "The score is calculated based on the weights assigned to each metric. The distinct sources (6) contribute positively to the count score, while the domain count (3) and examples indicate a moderate level of domain balance. However, the trend new aspect is not fully addressed, which slightly lowers the overall score.",
+      "details": {
+        "distinct_sources": 6,
+        "domain_count": 3,
+        "domain_examples": [
+          "db",
+          "saas",
+          "warehouse"
+        ],
+        "trend_hint": "add new-source trend if known"
+      }
+    },
+    "democratization.self_service": {
+      "metric_id": "democratization.self_service",
+      "score": 0.1667,
+      "rationale": "The score is calculated based on the creator share, which is 0.1667. The growth over the last 3 months and department coverage are not provided, which limits the overall score. The weights assigned to each component are 50% for creator share, 30% for growth, and 20% for department coverage. Since only the creator share is available, the score reflects that single component.",
+      "details": {
+        "creator_share": 0.1667,
+        "growth_hint": "add 3m growth if known",
+        "dept_coverage_hint": "add depts coverage if known"
+      }
+    },
+    "decision.traceability": {
+      "metric_id": "decision.traceability",
+      "score": 0.9,
+      "rationale": "The linked percentage is perfect at 100%, indicating all entries are connected. The evidence quality is high, with all entries providing evidence. However, there is a lack of recent meeting references, which slightly lowers the score.",
+      "details": {
+        "linked_pct": 1.0,
+        "evidence_quality_hint": "3/3 entries include evidence",
+        "recency_hint": "add last-30d meeting refs if known"
+      }
+    }
+  },
+  "mode": "demo_inputs_seeded"
+}

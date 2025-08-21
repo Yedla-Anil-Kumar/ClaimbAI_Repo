@@ -1,153 +1,65 @@
-# Data_Collection_Agents/bi_tracker/orchestrator.py
 from __future__ import annotations
-import math
-from pathlib import Path
 from typing import Any, Dict
+from .canonical import BIInputs
+from .llm_engine import BIUsageLLM
 
-from .repo_extractors import scan_repo
-from .metrics_engine import (
-    platform_proxy_metrics,
-    payload_bi_deploy_readiness,
-    payload_bi_data_freshness,
-    payload_bi_kpi_semantics,
-    payload_bi_docs_governance,
-    payload_bi_access_privacy,
-)
-# Reuse your existing generic LLMGrader
-from Data_Collection_Agents.ml_ops_agent.llm_graders import LLMGrader
-
-def _clamp01(x: float) -> float: return max(0.0, min(1.0, float(x)))
-def _band01(band: int) -> float: return max(0.0, min(1.0, (int(band) - 1) / 4.0))
-
-def _score_business_integration(bands: Dict[str, int]) -> float:
-    # Emphasize deploy automation + docs/governance; include access/privacy
-    comp = [
-        _band01(bands.get("deploy_readiness", 1)),
-        _band01(bands.get("docs_governance", 1)),
-        _band01(bands.get("access_privacy", 1)),
-        _band01(bands.get("data_freshness", 1)),
-    ]
-    # weights sum ~1
-    raw = 0.35*comp[0] + 0.25*comp[1] + 0.2*comp[2] + 0.2*comp[3]
-    return round(5.0 * _clamp01(raw), 2)
-
-def _score_decision_making(bands: Dict[str, int]) -> float:
-    # Emphasize KPI/semantic quality + freshness; governance still matters
-    comp = [
-        _band01(bands.get("kpi_semantic", 1)),
-        _band01(bands.get("data_freshness", 1)),
-        _band01(bands.get("docs_governance", 1)),
-    ]
-    raw = 0.45*comp[0] + 0.35*comp[1] + 0.20*comp[2]
-    return round(5.0 * _clamp01(raw), 2)
-
-def _bi_summary(signals: Dict[str, Any]) -> Dict[str, Any]:
-    def _lvl(val: float, bands=(0.25, 0.5, 0.75)) -> int:
-        if val <= bands[0]: return 0
-        if val <= bands[1]: return 1
-        if val <= bands[2]: return 2
-        return 3
-
-    assets = signals.get("assets", {})
-    deploy = signals.get("deploy", {})
-    fresh  = signals.get("freshness", {})
-    kpi    = signals.get("kpi", {})
-    docs   = signals.get("docs", {})
-    acc    = signals.get("access_privacy", {})
-
-    return {
-        "asset_footprint": assets,
-        "deploy_automation": {
-            "present": deploy.get("present", False),
-            "workflows": deploy.get("workflow_files", [])[:5],
-            "commands": deploy.get("deploy_commands", []),
-            "schedules": deploy.get("schedules", [])[:3],
-        },
-        "refresh_scheduling": {
-            "present": fresh.get("has_schedule", False),
-            "quality_tools": fresh.get("quality_tools", []),
-            "validation_schemas": fresh.get("validation_schemas", [])[:5]
-        },
-        "kpi_semantic": {
-            "kpi_catalogs": kpi.get("kpi_catalogs", []),
-            "lookml_measures": kpi.get("lookml_measures", 0),
-            "dbt_metrics_files": kpi.get("dbt_metrics_files", [])
-        },
-        "docs_governance": {
-            "readmes": docs.get("dashboard_readmes", [])[:8],
-            "codeowners": docs.get("codeowners_present", False),
-            "review_gates": docs.get("reviewers_required_hint", False)
-        },
-        "access_privacy": acc
-    }
+def _clip01(x: float) -> float:
+    try: return max(0.0, min(1.0, float(x)))
+    except Exception: return 0.0
 
 class BIOrchestrator:
-    """Repo-only BI pipeline: Extract → Deterministic metrics → One-shot LLM grading → Scores."""
-    def __init__(self, model: str = "gpt-4o-mini", temperature: float = 0.0, max_tokens: int = 512):
+    """
+    Single-file inputs → 10 metric graders → two rollups:
+      - business_integration  (usage, adoption, feature use)
+      - decision_making       (governance, freshness, traceability)
+    """
+    def __init__(self, model: str = "gpt-4o-mini", temperature: float = 0.0, max_tokens: int = 700):
         self.model = model
         self.temperature = temperature
         self.max_tokens = max_tokens
-        self.grader = LLMGrader(model=model, temperature=temperature, max_tokens=max_tokens)
+        self.llm = BIUsageLLM(model=model, temperature=temperature)
 
-    def analyze_repo(self, repo_path: str) -> Dict[str, Any]:
-        root = Path(repo_path)
+    def analyze_inputs(self, bi: BIInputs) -> Dict[str, Any]:
+        # Call 10 graders
+        m1 = self.llm.score_dau_mau(bi.activity_events, bi.today_utc)
+        m2 = self.llm.score_active_creators(bi.usage_logs)
+        m3 = self.llm.score_session_depth(bi.session_logs)
+        m4 = self.llm.score_drilldown_adoption(bi.interaction_logs)
+        m5 = self.llm.score_refresh_timeliness(bi.dashboard_metadata)
+        m6 = self.llm.score_cross_links([])  # if you have link_data, pass it here
+        m7 = self.llm.score_governance_coverage(bi.governance_data)
+        m8 = self.llm.score_source_diversity(bi.source_catalog)
+        m9 = self.llm.score_self_service_adoption(bi.user_roles)
+        m10 = self.llm.score_decision_traceability(bi.decision_logs)
 
-        # 1) Extract deterministic evidence
-        ev = scan_repo(repo_path)
+        metrics = [m1,m2,m3,m4,m5,m6,m7,m8,m9,m10]
+        m = {x["metric_id"]: x for x in metrics}
 
-        # 2) Deterministic platform proxies
-        plat = platform_proxy_metrics(ev)
-
-        # 3) One-shot grading payloads
-        g = self.grader
-        gkw = dict(max_tokens=self.max_tokens)
-        g_deploy = g.grade("bi_deploy_readiness", payload_bi_deploy_readiness(ev), **gkw)
-        g_fresh  = g.grade("bi_data_freshness",  payload_bi_data_freshness(ev), **gkw)
-        g_kpi    = g.grade("bi_kpi_semantics",   payload_bi_kpi_semantics(ev), **gkw)
-        g_docs   = g.grade("bi_docs_governance", payload_bi_docs_governance(ev), **gkw)
-        g_acc    = g.grade("bi_access_privacy",  payload_bi_access_privacy(ev), **gkw)
-
-        # 4) Assemble signals
-        bands = {
-            "deploy_readiness": g_deploy["band"],
-            "data_freshness":   g_fresh["band"],
-            "kpi_semantic":     g_kpi["band"],
-            "docs_governance":  g_docs["band"],
-            "access_privacy":   g_acc["band"],
-        }
-
-        signals: Dict[str, Any] = {
-            "platforms": {
-                "tableau": plat["tableau_present"],
-                "powerbi": plat["powerbi_present"],
-                "looker":  plat["looker_present"],
-            },
-            "assets": plat["counts"],
-            "deploy": g_deploy["metric_id"] and payload_bi_deploy_readiness(ev)["evidence"],
-            "freshness": payload_bi_data_freshness(ev)["evidence"],
-            "kpi": payload_bi_kpi_semantics(ev)["evidence"],
-            "docs": payload_bi_docs_governance(ev)["evidence"],
-            "access_privacy": payload_bi_access_privacy(ev)["evidence"],
-        }
-
-        # 5) Scores
-        scores = {
-            "business_integration": _score_business_integration(bands),
-            "decision_making": _score_decision_making(bands),
-        }
+        # Rollups (0..5 scoring for exec-friendly scale)
+        business_integration = 5.0 * (
+            0.25*_clip01(m1["score"]) + 0.15*_clip01(m2["score"]) + 0.15*_clip01(m3["score"])
+          + 0.10*_clip01(m4["score"]) + 0.10*_clip01(m6["score"]) + 0.10*_clip01(m8["score"])
+          + 0.15*_clip01(m9["score"])
+        )
+        decision_making = 5.0 * (
+            0.25*_clip01(m5["score"]) + 0.25*_clip01(m7["score"]) + 0.20*_clip01(m10["score"])
+          + 0.15*_clip01(m3["score"]) + 0.15*_clip01(m8["score"])
+        )
 
         return {
             "agent": "bi_tracker",
-            "repo": root.name,
-            "platforms": signals["platforms"],
-            "scores": scores,
-            "bi_summary": _bi_summary(signals),
-            "grading_notes": {
-                "bi_deploy_readiness": g_deploy,
-                "bi_data_freshness_practices": g_fresh,
-                "bi_kpi_semantic_quality": g_kpi,
-                "bi_docs_governance": g_docs,
-                "bi_access_privacy_readiness": g_acc,
+            "inputs_summary": {
+                "today_utc": bi.today_utc,
+                "counts": {
+                    "users": len(bi.user_roles) or len(bi.user_directory),
+                    "dashboards": len(bi.governance_data) or len(bi.dashboard_metadata),
+                    "activity_events": len(bi.activity_events),
+                },
             },
-            "mode": "repo_only",
+            "scores": {
+                "business_integration": round(business_integration, 2),
+                "decision_making": round(decision_making, 2),
+            },
+            "metric_breakdown": m,
+            "mode": "single_inputs_json",
         }

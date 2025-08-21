@@ -1,79 +1,128 @@
 {
   "agent": "bi_tracker",
   "repo": "shrimp-data-analysis-dw-iam",
-  "platforms": {
-    "tableau": false,
-    "powerbi": false,
-    "looker": false
+  "inputs_summary": {
+    "today_utc": "2025-08-21",
+    "counts": {
+      "users": 10,
+      "dashboards": 5,
+      "activity_events": 133
+    }
   },
   "scores": {
-    "business_integration": 0.0,
-    "decision_making": 0.0
+    "usage_engagement": 2.74,
+    "governance_operations": 3.11
   },
-  "bi_summary": {
-    "asset_footprint": {
-      "tableau": 0,
-      "powerbi": 0,
-      "looker": 0
+  "metric_breakdown": {
+    "usage.dau_mau": {
+      "metric_id": "usage.dau_mau",
+      "score": 0.38,
+      "rationale": "The DAU/MAU ratio is low, indicating limited daily engagement relative to monthly users. The consistency and trend metrics were not provided, so they are assumed to be neutral.",
+      "details": {
+        "dau": 3,
+        "mau": 10,
+        "stickiness": 0.3,
+        "ratio_score": 0.18,
+        "consistency_7d_score": 0.0,
+        "trend_7d_score": 0.0
+      }
     },
-    "deploy_automation": {
-      "present": false,
-      "workflows": [],
-      "commands": [],
-      "schedules": []
+    "usage.creators_ratio": {
+      "metric_id": "usage.creators_ratio",
+      "score": 0.36,
+      "rationale": "Creator share is significantly below the target of 15%, indicating a need for improvement in governed self-service adoption.",
+      "details": {
+        "creator_share": 0.2,
+        "active_users": 10,
+        "team_distribution_hint": "Provide per-team distribution if known.",
+        "creator_growth_hint": "Provide last-4-week growth if known."
+      }
     },
-    "refresh_scheduling": {
-      "present": false,
-      "quality_tools": [],
-      "validation_schemas": []
+    "usage.session_depth": {
+      "metric_id": "usage.session_depth",
+      "score": 0.9,
+      "rationale": "Average duration is 479.57s (above 300s) and average pages is 4.38 (above 4); both metrics exceed targets.",
+      "details": {
+        "avg_duration_s": 479.57,
+        "avg_pages": 4.38,
+        "repeat_week_hint": "Provide repeats/week if known."
+      }
     },
-    "kpi_semantic": {
-      "kpi_catalogs": [],
-      "lookml_measures": 0,
-      "dbt_metrics_files": []
+    "usage.drilldown": {
+      "metric_id": "usage.drilldown",
+      "score": 0.43324,
+      "rationale": "The score is calculated based on the weighted contributions of the metrics. The percentage of sessions with drilldown is 0.4324, which contributes 50% to the score. The group spread and trend stability metrics are not provided, so they contribute 0 to the score. Therefore, the final score is primarily derived from the sessions_with_drilldown_pct.",
+      "details": {
+        "sessions_with_drilldown_pct": 0.4324,
+        "group_spread_hint": "Add groups using drilldown if known.",
+        "trend_weeks_hint": "Add last-4-week stability if known."
+      }
     },
-    "docs_governance": {
-      "readmes": [],
-      "codeowners": false,
-      "review_gates": false
+    "reliability.refresh_timeliness": {
+      "metric_id": "reliability.refresh_timeliness",
+      "score": 0.56,
+      "rationale": "The score is calculated based on the weights assigned to each component. The within SLA percentage contributes 0.6 * 0.6 = 0.36. The failure frequency contributes 0.2 * (1 - (2 / 10)) = 0.16 (assuming a scale of 10 for failures). The impact of stale assets contributes 0.2 * 0 = 0.0 (since no high-impact stale assets were mentioned). The total score is 0.36 + 0.16 + 0.0 = 0.56.",
+      "details": {
+        "within_sla_pct": 0.6,
+        "failures": 2,
+        "impact_hint": "mark any high-impact stale assets if known"
+      }
     },
-    "access_privacy": {
-      "role_maps": [],
-      "pii_tags": [],
-      "privacy_docs": []
+    "features.cross_links": {
+      "metric_id": "features.cross_links",
+      "score": 0.92,
+      "rationale": "The score is calculated based on the weighted contributions of each metric. The dashboard with links percentage is 100%, contributing 0.4 to the score. The link usage total is 112, which indicates high usage frequency, contributing another 0.4. The team distribution is not provided, but assuming a reasonable distribution, it contributes approximately 0.12. Therefore, the overall score is 0.4 + 0.4 + 0.12 = 0.92.",
+      "details": {
+        "dash_with_links_pct": 1.0,
+        "link_usage_total": 112,
+        "team_distribution_hint": "add if known"
+      }
+    },
+    "governance.coverage": {
+      "metric_id": "governance.coverage",
+      "score": 0.62,
+      "rationale": "The score is calculated based on the weighted contributions of certified data, ownership, and metadata completeness. The certified percentage is fully met, while ownership and metadata completeness are partially met, leading to an overall score of 0.62.",
+      "details": {
+        "certified_score": 1.0,
+        "ownership_score": 0.12,
+        "metadata_score": 0.12
+      }
+    },
+    "data.source_diversity": {
+      "metric_id": "data.source_diversity",
+      "score": 0.53,
+      "rationale": "The score is calculated based on the weights assigned to each metric. The distinct sources contribute positively, but the domain balance and trend new metrics are less favorable. The distinct sources score is 0.4 (4 sources), domain balance is 0.3 (3 domains), and trend new is 0.0 (no new sources indicated). The overall score reflects a moderate level of diversity.",
+      "details": {
+        "distinct_sources": 4,
+        "domain_count": 3,
+        "domain_examples": [
+          "db",
+          "saas",
+          "warehouse"
+        ],
+        "trend_hint": "add new-source trend if known"
+      }
+    },
+    "democratization.self_service": {
+      "metric_id": "democratization.self_service",
+      "score": 0.5,
+      "rationale": "The self-service scoring is based on the weighted contributions of creator share, growth over the last 3 months, and departmental coverage. The current creator share is low, which impacts the overall score significantly. Growth data is missing, which could potentially improve the score if positive growth is reported. Departmental coverage is also not provided, which further limits the score.",
+      "details": {
+        "creator_share": 0.2,
+        "growth_3m": null,
+        "dept_coverage": null
+      }
+    },
+    "decision.traceability": {
+      "metric_id": "decision.traceability",
+      "score": 0.56,
+      "rationale": "The score is calculated based on the weighted contributions of linked percentage, evidence quality, and recency. The linked percentage is 0.8 (50% weight), contributing 0.4 to the score. The evidence quality is low with only 2 out of 5 entries including evidence (30% weight), contributing 0.12 to the score. The recency is not addressed, leading to a score of 0 for that component (20% weight). The total score is 0.4 + 0.12 + 0 = 0.56.",
+      "details": {
+        "linked_pct": 0.8,
+        "evidence_quality_hint": "2/5 entries include evidence",
+        "recency_hint": "add last-30d meeting refs if known"
+      }
     }
   },
-  "grading_notes": {
-    "bi_deploy_readiness": {
-      "metric_id": "bi.deploy_readiness_band",
-      "band": 1,
-      "rationale": "There is no deployment automation evidence present, as indicated by the absence of workflow files, deploy commands, schedules, and the lack of codeowners or required reviewers.",
-      "flags": []
-    },
-    "bi_data_freshness_practices": {
-      "metric_id": "bi.data_freshness_practices_band",
-      "band": 1,
-      "rationale": "There is no refresh scheduling as indicated by the absence of schedules and the 'has_schedule' flag being false.",
-      "flags": []
-    },
-    "bi_kpi_semantic_quality": {
-      "metric_id": "bi.kpi_semantic_quality_band",
-      "band": 1,
-      "rationale": "There is no evidence of KPI catalogs, LookML measures, or dbt metrics files, indicating a lack of any KPI or semantic layer evidence.",
-      "flags": []
-    },
-    "bi_docs_governance": {
-      "metric_id": "bi.docs_governance_band",
-      "band": 1,
-      "rationale": "There are no documentation or governance elements present, as indicated by the absence of dashboard READMEs, ownership lines, and the lack of CODEOWNERS.",
-      "flags": []
-    },
-    "bi_access_privacy_readiness": {
-      "metric_id": "bi.access_privacy_readiness_band",
-      "band": 1,
-      "rationale": "There are no role maps, PII tags, or privacy documents present, indicating a lack of readiness in access privacy.",
-      "flags": []
-    }
-  },
-  "mode": "repo_only"
+  "mode": "demo_inputs_seeded"
 }

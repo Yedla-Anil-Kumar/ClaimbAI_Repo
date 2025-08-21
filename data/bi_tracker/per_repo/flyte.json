@@ -1,104 +1,127 @@
 {
   "agent": "bi_tracker",
   "repo": "flyte",
-  "platforms": {
-    "tableau": false,
-    "powerbi": false,
-    "looker": false
+  "inputs_summary": {
+    "today_utc": "2025-08-21",
+    "counts": {
+      "users": 9,
+      "dashboards": 3,
+      "activity_events": 127
+    }
   },
   "scores": {
-    "business_integration": 3.25,
-    "decision_making": 2.06
+    "usage_engagement": 2.13,
+    "governance_operations": 3.04
   },
-  "bi_summary": {
-    "asset_footprint": {
-      "tableau": 0,
-      "powerbi": 0,
-      "looker": 0
+  "metric_breakdown": {
+    "usage.dau_mau": {
+      "metric_id": "usage.dau_mau",
+      "score": 0.12,
+      "rationale": "The DAU/MAU ratio is low, indicating poor engagement. The consistency and trend metrics are not provided, so they are assumed to be neutral.",
+      "details": {
+        "dau": 1,
+        "mau": 9,
+        "stickiness": 0.1111,
+        "ratio_score": 0.12,
+        "consistency_7d_score": 0,
+        "trend_7d_score": 0
+      }
     },
-    "deploy_automation": {
-      "present": true,
-      "workflows": [
-        "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/.github/workflows/publish.yml",
-        "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/.github/workflows/update_site.yml",
-        "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/.github/workflows/single-binary.yml",
-        "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/.github/workflows/lint.yml",
-        "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/.github/workflows/create_release.yml"
-      ],
-      "commands": [],
-      "schedules": [
-        "cron: \"0 0 * * *\"",
-        "cron: '0 12 * * 1'",
-        "on:\n  schedule"
-      ]
+    "usage.creators_ratio": {
+      "metric_id": "usage.creators_ratio",
+      "score": 0.37,
+      "rationale": "Creator share is significantly below the target of 15%, indicating a need for improvement in governed self-service adoption.",
+      "details": {
+        "creator_share": 0.1111,
+        "active_users": 9,
+        "team_distribution_hint": "Provide per-team distribution if known.",
+        "creator_growth_hint": "Provide last-4-week growth if known."
+      }
     },
-    "refresh_scheduling": {
-      "present": true,
-      "quality_tools": [
-        "pandera"
-      ],
-      "validation_schemas": []
+    "usage.session_depth": {
+      "metric_id": "usage.session_depth",
+      "score": 0.9,
+      "rationale": "Average duration is above 300s and average pages exceed 4; strong performance overall.",
+      "details": {
+        "avg_duration_s": 544.55,
+        "avg_pages": 4.59,
+        "repeat_week_hint": "Provide repeats/week if known."
+      }
     },
-    "kpi_semantic": {
-      "kpi_catalogs": [],
-      "lookml_measures": 0,
-      "dbt_metrics_files": [
-        "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/charts/flyte-core/values.yaml",
-        "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/charts/flyte-core/templates/propeller/webhook-hpa.yaml",
-        "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/deployment/sandbox/flyte_helm_generated.yaml"
-      ]
+    "usage.drilldown": {
+      "metric_id": "usage.drilldown",
+      "score": 0.487,
+      "rationale": "The score is calculated based on the weighted contributions of the three metrics: sessions_with_drilldown_pct (48.15% contributes 50%), group_spread (not provided, assumed low contribution), and trend_stability (not provided, assumed low contribution). The overall score reflects a moderate level of drill-down usage with potential for improvement in group spread and trend stability.",
+      "details": {
+        "sessions_with_drilldown_pct": 0.4815,
+        "group_spread_hint": "Add groups using drilldown if known.",
+        "trend_weeks_hint": "Add last-4-week stability if known."
+      }
     },
-    "docs_governance": {
-      "readmes": [],
-      "codeowners": true,
-      "review_gates": false
+    "reliability.refresh_timeliness": {
+      "metric_id": "reliability.refresh_timeliness",
+      "score": 0.36666,
+      "rationale": "The score is calculated based on the weights assigned to each component. The within SLA percentage contributes 0.3333 * 0.6 = 0.19998. The failure frequency contributes (1 - (2 / total_failures)) * 0.2, assuming total_failures is 10 for calculation, resulting in 0.16. The impact of stale assets is not quantified, so it contributes 0. The total score is 0.19998 + 0.16 + 0 = 0.36666.",
+      "details": {
+        "within_sla_pct": 0.3333,
+        "failures": 2,
+        "impact_hint": "mark any high-impact stale assets if known"
+      }
     },
-    "access_privacy": {
-      "role_maps": [],
-      "pii_tags": [
-        "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/charts/flyte/README.md",
-        "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/charts/flyte/values.yaml",
-        "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/charts/flyte-core/README.md",
-        "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/charts/flyte-core/values.yaml",
-        "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/charts/flyte-core/values-keycloak-idp-flyteclients-without-browser.yaml",
-        "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/charts/flyte-core/values-sandbox.yaml",
-        "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/charts/flyteconnector/README.md",
-        "/Users/anilkumar/Desktop/ClaimbAI/useful_repos/Github_repos/flyte/charts/flyteconnector/values.yaml"
-      ],
-      "privacy_docs": []
+    "features.cross_links": {
+      "metric_id": "features.cross_links",
+      "score": 0.88,
+      "rationale": "The dashboard has 100% of links present, indicating strong potential for feature adoption. The link usage total of 71 suggests frequent usage, contributing significantly to the score. However, the team distribution is unknown, which limits the score slightly.",
+      "details": {
+        "dash_with_links_pct": 1.0,
+        "link_usage_total": 71,
+        "team_distribution_hint": "add if known"
+      }
+    },
+    "governance.coverage": {
+      "metric_id": "governance.coverage",
+      "score": 0.56667,
+      "rationale": "The score is calculated based on the weighted contributions of certified percentage, ownership percentage, and metadata completeness percentage. The certified percentage contributes 0.5 * 0.6667, the ownership percentage contributes 0.3 * 1.0, and the metadata completeness contributes 0.2 * 0.3333. The final score is the sum of these contributions.",
+      "details": {
+        "certified_score": 0.33335,
+        "ownership_score": 0.3,
+        "metadata_score": 0.06666
+      }
+    },
+    "data.source_diversity": {
+      "metric_id": "data.source_diversity",
+      "score": 0.53,
+      "rationale": "The score is calculated based on the weights assigned to each metric. The distinct sources contribute positively, but the domain balance is limited with only 2 domains. The trend hint suggests potential for improvement, which affects the overall score.",
+      "details": {
+        "distinct_sources": 3,
+        "domain_count": 2,
+        "domain_examples": [
+          "db",
+          "warehouse"
+        ],
+        "trend_hint": "add new-source trend if known"
+      }
+    },
+    "democratization.self_service": {
+      "metric_id": "democratization.self_service",
+      "score": 0.1111,
+      "rationale": "The score is primarily based on the creator share, which is 0.1111. The growth and department coverage metrics are not provided, leading to a low overall score. The weights indicate that creator share has the highest impact on the final score.",
+      "details": {
+        "creator_share": 0.1111,
+        "growth_3m": null,
+        "dept_coverage": null
+      }
+    },
+    "decision.traceability": {
+      "metric_id": "decision.traceability",
+      "score": 0.8,
+      "rationale": "The linked percentage is perfect at 100%, indicating all entries are linked. However, the evidence quality is only 50% as only half of the entries include evidence, which lowers the score. The recency aspect is not addressed, as there are no recent meeting references provided. Therefore, the overall score reflects the strong linkage but moderate evidence quality and lack of recency.",
+      "details": {
+        "linked_pct": 1.0,
+        "evidence_quality": 0.5,
+        "recency": 0.0
+      }
     }
   },
-  "grading_notes": {
-    "bi_deploy_readiness": {
-      "metric_id": "bi.deploy_readiness_band",
-      "band": 4,
-      "rationale": "The evidence shows automated deployment workflows and schedules, but lacks required review gates as indicated by the absence of reviewers required hint.",
-      "flags": []
-    },
-    "bi_data_freshness_practices": {
-      "metric_id": "bi.data_freshness_practices_band",
-      "band": 4,
-      "rationale": "The evidence includes schedules and some quality tools (Pandera and dbt tests), but lacks validation schemas.",
-      "flags": []
-    },
-    "bi_kpi_semantic_quality": {
-      "metric_id": "bi.kpi_semantic_quality_band",
-      "band": 1,
-      "rationale": "There is no KPI catalog or any LookML measures present, and the evidence only includes dbt metrics files without substantial definitions.",
-      "flags": []
-    },
-    "bi_docs_governance": {
-      "metric_id": "bi.docs_governance_band",
-      "band": 4,
-      "rationale": "The evidence includes ownership lines and the presence of CODEOWNERS, but lacks a review gate, which aligns with the criteria for a band 4.",
-      "flags": []
-    },
-    "bi_access_privacy_readiness": {
-      "metric_id": "bi.access_privacy_readiness_band",
-      "band": 2,
-      "rationale": "There are PII tags present, but no role maps or privacy documents, indicating weak hints.",
-      "flags": []
-    }
-  },
-  "mode": "repo_only"
+  "mode": "demo_inputs_seeded"
 }
