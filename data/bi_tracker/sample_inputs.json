@@ -1,0 +1,160 @@
+[
+  {
+    "today_utc": "2025-08-01",
+    "activity_events": [
+      {"ts":"2025-08-01T09:12:00Z","user_id":"u2","action":"view","content_id":"d2"},
+      {"ts":"2025-08-01T11:40:00Z","user_id":"u1","action":"view","content_id":"d1"},
+      {"ts":"2025-07-29T11:40:00Z","user_id":"u1","action":"view","content_id":"d3"},
+      {"ts":"2025-07-27T10:00:00Z","user_id":"u3","action":"view","content_id":"d3"},
+      {"ts":"2025-07-28T12:22:00Z","user_id":"u4","action":"view","content_id":"d4"}
+    ],
+    "user_directory": [
+      {"user_id":"u1","department":"Finance"},
+      {"user_id":"u2","department":"Ops"},
+      {"user_id":"u3","department":"Sales"},
+      {"user_id":"u4","department":"HR"}
+    ],
+    "session_logs": [
+      {"user":"u1","duration":300,"pages":5,"repeats_per_week":2},
+      {"user":"u2","duration":120,"pages":2,"repeats_per_week":1}
+    ],
+    "usage_logs": [
+      {"user":"u1","role":"viewer"},
+      {"user":"u2","role":"creator"},
+      {"user":"u3","role":"creator"},
+      {"user":"u4","role":"viewer"}
+    ],
+    "interaction_logs": [
+      {"user":"u1","action":"drill"},
+      {"user":"u2","action":"view"},
+      {"user":"u3","action":"drilldown"}
+    ],
+    "governance_data": [
+      {"id":"d1","certified":true,"owner":"teamA","metadata":["description","refresh_rate"]},
+      {"id":"d2","certified":false,"owner":null,"metadata":[]}
+    ],
+    "dashboard_metadata": [
+      {"id":"d1","last_refresh":"2025-07-31","sla":"daily","priority":"high"},
+      {"id":"d2","last_refresh":"2025-07-28","sla":"weekly","priority":"normal"}
+    ],
+    "source_catalog": ["Snowflake","Postgres","Salesforce"],
+    "dashboard_link_data": [
+      {"id":"d1","links":["d2","d3"],"link_usage":15},
+      {"id":"d2","links":[],"link_usage":0}
+    ],
+    "user_roles": [
+      {"id":"u1","role":"creator"},
+      {"id":"u2","role":"viewer"},
+      {"id":"u3","role":"creator"},
+      {"id":"u4","role":"viewer"}
+    ],
+    "decision_logs": [
+      {"id":"dec1","linked_dash":"sales_forecast","evidence":"screenshot"},
+      {"id":"dec2","linked_dash":null,"evidence":null}
+    ]
+  },
+  {
+    "today_utc": "2025-08-10",
+    "activity_events": [
+      {"ts":"2025-08-10T08:02:00Z","user_id":"a1","action":"view","content_id":"kpi_fin"},
+      {"ts":"2025-08-10T08:11:00Z","user_id":"a2","action":"edit","content_id":"kpi_ops"},
+      {"ts":"2025-08-09T13:00:00Z","user_id":"a3","action":"view","content_id":"kpi_sales"},
+      {"ts":"2025-07-25T10:00:00Z","user_id":"a4","action":"view","content_id":"kpi_sales"}
+    ],
+    "user_directory": [
+      {"user_id":"a1","department":"Finance"},
+      {"user_id":"a2","department":"Ops"},
+      {"user_id":"a3","department":"Ops"},
+      {"user_id":"a4","department":"Sales"},
+      {"user_id":"a5","department":"Sales"}
+    ],
+    "session_logs": [
+      {"user":"a1","duration":420,"pages":6,"repeats_per_week":3},
+      {"user":"a2","duration":260,"pages":4,"repeats_per_week":2},
+      {"user":"a3","duration":140,"pages":2,"repeats_per_week":1}
+    ],
+    "usage_logs": [
+      {"user":"a1","role":"creator"},
+      {"user":"a2","role":"creator"},
+      {"user":"a3","role":"viewer"},
+      {"user":"a4","role":"viewer"},
+      {"user":"a5","role":"viewer"}
+    ],
+    "interaction_logs": [
+      {"user":"a1","action":"drill"},
+      {"user":"a2","action":"drill"},
+      {"user":"a3","action":"view"}
+    ],
+    "governance_data": [
+      {"id":"kpi_fin","certified":true,"owner":"fin_bi","metadata":["description","refresh_rate","glossary"]},
+      {"id":"kpi_ops","certified":true,"owner":"ops_bi","metadata":["description","refresh_rate"]},
+      {"id":"kpi_sales","certified":false,"owner":"sales_bi","metadata":[]}
+    ],
+    "dashboard_metadata": [
+      {"id":"kpi_fin","last_refresh":"2025-08-10","sla":"daily","priority":"high"},
+      {"id":"kpi_ops","last_refresh":"2025-08-10","sla":"daily","priority":"high"},
+      {"id":"kpi_sales","last_refresh":"2025-08-04","sla":"weekly","priority":"normal"}
+    ],
+    "source_catalog": ["Snowflake","BigQuery","Salesforce","Zendesk","Postgres"],
+    "dashboard_link_data": [
+      {"id":"kpi_fin","links":["kpi_ops"],"link_usage":28},
+      {"id":"kpi_ops","links":["kpi_fin","kpi_sales"],"link_usage":31},
+      {"id":"kpi_sales","links":[],"link_usage":0}
+    ],
+    "user_roles": [
+      {"id":"a1","role":"creator"},
+      {"id":"a2","role":"creator"},
+      {"id":"a3","role":"viewer"},
+      {"id":"a4","role":"viewer"},
+      {"id":"a5","role":"viewer"}
+    ],
+    "decision_logs": [
+      {"id":"qbr_aug","linked_dash":"kpi_fin","evidence":"minutes"},
+      {"id":"ops_sync","linked_dash":"kpi_ops","evidence":"screenshot"}
+    ]
+  },
+  {
+    "today_utc": "2025-08-15",
+    "activity_events": [
+      {"ts":"2025-08-15T07:55:00Z","user_id":"x1","action":"view","content_id":"exec_1"},
+      {"ts":"2025-08-14T18:10:00Z","user_id":"x2","action":"view","content_id":"exec_1"},
+      {"ts":"2025-08-07T09:00:00Z","user_id":"x3","action":"view","content_id":"exec_1"}
+    ],
+    "user_directory": [
+      {"user_id":"x1","department":"Exec"},
+      {"user_id":"x2","department":"Exec"},
+      {"user_id":"x3","department":"Finance"}
+    ],
+    "session_logs": [
+      {"user":"x1","duration":80,"pages":1,"repeats_per_week":1},
+      {"user":"x2","duration":95,"pages":1,"repeats_per_week":1}
+    ],
+    "usage_logs": [
+      {"user":"x1","role":"viewer"},
+      {"user":"x2","role":"viewer"},
+      {"user":"x3","role":"viewer"}
+    ],
+    "interaction_logs": [
+      {"user":"x1","action":"view"},
+      {"user":"x2","action":"view"}
+    ],
+    "governance_data": [
+      {"id":"exec_1","certified":false,"owner":null,"metadata":[]}
+    ],
+    "dashboard_metadata": [
+      {"id":"exec_1","last_refresh":"2025-08-12","sla":"weekly","priority":"high"}
+    ],
+    "source_catalog": ["Excel"],
+    "dashboard_link_data": [
+      {"id":"exec_1","links":[],"link_usage":0}
+    ],
+    "user_roles": [
+      {"id":"x1","role":"viewer"},
+      {"id":"x2","role":"viewer"},
+      {"id":"x3","role":"viewer"}
+    ],
+    "decision_logs": [
+      {"id":"weekly_staff","linked_dash":null,"evidence":null}
+    ]
+  }
+]

@@ -1,32 +1,83 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Any, Dict, List
+from datetime import datetime, timezone
 
 @dataclass
 class BIInputs:
     """
     Normalized, platform-agnostic datasets used by the 10 BI metrics.
-    These align to the dataset names in your spec.  # :contentReference[oaicite:1]{index=1}
     """
-    today_utc: str = "2025-08-01"
+
+    # Global
+    today_utc: str = ""  # auto-filled to UTC date if blank
 
     # Usage & Adoption
-    activity_events: List[Dict[str, Any]] = field(default_factory=list)   # view/explore/edit/download events
-    user_directory: List[Dict[str, Any]] = field(default_factory=list)    # id, department/region/role/license
-    session_logs: List[Dict[str, Any]] = field(default_factory=list)      # session aggregates (duration/pages/repeats)
-    usage_logs: List[Dict[str, Any]] = field(default_factory=list)        # active users & their effective role
+    activity_events: List[Dict[str, Any]] = field(default_factory=list)   # [{ts, user_id, action, content_id?}]
+    user_directory:  List[Dict[str, Any]] = field(default_factory=list)   # [{user_id, department, role?, license?}]
+    session_logs:    List[Dict[str, Any]] = field(default_factory=list)   # [{user, duration, pages, repeats_per_week?}]
+    usage_logs:      List[Dict[str, Any]] = field(default_factory=list)   # [{user, role}]
 
-    interaction_logs: List[Dict[str, Any]] = field(default_factory=list)  # drilldown etc.
+    interaction_logs: List[Dict[str, Any]] = field(default_factory=list)  # [{user, action, content_id?, ts?}]
 
     # Content Health & Governance
-    governance_data: List[Dict[str, Any]] = field(default_factory=list)   # certified/owner/metadata per dashboard
+    governance_data: List[Dict[str, Any]] = field(default_factory=list)   # [{id, certified:bool, owner, metadata:[] }]
 
     # Reliability
-    dashboard_metadata: List[Dict[str, Any]] = field(default_factory=list)# id, last_refresh, sla, priority
+    dashboard_metadata: List[Dict[str, Any]] = field(default_factory=list)# [{id, last_refresh, sla, priority?}]
 
     # Democratization
-    source_catalog: List[str] = field(default_factory=list)               # ["Snowflake","Postgres",...]
-    user_roles: List[Dict[str, Any]] = field(default_factory=list)        # for self-service adoption
+    source_catalog: List[str] = field(default_factory=list)               # ["Snowflake","Postgres","Salesforce",...]
+
+    # Cross-Dashboard Linking (metric #6)
+    dashboard_link_data: List[Dict[str, Any]] = field(default_factory=list)  # [{id, links:[...], link_usage:int}]
+
+    # Self-Service Adoption
+    user_roles: List[Dict[str, Any]] = field(default_factory=list)        # [{id, role}]
 
     # Decision Support
-    decision_logs: List[Dict[str, Any]] = field(default_factory=list)     # decision id + linked_dash + evidence
+    decision_logs: List[Dict[str, Any]] = field(default_factory=list)     # [{id, linked_dash, evidence, meeting_date?}]
+
+    @staticmethod
+    def from_dict(d: Dict[str, Any]) -> "BIInputs":
+        return BIInputs(
+            today_utc=d.get("today_utc", ""),
+            activity_events=d.get("activity_events", []),
+            user_directory=d.get("user_directory", []),
+            session_logs=d.get("session_logs", []),
+            usage_logs=d.get("usage_logs", []),
+            interaction_logs=d.get("interaction_logs", []),
+            governance_data=d.get("governance_data", []),
+            dashboard_metadata=d.get("dashboard_metadata", []),
+            source_catalog=d.get("source_catalog", []),
+            dashboard_link_data=d.get("dashboard_link_data", []),
+            user_roles=d.get("user_roles", []),
+            decision_logs=d.get("decision_logs", []),
+        )
+
+    def __post_init__(self) -> None:
+        if not self.today_utc:
+            self.today_utc = datetime.now(timezone.utc).date().isoformat()
+
+        def _fix_ts(v):
+            s = "" if v is None else str(v)
+            return s[:25]
+
+        for ev in self.activity_events:
+            if "ts" in ev:
+                ev["ts"] = _fix_ts(ev["ts"])
+
+        for ev in self.interaction_logs:
+            if "ts" in ev:
+                ev["ts"] = _fix_ts(ev["ts"])
+
+        # normalize dashboard_metadata
+        fixed = []
+        for d in self.dashboard_metadata:
+            fixed.append({
+                "id": d.get("id", "") or "",
+                "last_refresh": d.get("last_refresh") or self.today_utc,
+                "sla": (d.get("sla") or "weekly").lower(),
+                "priority": d.get("priority")
+            })
+        self.dashboard_metadata = fixed

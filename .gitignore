@@ -1,10 +1,9 @@
 /venv/
-/external_repos/
-/useful_repos/
-# /data/
-/*.env
-/*__pycache__/
-/agents/
-/run_agents.py/
-/micro_agents/
+external_repos/
+useful_repos/
+*.env
+__pycache__/
+agents/
+run_agents.py
+micro_agents/
 /ml_ops_agent/
