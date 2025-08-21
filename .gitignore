@@ -4,3 +4,7 @@
 # /data/
 /*.env
 /*__pycache__/
+/agents/
+/run_agents.py/
+/micro_agents/
+/ml_ops_agent/
