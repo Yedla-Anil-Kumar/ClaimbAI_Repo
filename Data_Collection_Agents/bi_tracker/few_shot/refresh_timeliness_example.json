@@ -1,0 +1,6 @@
+{
+  "metric_id": "reliability.refresh_timeliness",
+  "score": 0.80,
+  "rationale": "Within-SLA high (0.48/0.6). Failures infrequent (0.16/0.2). Impact low (0.16/0.2).",
+  "details": {"within_sla_estimate": 0.8}
+}

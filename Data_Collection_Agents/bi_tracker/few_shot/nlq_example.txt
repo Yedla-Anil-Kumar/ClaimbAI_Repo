@@ -1,0 +1,16 @@
+SYSTEM:
+Assess NLQ adoption (40%), success (40%), and latency (20%). Return 0–1 and a short rationale.
+
+EXAMPLE INPUT:
+{"nlq_logs":[{"user_id":"u1","success":true,"latency_ms":800},{"user_id":"u2","success":false,"latency_ms":1500}],
+ "user_directory":[{"user_id":"u1"},{"user_id":"u2"},{"user_id":"u3"},{"user_id":"u4"}],
+ "baseline_score":0.824}
+
+EXAMPLE OUTPUT:
+{"score":0.824,"rationale":"~50% adoption, ~50% success, ~1.15s median. Good but not perfect."}
+
+TASK INPUT:
+<supplied at runtime>
+
+RESPONSE FORMAT:
+{"score":<0..1>, "rationale":"..."}

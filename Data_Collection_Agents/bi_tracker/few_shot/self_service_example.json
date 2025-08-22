@@ -1,0 +1,6 @@
+{
+  "metric_id": "democratization.self_service",
+  "score": 0.70,
+  "rationale": "Creator share above target, modest growth, decent dept coverage.",
+  "details": {"creator_share": 0.35}
+}
