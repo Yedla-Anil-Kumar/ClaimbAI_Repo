@@ -7,7 +7,7 @@ agents/
 run_agents.py
 micro_agents/
 /ml_ops_agent/
-/Data_Collection_Agents/bi_tracker/fewshot/
+/Data_Collection_Agents/bi_tracker/few_shot/
 /Data_Collection_Agents/bi_tracker/canonical.py
 /Data_Collection_Agents/bi_tracker/settings.py
 /Data_Collection_Agents/bi_tracker/llm_calls.py
