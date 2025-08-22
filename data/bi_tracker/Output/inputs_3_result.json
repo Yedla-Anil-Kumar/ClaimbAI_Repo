@@ -9,44 +9,40 @@
     }
   },
   "scores": {
-    "business_integration": 1.2,
-    "decision_making": 1.0,
-    "operational_health": 1.9
+    "business_integration": 1.29,
+    "decision_making": 1.1
   },
   "metric_breakdown": {
     "usage.dau_mau": {
       "metric_id": "usage.dau_mau",
-      "score": 1,
-      "rationale": "The stickiness is below 0.15, indicating a severe drop in user engagement. The data shows only 3 unique users in the last 30 days, with no clear monthly active users (MAU) identified.",
+      "score": 2,
+      "rationale": "The stickiness is calculated to be 0.25, indicating a declining trend in user engagement. The limited number of unique users and activities suggests material risks to user retention.",
       "evidence": {
         "dau": 3,
-        "mau": 3,
-        "stickiness": 1.0
+        "mau": 12,
+        "stickiness": 0.25
       },
-      "gaps": [
-        "Insufficient data to determine stable MAU",
-        "No clear trend analysis available"
-      ],
+      "gaps": [],
       "actions": [
         {
           "priority": "P0",
-          "action": "Conduct a user engagement survey to identify pain points"
+          "action": "Analyze user feedback to identify engagement barriers"
         },
         {
           "priority": "P1",
-          "action": "Implement targeted marketing campaigns to re-engage users"
+          "action": "Implement targeted re-engagement campaigns for inactive users"
         },
         {
           "priority": "P1",
-          "action": "Analyze user behavior to improve content relevance"
+          "action": "Enhance content offerings based on user interests"
         }
       ],
-      "confidence": 0.5
+      "confidence": 0.75
     },
     "usage.creators_ratio": {
       "metric_id": "usage.creators_ratio",
       "score": 1,
-      "rationale": "The creator share is less than 8%, indicating a significant failure in user engagement and a lack of active contributors. Immediate action is required to address this critical issue.",
+      "rationale": "The creator share is less than 8%, indicating a significant failure in engagement and urgent action is required to increase creator participation.",
       "evidence": {
         "creator_share": 0.0,
         "active_users": 3
@@ -71,7 +67,7 @@
     "usage.session_depth": {
       "metric_id": "usage.session_depth",
       "score": 1,
-      "rationale": "Average session length and page depth are significantly below targets, indicating critical issues in user engagement.",
+      "rationale": "The average session duration and page views are significantly below target thresholds, indicating a critical failure in user engagement.",
       "evidence": {
         "avg_duration_s": 87.5,
         "avg_pages": 1
@@ -80,11 +76,11 @@
       "actions": [
         {
           "priority": "P0",
-          "action": "Investigate user engagement strategies to improve session duration"
+          "action": "Investigate user engagement strategies to increase session duration"
         },
         {
           "priority": "P0",
-          "action": "Enhance content offerings to encourage more page views"
+          "action": "Enhance content quality to encourage more page views"
         },
         {
           "priority": "P1",
@@ -92,7 +88,7 @@
         },
         {
           "priority": "P1",
-          "action": "Analyze session logs for patterns in low engagement"
+          "action": "Analyze session logs for patterns in user drop-off"
         },
         {
           "priority": "P2",
@@ -104,7 +100,7 @@
     "usage.drilldown": {
       "metric_id": "usage.drilldown",
       "score": 1,
-      "rationale": "Drill actions were not present in any of the sessions, indicating a significant failure in engagement with drill features.",
+      "rationale": "Drill actions are absent from the interaction logs, indicating a significant failure in user engagement with drill features. This necessitates urgent action to improve usage.",
       "evidence": {
         "pct_sessions_with_drilldown": 0.0
       },
@@ -112,11 +108,11 @@
       "actions": [
         {
           "priority": "P0",
-          "action": "Implement training sessions to educate users on drill features"
+          "action": "Implement training sessions for users on drill features"
         },
         {
           "priority": "P0",
-          "action": "Enhance visibility of drill options in the user interface"
+          "action": "Enhance visibility of drill options in the UI"
         },
         {
           "priority": "P1",
@@ -128,7 +124,7 @@
     "reliability.refresh_timeliness": {
       "metric_id": "reliability.refresh_timeliness",
       "score": 1,
-      "rationale": "The dashboard has not been refreshed since 2025-08-12, which is beyond the weekly SLA, indicating a significant failure in meeting the refresh requirements.",
+      "rationale": "The dashboard has not been refreshed since August 12, 2025, while the current date is August 15, 2025, resulting in a failure to meet the weekly SLA. This indicates a significant failure with urgent action required.",
       "evidence": {
         "within_sla_pct": 0.0,
         "failures": 1
@@ -140,7 +136,7 @@
           "action": "Refresh the dashboard immediately"
         },
         {
-          "priority": "P1",
+          "priority": "P0",
           "action": "Investigate the cause of the delay in refresh"
         },
         {
@@ -165,15 +161,11 @@
           "action": "Implement links on all dashboards"
         },
         {
-          "priority": "P1",
-          "action": "Identify key dashboards for cross-linking"
-        },
-        {
-          "priority": "P1",
-          "action": "Train team on best practices for link usage"
+          "priority": "P0",
+          "action": "Conduct a review of dashboard content to identify linking opportunities"
         }
       ],
-      "confidence": 0.0
+      "confidence": 0.5
     },
     "governance.coverage": {
       "metric_id": "governance.coverage",
@@ -192,11 +184,11 @@
       "actions": [
         {
           "priority": "P0",
-          "action": "Certify the dashboard"
+          "action": "Assign an owner to the dashboard"
         },
         {
           "priority": "P0",
-          "action": "Assign an owner to the dashboard"
+          "action": "Obtain certification for the dashboard"
         },
         {
           "priority": "P1",
@@ -218,6 +210,10 @@
         {
           "priority": "P0",
           "action": "Identify and integrate additional data sources across multiple domains"
+        },
+        {
+          "priority": "P1",
+          "action": "Assess current data quality and reliability of the existing source"
         }
       ],
       "confidence": 0.5
@@ -225,7 +221,7 @@
     "democratization.self_service": {
       "metric_id": "democratization.self_service",
       "score": 1,
-      "rationale": "There are no creators identified among the users, indicating a significant failure in creator engagement. This poses an urgent need for action to increase creator participation.",
+      "rationale": "There are no creators among the users, indicating a significant failure in creator engagement and urgent action is required.",
       "evidence": {
         "creator_share": 0.0
       },
@@ -233,15 +229,15 @@
       "actions": [
         {
           "priority": "P0",
-          "action": "Identify potential creators and engage them through targeted outreach"
+          "action": "Identify potential creators and provide training sessions"
         },
         {
           "priority": "P0",
-          "action": "Develop training programs to empower users to become creators"
+          "action": "Implement incentives for users to become creators"
         },
         {
           "priority": "P1",
-          "action": "Create incentives for users to take on creator roles"
+          "action": "Gather feedback from viewers to understand barriers to becoming creators"
         }
       ],
       "confidence": 0.5
@@ -249,53 +245,57 @@
     "decision.traceability": {
       "metric_id": "decision.traceability",
       "score": 1,
-      "rationale": "Less than 15% of decisions are linked to dashboards, and there is no evidence provided to support any decision-making process.",
+      "rationale": "Less than 15% of decisions are linked to dashboards, and there is no evidence provided to support any decisions.",
       "evidence": {
         "linked_pct": 0.0,
         "evidence_markers": "0/1"
       },
       "gaps": [
         "Evidence of dashboard links for decisions",
-        "Recent decision-making data"
+        "More decision logs with linked dashboards"
       ],
       "actions": [
         {
           "priority": "P0",
-          "action": "Implement a mandatory requirement for linking decisions to dashboards"
-        },
-        {
-          "priority": "P0",
-          "action": "Establish a process for documenting evidence for each decision"
+          "action": "Implement a requirement for all decisions to include dashboard links"
         },
         {
           "priority": "P1",
-          "action": "Train staff on the importance of using dashboards for decision-making"
+          "action": "Train staff on the importance of linking decisions to dashboards"
+        },
+        {
+          "priority": "P2",
+          "action": "Review and update decision logging processes to ensure evidence is captured"
         }
       ],
       "confidence": 0.0
     },
     "usage.weekly_active_trend": {
       "metric_id": "usage.weekly_active_trend",
-      "score": 3,
-      "rationale": "The WAU is flat with some noise, as there are only a few distinct users over the last four weeks. No material drop is observed, but the activity is not consistently growing.",
+      "score": 2,
+      "rationale": "The WAU shows a sustained decline with only 3 distinct users over the last 4 weeks, indicating material risks to user engagement.",
       "evidence": {
         "wau_series": [
-          2,
           1,
           1,
-          0
+          1,
+          1
         ],
-        "trend": "flat"
+        "trend": "down"
       },
       "gaps": [],
       "actions": [
         {
-          "priority": "P1",
-          "action": "Increase user engagement through targeted notifications"
+          "priority": "P0",
+          "action": "Investigate user feedback to identify engagement barriers"
         },
         {
-          "priority": "P2",
-          "action": "Analyze user feedback to identify barriers to activity"
+          "priority": "P1",
+          "action": "Implement targeted marketing campaigns to re-engage users"
+        },
+        {
+          "priority": "P1",
+          "action": "Enhance content offerings based on user interests"
         }
       ],
       "confidence": 0.7
@@ -313,23 +313,15 @@
       "actions": [
         {
           "priority": "P0",
-          "action": "Conduct user feedback sessions to understand reasons for drop-off"
+          "action": "Analyze user feedback to identify reasons for drop-off"
         },
         {
           "priority": "P0",
-          "action": "Implement targeted re-engagement campaigns for initial users"
-        },
-        {
-          "priority": "P1",
-          "action": "Analyze user journey to identify friction points"
+          "action": "Implement targeted re-engagement strategies for initial users"
         },
         {
           "priority": "P1",
           "action": "Enhance onboarding experience to improve initial engagement"
-        },
-        {
-          "priority": "P2",
-          "action": "Monitor user activity closely for the next cohort"
         }
       ],
       "confidence": 0.9
@@ -337,7 +329,7 @@
     "features.export_rate": {
       "metric_id": "features.export_rate",
       "score": 1,
-      "rationale": "There are no export or download actions recorded, indicating a significant failure in user engagement with these features.",
+      "rationale": "Exports and downloads do not occur in any of the recorded sessions, indicating a significant failure in user engagement with these features.",
       "evidence": {
         "export_sessions_pct": 0.0
       },
@@ -345,18 +337,18 @@
       "actions": [
         {
           "priority": "P0",
-          "action": "Investigate user needs and barriers to using export/download features"
+          "action": "Investigate user awareness of export/download features"
         },
         {
           "priority": "P1",
-          "action": "Implement user training or tutorials on how to use export/download features"
+          "action": "Implement user training sessions on how to use export/download features"
         },
         {
           "priority": "P1",
-          "action": "Enhance visibility of export/download options in the user interface"
+          "action": "Enhance visibility of export/download options in the UI"
         }
       ],
-      "confidence": 0.6
+      "confidence": 0.9
     },
     "features.alerts_usage": {
       "metric_id": "features.alerts_usage",
@@ -381,15 +373,15 @@
         },
         {
           "priority": "P2",
-          "action": "Promote alerts/subscriptions to users"
+          "action": "Promote alerts/subscriptions to users through training sessions"
         }
       ],
       "confidence": 0.5
     },
     "reliability.sla_breach_streaks": {
       "metric_id": "reliability.sla_breach_streaks",
-      "score": 1,
-      "rationale": "The dashboard has not been refreshed within its SLA, indicating a significant failure. This breach is critical as it affects a high-priority dashboard.",
+      "score": 2,
+      "rationale": "The dashboard has not been refreshed within its SLA of weekly, resulting in a breach of 3 days. This indicates a material risk to the reliability of the dashboard.",
       "evidence": {
         "max_breach_days": 3,
         "critical_breaches": 1
@@ -398,23 +390,23 @@
       "actions": [
         {
           "priority": "P0",
-          "action": "Investigate the cause of the refresh failure immediately"
-        },
-        {
-          "priority": "P0",
-          "action": "Implement monitoring for refresh status on critical dashboards"
+          "action": "Investigate the cause of the refresh failure"
         },
         {
           "priority": "P1",
-          "action": "Establish a recovery plan for dashboard refresh failures"
+          "action": "Implement monitoring for refresh status"
+        },
+        {
+          "priority": "P2",
+          "action": "Establish a recovery plan for dashboard refresh issues"
         }
       ],
-      "confidence": 0.7
+      "confidence": 0.75
     },
     "reliability.error_rate_queries": {
       "metric_id": "reliability.error_rate_queries",
-      "score": 4,
-      "rationale": "The error rate is 20% based on one error out of five total actions, which falls within the 0.1\u20130.5% range. There are no high-impact incidents reported.",
+      "score": 2,
+      "rationale": "The error rate is 20% based on the single error occurrence out of five total actions, indicating a material risk to reliability. Immediate attention is required to address the underlying issues causing the error.",
       "evidence": {
         "error_rate": 0.2,
         "total_actions": 5,
@@ -423,12 +415,16 @@
       "gaps": [],
       "actions": [
         {
-          "priority": "P1",
+          "priority": "P0",
           "action": "Investigate the cause of the error to prevent recurrence."
         },
         {
-          "priority": "P2",
-          "action": "Enhance monitoring to capture more detailed error metrics."
+          "priority": "P1",
+          "action": "Implement monitoring to track error occurrences in real-time."
+        },
+        {
+          "priority": "P1",
+          "action": "Review and enhance error handling procedures."
         }
       ],
       "confidence": 0.9
@@ -448,11 +444,11 @@
         },
         {
           "priority": "P1",
-          "action": "Conduct a training session for dashboard owners on PII compliance"
+          "action": "Conduct a training session for dashboard owners on PII governance"
         },
         {
           "priority": "P2",
-          "action": "Establish a review process for dashboard metadata to ensure compliance"
+          "action": "Establish a review process for dashboard compliance with PII regulations"
         }
       ],
       "confidence": 0.5
@@ -460,33 +456,35 @@
     "governance.lineage_coverage": {
       "metric_id": "governance.lineage_coverage",
       "score": 1,
-      "rationale": "There is minimal coverage of lineage and glossary documentation, with no owners assigned to the dashboard. This indicates a significant failure in governance practices.",
-      "evidence": {},
+      "rationale": "There is minimal documentation of lineage and no ownership for the dashboard, indicating a significant failure in governance.",
+      "evidence": {
+        "lineage_count": 0,
+        "owner_count": 0
+      },
       "gaps": [
         "Lineage documentation",
-        "Glossary references",
         "Dashboard ownership"
       ],
       "actions": [
         {
           "priority": "P0",
-          "action": "Establish mandatory lineage and glossary documentation for all dashboards"
+          "action": "Establish mandatory lineage documentation for all dashboards"
         },
         {
           "priority": "P0",
-          "action": "Assign owners to all dashboards to ensure accountability"
+          "action": "Assign owners to all dashboards"
         },
         {
           "priority": "P1",
-          "action": "Implement a review process for dashboard certification"
+          "action": "Implement a review process for dashboard governance"
         }
       ],
-      "confidence": 0.0
+      "confidence": 0.5
     },
     "data.cost_efficiency": {
       "metric_id": "data.cost_efficiency",
       "score": 2,
-      "rationale": "The source catalog is limited to a single Excel file, indicating a lack of diversity in data sources. Additionally, the dashboard has not been refreshed since August 12, while it has a weekly SLA, suggesting material inefficiencies and potential waste.",
+      "rationale": "The source catalog is limited to a single Excel file, indicating a lack of diversity in data sources. Additionally, the dashboard has not been refreshed since August 12, while its SLA is weekly, suggesting material inefficiencies and potential waste.",
       "evidence": {
         "source_catalog": "Excel",
         "last_refresh": "2025-08-12",
@@ -519,10 +517,6 @@
         {
           "priority": "P0",
           "action": "Identify and onboard creators in all departments"
-        },
-        {
-          "priority": "P1",
-          "action": "Provide training for potential creators"
         }
       ],
       "confidence": 0.9

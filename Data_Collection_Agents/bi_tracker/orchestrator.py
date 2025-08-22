@@ -11,10 +11,13 @@ def _s(m: Dict[str, Any]) -> float:
 
 class BIOrchestrator:
     """
-    Single-file inputs → 20 metric graders → three rollups (1–5 scale):
+    Single-file inputs → 20 metric graders → two rollups (1–5 scale),
+    aligned to the AIMRI PRD for Agent 5 (BI Tracker):
+
       - business_integration  (usage, adoption, feature use)
       - decision_making       (governance, freshness, traceability)
-      - operational_health    (reliability & ops signals)
+
+    The former 'operational_health' rollup has been removed to match the PRD.
     """
     def __init__(self, model: str = "gpt-4o-mini", temperature: float = 0.0, max_tokens: int = 700):
         self.model = model
@@ -48,19 +51,29 @@ class BIOrchestrator:
         metrics = [m1,m2,m3,m4,m5,m6,m7,m8,m9,m10,m11,m12,m13,m14,m15,m16,m17,m18,m19,m20]
         m = {x["metric_id"]: x for x in metrics}
 
+        # ---- Rollups (two only, per PRD Agent 5) ----
+        # Business Integration: usage/adoption/feature use & growth signals
         business_integration = round((
-            0.18*_s(m1) + 0.12*_s(m2) + 0.12*_s(m3) + 0.08*_s(m4) + 0.08*_s(m6) +
-            0.10*_s(m8) + 0.12*_s(m9) + 0.10*_s(m11) + 0.10*_s(m12)
+            0.20*_s(m1) +  # DAU/MAU stickiness
+            0.12*_s(m2) +  # creators ratio
+            0.12*_s(m3) +  # session depth
+            0.08*_s(m4) +  # drilldown usage
+            0.10*_s(m6) +  # cross-links
+            0.08*_s(m8) +  # source diversity (proxy for breadth)
+            0.12*_s(m9) +  # self-service adoption
+            0.09*_s(m11) + # WAU trend
+            0.09*_s(m12)   # 4w retention
         ), 2)
 
+        # Decision Making: governance + freshness + decision traceability + reliability signals
         decision_making = round((
-            0.22*_s(m5) + 0.20*_s(m7) + 0.08*_s(m8) + 0.20*_s(m10) + 0.10*_s(m17) +
-            0.10*_s(m18) + 0.10*_s(m3)
-        ), 2)
-
-        operational_health = round((
-            0.25*_s(m15) + 0.20*_s(m16) + 0.15*_s(m13) + 0.15*_s(m14) +
-            0.15*_s(m19) + 0.10*_s(m5)
+            0.20*_s(m5)  +  # refresh timeliness
+            0.18*_s(m7)  +  # governance coverage
+            0.08*_s(m8)  +  # source diversity (access to needed data)
+            0.22*_s(m10) +  # decision traceability
+            0.10*_s(m17) +  # PII coverage
+            0.12*_s(m18) +  # lineage coverage
+            0.10*_s(m16)    # query/visual error rate (reliability for decisioning)
         ), 2)
 
         return {
@@ -76,7 +89,6 @@ class BIOrchestrator:
             "scores": {
                 "business_integration": business_integration,
                 "decision_making": decision_making,
-                "operational_health": operational_health,
             },
             "metric_breakdown": m,
             "mode": "single_inputs_json",
