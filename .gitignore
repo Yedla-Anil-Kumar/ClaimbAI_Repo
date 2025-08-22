@@ -8,7 +8,6 @@ run_agents.py
 micro_agents/
 /ml_ops_agent/
 /Data_Collection_Agents/bi_tracker/few_shot/
-/Data_Collection_Agents/bi_tracker/canonical.py
 /Data_Collection_Agents/bi_tracker/settings.py
 /Data_Collection_Agents/bi_tracker/llm_calls.py
 /Data_Collection_Agents/bi_tracker/llm_graders.py
@@ -16,6 +15,7 @@ micro_agents/
 /Data_Collection_Agents/bi_tracker/input_provider.py
 /Data_Collection_Agents/bi_tracker/input_loader.py
 /Data_Collection_Agents/bi_tracker/make_demo_inputs.py
+/Data_Collection_Agents/bi_tracker/metrics_engine.py
 /Data_Collection_Agents/ml_ops_agent/one_shot/
 /Data_Collection_Agents/ml_ops_agent/pipeline_agents.py
 /Data_Collection_Agents/ml_ops_agent/platform_agents.py
