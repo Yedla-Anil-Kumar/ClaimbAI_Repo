@@ -1,6 +1,0 @@
-{
-  "metric_id": "usage.session_depth",
-  "score": 0.58,
-  "rationale": "Duration 260s≈0.35/0.4, pages 3.3≈0.25/0.3, repeats 1.2≈0.12/0.3.",
-  "details": {"avg_duration_s": 260, "avg_pages": 3.3, "avg_repeats_per_week": 1.2}
-}

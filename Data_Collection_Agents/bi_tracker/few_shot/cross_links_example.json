@@ -1,6 +1,0 @@
-{
-  "metric_id": "features.cross_links",
-  "score": 0.64,
-  "rationale": "Has-links 0.5 (0.20/0.4), usage strong (0.28/0.4), team spread limited (0.16/0.2).",
-  "details": {"dash_with_links_pct": 0.5, "link_usage_total": 45}
-}

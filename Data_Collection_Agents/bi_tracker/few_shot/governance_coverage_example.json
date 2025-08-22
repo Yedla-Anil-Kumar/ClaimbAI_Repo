@@ -1,6 +1,0 @@
-{
-  "metric_id": "governance.coverage",
-  "score": 0.72,
-  "rationale": "Certified(0.30/0.5), owners(0.20/0.3), metadata(0.22/0.2 capped at 0.2).",
-  "details": {"certified_pct": 0.6, "ownership_pct": 0.6, "metadata_completeness_pct": 0.7}
-}

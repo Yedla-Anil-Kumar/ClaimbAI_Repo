@@ -1,6 +1,0 @@
-{
-  "metric_id": "usage.creators_ratio",
-  "score": 0.66,
-  "rationale": "Creator share 0.25 vs target ~0.15 (good). Spread moderate (2 depts). Growth stable.",
-  "details": {"creator_share": 0.25, "active_users": 8}
-}
