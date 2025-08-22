@@ -1,6 +1,0 @@
-{
-  "metric_id": "sm.ops_quality_band",
-  "band": 4,
-  "rationale": "Endpoints and a pipeline are present; registry used. Strong SageMaker operational surface.",
-  "flags": []
-}

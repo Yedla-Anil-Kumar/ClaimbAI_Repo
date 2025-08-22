@@ -1,6 +1,0 @@
-{
-  "metric_id": "kfp.ops_quality_band",
-  "band": 4,
-  "rationale": "Multiple pipelines and compiled manifests detected; good KFP posture.",
-  "flags": []
-}

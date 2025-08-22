@@ -1,6 +1,0 @@
-{
-  "metric_id": "mlflow.ops_quality_band",
-  "band": 4,
-  "rationale": "Remote MLflow with artifacts, registry present, and CI/CD; serving signals seen → strong but not fully comprehensive ops.",
-  "flags": []
-}

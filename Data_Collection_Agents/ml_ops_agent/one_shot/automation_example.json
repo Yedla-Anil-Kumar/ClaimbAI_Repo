@@ -1,6 +1,0 @@
-{
-  "orchestrators": ["airflow", "kfp", "gha"],
-  "pipelines_defined": 2,
-  "scheduling_present": true,
-  "automation_quality": 0.88
-}
