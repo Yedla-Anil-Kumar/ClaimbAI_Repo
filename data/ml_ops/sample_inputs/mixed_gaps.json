@@ -1,0 +1,25 @@
+{
+  "mlflow_experiment_completeness": {"metric_id":"mlflow.experiment_completeness","pct_params":0.62,"pct_metrics":0.58,"pct_tags":0.50,"pct_artifacts":0.40,"pct_all":0.42},
+  "mlflow_lineage_coverage": {"metric_id":"mlflow.lineage_coverage","pct_git_sha":0.55,"pct_data_ref":0.42,"pct_env_files":0.60,"samples":[{"run_id":"r3","git_sha":false,"data_ref":false,"env_files":[]}]} ,
+  "mlflow_best_run_trend": {"metric_id":"mlflow.best_run_trend","weekly_best":[{"week":"2025-31","score":0.51},{"week":"2025-32","score":0.50},{"week":"2025-33","score":0.49}], "improvement_rate_mom":-0.01, "experiments_per_week":0.8, "direction":"max"},
+
+  "aml_endpoint_slo": {"metric_id":"aml.endpoint_slo","availability_30d":0.992,"error_rate":0.012,"p95_ms":420},
+  "aml_jobs_flow": {"metric_id":"aml.jobs_flow","success_rate":0.86,"p95_duration_min":75,"lead_time_hours":28},
+
+  "sm_endpoint_slo_scaling": {"metric_id":"sm.endpoint_slo_scaling","availability_30d":0.996,"error_rate":0.006,"p95_ms":260,"median_reaction_s":110,"max_rps_at_slo":300},
+  "sm_pipeline_stats": {"metric_id":"sm.pipeline_stats","success_rate":0.88,"p95_duration_min":90,"retry_rate":0.12,"promotion_time_h":36},
+
+  "cicd_deploy_frequency": {"metric_id":"cicd.deploy_frequency","freq_per_week":0.8,"service_count":3},
+  "cicd_lead_time": {"metric_id":"cicd.lead_time","p50_hours":20,"p95_hours":72},
+  "cicd_change_failure_rate": {"metric_id":"cicd.change_failure_rate","cfr":0.32,"rollbacks_30d":4},
+  "cicd_policy_gates": {
+    "metric_id":"cicd.policy_gates_band",
+    "required_checks":["pytest","integration-tests","bandit","trivy","bias_check","data_validation"],
+    "workflow_yaml":"jobs:\n  build:\n    steps:\n      - run: pytest\n  deploy:\n    steps:\n      - run: ./deploy.sh",
+    "logs_snippets":["pytest failed 2 tests"],
+    "rubric":"5 if all required checks exist and pass before deploy; 3 if partial; 1 if missing most."
+  },
+  "cicd_artifact_lineage": {"metric_id":"cicd.artifact_lineage","integrity_ok":false,"mismatches":[{"service":"svc-a","built":"sha256:aaa","deployed":"sha256:bbb"}]},
+
+  "declared_slo": {"availability": 0.995, "p95_ms": 300, "error_rate": 0.01}
+}

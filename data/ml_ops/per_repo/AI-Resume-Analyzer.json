@@ -89,7 +89,7 @@
     "lineage": {
       "metric_id": "lineage_practices_readiness_band",
       "band": 1,
-      "rationale": "Only an environment lock is present, but it does not meet the criteria for logging a valid environment lock.",
+      "rationale": "Only an environment lock is present, but it does not meet the criteria for logging as it is not a valid lock file.",
       "flags": []
     },
     "dora": {

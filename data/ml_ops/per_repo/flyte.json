@@ -9,7 +9,7 @@
   },
   "scores": {
     "ai_ml_capabilities": 2.73,
-    "operations_maturity": 1.99
+    "operations_maturity": 1.97
   },
   "aimri_ops_summary": {
     "platform_surface_area": {
@@ -68,7 +68,7 @@
       "rationale": "All required checks are missing (pytest, integration-tests, bandit, trivy, bias_check, data_validation).",
       "flags": [
         "missing_pytest",
-        "missing_integration-tests",
+        "missing_integration_tests",
         "missing_bandit",
         "missing_trivy",
         "missing_bias_check",
@@ -84,7 +84,7 @@
     "artifact_lineage": {
       "metric_id": "artifact_lineage_readiness_band",
       "band": 1,
-      "rationale": "There are no pinned images, no signing, no SBOM, and only k8s probes are present, indicating a lack of integrity signals.",
+      "rationale": "The evidence shows no pinned images, no signing, no SBOM, and only k8s probes without integrity signals, indicating a poor artifact lineage and integrity posture.",
       "flags": []
     },
     "monitoring": {
@@ -101,14 +101,14 @@
     },
     "lineage": {
       "metric_id": "lineage_practices_readiness_band",
-      "band": 5,
-      "rationale": "Complete lineage: code, data, and environment are captured.",
+      "band": 4,
+      "rationale": "Two of the three required elements (git_sha_logging and data_refs) are present, but the env_locks are insufficient.",
       "flags": []
     },
     "dora": {
       "metric_id": "dora_readiness_band",
       "band": 2,
-      "rationale": "Evidence shows multiple concurrency entries and scheduled runs, but lacks environments, rollback strategy, and health checks.",
+      "rationale": "Evidence shows multiple schedules and high concurrency, but lacks environments, rollback strategy, and health checks.",
       "flags": []
     },
     "cost_attribution": {

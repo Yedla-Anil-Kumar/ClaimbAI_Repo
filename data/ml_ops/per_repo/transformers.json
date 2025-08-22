@@ -9,7 +9,7 @@
   },
   "scores": {
     "ai_ml_capabilities": 3.64,
-    "operations_maturity": 4.31
+    "operations_maturity": 4.22
   },
   "aimri_ops_summary": {
     "platform_surface_area": {
@@ -75,7 +75,7 @@
     "policy_gates": {
       "metric_id": "cicd.policy_gates_band",
       "band": 2,
-      "rationale": "Only pytest is present, while integration, bandit, trivy, bias check, and data validation are all missing.",
+      "rationale": "Only pytest is present; integration, bandit, trivy, bias check, and data validation are all missing.",
       "flags": [
         "missing_integration",
         "missing_bandit",
@@ -86,8 +86,8 @@
     },
     "registry_governance": {
       "metric_id": "registry_governance_readiness_band",
-      "band": 1,
-      "rationale": "No CODEOWNERS present, no production environment, and weak policy gates with only one test gate present.",
+      "band": 2,
+      "rationale": "Weak governance indicators present with no CODEOWNERS, non-production environments, and only one policy gate (pytest) active.",
       "flags": []
     },
     "artifact_lineage": {
@@ -98,14 +98,14 @@
     },
     "monitoring": {
       "metric_id": "monitoring_coverage_readiness_band",
-      "band": 4,
-      "rationale": "Multiple rule files and snippets present, along with a variety of alert channels, indicating a good level of monitoring configuration.",
+      "band": 2,
+      "rationale": "The evidence includes multiple rule files and snippets, but they appear to be stubs without clear production alert rules or configured alert channels.",
       "flags": []
     },
     "validation": {
       "metric_id": "validation_artifacts_readiness_band",
-      "band": 2,
-      "rationale": "Evidence includes explainability and bias reports, but lacks validation schemas and model cards.",
+      "band": 1,
+      "rationale": "Only explainability artifacts are present, but no bias reports, validation schemas, or model cards.",
       "flags": []
     },
     "lineage": {
@@ -117,13 +117,13 @@
     "dora": {
       "metric_id": "dora_readiness_band",
       "band": 4,
-      "rationale": "Multiple environments with extensive concurrency controls and multiple scheduled runs, but lacking rollback strategy and health checks.",
+      "rationale": "Two environments with multiple concurrency controls and several scheduled runs, but lacking rollback strategy and health checks.",
       "flags": []
     },
     "cost_attribution": {
       "metric_id": "cost_attribution_readiness_band",
-      "band": 2,
-      "rationale": "Few required cost attribution tags are present; several key tags are missing.",
+      "band": 1,
+      "rationale": "None of the required cost attribution tags are present; significant missing keys.",
       "flags": []
     },
     "slo_declared": {

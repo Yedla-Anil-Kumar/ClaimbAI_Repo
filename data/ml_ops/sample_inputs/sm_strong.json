@@ -1,0 +1,23 @@
+{
+  "mlflow_experiment_completeness": {"metric_id":"mlflow.experiment_completeness","pct_params":0.9,"pct_metrics":0.9,"pct_tags":0.88,"pct_artifacts":0.9,"pct_all":0.88},
+  "mlflow_best_run_trend": {"metric_id":"mlflow.best_run_trend","weekly_best":[{"week":"2025-30","score":0.61},{"week":"2025-31","score":0.66},{"week":"2025-32","score":0.71}], "improvement_rate_mom":0.05, "experiments_per_week":2.4, "direction":"max"},
+  "mlflow_reproducibility": {"metric_id":"mlflow.reproducibility","match_rate":0.92,"signature_conflicts":[]},
+
+  "sm_endpoint_slo_scaling": {"metric_id":"sm.endpoint_slo_scaling","availability_30d":0.999,"error_rate":0.002,"p95_ms":180,"median_reaction_s":55,"max_rps_at_slo":950},
+  "sm_pipeline_stats": {"metric_id":"sm.pipeline_stats","success_rate":0.96,"p95_duration_min":42,"retry_rate":0.03,"promotion_time_h":12.0},
+  "sm_experiments_lineage": {"metric_id":"sm.experiments_lineage","pct_code_ref":0.9,"pct_data_ref":0.86,"pct_env":0.92},
+  "sm_clarify_coverage": {"metric_id":"sm.clarify_coverage","pct_with_bias_report":0.81,"pct_with_explainability":0.84},
+  "sm_cost_efficiency": {"metric_id":"sm.cost_efficiency","per_1k_inferences_usd":0.065,"per_training_hour_usd":3.2,"gpu_mem_headroom_pct":28,"idle_vs_active_ratio":0.18},
+
+  "cicd_deploy_frequency": {"metric_id":"cicd.deploy_frequency","freq_per_week":3.6,"service_count":4},
+  "cicd_lead_time": {"metric_id":"cicd.lead_time","p50_hours":5.5,"p95_hours":20.0},
+  "cicd_change_failure_rate": {"metric_id":"cicd.change_failure_rate","cfr":0.18,"rollbacks_30d":1},
+  "cicd_policy_gates": {
+    "metric_id":"cicd.policy_gates_band",
+    "required_checks":["pytest","integration-tests","bandit","trivy","bias_check","data_validation"],
+    "workflow_yaml":"<yaml with all checks before deploy>",
+    "logs_snippets":["pytest passed","integration-tests flaky but passed retry","bandit ok","trivy ok","bias_check ok","data_validation ok"],
+    "rubric":"5 if all required checks exist and pass before deploy; 3 if partial; 1 if missing most."
+  },
+  "cicd_artifact_lineage": {"metric_id":"cicd.artifact_lineage","integrity_ok":true,"mismatches":[]}
+}

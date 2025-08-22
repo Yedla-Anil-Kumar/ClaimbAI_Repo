@@ -89,7 +89,7 @@
     "lineage": {
       "metric_id": "lineage_practices_readiness_band",
       "band": 1,
-      "rationale": "No lineage information is logged; none of the required elements are present.",
+      "rationale": "No lineage practices are logged; none of the required elements are present.",
       "flags": []
     },
     "dora": {

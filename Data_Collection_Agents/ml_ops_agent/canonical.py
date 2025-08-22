@@ -1,90 +1,63 @@
-# Data_Collection_Agents/ml_ops_agent/canonical.py
 from __future__ import annotations
 from dataclasses import dataclass, field
-from typing import Dict, List
+from typing import Any, Dict, Optional, List
+from dataclasses import asdict
 
 
 @dataclass
-class RepoEvidence:
+class MLOpsInputs:
     """
-    Canonical evidence collected purely from the repository.
-    These are deterministic facts — no LLM here. LLM graders only see structured payloads derived from this.
+    Canonical single-JSON inputs for the ML Ops agent.
+    These fields are the DIRECT outputs of your deterministic compute_* functions.
+    You can load them from data/ml_ops/sample_inputs/*.json or pipe them from collectors.
+
+    For each evidence blob:
+      - It should already look like the examples in your spec (metric_id + evidence fields).
+      - The orchestrator will wrap each in the LLM grading request with the correct rubric/policy.
     """
 
-    # ------- Platform signals (as before) -------
-    mlflow_hits: List[str] = field(default_factory=list)
-    mlflow_registry_hits: List[str] = field(default_factory=list)
-    mlflow_tracking_uri_values: List[str] = field(default_factory=list)
+    # ---- MLflow experimentation ----
+    mlflow_experiment_completeness: Optional[Dict[str, Any]] = None   # compute_mlflow_experiment_completeness
+    mlflow_lineage_coverage: Optional[Dict[str, Any]] = None          # compute_mlflow_lineage_coverage
+    mlflow_best_run_trend: Optional[Dict[str, Any]] = None            # compute_mlflow_best_run_trend
+    mlflow_registry_hygiene: Optional[Dict[str, Any]] = None          # compute_mlflow_registry_hygiene
+    mlflow_validation_artifacts: Optional[Dict[str, Any]] = None      # compute_mlflow_validation_artifact_coverage
+    mlflow_reproducibility: Optional[Dict[str, Any]] = None           # compute_mlflow_reproducibility_signature
 
-    sagemaker_hits: List[str] = field(default_factory=list)
-    sagemaker_endpoint_hits: List[str] = field(default_factory=list)
-    sagemaker_pipeline_hits: List[str] = field(default_factory=list)
-    sagemaker_registry_hits: List[str] = field(default_factory=list)
+    # ---- Azure ML (AML) ----
+    aml_endpoint_slo: Optional[Dict[str, Any]] = None                 # compute_aml_endpoint_slo
+    aml_jobs_flow: Optional[Dict[str, Any]] = None                    # compute_aml_jobs_flow
+    aml_monitoring_coverage: Optional[Dict[str, Any]] = None          # compute_aml_monitoring_coverage
+    aml_registry_governance: Optional[Dict[str, Any]] = None          # compute_aml_registry_governance
+    aml_cost_correlation: Optional[Dict[str, Any]] = None             # compute_aml_cost_correlation
 
-    azureml_hits: List[str] = field(default_factory=list)
-    azureml_endpoint_hits: List[str] = field(default_factory=list)
-    azureml_pipeline_hits: List[str] = field(default_factory=list)
-    azureml_registry_hits: List[str] = field(default_factory=list)
+    # ---- SageMaker (SM) ----
+    sm_endpoint_slo_scaling: Optional[Dict[str, Any]] = None          # compute_sm_endpoint_slo_scaling
+    sm_pipeline_stats: Optional[Dict[str, Any]] = None                # compute_sm_pipeline_stats
+    sm_experiments_lineage: Optional[Dict[str, Any]] = None           # compute_sm_experiments_lineage_coverage
+    sm_clarify_coverage: Optional[Dict[str, Any]] = None              # compute_sm_clarify_coverage
+    sm_cost_efficiency: Optional[Dict[str, Any]] = None               # compute_sm_cost_efficiency
 
-    kfp_hits: List[str] = field(default_factory=list)
-    kfp_compiled_yaml: List[str] = field(default_factory=list)
+    # ---- CI/CD ----
+    cicd_deploy_frequency: Optional[Dict[str, Any]] = None            # compute_cicd_deploy_frequency
+    cicd_lead_time: Optional[Dict[str, Any]] = None                   # compute_cicd_lead_time
+    cicd_change_failure_rate: Optional[Dict[str, Any]] = None         # compute_cicd_change_failure_rate
+    cicd_policy_gates: Optional[Dict[str, Any]] = None                # check_cicd_policy_gates (already LLM-ready-ish)
+    cicd_artifact_lineage: Optional[Dict[str, Any]] = None            # compute_cicd_artifact_lineage_integrity (deterministic)
 
-    # ------- Experiment tracking (generic) -------
-    tracking_tools: List[str] = field(default_factory=list)  # ["mlflow","wandb","tensorboard","comet_ml","neptune",...]
-    tracking_metrics_signals: List[str] = field(default_factory=list)   # files or lines
-    tracking_artifact_signals: List[str] = field(default_factory=list)
+    # ---- Optional knobs (defaults set here; override per org) ----
+    declared_slo: Dict[str, Any] = field(default_factory=lambda: {
+        "availability": 0.995, "p95_ms": 300, "error_rate": 0.01
+    })
+    policy_required_checks: List[str] = field(default_factory=lambda: [
+        "pytest", "integration-tests", "bandit", "trivy", "bias_check", "data_validation"
+    ])
 
-    # ------- CI/CD (workflows + raw content) -------
-    cicd_workflows: List[str] = field(default_factory=list)                # workflow file paths
-    cicd_workflow_texts: Dict[str, str] = field(default_factory=dict)      # path -> truncated text
-    cicd_schedules: List[str] = field(default_factory=list)                # cron strings
-    cicd_policy_gates: Dict[str, bool] = field(default_factory=dict)       # pytest/bandit/trivy/... booleans
-    cicd_deploy_job_names: List[str] = field(default_factory=list)         # job names likely to deploy/promote
-    cicd_environments: List[str] = field(default_factory=list)             # e.g., ["staging","production"]
-    cicd_concurrency_signals: List[str] = field(default_factory=list)      # e.g., "concurrency:" lines
-    cicd_rollback_signals: List[str] = field(default_factory=list)         # "rollback", "rollout undo", "canary" etc.
-    cicd_healthcheck_signals: List[str] = field(default_factory=list)      # health checks / smoke tests before deploy
-    codeowners_present: bool = False
+    def as_dict(self) -> Dict[str, Any]:
+      return asdict(self)
 
-    # ------- Serving / deployment signals -------
-    serving_signals: List[str] = field(default_factory=list)               # kserve, endpoint, FastAPI/Flask, inference
-
-    # ------- Manifests (rough) -------
-    endpoint_manifests: List[str] = field(default_factory=list)
-    pipeline_manifests: List[str] = field(default_factory=list)
-
-    # ------- Artifact lineage / integrity readiness -------
-    image_digest_pins: List[str] = field(default_factory=list)             # image@sha256:...
-    unpinned_images: List[str] = field(default_factory=list)               # image:tag (no digest)
-    sbom_signals: List[str] = field(default_factory=list)                  # sbom generation/upload steps
-    signing_signals: List[str] = field(default_factory=list)               # cosign/sigstore/attestation
-    k8s_probe_signals: List[str] = field(default_factory=list)             # readinessProbe/livenessProbe
-
-    # ------- Monitoring / alerting readiness -------
-    monitoring_rule_files: List[str] = field(default_factory=list)
-    monitoring_rule_texts: Dict[str, str] = field(default_factory=dict)    # path -> truncated text
-    alert_channel_signals: List[str] = field(default_factory=list)         # slack/webhook/email in CI
-
-    # ------- Validation / explainability / bias readiness -------
-    explainability_signals: List[str] = field(default_factory=list)        # shap, lime, captum
-    bias_signals: List[str] = field(default_factory=list)                  # clarify, fairness
-    validation_schema_files: List[str] = field(default_factory=list)       # validation.json/yaml, pandera, GE suites
-    model_card_files: List[str] = field(default_factory=list)              # model_card.md/.mdx
-    data_validation_libs: List[str] = field(default_factory=list)          # great_expectations, evidently, pandera
-
-    # ------- Lineage practices readiness -------
-    lineage_code_signals: List[str] = field(default_factory=list)          # git sha logging/tagging patterns
-    data_ref_signals: List[str] = field(default_factory=list)              # dataset/feature-store refs tagging
-    env_lock_signals: List[str] = field(default_factory=list)              # conda.yaml/requirements.txt lock & logging
-
-    # ------- Cost tagging / attribution readiness -------
-    iac_tag_lines: List[str] = field(default_factory=list)                 # terraform/helm tags & labels
-    iac_tag_keys_detected: List[str] = field(default_factory=list)         # flattened tag keys
-
-    # ------- SLO declaration readiness -------
-    slo_docs: List[str] = field(default_factory=list)                      # slo.yaml, docs with SLO tables
-    slo_env_vars: List[str] = field(default_factory=list)                  # AVAILABILITY_SLO/P95_MS_SLO from CI/env
-    slo_texts: Dict[str, str] = field(default_factory=dict)                # path -> truncated text
-
-    # repo-only flag
-    repo_only_mode: bool = True
+    @staticmethod
+    def from_json(blob: Dict[str, Any]) -> "MLOpsInputs":
+        allowed = {f.name for f in MLOpsInputs.__dataclass_fields__.values()}
+        filtered = {k: v for k, v in blob.items() if k in allowed}
+        return MLOpsInputs(**filtered)

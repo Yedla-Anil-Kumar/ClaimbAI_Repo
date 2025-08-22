@@ -1,0 +1,246 @@
+{
+  "agent": "ml_ops",
+  "inputs_summary": {
+    "present": [
+      "mlflow_experiment_completeness",
+      "mlflow_best_run_trend",
+      "mlflow_reproducibility",
+      "sm_endpoint_slo_scaling",
+      "sm_pipeline_stats",
+      "sm_experiments_lineage",
+      "sm_clarify_coverage",
+      "sm_cost_efficiency",
+      "cicd_deploy_frequency",
+      "cicd_lead_time",
+      "cicd_change_failure_rate",
+      "cicd_policy_gates",
+      "cicd_artifact_lineage"
+    ],
+    "declared_slo": {
+      "availability": 0.995,
+      "p95_ms": 300,
+      "error_rate": 0.01
+    },
+    "policy_required_checks": [
+      "pytest",
+      "integration-tests",
+      "bandit",
+      "trivy",
+      "bias_check",
+      "data_validation"
+    ]
+  },
+  "aimri_scores": {
+    "1_technical_infrastructure": {
+      "overall": null,
+      "subs": {}
+    },
+    "2_data_management_quality": {
+      "overall": null,
+      "subs": {}
+    },
+    "3_ai_ml_capabilities": {
+      "overall": 3.85,
+      "subs": {
+        "3_1_model_development": 3.2,
+        "3_2_production_deployment": 4.3,
+        "3_3_mlops_maturity": 3.8,
+        "3_4_model_governance": 3.55,
+        "3_5_advanced_capabilities": 4.4
+      }
+    },
+    "4_talent_skills": {
+      "overall": null,
+      "subs": {}
+    },
+    "5_governance_ethics": {
+      "overall": null,
+      "subs": {}
+    },
+    "6_strategic_alignment": {
+      "overall": null,
+      "subs": {}
+    },
+    "7_cultural_readiness": {
+      "overall": null,
+      "subs": {}
+    },
+    "8_process_maturity": {
+      "overall": 4.0,
+      "subs": {
+        "8_1_project_management": null,
+        "8_2_documentation_practices": null,
+        "8_3_quality_assurance": 4.0,
+        "8_4_operational_excellence": 4.0,
+        "8_5_measurement_metrics": null
+      }
+    },
+    "9_foundation_model_ops": {
+      "overall": null,
+      "subs": {}
+    },
+    "10_generative_ai_capabilities": {
+      "overall": null,
+      "subs": {}
+    },
+    "11_responsible_ai_social_impact": {
+      "overall": null,
+      "subs": {}
+    },
+    "12_ai_business_value_roi": {
+      "overall": null,
+      "subs": {}
+    },
+    "13_ai_risk_resilience": {
+      "overall": null,
+      "subs": {}
+    },
+    "14_ai_ecosystem_external_integration": {
+      "overall": null,
+      "subs": {}
+    },
+    "15_ai_leadership_vision": {
+      "overall": null,
+      "subs": {}
+    }
+  },
+  "metric_breakdown": {
+    "mlflow.experiment_completeness_band": {
+      "metric_id": "mlflow.experiment_completeness_band",
+      "band": 3,
+      "rationale": "The overall completeness is 88%, which falls within the 70-80% range. While parameters, metrics, and artifacts are strong, tags are slightly lower, impacting the overall score. Thus, it is rated as fair.",
+      "flags": []
+    },
+    "mlflow.lineage_coverage_band": {
+      "metric_id": "mlflow.lineage_coverage_band",
+      "band": 4,
+      "rationale": "All metrics are above 0.85, indicating good coverage overall.",
+      "flags": []
+    },
+    "mlflow.experiment_velocity_band": {
+      "metric_id": "mlflow.experiment_velocity_band",
+      "band": 5,
+      "rationale": "The improvement rate is 0.05 and the number of experiments per week is 2.4, both meeting the criteria for an excellent rating.",
+      "flags": []
+    },
+    "mlflow.registry_hygiene_band": {
+      "metric_id": "mlflow.registry_hygiene_band",
+      "band": 3,
+      "rationale": "Approval and staging percentages are above 0.7, but latency exceeds 72 hours and rollbacks are not specified.",
+      "flags": []
+    },
+    "mlflow.validation_artifacts_band": {
+      "metric_id": "mlflow.validation_artifacts_band",
+      "band": 1,
+      "rationale": "All coverage metrics are below 0.5, indicating critical deficiencies in shap, bias, and validation reporting.",
+      "flags": []
+    },
+    "mlflow.reproducibility_band": {
+      "metric_id": "mlflow.reproducibility_band",
+      "band": 4,
+      "rationale": "The match rate of 0.92 is above the threshold for a good rating, indicating strong reproducibility. There are no signature conflicts present.",
+      "flags": []
+    },
+    "aml.endpoint_slo_band": {
+      "metric_id": "aml.endpoint_slo_band",
+      "band": 5,
+      "rationale": "All SLOs exceeded with significant margins: availability is 0.997 (above 0.995), p95_ms is 215 (below 300), and error_rate is 0.003 (below 0.01).",
+      "flags": []
+    },
+    "aml.jobs_flow_band": {
+      "metric_id": "aml.jobs_flow_band",
+      "band": 3,
+      "rationale": "Success rate is 0.94, which is below the 0.95 threshold; lead time is acceptable at 6.4 hours.",
+      "flags": []
+    },
+    "aml.monitoring_coverage_band": {
+      "metric_id": "aml.monitoring_coverage_band",
+      "band": 1,
+      "rationale": "Monitors are disabled, which is critical for effective monitoring.",
+      "flags": []
+    },
+    "aml.registry_governance_band": {
+      "metric_id": "aml.registry_governance_band",
+      "band": 4,
+      "rationale": "\u22650.8 thresholds met; median <72h.",
+      "flags": []
+    },
+    "aml.cost_correlation_band": {
+      "metric_id": "aml.cost_correlation_band",
+      "band": 1,
+      "rationale": "There is no evidence provided for join rate or cost tracking, indicating a critical lack of data.",
+      "flags": []
+    },
+    "sm.endpoint_slo_scaling_band": {
+      "metric_id": "sm.endpoint_slo_scaling_band",
+      "band": 5,
+      "rationale": "Meets elite thresholds (availability, latency, reaction).",
+      "flags": []
+    },
+    "sm.pipeline_flow_band": {
+      "metric_id": "sm.pipeline_flow_band",
+      "band": 4,
+      "rationale": "The success rate is 0.96, which meets the threshold for a score of 4, and the promotion time is within the acceptable limit of 12 hours.",
+      "flags": []
+    },
+    "sm.experiments_lineage_band": {
+      "metric_id": "sm.experiments_lineage_band",
+      "band": 4,
+      "rationale": "All dimensions are above 0.85; the lowest value is 0.86, which caps the score at 4.",
+      "flags": []
+    },
+    "sm.clarify_coverage_band": {
+      "metric_id": "sm.clarify_coverage_band",
+      "band": 4,
+      "rationale": "Both metrics are above 0.8, which qualifies for a score of 4.",
+      "flags": []
+    },
+    "sm.cost_efficiency_band": {
+      "metric_id": "sm.cost_efficiency_band",
+      "band": 5,
+      "rationale": "Low per-1k cost with healthy GPU memory headroom and an idle-to-active ratio below 20%.",
+      "flags": []
+    },
+    "cicd.deploy_frequency_band": {
+      "metric_id": "cicd.deploy_frequency_band",
+      "band": 4,
+      "rationale": "With a frequency of 3.6 per week across 4 services, this indicates a good deployment cadence, aligning with the weekly benchmark.",
+      "flags": []
+    },
+    "cicd.lead_time_band": {
+      "metric_id": "cicd.lead_time_band",
+      "band": 4,
+      "rationale": "Median is 5.5 hours, which is less than 8 hours, and p95 is 20.0 hours, which is less than 24 hours, meeting the criteria for band-4.",
+      "flags": []
+    },
+    "cicd.change_failure_rate_band": {
+      "metric_id": "cicd.change_failure_rate_band",
+      "band": 4,
+      "rationale": "CFR is 0.18, which is below 0.20 but above 0.15.",
+      "flags": []
+    },
+    "cicd.policy_gates_band": {
+      "metric_id": "cicd.policy_gates_band",
+      "band": 4,
+      "rationale": "All required checks are present and most passed, but integration-tests were flaky, which affects reliability.",
+      "present": [
+        "pytest",
+        "integration-tests",
+        "bandit",
+        "trivy",
+        "bias_check",
+        "data_validation"
+      ],
+      "missing": [],
+      "failing": [
+        "integration-tests"
+      ]
+    },
+    "cicd.artifact_lineage": {
+      "metric_id": "cicd.artifact_lineage",
+      "integrity_ok": true,
+      "mismatches": []
+    }
+  },
+  "mode": "single_inputs_json"
+}

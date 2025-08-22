@@ -62,9 +62,7 @@
         "missing_bandit",
         "missing_trivy",
         "missing_bias_check",
-        "missing_data_validation",
-        "missing_workflow_files",
-        "missing_deploy_jobs"
+        "missing_data_validation"
       ]
     },
     "registry_governance": {
@@ -76,13 +74,13 @@
     "artifact_lineage": {
       "metric_id": "artifact_lineage_readiness_band",
       "band": 1,
-      "rationale": "No integrity signals present, with all images unpinned and no signing, SBOM, or k8s probes.",
+      "rationale": "No integrity signals present, with unpinned images dominating the evidence.",
       "flags": []
     },
     "monitoring": {
       "metric_id": "monitoring_coverage_readiness_band",
       "band": 1,
-      "rationale": "No monitoring configuration is present as there are no alert rules or channels configured.",
+      "rationale": "No monitoring configuration is present, as there are no alert rules or channels configured.",
       "flags": []
     },
     "validation": {
