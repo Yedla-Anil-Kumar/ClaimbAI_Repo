@@ -1,0 +1,45 @@
+{
+  "today_utc": "2025-08-15",
+  "activity_events": [
+    {"ts":"2025-08-15T07:55:00Z","user_id":"x1","action":"view","content_id":"exec_1"},
+    {"ts":"2025-08-14T18:10:00Z","user_id":"x2","action":"view","content_id":"exec_1"},
+    {"ts":"2025-08-07T09:00:00Z","user_id":"x3","action":"view","content_id":"exec_1"},
+    {"ts":"2025-08-15T08:15:00Z","user_id":"x1","action":"error"}
+  ],
+  "user_directory": [
+    {"user_id":"x1","department":"Exec"},
+    {"user_id":"x2","department":"Exec"},
+    {"user_id":"x3","department":"Finance"}
+  ],
+  "session_logs": [
+    {"user":"x1","duration":80,"pages":1,"repeats_per_week":1},
+    {"user":"x2","duration":95,"pages":1,"repeats_per_week":1}
+  ],
+  "usage_logs": [
+    {"user":"x1","role":"viewer"},
+    {"user":"x2","role":"viewer"},
+    {"user":"x3","role":"viewer"}
+  ],
+  "interaction_logs": [
+    {"user":"x1","action":"view"},
+    {"user":"x2","action":"view"}
+  ],
+  "governance_data": [
+    {"id":"exec_1","certified":false,"owner":null,"metadata":[]}
+  ],
+  "dashboard_metadata": [
+    {"id":"exec_1","last_refresh":"2025-08-12","sla":"weekly","priority":"high"}
+  ],
+  "source_catalog": ["Excel"],
+  "dashboard_link_data": [
+    {"id":"exec_1","links":[],"link_usage":0}
+  ],
+  "user_roles": [
+    {"id":"x1","role":"viewer"},
+    {"id":"x2","role":"viewer"},
+    {"id":"x3","role":"viewer"}
+  ],
+  "decision_logs": [
+    {"id":"weekly_staff","linked_dash":null,"evidence":null}
+  ]
+}

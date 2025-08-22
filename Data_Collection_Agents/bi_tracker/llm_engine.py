@@ -356,6 +356,330 @@ METRIC_PROMPTS: Dict[str, Dict[str, Any]] = {
             "confidence": 0.82
         }
     },
+    # 11) Weekly active users trend (last 4 weeks)
+    "usage.weekly_active_trend": {
+        "system": (
+            f"{UNIVERSAL_PREAMBLE}\n\n"
+            "RUBRIC (WAU trend over last 4 weeks):\n"
+            "- 5: clear, consistent WAU growth across 4 weeks\n"
+            "- 4: mild growth or stable at high level\n"
+            "- 3: flat with noise, no material drop\n"
+            "- 2: sustained decline\n"
+            "- 1: sharp drop or very low activity"
+        ),
+        "example_input": {
+            "today": "2025-08-21",
+            "activity_events": [
+                {"ts": "2025-08-21T09:00:00Z", "user_id": "u1", "action": "view"},
+                {"ts": "2025-08-05T10:00:00Z", "user_id": "u2", "action": "view"}
+            ]
+        },
+        "input_key_meanings": {
+            "today": "ISO date used to bucket events into weeks (ISO week)",
+            "activity_events": "Events with ts + user_id to compute distinct WAU per week"
+        },
+        "response_format": UNIVERSAL_RESPONSE_FORMAT,
+        "example_output": {
+            "metric_id": "usage.weekly_active_trend",
+            "score": 4,
+            "rationale": "WAU increasing mildly each week; no regression observed.",
+            "evidence": {"wau_series": [42, 45, 49, 53], "trend": "up"},
+            "gaps": [],
+            "actions": [{"priority": "P2", "action": "Promote weekly content digest to sustain growth"}],
+            "confidence": 0.85
+        }
+    },
+
+    # 12) 4-week retention (return users)
+    "usage.retention_4w": {
+        "system": (
+            f"{UNIVERSAL_PREAMBLE}\n\n"
+            "RUBRIC (% of users active in the first week who return in weeks 2–4):\n"
+            "- 5: ≥60%\n"
+            "- 4: 45–59%\n"
+            "- 3: 30–44%\n"
+            "- 2: 15–29%\n"
+            "- 1: <15%"
+        ),
+        "example_input": {
+            "today": "2025-08-21",
+            "activity_events": [
+                {"ts":"2025-08-01T10:00:00Z","user_id":"u1","action":"view"},
+                {"ts":"2025-08-15T09:00:00Z","user_id":"u1","action":"view"}
+            ]
+        },
+        "input_key_meanings": {
+            "today": "Reference date",
+            "activity_events": "Distinct users by week to compute returns"
+        },
+        "response_format": UNIVERSAL_RESPONSE_FORMAT,
+        "example_output": {
+            "metric_id": "usage.retention_4w",
+            "score": 3,
+            "rationale": "Roughly one-third of initial users return within 4 weeks.",
+            "evidence": {"cohort_size": 120, "returners": 42, "retention": 0.35},
+            "gaps": [],
+            "actions": [{"priority": "P1", "action": "Trigger re-engagement email for dormant users"}],
+            "confidence": 0.78
+        }
+    },
+
+    # 13) Export / download rate
+    "features.export_rate": {
+        "system": (
+            f"{UNIVERSAL_PREAMBLE}\n\n"
+            "RUBRIC (share of sessions involving export/download):\n"
+            "- 5: ≥30% with appropriate governance controls\n"
+            "- 4: 20–29%\n"
+            "- 3: 10–19%\n"
+            "- 2: 5–9%\n"
+            "- 1: <5%"
+        ),
+        "example_input": {
+            "activity_events": [
+                {"ts":"2025-08-21T09:00:00Z","user_id":"u1","action":"export"},
+                {"ts":"2025-08-21T09:05:00Z","user_id":"u2","action":"view"}
+            ]
+        },
+        "input_key_meanings": {
+            "activity_events[].action": "'export' or 'download' reflects a file extraction"
+        },
+        "response_format": UNIVERSAL_RESPONSE_FORMAT,
+        "example_output": {
+            "metric_id": "features.export_rate",
+            "score": 2,
+            "rationale": "Exports occur in fewer than 10% of sessions, suggesting low offline usage.",
+            "evidence": {"export_sessions_pct": 0.08},
+            "gaps": [],
+            "actions": [{"priority": "P2", "action": "Highlight in-product export options for key personas"}],
+            "confidence": 0.74
+        }
+    },
+
+    # 14) Alerts & subscriptions usage
+    "features.alerts_usage": {
+        "system": (
+            f"{UNIVERSAL_PREAMBLE}\n\n"
+            "RUBRIC (# users with alerts/subscriptions and delivery success):\n"
+            "- 5: broad adoption across BUs, high success\n"
+            "- 4: moderate adoption, mostly successful\n"
+            "- 3: limited adoption\n"
+            "- 2: very low adoption\n"
+            "- 1: near zero"
+        ),
+        "example_input": {
+            "activity_events": [
+                {"ts":"2025-08-21T07:00:00Z","user_id":"u1","action":"alert_delivered"},
+                {"ts":"2025-08-21T07:00:01Z","user_id":"u2","action":"subscription_email"}
+            ]
+        },
+        "input_key_meanings": {
+            "activity_events[].action": "Use action types to infer alert/subscription adoption"
+        },
+        "response_format": UNIVERSAL_RESPONSE_FORMAT,
+        "example_output": {
+            "metric_id": "features.alerts_usage",
+            "score": 3,
+            "rationale": "Alerts/subscriptions used by a small but meaningful cohort; delivery is reliable.",
+            "evidence": {"users_with_alerts": 38, "delivery_success_rate": 0.97},
+            "gaps": [],
+            "actions": [{"priority":"P2","action":"Offer alert templates on top KPIs"}],
+            "confidence": 0.76
+        }
+    },
+
+    # 15) SLA breach streaks
+    "reliability.sla_breach_streaks": {
+        "system": (
+            f"{UNIVERSAL_PREAMBLE}\n\n"
+            "RUBRIC (max consecutive days/weeks a dashboard violates SLA):\n"
+            "- 5: zero breaches on critical dashboards\n"
+            "- 4: rare, short breaches\n"
+            "- 3: occasional moderate streaks\n"
+            "- 2: frequent or long streaks\n"
+            "- 1: chronic breaches"
+        ),
+        "example_input": {
+            "dashboards": [
+                {"id":"d1","last_refresh":"2025-08-21","sla":"daily","priority":"high"},
+                {"id":"d2","last_refresh":"2025-08-15","sla":"daily","priority":"high"}
+            ],
+            "today": "2025-08-21"
+        },
+        "input_key_meanings": {
+            "dashboards[].last_refresh": "Used with SLA to compute breach streak length"
+        },
+        "response_format": UNIVERSAL_RESPONSE_FORMAT,
+        "example_output": {
+            "metric_id": "reliability.sla_breach_streaks",
+            "score": 4,
+            "rationale": "Only short, infrequent breaches on non-critical dashboards.",
+            "evidence": {"max_breach_days": 2, "critical_breaches": 0},
+            "gaps": [],
+            "actions": [{"priority": "P1", "action": "Add on-call rotation for ingestion failures"}],
+            "confidence": 0.81
+        }
+    },
+
+    # 16) Query/visual error rate
+    "reliability.error_rate_queries": {
+        "system": (
+            f"{UNIVERSAL_PREAMBLE}\n\n"
+            "RUBRIC (error rate and impact):\n"
+            "- 5: <0.1% errors; no high-impact incidents\n"
+            "- 4: 0.1–0.5% errors\n"
+            "- 3: 0.5–1.5%\n"
+            "- 2: 1.5–3%\n"
+            "- 1: >3% or recurring high-impact issues"
+        ),
+        "example_input": {
+            "activity_events": [
+                {"ts":"2025-08-21T09:00:00Z","user_id":"u1","action":"error"},
+                {"ts":"2025-08-21T09:01:00Z","user_id":"u2","action":"view"}
+            ]
+        },
+        "input_key_meanings": {
+            "activity_events": "'error' actions approximate query/visualization failures"
+        },
+        "response_format": UNIVERSAL_RESPONSE_FORMAT,
+        "example_output": {
+            "metric_id": "reliability.error_rate_queries",
+            "score": 4,
+            "rationale": "Low error rate with minimal impact observed.",
+            "evidence": {"error_rate": 0.004},
+            "gaps": [],
+            "actions": [{"priority":"P2","action":"Instrument error taxonomy to separate model vs infra"}],
+            "confidence": 0.8
+        }
+    },
+
+    # 17) PII coverage (governance)
+    "governance.pii_coverage": {
+        "system": (
+            f"{UNIVERSAL_PREAMBLE}\n\n"
+            "RUBRIC (PII detection/labeling and access control on dashboards):\n"
+            "- 5: comprehensive labeling and access controls\n"
+            "- 4: strong coverage; minor gaps\n"
+            "- 3: partial coverage\n"
+            "- 2: many gaps\n"
+            "- 1: poor or absent"
+        ),
+        "example_input": {
+            "dashboards": [
+                {"id":"d1","certified":True,"owner":"fin","metadata":["description","pii","access_policy"]},
+                {"id":"d2","certified":False,"owner":None,"metadata":[]}
+            ]
+        },
+        "input_key_meanings": {
+            "dashboards[].metadata": "Presence of PII/access markers used as proxy"
+        },
+        "response_format": UNIVERSAL_RESPONSE_FORMAT,
+        "example_output": {
+            "metric_id": "governance.pii_coverage",
+            "score": 3,
+            "rationale": "PII labeling present on key assets but inconsistent overall.",
+            "evidence": {"pii_labeled_pct": 0.48},
+            "gaps": [],
+            "actions": [{"priority":"P1","action":"Mandate PII tag & policy on all finance+HR dashboards"}],
+            "confidence": 0.77
+        }
+    },
+
+    # 18) Lineage/owner documentation coverage
+    "governance.lineage_coverage": {
+        "system": (
+            f"{UNIVERSAL_PREAMBLE}\n\n"
+            "RUBRIC (lineage docs, owners, glossary references present):\n"
+            "- 5: near-complete coverage across estate\n"
+            "- 4: strong coverage with minor holes\n"
+            "- 3: moderate coverage\n"
+            "- 2: sparse\n"
+            "- 1: minimal"
+        ),
+        "example_input": {
+            "dashboards": [
+                {"id":"d1","owner":"bi_ops","metadata":["lineage","glossary"]},
+                {"id":"d2","owner":None,"metadata":[]}
+            ]
+        },
+        "input_key_meanings": {
+            "dashboards[].metadata": "Look for 'lineage'/'glossary' tokens as a proxy"
+        },
+        "response_format": UNIVERSAL_RESPONSE_FORMAT,
+        "example_output": {
+            "metric_id": "governance.lineage_coverage",
+            "score": 3,
+            "rationale": "Lineage documented on a subset; ownership is incomplete.",
+            "evidence": {"lineage_pct": 0.52, "ownership_pct": 0.68},
+            "gaps": [],
+            "actions": [{"priority":"P1","action":"Require lineage & owner fields in publishing flow"}],
+            "confidence": 0.78
+        }
+    },
+
+    # 19) Cost efficiency (warehouse/query)
+    "data.cost_efficiency": {
+        "system": (
+            f"{UNIVERSAL_PREAMBLE}\n\n"
+            "RUBRIC (proxy signals: source mix, export rate, stale content):\n"
+            "- 5: strong warehouse mix, low waste signals\n"
+            "- 4: minor inefficiencies\n"
+            "- 3: mixed signals\n"
+            "- 2: inefficient patterns\n"
+            "- 1: heavy waste indicators"
+        ),
+        "example_input": {
+            "source_catalog": ["snowflake","bigquery","salesforce"],
+            "activity_events": [{"ts":"2025-08-21T09:00:00Z","user_id":"u1","action":"export"}],
+            "dashboards": [{"id":"d1","last_refresh":"2025-07-01","sla":"monthly"}]
+        },
+        "input_key_meanings": {
+            "source_catalog": "Warehouse/DB/SaaS balance",
+            "activity_events": "Exports as proxy for data egress",
+            "dashboards": "Stale content as proxy for wasted refresh"
+        },
+        "response_format": UNIVERSAL_RESPONSE_FORMAT,
+        "example_output": {
+            "metric_id": "data.cost_efficiency",
+            "score": 3,
+            "rationale": "Source mix is fine; some export/egress and a few stale assets observed.",
+            "evidence": {"egress_signals": "moderate", "stale_pct": 0.12},
+            "gaps": [],
+            "actions": [{"priority":"P1","action":"Enable result caching & set export quotas"}],
+            "confidence": 0.7
+        }
+    },
+
+    # 20) Department coverage (creators across depts)
+    "democratization.dept_coverage": {
+        "system": (
+            f"{UNIVERSAL_PREAMBLE}\n\n"
+            "RUBRIC (# departments with ≥1 creator vs total departments):\n"
+            "- 5: ≥80% departments have creators\n"
+            "- 4: 60–79%\n"
+            "- 3: 40–59%\n"
+            "- 2: 20–39%\n"
+            "- 1: <20%"
+        ),
+        "example_input": {
+            "user_roles": [{"id":"u1","role":"creator"},{"id":"u2","role":"viewer"}],
+            "user_directory": [{"user_id":"u1","department":"Finance"},{"user_id":"u2","department":"Ops"}]
+        },
+        "input_key_meanings": {
+            "user_roles": "To identify creators",
+            "user_directory": "Map users to departments"
+        },
+        "response_format": UNIVERSAL_RESPONSE_FORMAT,
+        "example_output": {
+            "metric_id": "democratization.dept_coverage",
+            "score": 4,
+            "rationale": "Creators are present in most departments.",
+            "evidence": {"dept_with_creators": 9, "total_depts": 12, "coverage": 0.75},
+            "gaps": [],
+            "actions": [{"priority":"P2","action":"Target enablement in uncovered depts"}],
+            "confidence": 0.82
+        }
+    }
 }
 
 def build_prompt(metric_id: str, task_input: dict) -> str:
@@ -430,3 +754,42 @@ class BIUsageLLM(BaseMicroAgent):
 
     def evaluate(self, code_snippets: List[str], context: Optional[Dict] = None) -> Dict[str, Any]:
         return {"status": "ok"}
+        # 11) WAU trend
+    def score_weekly_active_trend(self, activity_events: List[Dict[str, Any]], today: str) -> Dict[str, Any]:
+        return self.score_metric("usage.weekly_active_trend", {"activity_events": activity_events, "today": today})
+
+    # 12) 4-week retention
+    def score_retention_4w(self, activity_events: List[Dict[str, Any]], today: str) -> Dict[str, Any]:
+        return self.score_metric("usage.retention_4w", {"activity_events": activity_events, "today": today})
+
+    # 13) Export/download rate
+    def score_export_rate(self, activity_events: List[Dict[str, Any]]) -> Dict[str, Any]:
+        return self.score_metric("features.export_rate", {"activity_events": activity_events})
+
+    # 14) Alerts / subscriptions usage
+    def score_alerts_usage(self, activity_events: List[Dict[str, Any]]) -> Dict[str, Any]:
+        return self.score_metric("features.alerts_usage", {"activity_events": activity_events})
+
+    # 15) SLA breach streaks
+    def score_sla_breach_streaks(self, dashboards: List[Dict[str, Any]], today: str) -> Dict[str, Any]:
+        return self.score_metric("reliability.sla_breach_streaks", {"dashboards": dashboards, "today": today})
+
+    # 16) Query/visual error rate
+    def score_error_rate_queries(self, activity_events: List[Dict[str, Any]]) -> Dict[str, Any]:
+        return self.score_metric("reliability.error_rate_queries", {"activity_events": activity_events})
+
+    # 17) PII coverage
+    def score_pii_coverage(self, gov_dashboards: List[Dict[str, Any]]) -> Dict[str, Any]:
+        return self.score_metric("governance.pii_coverage", {"dashboards": gov_dashboards})
+
+    # 18) Lineage coverage
+    def score_lineage_coverage(self, gov_dashboards: List[Dict[str, Any]]) -> Dict[str, Any]:
+        return self.score_metric("governance.lineage_coverage", {"dashboards": gov_dashboards})
+
+    # 19) Cost efficiency
+    def score_cost_efficiency(self, source_catalog: List[str], activity_events: List[Dict[str, Any]], dashboards: List[Dict[str, Any]]) -> Dict[str, Any]:
+        return self.score_metric("data.cost_efficiency", {"source_catalog": source_catalog, "activity_events": activity_events, "dashboards": dashboards})
+
+    # 20) Department coverage (creators per dept)
+    def score_dept_coverage(self, user_roles: List[Dict[str, Any]], user_directory: List[Dict[str, Any]]) -> Dict[str, Any]:
+        return self.score_metric("democratization.dept_coverage", {"user_roles": user_roles, "user_directory": user_directory})

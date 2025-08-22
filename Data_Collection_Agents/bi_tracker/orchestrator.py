@@ -11,9 +11,10 @@ def _s(m: Dict[str, Any]) -> float:
 
 class BIOrchestrator:
     """
-    Single-file inputs → 10 metric graders → two rollups (1–5 scale):
+    Single-file inputs → 20 metric graders → three rollups (1–5 scale):
       - business_integration  (usage, adoption, feature use)
       - decision_making       (governance, freshness, traceability)
+      - operational_health    (reliability & ops signals)
     """
     def __init__(self, model: str = "gpt-4o-mini", temperature: float = 0.0, max_tokens: int = 700):
         self.model = model
@@ -22,7 +23,7 @@ class BIOrchestrator:
         self.llm = BIUsageLLM(model=model, temperature=temperature)
 
     def analyze_inputs(self, bi: BIInputs) -> Dict[str, Any]:
-        # 10 graders (1–5 scale)
+        # 20 graders (1–5 scale)
         m1  = self.llm.score_dau_mau(bi.activity_events, bi.today_utc)
         m2  = self.llm.score_active_creators(bi.usage_logs)
         m3  = self.llm.score_session_depth(bi.session_logs)
@@ -33,17 +34,33 @@ class BIOrchestrator:
         m8  = self.llm.score_source_diversity(bi.source_catalog)
         m9  = self.llm.score_self_service_adoption(bi.user_roles)
         m10 = self.llm.score_decision_traceability(bi.decision_logs)
+        m11 = self.llm.score_weekly_active_trend(bi.activity_events, bi.today_utc)
+        m12 = self.llm.score_retention_4w(bi.activity_events, bi.today_utc)
+        m13 = self.llm.score_export_rate(bi.activity_events)
+        m14 = self.llm.score_alerts_usage(bi.activity_events)
+        m15 = self.llm.score_sla_breach_streaks(bi.dashboard_metadata, bi.today_utc)
+        m16 = self.llm.score_error_rate_queries(bi.activity_events)
+        m17 = self.llm.score_pii_coverage(bi.governance_data)
+        m18 = self.llm.score_lineage_coverage(bi.governance_data)
+        m19 = self.llm.score_cost_efficiency(bi.source_catalog, bi.activity_events, bi.dashboard_metadata)
+        m20 = self.llm.score_dept_coverage(bi.user_roles, bi.user_directory)
 
-        metrics = [m1,m2,m3,m4,m5,m6,m7,m8,m9,m10]
+        metrics = [m1,m2,m3,m4,m5,m6,m7,m8,m9,m10,m11,m12,m13,m14,m15,m16,m17,m18,m19,m20]
         m = {x["metric_id"]: x for x in metrics}
 
         business_integration = round((
-            0.25*_s(m1) + 0.15*_s(m2) + 0.15*_s(m3) + 0.10*_s(m4) + 0.10*_s(m6) +
-            0.10*_s(m8) + 0.15*_s(m9)
+            0.18*_s(m1) + 0.12*_s(m2) + 0.12*_s(m3) + 0.08*_s(m4) + 0.08*_s(m6) +
+            0.10*_s(m8) + 0.12*_s(m9) + 0.10*_s(m11) + 0.10*_s(m12)
         ), 2)
 
         decision_making = round((
-            0.25*_s(m5) + 0.25*_s(m7) + 0.15*_s(m8) + 0.20*_s(m10) + 0.15*_s(m3)
+            0.22*_s(m5) + 0.20*_s(m7) + 0.08*_s(m8) + 0.20*_s(m10) + 0.10*_s(m17) +
+            0.10*_s(m18) + 0.10*_s(m3)
+        ), 2)
+
+        operational_health = round((
+            0.25*_s(m15) + 0.20*_s(m16) + 0.15*_s(m13) + 0.15*_s(m14) +
+            0.15*_s(m19) + 0.10*_s(m5)
         ), 2)
 
         return {
@@ -59,6 +76,7 @@ class BIOrchestrator:
             "scores": {
                 "business_integration": business_integration,
                 "decision_making": decision_making,
+                "operational_health": operational_health,
             },
             "metric_breakdown": m,
             "mode": "single_inputs_json",
