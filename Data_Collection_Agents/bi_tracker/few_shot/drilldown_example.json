@@ -1,6 +1,0 @@
-{
-  "metric_id": "usage.drilldown",
-  "score": 0.70,
-  "rationale": "%sessions=0.40 (0.20/0.5), spread limited (0.15/0.3), trend stable (0.18/0.2).",
-  "details": {"pct_sessions_with_drilldown": 0.4}
-}

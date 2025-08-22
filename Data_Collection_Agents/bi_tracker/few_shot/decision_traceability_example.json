@@ -1,6 +1,0 @@
-{
-  "metric_id": "decision.traceability",
-  "score": 0.60,
-  "rationale": "Linked 50% (0.25/0.5), evidence decent (0.20/0.3), recency moderate (0.15/0.2).",
-  "details": {"linked_pct": 0.5, "evidence_markers": "3/6"}
-}

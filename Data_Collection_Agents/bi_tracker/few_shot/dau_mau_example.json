@@ -1,6 +1,0 @@
-{
-  "metric_id": "usage.dau_mau",
-  "score": 0.82,
-  "rationale": "Stickiness ~0.60 (0.36/0.6). Consistency 5/7 days (0.14/0.2). Trend slightly up (0.18/0.2). Total ≈ 0.68 → uplift to 0.82 due to recent uptick.",
-  "details": {"dau": 3, "mau": 5, "stickiness": 0.6}
-}

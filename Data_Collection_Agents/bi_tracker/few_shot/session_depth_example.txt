@@ -1,1 +1,0 @@
-Avg duration ~260s vs 300s benchmark; depth ~3.3 pages; repeats ~1.2/wk.
