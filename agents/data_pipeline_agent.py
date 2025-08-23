@@ -40,6 +40,7 @@ def check_schema_consistency(
         "- 3: Some inconsistencies 5–15%.\n"
         "- 2: Frequent schema drift 15–30%.\n"
         "- 1: Severe inconsistency >30%.\n\n"
+        "The final score must have 1 digit after decimal"
         "EXAMPLE INPUT:\n"
         '{"baseline_schema":{"users":["id","email","created_at"]},"actual_schema":{"users":["id","email"]}}\n\n'
         "EXAMPLE OUTPUT:\n"
