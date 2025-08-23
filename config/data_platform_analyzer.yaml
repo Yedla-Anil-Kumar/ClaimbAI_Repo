@@ -1,0 +1,7 @@
+BASELINE_PATH: "data/data_pipeline/Input/baseline_table.json"
+TABLES_PATH: "data/data_pipeline/Input/real_table.json"
+OUTPUT_PATH: "data/data_pipeline/Output/output.json"
+
+
+
+
