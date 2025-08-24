@@ -1,0 +1,136 @@
+{
+  "agent": "enterprise_systems",
+  "scores": {
+    "process_maturity": 2.7,
+    "integration_health": 2.05,
+    "ai_outcomes": 3.0,
+    "platform_risk": 2.5
+  },
+  "metric_breakdown": {
+    "process.automation.coverage": {
+      "metric_id": "process.automation.coverage",
+      "band": 3,
+      "rationale": "Automation coverage is 0.61, which falls within the fair range of 0.45\u20130.64.",
+      "flags": []
+    },
+    "workflow.sla.adherence": {
+      "metric_id": "workflow.sla.adherence",
+      "band": 2,
+      "rationale": "With an SLA hit rate of 0.77, the performance is below the acceptable threshold, indicating poor adherence to service level agreements.",
+      "flags": []
+    },
+    "sales.lead_to_oppty.cycle_time": {
+      "metric_id": "sales.lead_to_oppty.cycle_time",
+      "band": 4,
+      "rationale": "Median of 19h falls in the 13\u201324h band, indicating a good performance in lead to opportunity qualification time.",
+      "flags": []
+    },
+    "service.case_resolution_time": {
+      "metric_id": "service.case_resolution_time",
+      "band": 3,
+      "rationale": "Median resolution time of 25 hours falls within the 17\u201336h band.",
+      "flags": []
+    },
+    "service.incident_reopen_rate": {
+      "metric_id": "service.incident_reopen_rate",
+      "band": 2,
+      "rationale": "Reopen rate of 12% falls within the 11\u201315% band, indicating a poor performance in incident resolution.",
+      "flags": []
+    },
+    "hr.onboarding.cycle_time": {
+      "metric_id": "hr.onboarding.cycle_time",
+      "band": 3,
+      "rationale": "The onboarding cycle time of 12 days falls within the fair range of 9-12 days.",
+      "flags": []
+    },
+    "finance.procure_to_pay.cycle_time": {
+      "metric_id": "finance.procure_to_pay.cycle_time",
+      "band": 3,
+      "rationale": "Median of 21 days falls within the fair range; improvements could be made to reduce cycle time.",
+      "flags": []
+    },
+    "sales.quote_to_cash.throughput": {
+      "metric_id": "sales.quote_to_cash.throughput",
+      "band": 3,
+      "rationale": "The value of 1.1 falls within the fair range of 1.0 to 1.39. This indicates a moderate performance, but there is room for improvement. Overall, it suggests that the current order rate is acceptable but not optimal.",
+      "flags": []
+    },
+    "backlog.aging": {
+      "metric_id": "backlog.aging",
+      "band": 2,
+      "rationale": "Aged items at 22% indicate significant flow issues that need addressing. This level suggests that there are delays in processing or resolving these items.",
+      "flags": [
+        "aging_above_0_19"
+      ]
+    },
+    "rpa.success_rate": {
+      "metric_id": "rpa.success_rate",
+      "band": 2,
+      "rationale": "The success rate of 0.81 falls within the range of 0.70 to 0.84, indicating a poor performance. This suggests that there are significant issues that need to be addressed to improve unattended bot runs.",
+      "flags": []
+    },
+    "integration.data_sync.latency": {
+      "metric_id": "integration.data_sync.latency",
+      "band": 2,
+      "rationale": "p95 sync latency of 35m indicates a significant delay that is not ideal for performance. This level of latency can impact system efficiency and user experience. Improvement is necessary to meet better standards.",
+      "flags": []
+    },
+    "integration.api.reliability": {
+      "metric_id": "integration.api.reliability",
+      "band": 2,
+      "rationale": "A success rate of 97.3% indicates that the performance is below the acceptable threshold for critical APIs. This level of reliability is concerning and requires improvement. It falls within the range classified as poor according to the rubric.",
+      "flags": []
+    },
+    "integration.topology.health": {
+      "metric_id": "integration.topology.health",
+      "band": 3,
+      "rationale": "The value of 0.58 indicates a mixed performance, suggesting some balance issues in fan-in/fan-out and potential retry storms. This score reflects a need for improvement in certain areas to enhance overall system health.",
+      "flags": []
+    },
+    "data.duplicate_record_rate": {
+      "metric_id": "data.duplicate_record_rate",
+      "band": 1,
+      "rationale": "A duplicate rate of 9% is critically high, indicating severe issues with data management and necessitating immediate corrective actions.",
+      "flags": [
+        "critical_issue"
+      ]
+    },
+    "data.dq_exceptions_rate": {
+      "metric_id": "data.dq_exceptions_rate",
+      "band": 2,
+      "rationale": "An exceptions rate of 0.13 indicates a significant number of integrity issues that need addressing.",
+      "flags": []
+    },
+    "ai.integration.penetration": {
+      "metric_id": "ai.integration.penetration",
+      "band": 3,
+      "rationale": "AI is utilized in approximately 33% of core processes, indicating a fair level of integration.",
+      "flags": []
+    },
+    "ai.outcome.uplift": {
+      "metric_id": "ai.outcome.uplift",
+      "band": 3,
+      "rationale": "Median uplift is 5%, which falls within the fair range. This indicates some positive impact from AI features, but it is not substantial.",
+      "flags": []
+    },
+    "ai.governance.coverage": {
+      "metric_id": "ai.governance.coverage",
+      "band": 3,
+      "rationale": "The metric value is 0.65, which falls within the 0.65\u20130.79 range. This indicates a fair level of risk review, monitoring, and rollback plans. Improvements are needed to enhance the effectiveness of these processes.",
+      "flags": []
+    },
+    "platform.customization.debt": {
+      "metric_id": "platform.customization.debt",
+      "band": 2,
+      "rationale": "The customization debt index of 0.61 indicates a poor level of customization management, suggesting significant refactoring is needed. This level of debt can hinder system performance and adaptability.",
+      "flags": []
+    },
+    "platform.change.failure.rate": {
+      "metric_id": "platform.change.failure.rate",
+      "band": 3,
+      "rationale": "CFR of 25% indicates a fair level of release hygiene, but there is significant room for improvement. This rate suggests that issues are occurring with some frequency, which could impact overall system stability.",
+      "flags": []
+    }
+  },
+  "mode": "single_inputs_json"
+}

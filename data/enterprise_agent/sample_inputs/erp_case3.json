@@ -1,0 +1,25 @@
+{
+  "process_automation_coverage": {"value": 0.44},
+  "workflow_sla_adherence": {"value": 0.68},
+  "lead_to_oppty_cycle_time": {"value": 35},
+  "case_resolution_time_sn": {"value": 40},
+  "incident_reopen_rate_sn": {"value": 0.15},
+  "hr_onboarding_cycle_time": {"value": 20},
+  "procure_to_pay_cycle_time": {"value": 29},
+  "q2c_throughput": {"value": 0.9},
+  "backlog_aging": {"value": 0.35},
+  "rpa_success_rate": {"value": 0.63},
+
+  "data_sync_latency": {"value": 55},
+  "api_reliability": {"value": 0.945},
+  "integration_topology_health": {"value": 0.41},
+  "duplicate_record_rate": {"value": 0.16},
+  "dq_exceptions_rate": {"value": 0.19},
+
+  "ai_integration_penetration": {"value": 0.18},
+  "ai_outcome_uplift": {"value": 0.02},
+  "ai_governance_coverage": {"value": 0.39},
+
+  "customization_debt_index": {"value": 0.72},
+  "change_failure_rate": {"value": 0.33}
+}

@@ -1,0 +1,136 @@
+{
+  "agent": "enterprise_systems",
+  "scores": {
+    "process_maturity": 1.78,
+    "integration_health": 1.61,
+    "ai_outcomes": 1.72,
+    "platform_risk": 2.0
+  },
+  "metric_breakdown": {
+    "process.automation.coverage": {
+      "metric_id": "process.automation.coverage",
+      "band": 2,
+      "rationale": "Automation coverage is at 0.44, which falls within the poor range according to the rubric.",
+      "flags": []
+    },
+    "workflow.sla.adherence": {
+      "metric_id": "workflow.sla.adherence",
+      "band": 2,
+      "rationale": "The SLA hit rate of 0.68 falls within the range of 0.65 to 0.79, indicating poor performance in meeting service level agreements.",
+      "flags": []
+    },
+    "sales.lead_to_oppty.cycle_time": {
+      "metric_id": "sales.lead_to_oppty.cycle_time",
+      "band": 3,
+      "rationale": "Median 35h falls in the 25\u201348h band.",
+      "flags": []
+    },
+    "service.case_resolution_time": {
+      "metric_id": "service.case_resolution_time",
+      "band": 2,
+      "rationale": "Median resolution time of 40 hours falls within the 37\u201372h band, indicating a poor performance in case resolution.",
+      "flags": []
+    },
+    "service.incident_reopen_rate": {
+      "metric_id": "service.incident_reopen_rate",
+      "band": 2,
+      "rationale": "Reopen rate of 15% falls within the 11-15% band, indicating a poor performance in incident resolution.",
+      "flags": []
+    },
+    "hr.onboarding.cycle_time": {
+      "metric_id": "hr.onboarding.cycle_time",
+      "band": 1,
+      "rationale": "A cycle time of 20 days is critical and significantly exceeds the acceptable range.",
+      "flags": []
+    },
+    "finance.procure_to_pay.cycle_time": {
+      "metric_id": "finance.procure_to_pay.cycle_time",
+      "band": 2,
+      "rationale": "Median of 29 days indicates a poor performance in the payment cycle, suggesting significant delays in processing.",
+      "flags": []
+    },
+    "sales.quote_to_cash.throughput": {
+      "metric_id": "sales.quote_to_cash.throughput",
+      "band": 2,
+      "rationale": "The value of 0.9 falls within the range of 0.6 to 0.99, indicating a poor performance in orders per week per rep.",
+      "flags": []
+    },
+    "backlog.aging": {
+      "metric_id": "backlog.aging",
+      "band": 1,
+      "rationale": "Aged items at 35% indicate significant issues with item turnover and management.",
+      "flags": [
+        "aging_above_0_30"
+      ]
+    },
+    "rpa.success_rate": {
+      "metric_id": "rpa.success_rate",
+      "band": 1,
+      "rationale": "The success rate of 0.63 is critically low, indicating significant issues with unattended bot runs. Immediate attention is required to address the underlying problems.",
+      "flags": []
+    },
+    "integration.data_sync.latency": {
+      "metric_id": "integration.data_sync.latency",
+      "band": 2,
+      "rationale": "p95 sync latency of 55m indicates a significant delay, which is below acceptable performance standards.",
+      "flags": []
+    },
+    "integration.api.reliability": {
+      "metric_id": "integration.api.reliability",
+      "band": 1,
+      "rationale": "The success rate of 0.945 is significantly below the critical threshold of 0.970, indicating serious reliability issues.",
+      "flags": []
+    },
+    "integration.topology.health": {
+      "metric_id": "integration.topology.health",
+      "band": 2,
+      "rationale": "The value of 0.41 indicates significant hot-spots in the system, suggesting issues with fan-in/fan-out balance or retry storms. This level of performance is concerning and reflects a need for immediate attention to prevent frequent failures.",
+      "flags": []
+    },
+    "data.duplicate_record_rate": {
+      "metric_id": "data.duplicate_record_rate",
+      "band": 1,
+      "rationale": "A duplicate rate of 0.16 indicates a critical level of duplicates, significantly exceeding the threshold for acceptable performance. Immediate action is required to address this issue.",
+      "flags": [
+        "critical_duplicates"
+      ]
+    },
+    "data.dq_exceptions_rate": {
+      "metric_id": "data.dq_exceptions_rate",
+      "band": 2,
+      "rationale": "An exceptions rate of 0.19 indicates a significant number of integrity issues that need addressing.",
+      "flags": []
+    },
+    "ai.integration.penetration": {
+      "metric_id": "ai.integration.penetration",
+      "band": 2,
+      "rationale": "AI is present in only 18% of core processes, indicating limited integration and automation capabilities.",
+      "flags": []
+    },
+    "ai.outcome.uplift": {
+      "metric_id": "ai.outcome.uplift",
+      "band": 2,
+      "rationale": "Median uplift is 0.02, which falls within the range of 0.02 to 0.049. This indicates a poor impact from AI features on the measured outcomes. Further improvements are needed to enhance effectiveness.",
+      "flags": []
+    },
+    "ai.governance.coverage": {
+      "metric_id": "ai.governance.coverage",
+      "band": 1,
+      "rationale": "The percentage of models/use-cases with risk review, monitoring, and rollback plans is 39%, which is below the critical threshold. This indicates a significant lack of risk management practices. Immediate attention is required to improve this metric.",
+      "flags": []
+    },
+    "platform.customization.debt": {
+      "metric_id": "platform.customization.debt",
+      "band": 2,
+      "rationale": "A customization debt index of 0.72 indicates a poor level of customization management, suggesting significant refactoring is needed. This level of debt can hinder system performance and adaptability.",
+      "flags": []
+    },
+    "platform.change.failure.rate": {
+      "metric_id": "platform.change.failure.rate",
+      "band": 2,
+      "rationale": "CFR of 33% indicates a significant issue with release stability, falling into the poor category.",
+      "flags": []
+    }
+  },
+  "mode": "single_inputs_json"
+}

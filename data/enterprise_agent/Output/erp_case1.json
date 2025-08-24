@@ -1,0 +1,134 @@
+{
+  "agent": "enterprise_systems",
+  "scores": {
+    "process_maturity": 3.58,
+    "integration_health": 3.22,
+    "ai_outcomes": 4.0,
+    "platform_risk": 3.5
+  },
+  "metric_breakdown": {
+    "process.automation.coverage": {
+      "metric_id": "process.automation.coverage",
+      "band": 4,
+      "rationale": "Automation coverage is 0.72, which falls within the 0.65\u20130.79 range.",
+      "flags": []
+    },
+    "workflow.sla.adherence": {
+      "metric_id": "workflow.sla.adherence",
+      "band": 4,
+      "rationale": "The SLA hit rate of 0.91 falls within the 0.90\u20130.94 range, indicating good performance.",
+      "flags": []
+    },
+    "sales.lead_to_oppty.cycle_time": {
+      "metric_id": "sales.lead_to_oppty.cycle_time",
+      "band": 3,
+      "rationale": "Median 28h falls in the 25\u201348h band.",
+      "flags": []
+    },
+    "service.case_resolution_time": {
+      "metric_id": "service.case_resolution_time",
+      "band": 4,
+      "rationale": "Median resolution time of 15 hours falls within the 9\u201316 hour range.",
+      "flags": []
+    },
+    "service.incident_reopen_rate": {
+      "metric_id": "service.incident_reopen_rate",
+      "band": 4,
+      "rationale": "Reopen rate of 0.05 falls within the 3-6% range, indicating a good performance. It is below the threshold for a higher band, but still reflects a manageable level of incidents being reopened.",
+      "flags": []
+    },
+    "hr.onboarding.cycle_time": {
+      "metric_id": "hr.onboarding.cycle_time",
+      "band": 4,
+      "rationale": "The onboarding cycle of 7 days falls within the 6-8 day range, which is considered good. This indicates a relatively efficient process. However, there is still room for improvement to reach the excellent category.",
+      "flags": []
+    },
+    "finance.procure_to_pay.cycle_time": {
+      "metric_id": "finance.procure_to_pay.cycle_time",
+      "band": 3,
+      "rationale": "A median of 18 days falls within the 16-25 day range, indicating a fair performance. There is potential for improvement in the payment process to reduce this time further.",
+      "flags": []
+    },
+    "sales.quote_to_cash.throughput": {
+      "metric_id": "sales.quote_to_cash.throughput",
+      "band": 3,
+      "rationale": "The value of 1.5 falls within the range of 1.0 to 1.39, indicating a fair performance. It is below the threshold for a good rating, which starts at 1.4. Therefore, it is assessed as fair.",
+      "flags": []
+    },
+    "backlog.aging": {
+      "metric_id": "backlog.aging",
+      "band": 3,
+      "rationale": "Aged backlog at 12% indicates a fair level of items older than 30 days, suggesting some flow constraints exist.",
+      "flags": [
+        "aging_above_0_10"
+      ]
+    },
+    "rpa.success_rate": {
+      "metric_id": "rpa.success_rate",
+      "band": 4,
+      "rationale": "The success rate of 0.93 falls within the good range of 0.93\u20130.96, indicating effective performance. However, there is still room for improvement to reach higher success rates.",
+      "flags": []
+    },
+    "integration.data_sync.latency": {
+      "metric_id": "integration.data_sync.latency",
+      "band": 3,
+      "rationale": "p95 sync latency of 12 minutes falls within the fair range, indicating that while it is acceptable, there is significant room for improvement.",
+      "flags": []
+    },
+    "integration.api.reliability": {
+      "metric_id": "integration.api.reliability",
+      "band": 4,
+      "rationale": "A success rate of 0.996 indicates good reliability, falling within the 0.995\u20130.998 range.",
+      "flags": []
+    },
+    "integration.topology.health": {
+      "metric_id": "integration.topology.health",
+      "band": 3,
+      "rationale": "The value of 0.7 indicates a mixed performance with some areas of concern that may affect overall system reliability.",
+      "flags": []
+    },
+    "data.duplicate_record_rate": {
+      "metric_id": "data.duplicate_record_rate",
+      "band": 3,
+      "rationale": "The duplicate customer/account/contact rate of 0.03 falls within the 0.021\u20130.04 range, indicating a fair level of duplicates. This suggests that there is a need for improvement in deduplication processes to enhance data quality.",
+      "flags": []
+    },
+    "data.dq_exceptions_rate": {
+      "metric_id": "data.dq_exceptions_rate",
+      "band": 3,
+      "rationale": "A value of 0.06 falls within the 0.051\u20130.10 range, indicating a fair level of exceptions raised during nightly checks.",
+      "flags": []
+    },
+    "ai.integration.penetration": {
+      "metric_id": "ai.integration.penetration",
+      "band": 4,
+      "rationale": "AI assistance is utilized in 55% of core processes, indicating a good level of integration.",
+      "flags": []
+    },
+    "ai.outcome.uplift": {
+      "metric_id": "ai.outcome.uplift",
+      "band": 4,
+      "rationale": "The median uplift is 0.11, which falls within the 0.10\u20130.149 range. This indicates a good impact from AI features on the measured outcomes. Overall, the performance is solid but not exceptional.",
+      "flags": []
+    },
+    "ai.governance.coverage": {
+      "metric_id": "ai.governance.coverage",
+      "band": 4,
+      "rationale": "The metric value of 0.82 indicates that 82% of models/use-cases have risk review, monitoring, and rollback plans in place. This falls within the 0.80\u20130.89 range, which is classified as Good. Overall, the governance coverage is solid but not excellent.",
+      "flags": []
+    },
+    "platform.customization.debt": {
+      "metric_id": "platform.customization.debt",
+      "band": 3,
+      "rationale": "The customization debt index of 0.42 falls within the fair range, indicating a moderate level of customization that may require attention. It suggests that while the system is functional, there are areas that could benefit from refactoring to improve maintainability. Continued monitoring and gradual reduction of this debt is advisable.",
+      "flags": []
+    },
+    "platform.change.failure.rate": {
+      "metric_id": "platform.change.failure.rate",
+      "band": 4,
+      "rationale": "The change failure rate of 0.14 falls within the 0.10\u20130.15 range, indicating good performance. This suggests effective management of changes with a relatively low failure rate. Overall, it reflects a solid operational standard.",
+      "flags": []
+    }
+  },
+  "mode": "single_inputs_json"
+}
