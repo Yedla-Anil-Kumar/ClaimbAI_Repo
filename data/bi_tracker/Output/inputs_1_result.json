@@ -9,7 +9,7 @@
     }
   },
   "scores": {
-    "business_integration": 2.2,
+    "business_integration": 2.32,
     "decision_making": 2.5
   },
   "metric_breakdown": {
@@ -26,15 +26,15 @@
       "actions": [
         {
           "priority": "P0",
-          "action": "Analyze user drop-off points to improve engagement"
+          "action": "Analyze user engagement patterns to identify drop-off points"
         },
         {
           "priority": "P1",
-          "action": "Implement targeted re-engagement campaigns"
+          "action": "Implement targeted re-engagement campaigns for inactive users"
         },
         {
           "priority": "P2",
-          "action": "Enhance content recommendations based on user behavior"
+          "action": "Enhance content recommendations to improve user experience"
         }
       ],
       "confidence": 0.75
@@ -42,7 +42,7 @@
     "usage.creators_ratio": {
       "metric_id": "usage.creators_ratio",
       "score": 2,
-      "rationale": "The creator share is only 33% with a skew towards a few users, indicating material risks in engagement and content creation.",
+      "rationale": "The creator share is only 50% out of 4 active users, resulting in a 50% creator ratio, which is below the target threshold. This indicates a material risk in creator engagement.",
       "evidence": {
         "creator_share": 0.5,
         "active_users": 4
@@ -51,36 +51,36 @@
       "actions": [
         {
           "priority": "P0",
-          "action": "Identify and incentivize potential creators among viewers"
+          "action": "Identify barriers to creator engagement and address them"
         },
         {
           "priority": "P1",
-          "action": "Conduct workshops to encourage content creation"
+          "action": "Implement targeted outreach to potential creators"
+        },
+        {
+          "priority": "P1",
+          "action": "Develop incentives for users to take on creator roles"
         }
       ],
-      "confidence": 0.8
+      "confidence": 0.7
     },
     "usage.session_depth": {
       "metric_id": "usage.session_depth",
-      "score": 2,
-      "rationale": "The average session duration and page depth are below target, indicating material risks in user engagement.",
+      "score": 3,
+      "rationale": "The average session duration and page depth are near target, but there are clear risks due to one user significantly underperforming in both metrics.",
       "evidence": {
         "avg_duration_s": 210,
-        "avg_pages": 3
+        "avg_pages": 3.5
       },
       "gaps": [],
       "actions": [
         {
-          "priority": "P0",
-          "action": "Investigate reasons for low engagement in sessions"
-        },
-        {
           "priority": "P1",
-          "action": "Implement strategies to increase session duration and page views"
+          "action": "Investigate user u2's engagement to identify barriers"
         },
         {
           "priority": "P2",
-          "action": "Monitor user feedback to identify content improvement areas"
+          "action": "Implement targeted content recommendations for low-engagement users"
         }
       ],
       "confidence": 0.75
@@ -88,31 +88,30 @@
     "usage.drilldown": {
       "metric_id": "usage.drilldown",
       "score": 2,
-      "rationale": "Drill actions were present in only 3 out of 6 sessions, resulting in a usage rate of 50%. However, the spread is narrow with limited user engagement, indicating material risks.",
+      "rationale": "Drill actions were present in only 3 out of 3 sessions, resulting in a usage rate of 100%, but the sample size is too small to indicate stability or broad spread.",
       "evidence": {
-        "pct_sessions_with_drilldown": 0.5
+        "pct_sessions_with_drilldown": 1.0,
+        "total_sessions": 3
       },
-      "gaps": [],
+      "gaps": [
+        "Total number of sessions is too low for reliable analysis."
+      ],
       "actions": [
         {
           "priority": "P0",
-          "action": "Increase user training on drill features"
+          "action": "Increase the number of sessions to gather more data"
         },
         {
           "priority": "P1",
-          "action": "Enhance visibility of drill options in the UI"
-        },
-        {
-          "priority": "P2",
-          "action": "Collect user feedback to identify barriers to usage"
+          "action": "Encourage users to utilize drill features more frequently"
         }
       ],
-      "confidence": 0.7
+      "confidence": 0.5
     },
     "reliability.refresh_timeliness": {
       "metric_id": "reliability.refresh_timeliness",
       "score": 3,
-      "rationale": "One dashboard is stale beyond its daily SLA, while the other is within its weekly SLA. This indicates clear risks to address, particularly with the daily dashboard.",
+      "rationale": "One dashboard is stale beyond its daily SLA, while another is within its weekly SLA. This indicates clear risks to address, particularly with the daily dashboard.",
       "evidence": {
         "within_sla_pct": 0.5,
         "failures": 1
@@ -128,7 +127,7 @@
           "action": "Implement monitoring for dashboard refresh statuses"
         }
       ],
-      "confidence": 0.75
+      "confidence": 0.7
     },
     "features.cross_links": {
       "metric_id": "features.cross_links",
@@ -142,29 +141,32 @@
       "actions": [
         {
           "priority": "P0",
-          "action": "Increase link usage by promoting dashboards with links"
+          "action": "Increase visibility of links on dashboards"
         },
         {
           "priority": "P1",
-          "action": "Analyze user behavior to identify barriers to link usage"
+          "action": "Analyze user behavior to understand low link usage"
         },
         {
           "priority": "P2",
-          "action": "Enhance the visibility of links in dashboards"
+          "action": "Implement user training on dashboard navigation"
         }
       ],
-      "confidence": 0.7
+      "confidence": 0.75
     },
     "governance.coverage": {
       "metric_id": "governance.coverage",
       "score": 2,
-      "rationale": "The dashboards show a lack of certification and ownership, with only one dashboard certified and owned. Metadata completeness is also low, indicating material risks.",
+      "rationale": "The dashboards show a lack of certification and ownership, with only one dashboard certified and owned. Metadata completeness is also absent for the non-certified dashboard, indicating material risks.",
       "evidence": {
         "certified_pct": 0.5,
         "ownership_pct": 0.5,
         "metadata_completeness_pct": 0.0
       },
-      "gaps": [],
+      "gaps": [
+        "Lack of ownership for one dashboard",
+        "No metadata for the non-certified dashboard"
+      ],
       "actions": [
         {
           "priority": "P0",
@@ -184,7 +186,7 @@
     "data.source_diversity": {
       "metric_id": "data.source_diversity",
       "score": 2,
-      "rationale": "Three sources across one domain; limited diversity and no recent additions.",
+      "rationale": "Three sources across one domain; limited diversity and significant risks in data coverage.",
       "evidence": {
         "distinct_sources": 3,
         "domain_count": 1
@@ -197,7 +199,7 @@
         },
         {
           "priority": "P1",
-          "action": "Evaluate current sources for data quality and relevance"
+          "action": "Evaluate current sources for data quality and completeness"
         }
       ],
       "confidence": 0.7
@@ -205,22 +207,25 @@
     "democratization.self_service": {
       "metric_id": "democratization.self_service",
       "score": 2,
-      "rationale": "Creator share is 50% with only 2 out of 4 users being creators, indicating a material risk in department coverage. There is a need to increase the number of creators to meet the target.",
+      "rationale": "Creator share is 50% out of 4 users, but there is no information on department coverage, indicating material risks in engagement across departments.",
       "evidence": {
-        "creator_share": 0.5
+        "creator_share": 0.5,
+        "total_users": 4
       },
-      "gaps": [],
+      "gaps": [
+        "Department coverage data"
+      ],
       "actions": [
         {
           "priority": "P0",
-          "action": "Identify and onboard additional creators from underrepresented departments"
+          "action": "Conduct a survey to assess department engagement"
         },
         {
           "priority": "P1",
-          "action": "Conduct training sessions to empower potential creators"
+          "action": "Implement targeted outreach to underrepresented departments"
         }
       ],
-      "confidence": 0.7
+      "confidence": 0.6
     },
     "decision.traceability": {
       "metric_id": "decision.traceability",
@@ -236,11 +241,11 @@
       "actions": [
         {
           "priority": "P0",
-          "action": "Ensure all decisions include dashboard links"
+          "action": "Ensure all decisions include dashboard links and supporting evidence"
         },
         {
           "priority": "P1",
-          "action": "Implement a review process for decision documentation"
+          "action": "Conduct training on the importance of linking decisions to dashboards"
         }
       ],
       "confidence": 0.6
@@ -248,12 +253,12 @@
     "usage.weekly_active_trend": {
       "metric_id": "usage.weekly_active_trend",
       "score": 3,
-      "rationale": "WAU is flat with some noise; there is no material drop, but the activity is not consistently growing.",
+      "rationale": "WAU is flat with some noise, showing no material drop but also no clear growth. The activity events indicate a stable user base without significant fluctuations.",
       "evidence": {
         "wau_series": [
           4,
+          4,
           3,
-          1,
           2
         ],
         "trend": "flat"
@@ -262,14 +267,14 @@
       "actions": [
         {
           "priority": "P1",
-          "action": "Analyze user engagement to identify barriers to growth"
+          "action": "Analyze user engagement to identify potential drop-off points"
         },
         {
           "priority": "P2",
           "action": "Implement targeted campaigns to re-engage inactive users"
         }
       ],
-      "confidence": 0.7
+      "confidence": 0.75
     },
     "usage.retention_4w": {
       "metric_id": "usage.retention_4w",
@@ -288,11 +293,11 @@
         },
         {
           "priority": "P1",
-          "action": "Implement targeted re-engagement campaigns for initial users"
+          "action": "Implement targeted re-engagement campaigns for first-week users"
         },
         {
           "priority": "P1",
-          "action": "Analyze content performance to identify areas for improvement"
+          "action": "Analyze content engagement to improve user experience"
         }
       ],
       "confidence": 0.9
@@ -300,7 +305,7 @@
     "features.export_rate": {
       "metric_id": "features.export_rate",
       "score": 1,
-      "rationale": "There are no export or download actions recorded, indicating a significant failure in user engagement with these features.",
+      "rationale": "There are no export or download actions recorded, indicating a significant failure in user engagement with these features. This necessitates urgent action to address the lack of functionality usage.",
       "evidence": {
         "export_sessions_pct": 0.0
       },
@@ -308,23 +313,23 @@
       "actions": [
         {
           "priority": "P0",
-          "action": "Investigate user awareness and accessibility of export/download features"
+          "action": "Implement and promote export/download features to users"
         },
         {
           "priority": "P1",
-          "action": "Implement user training sessions on how to use export/download features"
+          "action": "Conduct user training sessions on how to use export/download features"
         },
         {
           "priority": "P1",
-          "action": "Enhance visibility of export/download options in the user interface"
+          "action": "Gather user feedback to understand barriers to using export/download features"
         }
       ],
-      "confidence": 0.9
+      "confidence": 0.8
     },
     "features.alerts_usage": {
       "metric_id": "features.alerts_usage",
       "score": 1,
-      "rationale": "There is near zero adoption of alerts or subscriptions, as all recorded actions are 'view' events with no evidence of alerts or subscriptions being utilized. This indicates a significant failure in user engagement with the alerting system.",
+      "rationale": "There is near zero adoption of alerts or subscriptions, as all recorded actions are 'view' events with no evidence of alerts or subscriptions being utilized. This indicates a significant failure in user engagement with the alert system.",
       "evidence": {
         "users_with_alerts": 0,
         "delivery_success_rate": null
@@ -351,7 +356,7 @@
     "reliability.sla_breach_streaks": {
       "metric_id": "reliability.sla_breach_streaks",
       "score": 2,
-      "rationale": "There is a significant breach on the daily dashboard, which has not been refreshed for 1 day past its SLA. The weekly dashboard is within its SLA, but the critical daily dashboard's failure indicates material risks.",
+      "rationale": "There is a significant breach on the daily dashboard, which has not been refreshed for 1 day past its SLA. The weekly dashboard is compliant, but the critical daily dashboard's failure indicates material risks.",
       "evidence": {
         "max_breach_days": 1,
         "critical_breaches": 1
@@ -373,7 +378,9 @@
       "metric_id": "reliability.error_rate_queries",
       "score": 5,
       "rationale": "No error actions were recorded in the provided data, indicating an excellent performance with no material risks.",
-      "evidence": {},
+      "evidence": {
+        "error_rate": 0.0
+      },
       "gaps": [],
       "actions": [],
       "confidence": 1.0
@@ -381,32 +388,28 @@
     "governance.pii_coverage": {
       "metric_id": "governance.pii_coverage",
       "score": 2,
-      "rationale": "There are significant gaps in PII detection and labeling, with only one certified dashboard lacking any PII/access markers.",
-      "evidence": {
-        "certified_dashboards": 1,
-        "total_dashboards": 2,
-        "pii_labeled_pct": 0.0
-      },
+      "rationale": "There are significant gaps in PII detection and labeling, with only one certified dashboard and no metadata indicating PII or access controls on the second dashboard.",
+      "evidence": {},
       "gaps": [
-        "No PII/access markers on dashboard d2",
-        "Lack of ownership and certification for dashboard d2"
+        "Lack of PII/access markers in dashboard metadata",
+        "Only one dashboard is certified"
       ],
       "actions": [
         {
           "priority": "P0",
-          "action": "Implement PII labeling and access controls on all dashboards"
+          "action": "Implement PII labeling and access control policies for all dashboards"
         },
         {
           "priority": "P1",
-          "action": "Certify dashboard d2 and assign an owner"
+          "action": "Certify all dashboards with PII/access markers"
         }
       ],
-      "confidence": 0.6
+      "confidence": 0.5
     },
     "governance.lineage_coverage": {
       "metric_id": "governance.lineage_coverage",
       "score": 2,
-      "rationale": "There is minimal coverage of lineage and glossary documentation across the dashboards. Only one dashboard has any metadata, and it lacks lineage and glossary references.",
+      "rationale": "There is minimal coverage of lineage and glossary documentation across the dashboards. Only one dashboard has any metadata, and it lacks critical lineage and glossary references.",
       "evidence": {
         "lineage_pct": 0.0,
         "glossary_pct": 0.0
@@ -425,7 +428,7 @@
         },
         {
           "priority": "P2",
-          "action": "Review and update existing dashboards to include required metadata"
+          "action": "Review and update existing dashboards to include missing metadata"
         }
       ],
       "confidence": 0.5
@@ -433,7 +436,7 @@
     "data.cost_efficiency": {
       "metric_id": "data.cost_efficiency",
       "score": 4,
-      "rationale": "The source mix is strong with a balanced use of Snowflake, Postgres, and Salesforce. There are minor inefficiencies indicated by the stale content in dashboard d2, which has not been refreshed since July 28, while the other dashboard is refreshed daily.",
+      "rationale": "The source mix is strong with a balance of Snowflake, Postgres, and Salesforce. There are minor inefficiencies indicated by the stale content in the dashboards, but overall performance meets targets with manageable risks.",
       "evidence": {
         "source_mix": "3 sources (Snowflake, Postgres, Salesforce)",
         "stale_pct": 0.5
@@ -442,11 +445,11 @@
       "actions": [
         {
           "priority": "P1",
-          "action": "Refresh dashboard d2 to reduce stale content"
+          "action": "Review and refresh stale dashboards more frequently"
         },
         {
           "priority": "P2",
-          "action": "Monitor dashboard usage to identify further stale content"
+          "action": "Monitor user engagement with dashboards to identify low usage"
         }
       ],
       "confidence": 0.8
@@ -454,11 +457,11 @@
     "democratization.dept_coverage": {
       "metric_id": "democratization.dept_coverage",
       "score": 3,
-      "rationale": "40% of departments have creators, indicating a need for improvement in creator distribution across departments.",
+      "rationale": "Only 50% of departments have creators, indicating a need for improvement in creator distribution across departments.",
       "evidence": {
         "dept_with_creators": 2,
-        "total_depts": 5,
-        "coverage": 0.4
+        "total_depts": 4,
+        "coverage": 0.5
       },
       "gaps": [],
       "actions": [
@@ -468,7 +471,7 @@
         },
         {
           "priority": "P1",
-          "action": "Conduct training sessions to increase creator engagement"
+          "action": "Conduct training sessions to increase creator roles"
         }
       ],
       "confidence": 0.75

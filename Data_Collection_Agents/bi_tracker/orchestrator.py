@@ -17,7 +17,6 @@ class BIOrchestrator:
       - business_integration  (usage, adoption, feature use)
       - decision_making       (governance, freshness, traceability)
 
-    The former 'operational_health' rollup has been removed to match the PRD.
     """
     def __init__(self, model: str = "gpt-4o-mini", temperature: float = 0.0, max_tokens: int = 700):
         self.model = model

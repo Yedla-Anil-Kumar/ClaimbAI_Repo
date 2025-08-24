@@ -26,15 +26,15 @@ class ParallelPatternsAgent(BaseMicroAgent):
 
         prompt = f"""Analyze these code snippets for parallel processing patterns:
 
-{chr(10).join(f"--- Snippet {i + 1} ---{chr(10)}{snippet}" for i, snippet in enumerate(code_snippets))}
+        {chr(10).join(f"--- Snippet {i + 1} ---{chr(10)}{snippet}" for i, snippet in enumerate(code_snippets))}
 
-Identify:
-- Parallel processing tools (threading, multiprocessing, concurrent.futures, etc.)
-- Parallelization patterns and approaches
-- Scalability considerations
-- Opportunities for better parallelization
+        Identify:
+        - Parallel processing tools (threading, multiprocessing, concurrent.futures, etc.)
+        - Parallelization patterns and approaches
+        - Scalability considerations
+        - Opportunities for better parallelization
 
-Return your analysis as JSON."""
+        Return your analysis as JSON."""
 
         response = self._call_llm(prompt, system_prompt)
         result = self._parse_json_response(response)
@@ -67,15 +67,15 @@ class InferenceEndpointAgent(BaseMicroAgent):
 
         prompt = f"""Analyze these code snippets for inference endpoint implementations:
 
-{chr(10).join(f"--- Snippet {i + 1} ---{chr(10)}{snippet}" for i, snippet in enumerate(code_snippets))}
+        {chr(10).join(f"--- Snippet {i + 1} ---{chr(10)}{snippet}" for i, snippet in enumerate(code_snippets))}
 
-Identify:
-- Inference endpoint frameworks (FastAPI, Flask, Streamlit, etc.)
-- Model serving patterns and approaches
-- API design and implementation quality
-- Scalability and deployment considerations
+        Identify:
+        - Inference endpoint frameworks (FastAPI, Flask, Streamlit, etc.)
+        - Model serving patterns and approaches
+        - API design and implementation quality
+        - Scalability and deployment considerations
 
-Return your analysis as JSON."""
+        Return your analysis as JSON."""
 
         response = self._call_llm(prompt, system_prompt)
         result = self._parse_json_response(response)
@@ -108,15 +108,15 @@ class ModelExportAgent(BaseMicroAgent):
 
         prompt = f"""Analyze these code snippets for model export patterns:
 
-{chr(10).join(f"--- Snippet {i + 1} ---{chr(10)}{snippet}" for i, snippet in enumerate(code_snippets))}
+        {chr(10).join(f"--- Snippet {i + 1} ---{chr(10)}{snippet}" for i, snippet in enumerate(code_snippets))}
 
-Identify:
-- Model export and serialization methods (torch.save, joblib.dump, pickle, etc.)
-- Model formats and serialization approaches
-- Model versioning and management patterns
-- Deployment preparation and readiness
+        Identify:
+        - Model export and serialization methods (torch.save, joblib.dump, pickle, etc.)
+        - Model formats and serialization approaches
+        - Model versioning and management patterns
+        - Deployment preparation and readiness
 
-Return your analysis as JSON."""
+        Return your analysis as JSON."""
 
         response = self._call_llm(prompt, system_prompt)
         result = self._parse_json_response(response)
@@ -150,15 +150,15 @@ class DataPipelineAgent(BaseMicroAgent):
 
         prompt = f"""Analyze these code snippets for data pipeline configurations:
 
-{chr(10).join(f"--- Snippet {i + 1} ---{chr(10)}{snippet}" for i, snippet in enumerate(code_snippets))}
+        {chr(10).join(f"--- Snippet {i + 1} ---{chr(10)}{snippet}" for i, snippet in enumerate(code_snippets))}
 
-Identify:
-- Data pipeline tools (Airflow, Prefect, Luigi, Argo, Kedro, etc.)
-- Pipeline patterns and orchestration approaches
-- Workflow management and scheduling
-- Data flow and processing patterns
+        Identify:
+        - Data pipeline tools (Airflow, Prefect, Luigi, Argo, Kedro, etc.)
+        - Pipeline patterns and orchestration approaches
+        - Workflow management and scheduling
+        - Data flow and processing patterns
 
-Return your analysis as JSON."""
+        Return your analysis as JSON."""
 
         response = self._call_llm(prompt, system_prompt)
         result = self._parse_json_response(response)
@@ -191,15 +191,15 @@ class FeatureEngineeringAgent(BaseMicroAgent):
 
         prompt = f"""Analyze these code snippets for feature engineering patterns:
 
-{chr(10).join(f"--- Snippet {i + 1} ---{chr(10)}{snippet}" for i, snippet in enumerate(code_snippets))}
+        {chr(10).join(f"--- Snippet {i + 1} ---{chr(10)}{snippet}" for i, snippet in enumerate(code_snippets))}
 
-Identify:
-- Feature engineering tools (sklearn.preprocessing, featuretools, tsfresh, etc.)
-- Feature engineering patterns and approaches
-- Feature selection and transformation techniques
-- Automation and pipeline integration
+        Identify:
+        - Feature engineering tools (sklearn.preprocessing, featuretools, tsfresh, etc.)
+        - Feature engineering patterns and approaches
+        - Feature selection and transformation techniques
+        - Automation and pipeline integration
 
-Return your analysis as JSON."""
+        Return your analysis as JSON."""
 
         response = self._call_llm(prompt, system_prompt)
         result = self._parse_json_response(response)
@@ -235,15 +235,15 @@ class SecurityAgent(BaseMicroAgent):
 
         prompt = f"""Analyze these code snippets for security vulnerabilities:
 
-{chr(10).join(f"--- Snippet {i + 1} ---{chr(10)}{snippet}" for i, snippet in enumerate(code_snippets))}
+        {chr(10).join(f"--- Snippet {i + 1} ---{chr(10)}{snippet}" for i, snippet in enumerate(code_snippets))}
 
-Identify:
-- Hardcoded secrets, API keys, and credentials
-- Security vulnerabilities and risks
-- Secret management practices
-- Input validation and security measures
+        Identify:
+        - Hardcoded secrets, API keys, and credentials
+        - Security vulnerabilities and risks
+        - Secret management practices
+        - Input validation and security measures
 
-Return your analysis as JSON."""
+        Return your analysis as JSON."""
 
         response = self._call_llm(prompt, system_prompt)
         result = self._parse_json_response(response)
