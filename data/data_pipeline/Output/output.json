@@ -1,5 +1,5 @@
 {
   "metric_id": "schema.consistency",
   "score": 1.0,
-  "rationale": "Table 'users' has 2 missing baseline fields ('name', 'created_at') and 1 unexpected field ('mjn'). Table 'orders' is fully consistent. Total inconsistencies are 3 out of 8 baseline fields, resulting in 37.5% inconsistency."
+  "rationale": "Table 'users' has significant inconsistencies: fields 'name' and 'created_at' are missing, and 'mjn' is an unexpected field. Table 'orders' is consistent. Overall, 3 out of 8 expected fields are inconsistent (~37.5%), indicating severe inconsistency."
 }

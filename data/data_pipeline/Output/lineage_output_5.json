@@ -1,0 +1,5 @@
+{
+  "metric_id": "data.lineage",
+  "score": 2,
+  "rationale": "Lineage exists for 69.23% of tables, falling into the fair category; significant gaps remain for 30.77%."
+}

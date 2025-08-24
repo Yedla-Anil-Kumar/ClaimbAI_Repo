@@ -1,0 +1,5 @@
+{
+  "metric_id": "governance.compliance",
+  "score": 3,
+  "rationale": "Total non-compliant incidents (violations + unidentified) are 13 out of 100, representing 13% of the total. This falls within the 5-15% violations range, indicating moderate compliance with noticeable gaps."
+}

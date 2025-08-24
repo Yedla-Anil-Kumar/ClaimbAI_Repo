@@ -1,0 +1,7 @@
+{
+  "catalog_entries": [
+    {"table": "orders", "description": "Customer orders", "owner": "data-team", "extras": "data-abc"},
+    {"table": "customers", "description": "hello my customers", "owner": "data-team", "name": "silly"}
+  ],
+  "required_fields": ["description", "owner", "name"]
+}

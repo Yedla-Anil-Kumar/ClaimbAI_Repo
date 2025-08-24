@@ -1,0 +1,13 @@
+{
+  "security_settings": {
+    "encryption": "AES256",
+    "iam_roles": ["analyst", "admin"],
+    "public_access": true
+  },
+  "compliance_rules": {
+    "encryption": "AES256",
+    "require_public_access": false
+  },
+  "checks_total": 100,
+  "failures": 10
+}

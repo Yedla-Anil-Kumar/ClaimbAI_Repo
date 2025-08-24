@@ -1,0 +1,5 @@
+{
+  "metric_id": "data.freshness",
+  "score": 1,
+  "rationale": "Employee Salary Given updated 4 days ago (96 hours). This duration exceeds 24 hours, classifying the data as stale according to the freshness rubric."
+}

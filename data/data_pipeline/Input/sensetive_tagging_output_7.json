@@ -1,0 +1,9 @@
+{
+  "data_assets": [
+    {"table": "customers", "columns": ["id", "name", "email", "ssn", "parent", "income", "bank ac. no:"]},
+    {"table": "orders", "columns": ["id", "amount", "created_at"]}
+  ],
+  "pii_rules": {
+    "pii_columns": ["email", "ssn", "income"]
+  }
+}

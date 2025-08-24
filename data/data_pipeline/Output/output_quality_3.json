@@ -1,0 +1,5 @@
+{
+  "metric_id": "data.quality",
+  "score": 1,
+  "rationale": "Nulls ~15%, duplicates ~45%, and outliers ~2% → ~62% total issues; severe data quality problems."
+}

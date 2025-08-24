@@ -1,0 +1,9 @@
+{
+  "backup_success_rate": 0.87,
+  "avg_rpo_hours": 8,
+  "avg_rto_hours": 10,
+  "targets": {
+    "rpo_hours": 1,
+    "rto_hours": 2
+  }
+}

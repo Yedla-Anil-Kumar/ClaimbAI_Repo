@@ -2,6 +2,29 @@ BASELINE_PATH: "data/data_pipeline/Input/baseline_table.json"
 TABLES_PATH: "data/data_pipeline/Input/real_table.json"
 OUTPUT_PATH: "data/data_pipeline/Output/output.json"
 
+FRESHNESS_INPUT_PATH: "data/data_pipeline/Input/table_metadata.json"
+FRESHNESS_OUTPUT_PATH: "data/data_pipeline/Output/output2.json"
 
+QUALITY_INPUT_PATH: "data/data_pipeline/Input/quality_input_3.json"
+QUALITY_OUTPUT_PATH: "data/data_pipeline/Output/output_quality_3.json"
 
+GOVERNANCE_INPUT_PATH: "data/data_pipeline/Input/governance_input_4.json"
+GOVERNANCE_OUTPUT_PATH: "data/data_pipeline/Output/governance_output_4.json"
 
+LINEAGE_INPUT_PATH: "data/data_pipeline/Input/lineage_input_5.json"
+LINEAGE_OUTPUT_PATH: "data/data_pipeline/Output/lineage_output_5.json"
+
+METADATA_INPUT_PATH: "data/data_pipeline/Input/metadata_input_6.json"
+METADATA_OUTPUT_PATH: "data/data_pipeline/Output/metadata_output_6.json"
+
+TAGGING_INPUT_PATH: "data/data_pipeline/Input/sensetive_tagging_output_7.json"
+TAGGING_OUTPUT_PATH: "data/data_pipeline/Output/sensetive_tagging_output_7.json"
+
+DUPLICATION_INPUT_PATH: "data/data_pipeline/Input/duplication_input_8.json"
+DUPLICATION_OUTPUT_PATH: "data/data_pipeline/Output/duplication_output_8.json"
+
+BACKUP_INPUT_PATH: "data/data_pipeline/Input/backup_input_9.json"
+BACKUP_OUTPUT_PATH: "data/data_pipeline/Output/backup_output_9.json"
+
+SECURITY_INPUT_PATH: "data/data_pipeline/Input/security_input_10.json"
+SECURITY_OUTPUT_PATH: "data/data_pipeline/Output/security_output_10.json"
