@@ -1,5 +1,5 @@
 {
   "metric_id": "sensitive.tagging",
   "score": 2,
-  "rationale": "60% sensitive fields tagged (3 out of 5 identified sensitive fields); significant gaps remain, notably 'name' and 'bank ac. no:' are not tagged."
+  "rationale": "Only 3 out of 7 sensitive fields tagged, gaps remain."
 }

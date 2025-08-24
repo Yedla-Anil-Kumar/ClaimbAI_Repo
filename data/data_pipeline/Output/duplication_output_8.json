@@ -1,5 +1,5 @@
 {
   "metric_id": "duplication",
   "score": 3,
-  "rationale": "~13.75% redundancy from duplicate groups; increases cost and confusion."
+  "rationale": "~13.75% redundancy."
 }

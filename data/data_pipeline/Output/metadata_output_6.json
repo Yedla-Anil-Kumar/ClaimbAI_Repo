@@ -1,5 +1,5 @@
 {
   "metric_id": "metadata.coverage",
   "score": 3,
-  "rationale": "83.33% of required fields are present across all entries. One entry has 2/3 required fields, and the other has 3/3. The 'name' field is missing from one entry."
+  "rationale": "~70% fully documented."
 }

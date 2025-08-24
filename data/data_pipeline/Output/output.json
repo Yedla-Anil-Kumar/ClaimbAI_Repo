@@ -1,5 +1,5 @@
 {
   "metric_id": "schema.consistency",
-  "score": 1.0,
-  "rationale": "Table 'users' has significant inconsistencies: fields 'name' and 'created_at' are missing, and 'mjn' is an unexpected field. Table 'orders' is consistent. Overall, 3 out of 8 expected fields are inconsistent (~37.5%), indicating severe inconsistency."
+  "score": 2,
+  "rationale": "Missing 'name' and 'created_at' in users; ~50% fields absent."
 }

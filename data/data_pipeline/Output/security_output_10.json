@@ -1,5 +1,5 @@
 {
   "metric_id": "security.config",
-  "score": 3,
-  "rationale": "~10% configuration failures. Critical misconfiguration detected with public access enabled despite compliance rules prohibiting it. Encryption is compliant with AES256."
+  "score": 2,
+  "rationale": "~10% misconfigs (public access not compliant with rules)."
 }

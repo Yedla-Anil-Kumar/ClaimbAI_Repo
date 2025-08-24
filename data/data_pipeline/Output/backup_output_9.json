@@ -1,5 +1,5 @@
 {
   "metric_id": "backup.recovery",
   "score": 2,
-  "rationale": "The backup success rate of 87% and RPO of 8 hours are within the thresholds for a score of 3. However, the RTO of 10 hours exceeds the 8-hour limit for a score of 3 and falls into the 8-24 hour range, which lowers the overall score to 2."
+  "rationale": "87% success, RPO 8h, RTO 10h beyond strict SLA."
 }
