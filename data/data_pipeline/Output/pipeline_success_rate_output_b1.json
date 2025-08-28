@@ -1,0 +1,6 @@
+{
+  "metric_id": "pipeline.success_rate",
+  "score": 4,
+  "rationale": "80% success (8/10). Below SLA but acceptable.",
+  "gap": "Investigate job failures, enhance monitoring, and consider optimizing job configurations."
+}

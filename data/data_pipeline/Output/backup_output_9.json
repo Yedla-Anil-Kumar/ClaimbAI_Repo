@@ -1,5 +1,6 @@
 {
   "metric_id": "backup.recovery",
   "score": 2,
-  "rationale": "87% success, RPO 8h, RTO 10h beyond strict SLA."
+  "rationale": "87% success, RPO 8h, RTO 10h significantly beyond strict SLA.",
+  "gap": "Enhance backup frequency, reduce RPO and RTO through better infrastructure, implement regular testing of recovery processes, and consider cloud-based solutions for faster recovery."
 }

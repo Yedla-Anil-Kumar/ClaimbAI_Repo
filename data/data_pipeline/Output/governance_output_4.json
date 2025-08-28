@@ -1,5 +1,6 @@
 {
   "metric_id": "governance.compliance",
   "score": 3,
-  "rationale": "~8% violations."
+  "rationale": "~8% violations.",
+  "gap": "Enhance data identification processes, improve access control measures, and conduct regular training sessions on data governance best practices."
 }

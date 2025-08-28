@@ -28,3 +28,21 @@ BACKUP_OUTPUT_PATH: "data/data_pipeline/Output/backup_output_9.json"
 
 SECURITY_INPUT_PATH: "data/data_pipeline/Input/security_input_10.json"
 SECURITY_OUTPUT_PATH: "data/data_pipeline/Output/security_output_10.json"
+
+
+
+# Input JSON files for Analytics Readiness metrics
+PIPELINE_SUCCESS_INPUT_PATH: "data/data_pipeline/Input/pipeline_success_input_b1.json"
+PIPELINE_LATENCY_INPUT_PATH: "data/data_pipeline/Input/pipeline_latency_input_b2.json"
+RESOURCE_UTIL_INPUT_PATH: "data/data_pipeline/Input/resource_utilization_input_b3.json"
+RESOURCE_UTIL_INPUT2_PATH: "data/data_pipeline/Input/resource_utilization_input2_b3.json"
+QUERY_PERFORMANCE_INPUT_PATH: "data/data_pipeline/Input/query_performance_input_b4.json"
+ANALYTICS_ADOPTION_INPUT_PATH: "data/data_pipeline/Input/analytics_adoption_input_b5.json"
+
+# Output JSON files
+PIPELINE_SUCCESS_OUTPUT_PATH: "data/data_pipeline/Output/pipeline_success_rate_output_b1.json"
+PIPELINE_LATENCY_OUTPUT_PATH: "data/data_pipeline/Output/pipeline_latency_output_b2.json"
+RESOURCE_UTIL_OUTPUT_PATH: "data/data_pipeline/Output/resource_utilization_output_b3.json"
+QUERY_PERFORMANCE_OUTPUT_PATH: "data/data_pipeline/Output/query_performance_output_b4.json"
+ANALYTICS_ADOPTION_OUTPUT_PATH: "data/data_pipeline/Output/analytics_adoption_output_5.json"
+

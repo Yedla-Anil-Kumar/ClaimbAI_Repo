@@ -1,5 +1,6 @@
 {
   "metric_id": "metadata.coverage",
-  "score": 3,
-  "rationale": "~70% fully documented."
+  "score": 2,
+  "rationale": "~50% of required fields are documented.",
+  "gap": "Ensure all catalog entries include the 'name' field, provide training on metadata standards, and implement a review process for completeness."
 }

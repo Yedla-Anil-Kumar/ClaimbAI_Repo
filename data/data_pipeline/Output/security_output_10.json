@@ -1,5 +1,6 @@
 {
   "metric_id": "security.config",
-  "score": 2,
-  "rationale": "~10% misconfigs (public access not compliant with rules)."
+  "score": 3,
+  "rationale": "~10% misconfigs (public access).",
+  "gap": "Implement security configuration scanning, remediate public access violations, establish security baseline standards, add automated compliance checks"
 }

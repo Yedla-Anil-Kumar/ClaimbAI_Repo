@@ -1,5 +1,6 @@
 {
   "metric_id": "data.freshness",
-  "score": 2,
-  "rationale": "Employee Salary Given updated 4 days ago vs weekly SLA."
+  "score": 1,
+  "rationale": "Employee Salary Given updated 4 days ago vs weekly SLA.",
+  "gap": "Review data update processes, ensure timely data ingestion, and implement automated alerts for overdue updates."
 }

@@ -1,5 +1,6 @@
 {
   "metric_id": "sensitive.tagging",
   "score": 2,
-  "rationale": "Only 3 out of 7 sensitive fields tagged, gaps remain."
+  "rationale": "Only 3 out of 7 columns are tagged as sensitive, indicating ~43% tagging completeness.",
+  "gap": "Implement a comprehensive tagging strategy for all sensitive fields, ensure all PII columns are tagged, and provide training on data classification for staff."
 }

@@ -1,5 +1,6 @@
 {
   "metric_id": "data.lineage",
   "score": 2,
-  "rationale": "Lineage only for 69%"
+  "rationale": "Lineage only for 69% of tables",
+  "gap": "Implement automated lineage tracking tools, increase documentation efforts for missing tables, and ensure comprehensive mapping of table dependencies"
 }

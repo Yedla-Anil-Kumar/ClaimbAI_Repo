@@ -1,0 +1,9 @@
+{
+  "query_logs": [
+    {"id": "q1", "runtime": 4, "user": "alice", "success": true},
+    {"id": "q2", "runtime": 6, "user": "bob", "success": true},
+    {"id": "q3", "runtime": 9, "user": "carol", "success": true},
+    {"id": "q4", "runtime": 14, "user": "dave", "success": true},
+    {"id": "q5", "runtime": 3, "user": "eve", "success": true}
+  ]
+}

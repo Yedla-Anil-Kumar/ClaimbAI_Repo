@@ -1,0 +1,6 @@
+{
+  "metric_id": "resource.utilization",
+  "score": 3,
+  "rationale": "~50% avg utilization at $13.2k monthly.",
+  "gap": "Right-size clusters, scale dynamically, implement FinOps cost reviews"
+}

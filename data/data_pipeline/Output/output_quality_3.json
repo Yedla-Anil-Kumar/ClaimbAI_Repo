@@ -1,5 +1,6 @@
 {
   "metric_id": "data.quality",
   "score": 1,
-  "rationale": ">30% issues (15% null, 45% duplicate, 2% outlier)."
+  "rationale": "~62% issues (15% null, 45% duplicate, 2% outlier).",
+  "gap": "Implement comprehensive data quality management practices, including strict validation rules, duplicate detection algorithms, and outlier handling procedures."
 }

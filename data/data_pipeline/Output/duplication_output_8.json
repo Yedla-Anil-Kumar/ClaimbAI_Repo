@@ -1,5 +1,6 @@
 {
   "metric_id": "duplication",
   "score": 3,
-  "rationale": "~13.75% redundancy."
+  "rationale": "~13.75% redundancy.",
+  "gap": "Implement data deduplication algorithms, establish single source of truth principles, conduct regular data audits to identify and eliminate duplicates."
 }

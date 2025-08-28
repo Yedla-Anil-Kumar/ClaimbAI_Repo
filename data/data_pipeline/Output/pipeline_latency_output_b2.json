@@ -1,0 +1,6 @@
+{
+  "metric_id": "pipeline.latency_throughput",
+  "score": 4,
+  "rationale": "38m avg runtime, 720k rows processed.",
+  "gap": "Reduce queue wait time, optimize data processing steps, consider scaling resources."
+}

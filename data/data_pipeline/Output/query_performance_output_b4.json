@@ -1,0 +1,6 @@
+{
+  "metric_id": "query.performance",
+  "score": 3,
+  "rationale": "Avg query runtime ~7.2s.",
+  "gap": "Add indexes, optimize joins, review query structure."
+}
