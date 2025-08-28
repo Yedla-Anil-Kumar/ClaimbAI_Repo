@@ -20,3 +20,16 @@ micro_agents/
 /Data_Collection_Agents/ml_ops_agent/pipeline_agents.py
 /Data_Collection_Agents/ml_ops_agent/platform_agents.py
 /Data_Collection_Agents/ml_ops_agent/config_loader.py
+/Data_Collection_Agents/ml_ops_agent/llm_graders.py
+/Data_Collection_Agents/ml_ops_agent/metrics_engine.py
+/Data_Collection_Agents/ml_ops_agent/repo_extractors.py
+/Data_Collection_Agents/ml_ops_agent/schemas.py
+/Data_Collection_Agents/dev_env_scanner_agent/base_agent.py
+/scripts/print_mlops_inputs.py
+/scripts/quality_assessment.py
+/data/bi_tracker/all_results.json
+/data/bi_tracker/inputs.json
+/data/bi_tracker/results.json
+/data/bi_tracker/sample_inputs.json
+/data/ml_ops/inputs/
+/data/ml_ops/per_repo/
