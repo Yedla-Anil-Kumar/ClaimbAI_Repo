@@ -112,7 +112,8 @@ def run_once(args: argparse.Namespace) -> None:
             errors.append((name, msg))
 
     # write aggregate
-    out_path.write_text(json.dumps(aggregate, indent=2), encoding="utf-8")
+    out_path.write_text(json.dumps(aggregate, indent=2, ensure_ascii=False), encoding="utf-8")
+    
 
     print(f"\n📝 Per-input results written to: {per_input_dir}")
     print(f"🧾 Aggregate JSON written to : {out_path}")

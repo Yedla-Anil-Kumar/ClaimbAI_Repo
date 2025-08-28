@@ -9,7 +9,6 @@ from datetime import datetime, timezone
 class BIInputs:
     """
     Canonical, platform-agnostic inputs for BI Tracker (supports 20 metrics).
-    This matches what your orchestrator and llm_engine read.
     """
 
     # Global
@@ -63,7 +62,6 @@ class BIInputs:
 
         def _fix_ts(v: Any) -> str:
             s = "" if v is None else str(v)
-            # keep ISO-ish prefix, trim noisy suffixes
             return s[:25]
 
         # normalize timestamps if present

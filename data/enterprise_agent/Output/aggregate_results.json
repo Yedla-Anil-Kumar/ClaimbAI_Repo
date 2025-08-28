@@ -1,0 +1,778 @@
+[
+  {
+    "agent": "enterprise_systems",
+    "scores": {
+      "process_maturity": 4.16,
+      "integration_health": 3.39,
+      "ai_outcomes": 2.98,
+      "platform_risk": 3.0
+    },
+    "metric_breakdown": {
+      "process.automation.coverage": {
+        "Score": 4,
+        "Rationale": "The coverage ratio of 0.72 indicates good automation across at least two platforms, with a moderate execution volume.",
+        "MetricID": "process.automation.coverage",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "workflow.sla_adherence": {
+        "Score": 4,
+        "Rationale": "The on-time rate of 0.91 falls within the range of 0.90 to 0.94, indicating good performance. While it is not excellent, it demonstrates a solid adherence to SLAs.",
+        "MetricID": "workflow.sla_adherence",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "sales.lead_to_oppty_cycle_time": {
+        "Score": 3,
+        "Rationale": "The median hours from lead creation to opportunity creation is 28, which falls within the 25\u201348 hour range. This indicates a fair performance in the conversion process. Improvements could be made to reduce this time.",
+        "MetricID": "sales.lead_to_oppty_cycle_time",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "itsm.case_resolution_time": {
+        "Score": 5,
+        "Rationale": "The median resolution time of 15 minutes is well below the excellent threshold of 45 minutes, indicating highly efficient incident management.",
+        "MetricID": "itsm.case_resolution_time",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "itsm.incident_reopen_rate": {
+        "Score": 5,
+        "Rationale": "The share of incidents reopened within 7 days of resolution is 5%, which is well below the 2% threshold. This indicates an excellent performance in resolving incidents effectively on the first attempt. The low rate of reopened incidents reflects a strong resolution process.",
+        "MetricID": "itsm.incident_reopen_rate",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "hr.onboarding_cycle_time": {
+        "Score": 5,
+        "Rationale": "The median hours of 7 is well below the threshold of 24 hours, indicating an excellent onboarding process.",
+        "MetricID": "hr.onboarding_cycle_time",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "sap.procure_to_pay_cycle": {
+        "Score": 2,
+        "Rationale": "The total days from PO creation to invoice posting is 18, which falls within the range of 13-20 days. This indicates a poor performance in the procurement process. Improvements are needed to reduce the cycle time.",
+        "MetricID": "sap.procure_to_pay_cycle",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "q2c.throughput": {
+        "Score": 5,
+        "Rationale": "The total hours of 1.5 is well below the threshold for an excellent score. This indicates a very efficient time-to-cash process. Overall, the performance is outstanding.",
+        "MetricID": "q2c.throughput",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "backlog.aging": {
+        "Score": 5,
+        "Rationale": "The median age of open work is significantly low, indicating excellent performance in managing backlog and tail risk.",
+        "Value": 0.12,
+        "Unit": "days (p50)",
+        "Details": {
+          "p50_days": 0.12,
+          "p90_days": null,
+          "open_items": null
+        },
+        "MetricID": "backlog.aging",
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "rpa.success_rate": {
+        "Score": 4,
+        "Rationale": "The reliability of RPA runs is within the range of 93\u201397%, indicating good performance overall.",
+        "MetricID": "rpa.success_rate",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "integration.data_sync_latency": {
+        "Score": 5,
+        "Rationale": "The median latency is 12 seconds, which is well below the 30 seconds threshold for an excellent score. Additionally, the p95 latency is also likely to be within the acceptable range, indicating efficient performance.",
+        "MetricID": "integration.data_sync_latency",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "api.reliability": {
+        "Score": 4,
+        "Rationale": "The error rate is slightly under the SLO threshold, indicating good performance but with limited headroom.",
+        "MetricID": "api.reliability",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "integration.topology_health": {
+        "Score": 1,
+        "Rationale": "The value of 0.7 indicates systemic failures, as it is significantly below the threshold for acceptable uptime.",
+        "MetricID": "integration.topology_health",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "mdm.duplicate_rate": {
+        "Score": 4,
+        "Rationale": "The duplicate rate of 3% indicates a good level of data quality, though there is some room for improvement. Maintaining this rate will help ensure effective data management across systems.",
+        "MetricID": "mdm.duplicate_rate",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "dq.exceptions_rate": {
+        "Score": 3,
+        "Rationale": "The weighted exception rate of 6% falls within the fair range, indicating some issues that need attention. While it is not critical, improvements are necessary to enhance system reliability. Monitoring and addressing the causes of these exceptions would be beneficial.",
+        "MetricID": "dq.exceptions_rate",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "ai.penetration": {
+        "Score": 4,
+        "Rationale": "The value of 0.55 indicates that 50-74% of workflows are covered by AI features, which is a good level of adoption. However, it does not reach the threshold for excellent performance.",
+        "MetricID": "ai.penetration",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "ai.outcome_uplift": {
+        "Score": 1,
+        "Rationale": "The uplift percentage is only 0.11%, which falls below the critical threshold of 1%. This indicates a lack of significant improvement attributable to the AI rollout.",
+        "MetricID": "ai.outcome_uplift",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "ai.governance_coverage": {
+        "Score": 4,
+        "Rationale": "The share of models with required governance controls is 82%, which falls within the 75-89% range. This indicates a good level of governance control. However, it does not reach the excellent threshold.",
+        "MetricID": "ai.governance_coverage",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "platform.customization_debt": {
+        "Score": 4,
+        "Rationale": "The value of 0.42 indicates a moderate-low footprint with stable change, suggesting a well-managed customization environment.",
+        "MetricID": "platform.customization_debt",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "change.failure_rate": {
+        "Score": 2,
+        "Rationale": "The proportion of failed or rolled-back changes is 14%, which falls within the 13-20% range, indicating a poor performance in change management.",
+        "MetricID": "change.failure_rate",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      }
+    },
+    "mode": "single_inputs_json"
+  },
+  {
+    "agent": "enterprise_systems",
+    "scores": {
+      "process_maturity": 3.44,
+      "integration_health": 3.56,
+      "ai_outcomes": 2.32,
+      "platform_risk": 4.5
+    },
+    "metric_breakdown": {
+      "process.automation.coverage": {
+        "Score": 3,
+        "Rationale": "The coverage ratio of 0.61 indicates a fair level of automation, but it suggests that the automations are siloed or patchy across the platforms.",
+        "MetricID": "process.automation.coverage",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "workflow.sla_adherence": {
+        "Score": 2,
+        "Rationale": "The on-time rate of 0.77 falls within the poor range according to the rubric. This indicates significant issues in meeting service level agreements.",
+        "MetricID": "workflow.sla_adherence",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "sales.lead_to_oppty_cycle_time": {
+        "Score": 4,
+        "Rationale": "The median hours from lead creation to opportunity creation is 19, which falls within the 13\u201324 hour range. This indicates a good conversion time, though there is room for improvement. Overall, the performance is solid but not exceptional.",
+        "MetricID": "sales.lead_to_oppty_cycle_time",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "itsm.case_resolution_time": {
+        "Score": 5,
+        "Rationale": "The median resolution time of 25 minutes is well below the excellent threshold of 45 minutes, indicating efficient incident management.",
+        "MetricID": "itsm.case_resolution_time",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "itsm.incident_reopen_rate": {
+        "Score": 3,
+        "Rationale": "The share of incidents reopened within 7 days of resolution is 12%, which falls within the 8-12% range. This indicates a fair level of incident resolution effectiveness. Improvements are needed to reduce the rate of reopened incidents.",
+        "MetricID": "itsm.incident_reopen_rate",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "hr.onboarding_cycle_time": {
+        "Score": 5,
+        "Rationale": "The median hours for the Workday Hire BP is 12, which is well below the excellent threshold of 24 hours. This indicates a highly efficient onboarding process. Overall, the performance is outstanding.",
+        "MetricID": "hr.onboarding_cycle_time",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "sap.procure_to_pay_cycle": {
+        "Score": 1,
+        "Rationale": "The total days from PO creation to invoice posting is greater than 20 days, indicating a critical delay in the process.",
+        "MetricID": "sap.procure_to_pay_cycle",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "q2c.throughput": {
+        "Score": 5,
+        "Rationale": "The total hours of 1.1 is well below the threshold of 12 hours, indicating an excellent time-to-cash performance.",
+        "MetricID": "q2c.throughput",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "backlog.aging": {
+        "Score": 5,
+        "Rationale": "The median age of open work is well below 1 day, indicating excellent performance in managing backlog and tail risk.",
+        "Value": 0.22,
+        "Unit": "days (p50)",
+        "Details": {
+          "p50_days": 0.22,
+          "p90_days": null,
+          "open_items": null
+        },
+        "MetricID": "backlog.aging",
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "rpa.success_rate": {
+        "Score": 2,
+        "Rationale": "The reliability of RPA runs is below the acceptable threshold, indicating significant issues. With a value of 0.81, it falls within the 70-84% range.",
+        "MetricID": "rpa.success_rate",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "integration.data_sync_latency": {
+        "MetricID": "integration.data_sync_latency",
+        "Score": 4,
+        "Rationale": "The median latency is acceptable, but the p95 value is not provided to fully assess the performance. Based on the median value of 35 seconds, it falls within the good range.",
+        "Value": 35,
+        "Unit": "seconds (median)",
+        "Details": {
+          "median_sec": 35,
+          "p95_sec": null,
+          "failed_pct": null
+        },
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "api.reliability": {
+        "Score": 4,
+        "Rationale": "The value of 0.973 indicates a slight underperformance relative to the SLO, and the error rate is within the acceptable range of 0.5-1%. This suggests that while the system is performing well, there is room for improvement.",
+        "MetricID": "api.reliability",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "integration.topology_health": {
+        "Score": 2,
+        "Rationale": "The average uptime is significantly below the acceptable threshold, indicating frequent outages. This suggests systemic issues affecting the integration nodes.",
+        "MetricID": "integration.topology_health",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "mdm.duplicate_rate": {
+        "Score": 3,
+        "Rationale": "The duplicate rate of 9% falls within the 6-10% range, indicating a fair level of data quality. While there are some duplicates present, it is not critical, but improvements are needed.",
+        "MetricID": "mdm.duplicate_rate",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "dq.exceptions_rate": {
+        "Score": 5,
+        "Rationale": "The weighted exception rate is 0.13%, which is well below the 1% threshold. This indicates excellent performance in terms of exception handling across systems. Such a low rate suggests minimal issues with high-severity rules.",
+        "MetricID": "dq.exceptions_rate",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "ai.penetration": {
+        "Score": 3,
+        "Rationale": "The coverage of workflows using AI features is at 33%, which falls within the 30-49% range. This indicates a fair level of adoption, but there is significant room for improvement.",
+        "MetricID": "ai.penetration",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "ai.outcome_uplift": {
+        "Score": 1,
+        "Rationale": "The uplift percentage is only 0.05%, which falls below the critical threshold. This indicates a lack of significant improvement attributable to the AI rollout.",
+        "MetricID": "ai.outcome_uplift",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "ai.governance_coverage": {
+        "Score": 3,
+        "Rationale": "The share of models with required governance controls is 65%, which falls within the 50-74% range. This indicates a fair level of governance but highlights room for improvement.",
+        "MetricID": "ai.governance_coverage",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "platform.customization_debt": {
+        "Score": 4,
+        "Rationale": "The value of 0.61 indicates a moderate-low footprint with stable change, suggesting a well-managed customization environment.",
+        "MetricID": "platform.customization_debt",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "change.failure_rate": {
+        "Score": 5,
+        "Rationale": "The proportion of failed or rolled-back changes is 0.25%, which is well below the 3% threshold. This indicates excellent performance in change management. The low failure rate suggests a highly reliable deployment process.",
+        "MetricID": "change.failure_rate",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      }
+    },
+    "mode": "single_inputs_json"
+  },
+  {
+    "agent": "enterprise_systems",
+    "scores": {
+      "process_maturity": 3.3,
+      "integration_health": 3.17,
+      "ai_outcomes": 1.66,
+      "platform_risk": 4.5
+    },
+    "metric_breakdown": {
+      "process.automation.coverage": {
+        "Score": 2,
+        "Rationale": "The coverage ratio of 0.44 indicates sporadic automations across the platforms, falling below the threshold for more consistent automation practices.",
+        "MetricID": "process.automation.coverage",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "workflow.sla_adherence": {
+        "Score": 2,
+        "Rationale": "The on-time rate of 0.68 falls within the poor range, indicating significant issues in meeting service level agreements.",
+        "MetricID": "workflow.sla_adherence",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "sales.lead_to_oppty_cycle_time": {
+        "Score": 3,
+        "Rationale": "The median hours from lead creation to opportunity creation/qualification is 35, which falls within the 25\u201348 hour range. This indicates a fair performance in the conversion process. Improvements could be made to reduce this time.",
+        "MetricID": "sales.lead_to_oppty_cycle_time",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "itsm.case_resolution_time": {
+        "Score": 5,
+        "Rationale": "The median resolution time of 40 minutes is well within the excellent range, indicating efficient incident management. This performance suggests a strong capability in resolving issues quickly.",
+        "MetricID": "itsm.case_resolution_time",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "itsm.incident_reopen_rate": {
+        "Score": 5,
+        "Rationale": "The share of incidents reopened within 7 days of resolution is 0.15%, which is well below the 2% threshold. This indicates an excellent performance in resolving incidents effectively on the first attempt. The low rate suggests a strong incident management process.",
+        "MetricID": "itsm.incident_reopen_rate",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "hr.onboarding_cycle_time": {
+        "Score": 5,
+        "Rationale": "The median hours for the onboarding process is 20, which is well below the threshold for an excellent score. This indicates a highly efficient hiring process. Overall, the performance is commendable.",
+        "MetricID": "hr.onboarding_cycle_time",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "sap.procure_to_pay_cycle": {
+        "Score": 1,
+        "Rationale": "The total days from PO creation to invoice posting is significantly high at 29 days, indicating a critical delay in the process.",
+        "MetricID": "sap.procure_to_pay_cycle",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "q2c.throughput": {
+        "Score": 5,
+        "Rationale": "The total hours of 0.9 is well below the threshold of 12 hours, indicating an excellent time-to-cash performance.",
+        "MetricID": "q2c.throughput",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "backlog.aging": {
+        "Score": 5,
+        "Rationale": "The median age of open work is significantly low, indicating excellent performance in managing backlog and tail risk.",
+        "Value": 0.35,
+        "Unit": "days (p50)",
+        "Details": {
+          "p50_days": 0.35,
+          "p90_days": null,
+          "open_items": null
+        },
+        "MetricID": "backlog.aging",
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "rpa.success_rate": {
+        "Score": 1,
+        "Rationale": "The reliability of RPA runs is critically low at 63%, which is below the threshold of 70%. This indicates significant issues with the system's performance. Immediate attention is required to address the failures.",
+        "MetricID": "rpa.success_rate",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "integration.data_sync_latency": {
+        "MetricID": "integration.data_sync_latency",
+        "Score": 4,
+        "Rationale": "The median latency is within the acceptable range, but the p95 value is slightly higher than the threshold for an excellent score.",
+        "Value": 55,
+        "Unit": "seconds (p95)",
+        "Details": {
+          "median_sec": 55,
+          "p95_sec": 55,
+          "failed_pct": 0.0
+        },
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "api.reliability": {
+        "Score": 4,
+        "Rationale": "The value of 0.945 indicates a slight underperformance relative to the SLO, but the error rate is not exceeding 1%. This suggests that while there is room for improvement, the system is still functioning adequately.",
+        "MetricID": "api.reliability",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "integration.topology_health": {
+        "Score": 1,
+        "Rationale": "The average uptime of 0.41 indicates systemic failures across the integration nodes.",
+        "MetricID": "integration.topology_health",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "mdm.duplicate_rate": {
+        "Score": 2,
+        "Rationale": "The duplicate rate of 16% indicates a significant issue with data quality, suggesting that there are many duplicates present. This level of duplication can hinder operational efficiency and data integrity. Immediate attention is required to improve the situation.",
+        "MetricID": "mdm.duplicate_rate",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "dq.exceptions_rate": {
+        "Score": 5,
+        "Rationale": "The weighted exception rate of 0.19% is well below the 1% threshold, indicating excellent performance. This suggests a very low incidence of exceptions across systems.",
+        "MetricID": "dq.exceptions_rate",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "ai.penetration": {
+        "Score": 2,
+        "Rationale": "The coverage of workflows using AI features is below 30%, indicating a poor integration of AI in the processes.",
+        "MetricID": "ai.penetration",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "ai.outcome_uplift": {
+        "Score": 1,
+        "Rationale": "The uplift percentage is only 0.02%, which falls below the critical threshold. This indicates a negligible or negative impact from the AI rollout.",
+        "MetricID": "ai.outcome_uplift",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "ai.governance_coverage": {
+        "Score": 2,
+        "Rationale": "The share of models with required governance controls is below 50%, indicating poor compliance with governance standards.",
+        "MetricID": "ai.governance_coverage",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "platform.customization_debt": {
+        "Score": 4,
+        "Rationale": "The value of 0.72 indicates a moderate-low footprint with stable change, suggesting a well-managed customization environment.",
+        "MetricID": "platform.customization_debt",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      },
+      "change.failure_rate": {
+        "Score": 5,
+        "Rationale": "The proportion of failed or rolled-back changes is 0.33%, which is well below the 3% threshold. This indicates excellent performance in change management. The low failure rate suggests a highly reliable deployment process.",
+        "MetricID": "change.failure_rate",
+        "Details": {},
+        "Unit": null,
+        "Value": null,
+        "Window": {
+          "Start": null,
+          "End": null
+        }
+      }
+    },
+    "mode": "single_inputs_json"
+  }
+]
