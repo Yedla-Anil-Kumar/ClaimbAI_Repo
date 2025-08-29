@@ -1,6 +1,6 @@
 {
   "metric_id": "data.freshness",
-  "score": 1,
-  "rationale": "Employee Salary Given updated 4 days ago vs weekly SLA.",
-  "gap": "Review data update processes, ensure timely data ingestion, and implement automated alerts for overdue updates."
+  "score": 2,
+  "rationale": "Table users updated within SLA (45m ago), transactions updated within SLA (15m ago), but orders are 5h behind SLA (4h breach) and inventory is 26h behind SLA (26h breach). Multiple tables consistently behind SLA indicate major issues.",
+  "gap": "Reschedule the orders and inventory ingestion pipelines, implement monitoring and alerts for late updates, and review the architecture for potential bottlenecks."
 }

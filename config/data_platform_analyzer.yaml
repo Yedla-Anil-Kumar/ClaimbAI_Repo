@@ -35,7 +35,6 @@ SECURITY_OUTPUT_PATH: "data/data_pipeline/Output/security_output_10.json"
 PIPELINE_SUCCESS_INPUT_PATH: "data/data_pipeline/Input/pipeline_success_input_b1.json"
 PIPELINE_LATENCY_INPUT_PATH: "data/data_pipeline/Input/pipeline_latency_input_b2.json"
 RESOURCE_UTIL_INPUT_PATH: "data/data_pipeline/Input/resource_utilization_input_b3.json"
-RESOURCE_UTIL_INPUT2_PATH: "data/data_pipeline/Input/resource_utilization_input2_b3.json"
 QUERY_PERFORMANCE_INPUT_PATH: "data/data_pipeline/Input/query_performance_input_b4.json"
 ANALYTICS_ADOPTION_INPUT_PATH: "data/data_pipeline/Input/analytics_adoption_input_b5.json"
 

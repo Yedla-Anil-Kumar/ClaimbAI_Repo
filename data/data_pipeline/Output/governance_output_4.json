@@ -1,6 +1,6 @@
 {
   "metric_id": "governance.compliance",
   "score": 3,
-  "rationale": "~8% violations.",
-  "gap": "Enhance data identification processes, improve access control measures, and conduct regular training sessions on data governance best practices."
+  "rationale": "1000 requests total, 80 were violations (~8% rate). Moderate issues present with several types of governance violations.",
+  "gap": "Implement stricter IAM rules, enhance monitoring of access requests, conduct regular audits, and provide staff training on compliance."
 }

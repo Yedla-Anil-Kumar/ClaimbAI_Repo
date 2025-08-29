@@ -1,6 +1,6 @@
 {
   "metric_id": "schema.consistency",
   "score": 2,
-  "rationale": "Users schema is missing 'name' and 'created_at'; ~50% fields absent in users schema.",
-  "gap": "Implement automated schema validation, ensure all fields from baseline schema are included in actual schema, conduct regular schema audits to prevent drift."
+  "rationale": "Missing fields in users (`created_at`, `signup_source`), orders (`shipping_address`), products (`discontinued_flag`); extra field in reviews (`helpful_count`); ~20% of required fields are absent or different.",
+  "gap": "Add missing fields `created_at`, `signup_source`, and `shipping_address` to actual schema. Remove deprecated field `helpful_count` from reviews. Implement schema validation processes to ensure consistency."
 }

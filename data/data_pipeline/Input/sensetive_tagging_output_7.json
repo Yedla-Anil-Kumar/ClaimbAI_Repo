@@ -1,9 +1,27 @@
 {
-  "data_assets": [
-    {"table": "customers", "columns": ["id", "name", "email", "ssn", "parent", "income", "bank ac. no:"]},
-    {"table": "orders", "columns": ["id", "amount", "created_at"]}
-  ],
-  "pii_rules": {
-    "pii_columns": ["email", "ssn", "income"]
-  }
+  "datasets": [
+    {
+      "dataset": "users",
+      "total_fields": 15,
+      "fields": [
+        {"name": "id", "sensitive": false, "tagged": false},
+        {"name": "email", "sensitive": true, "tagged": true},
+        {"name": "ssn", "sensitive": true, "tagged": false},
+        {"name": "phone", "sensitive": true, "tagged": true},
+        {"name": "address", "sensitive": true, "tagged": true},
+        {"name": "created_at", "sensitive": false, "tagged": false}
+      ]
+    },
+    {
+      "dataset": "orders",
+      "total_fields": 10,
+      "fields": [
+        {"name": "order_id", "sensitive": false, "tagged": false},
+        {"name": "customer_id", "sensitive": true, "tagged": false},
+        {"name": "credit_card", "sensitive": true, "tagged": false},
+        {"name": "amount", "sensitive": false, "tagged": false},
+        {"name": "order_date", "sensitive": false, "tagged": false}
+      ]
+    }
+  ]
 }

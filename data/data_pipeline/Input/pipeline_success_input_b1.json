@@ -1,14 +1,14 @@
 {
   "pipeline_runs": [
-    {"id": 1, "status": "success"},
-    {"id": 2, "status": "success"},
-    {"id": 3, "status": "failure"},
-    {"id": 4, "status": "success"},
-    {"id": 5, "status": "success"},
-    {"id": 6, "status": "failure"},
-    {"id": 7, "status": "success"},
-    {"id": 8, "status": "success"},
-    {"id": 9, "status": "success"},
-    {"id": 10, "status": "failure"}
+    {"id": 101, "name": "daily_sales_etl", "status": "success", "runtime_sec": 320},
+    {"id": 102, "name": "daily_sales_etl", "status": "success", "runtime_sec": 315},
+    {"id": 103, "name": "inventory_load", "status": "failure", "runtime_sec": 0},
+    {"id": 104, "name": "inventory_load", "status": "success", "runtime_sec": 210},
+    {"id": 105, "name": "customer_dim_refresh", "status": "success", "runtime_sec": 122},
+    {"id": 106, "name": "customer_dim_refresh", "status": "failure", "runtime_sec": 0},
+    {"id": 107, "name": "analytics_snapshot", "status": "success", "runtime_sec": 400},
+    {"id": 108, "name": "daily_sales_etl", "status": "success", "runtime_sec": 300},
+    {"id": 109, "name": "analytics_snapshot", "status": "failure", "runtime_sec": 0},
+    {"id": 110, "name": "inventory_load", "status": "success", "runtime_sec": 215}
   ]
 }

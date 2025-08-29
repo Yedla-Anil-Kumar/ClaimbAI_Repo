@@ -1,6 +1,22 @@
 {
-  "metric_id": "data.quality",
-  "score": 1,
-  "rationale": "~62% issues (15% null, 45% duplicate, 2% outlier).",
-  "gap": "Implement comprehensive data quality management practices, including strict validation rules, duplicate detection algorithms, and outlier handling procedures."
+  "tables": [
+    {
+      "table": "users",
+      "score": 5,
+      "rationale": "Users table has ~3% issues (2% nulls, 1% duplicates). Outliers 0%.",
+      "gap": "No gaps — maintain monitoring and quality checks."
+    },
+    {
+      "table": "orders",
+      "score": 4,
+      "rationale": "Orders table has ~18% issues (10% nulls, 3% duplicates, 5% outliers).",
+      "gap": "Implement NOT NULL constraints, enforce uniqueness in order_id, and deploy anomaly detection for outlier management."
+    },
+    {
+      "table": "transactions",
+      "score": 2,
+      "rationale": "Transactions table has ~35% issues (15% nulls, 0% duplicates, 20% outliers).",
+      "gap": "Establish data validation rules, enhance anomaly detection mechanisms, and review data entry processes to reduce nulls and outliers."
+    }
+  ]
 }

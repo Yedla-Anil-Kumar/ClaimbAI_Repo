@@ -1,5 +1,24 @@
 {
-  "table": "Employee Salary Given",
-  "expected_frequency": "weekly",
-  "last_updated": "4 days ago"
+  "tables": [
+    {
+      "table": "users",
+      "expected_frequency": "hourly",
+      "last_updated": "45m ago"
+    },
+    {
+      "table": "orders",
+      "expected_frequency": "hourly",
+      "last_updated": "5h ago"
+    },
+    {
+      "table": "inventory",
+      "expected_frequency": "daily",
+      "last_updated": "26h ago"
+    },
+    {
+      "table": "transactions",
+      "expected_frequency": "hourly",
+      "last_updated": "15m ago"
+    }
+  ]
 }

@@ -1,4 +1,42 @@
 {
-  "users": ["id", "email", "mjn"],
-  "orders": ["id", "user_id", "amount", "created_at"]
+  "users": [
+    "user_id",
+    "email",
+    "last_login",
+    "status",
+    "profile_completed"
+  ],
+  "orders": [
+    "order_id",
+    "user_id",
+    "product_id",
+    "quantity",
+    "order_date",
+    "order_status",
+    "billing_address",
+    "promo_code"
+  ],
+  "products": [
+    "product_id",
+    "name",
+    "category",
+    "price",
+    "stock_quantity",
+    "supplier_id"
+  ],
+  "reviews": [
+    "review_id",
+    "user_id",
+    "product_id",
+    "rating",
+    "review_text",
+    "submitted_at",
+    "helpful_count"
+  ],
+  "returns": [
+    "return_id",
+    "order_id",
+    "return_reason",
+    "return_date"
+  ]
 }

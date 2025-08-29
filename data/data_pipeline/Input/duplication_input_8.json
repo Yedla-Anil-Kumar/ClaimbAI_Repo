@@ -1,4 +1,19 @@
 {
-  "datasets_total": 80,
-  "duplicate_groups": 11
+  "domains": [
+    {
+      "name": "finance",
+      "datasets_total": 40,
+      "duplicate_groups": 4
+    },
+    {
+      "name": "marketing",
+      "datasets_total": 30,
+      "duplicate_groups": 8
+    },
+    {
+      "name": "operations",
+      "datasets_total": 50,
+      "duplicate_groups": 10
+    }
+  ]
 }

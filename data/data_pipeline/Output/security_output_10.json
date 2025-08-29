@@ -1,6 +1,6 @@
 {
   "metric_id": "security.config",
-  "score": 3,
-  "rationale": "~10% misconfigs (public access).",
-  "gap": "Implement security configuration scanning, remediate public access violations, establish security baseline standards, add automated compliance checks"
+  "score": 2,
+  "rationale": "Encryption settings are compliant for both at rest and in transit. Public access is disabled as required. Firewall is enabled, and multi-factor authentication is active. However, the IAM role 'guest' has 'read_only_limited' permission instead of the required 'no_access', which is a deviation from compliance rules.",
+  "gap": "Adjust the 'guest' IAM role permissions to 'no_access' to meet compliance requirements."
 }

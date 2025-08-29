@@ -1,6 +1,6 @@
 {
   "metric_id": "metadata.coverage",
   "score": 2,
-  "rationale": "~50% of required fields are documented.",
-  "gap": "Ensure all catalog entries include the 'name' field, provide training on metadata standards, and implement a review process for completeness."
+  "rationale": "50% of catalog entries are fully documented (orders and transactions have all fields, while customers is missing description and inventory is missing owner).",
+  "gap": "Enforce metadata documentation policies, assign data stewards to ensure completion of missing fields, and consider implementing automated checks for metadata completeness."
 }

@@ -1,6 +1,6 @@
 {
   "metric_id": "pipeline.success_rate",
-  "score": 4,
-  "rationale": "80% success (8/10). Below SLA but acceptable.",
-  "gap": "Investigate job failures, enhance monitoring, and consider optimizing job configurations."
+  "score": 3,
+  "rationale": "73% success (8/11). Below SLA. Key failures in 'inventory_load' and 'customer_dim_refresh' pipelines; notable runtime anomalies with failures at 0 seconds.",
+  "gap": "Implement job retries, investigate causes of failures in 'inventory_load' and 'customer_dim_refresh', enhance monitoring and alerting for all jobs."
 }

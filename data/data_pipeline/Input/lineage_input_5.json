@@ -1,4 +1,11 @@
 {
-  "tables_total": 104,
-  "tables_with_lineage": 72
+  "tables_total": 200,
+  "tables_with_lineage": 160,
+  "tables_with_column_lineage": 100,
+  "domains": {
+    "finance": {"total": 50, "with_lineage": 48},
+    "marketing": {"total": 40, "with_lineage": 25},
+    "operations": {"total": 60, "with_lineage": 50},
+    "hr": {"total": 50, "with_lineage": 37}
+  }
 }

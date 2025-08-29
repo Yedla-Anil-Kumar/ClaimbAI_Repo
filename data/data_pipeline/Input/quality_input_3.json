@@ -1,5 +1,22 @@
 {
-  "null_pct": 0.15,
-  "duplicate_pct": 0.45,
-  "outlier_pct": 0.02
+  "tables": [
+    {
+      "table": "users",
+      "null_pct": 0.02,
+      "duplicate_pct": 0.01,
+      "outlier_pct": 0.00
+    },
+    {
+      "table": "orders",
+      "null_pct": 0.10,
+      "duplicate_pct": 0.03,
+      "outlier_pct": 0.05
+    },
+    {
+      "table": "transactions",
+      "null_pct": 0.15,
+      "duplicate_pct": 0.00,
+      "outlier_pct": 0.20
+    }
+  ]
 }

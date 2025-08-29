@@ -1,5 +1,12 @@
 {
-  "valid_access": 87,
-  "violations": 7,
-  "unidentified": 6
+  "access_summary": {
+    "valid_access": 920,
+    "violations": 80
+  },
+  "violation_breakdown": {
+    "unauthorized_access": 40,
+    "expired_credentials": 20,
+    "privilege_escalation": 15,
+    "pii_access_without_masking": 5
+  }
 }

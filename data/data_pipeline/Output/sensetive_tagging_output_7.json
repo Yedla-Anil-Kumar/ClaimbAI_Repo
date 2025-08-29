@@ -1,6 +1,6 @@
 {
   "metric_id": "sensitive.tagging",
   "score": 2,
-  "rationale": "Only 3 out of 7 columns are tagged as sensitive, indicating ~43% tagging completeness.",
-  "gap": "Implement a comprehensive tagging strategy for all sensitive fields, ensure all PII columns are tagged, and provide training on data classification for staff."
+  "rationale": "Across all datasets, 4 out of 8 sensitive fields are tagged (50%). Critical sensitive fields such as 'ssn' in 'users' and 'credit_card' and 'customer_id' in 'orders' remain untagged, posing compliance risks.",
+  "gap": "Deploy automated PII detection and classification tools, enforce mandatory tagging workflows, assign data stewards to ensure compliance, and conduct regular audits of sensitive data tagging."
 }

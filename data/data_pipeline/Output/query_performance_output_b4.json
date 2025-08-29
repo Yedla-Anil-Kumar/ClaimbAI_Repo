@@ -1,6 +1,6 @@
 {
   "metric_id": "query.performance",
-  "score": 3,
-  "rationale": "Avg query runtime ~7.2s.",
-  "gap": "Add indexes, optimize joins, review query structure."
+  "score": 2,
+  "rationale": "Avg query runtime ~10.1s. Notably, query q105 took 33.5s and q106 took 15.1s. Users bob and eve experienced failures with queries q102 and q110 respectively.",
+  "gap": "Consider indexing, optimizing joins, and rewriting slow queries."
 }

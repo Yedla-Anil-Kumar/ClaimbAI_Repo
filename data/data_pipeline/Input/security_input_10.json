@@ -1,13 +1,30 @@
 {
   "security_settings": {
-    "encryption": "AES256",
-    "iam_roles": ["analyst", "admin"],
-    "public_access": true
+    "encryption": {
+      "at_rest": "AES256",
+      "in_transit": "TLS1.2"
+    },
+    "iam_roles": [
+      {"role": "admin", "permissions": ["full_access"], "assigned_users": 3},
+      {"role": "analyst", "permissions": ["read_only"], "assigned_users": 15},
+      {"role": "guest", "permissions": ["read_only_limited"], "assigned_users": 5}
+    ],
+    "public_access": false,
+    "firewall_enabled": true,
+    "multi_factor_auth": true
   },
   "compliance_rules": {
-    "encryption": "AES256",
-    "require_public_access": false
-  },
-  "checks_total": 100,
-  "failures": 10
+    "encryption": {
+      "at_rest": "AES256",
+      "in_transit": "TLS1.2"
+    },
+    "require_public_access": false,
+    "require_firewall": true,
+    "require_mfa": true,
+    "iam_role_policies": {
+      "admin": ["full_access"],
+      "analyst": ["read_only"],
+      "guest": ["no_access"]
+    }
+  }
 }

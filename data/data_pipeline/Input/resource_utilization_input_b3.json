@@ -1,5 +1,30 @@
 {
-  "cpu": 52,
-  "memory": 47,
-  "storage": 70
+  "resource_usage": {
+    "clusters": [
+      {
+        "name": "analytics-prod",
+        "cpu": 80,
+        "memory": 76,
+        "storage": 68,
+        "monthly_cost_usd": 9000
+      },
+      {
+        "name": "etl-dev",
+        "cpu": 42,
+        "memory": 35,
+        "storage": 50,
+        "monthly_cost_usd": 2600
+      },
+      {
+        "name": "training-gpu",
+        "cpu": 25,
+        "memory": 40,
+        "storage": 70,
+        "monthly_cost_usd": 3000
+      }
+    ]
+  },
+  "cost_data": {
+    "monthly_total_usd": 14600
+  }
 }

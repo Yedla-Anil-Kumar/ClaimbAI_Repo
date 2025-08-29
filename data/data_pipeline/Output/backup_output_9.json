@@ -1,6 +1,6 @@
 {
   "metric_id": "backup.recovery",
-  "score": 2,
-  "rationale": "87% success, RPO 8h, RTO 10h significantly beyond strict SLA.",
-  "gap": "Enhance backup frequency, reduce RPO and RTO through better infrastructure, implement regular testing of recovery processes, and consider cloud-based solutions for faster recovery."
+  "score": 4,
+  "rationale": "Primary DB backup meets high criticality SLAs with 98% success, RPO 0.8h, RTO 0.9h. Analytics warehouse backup has moderate success (93%) and RPO/RTO within acceptable ranges for medium criticality. Log data backup shows lower success (85%) and longer RPO/RTO but is low criticality.",
+  "gap": "Focus on improving backup success for the log data backup through incremental backups and optimization. Maintain rigorous standards for critical systems, including enhanced monitoring and disaster recovery drills."
 }

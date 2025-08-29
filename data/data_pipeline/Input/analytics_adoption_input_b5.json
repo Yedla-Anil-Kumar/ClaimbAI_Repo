@@ -1,5 +1,12 @@
 {
-  "active_users": 48,
-  "dashboard_views": 860,
-  "queries_executed": 2800
+  "active_users": 65,
+  "dashboard_views": 1800,
+  "queries_executed": 4300,
+  "most_active_users": ["alice", "bob", "carol", "dave"],
+  "departments": {
+    "sales": {"active_users": 20, "views": 700},
+    "marketing": {"active_users": 18, "views": 450},
+    "finance": {"active_users": 15, "views": 380},
+    "operations": {"active_users": 12, "views": 270}
+  }
 }

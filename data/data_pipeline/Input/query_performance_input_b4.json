@@ -1,9 +1,14 @@
 {
   "query_logs": [
-    {"id": "q1", "runtime": 4, "user": "alice", "success": true},
-    {"id": "q2", "runtime": 6, "user": "bob", "success": true},
-    {"id": "q3", "runtime": 9, "user": "carol", "success": true},
-    {"id": "q4", "runtime": 14, "user": "dave", "success": true},
-    {"id": "q5", "runtime": 3, "user": "eve", "success": true}
+    {"id": "q101", "runtime": 1.8, "user": "alice", "success": true},
+    {"id": "q102", "runtime": 10.4, "user": "bob", "success": false},
+    {"id": "q103", "runtime": 7.2, "user": "carol", "success": true},
+    {"id": "q104", "runtime": 2.9, "user": "alice", "success": true},
+    {"id": "q105", "runtime": 33.5, "user": "bob", "success": true},
+    {"id": "q106", "runtime": 15.1, "user": "dave", "success": true},
+    {"id": "q107", "runtime": 4.4, "user": "eve", "success": true},
+    {"id": "q108", "runtime": 5.8, "user": "alice", "success": true},
+    {"id": "q109", "runtime": 2.0, "user": "carol", "success": true},
+    {"id": "q110", "runtime": 28.7, "user": "eve", "success": false}
   ]
 }

@@ -1,5 +1,22 @@
 {
-  "avg_runtime_minutes": 38,
-  "rows_processed": 720000,
-  "queue_wait_minutes": 15
+  "pipeline_metrics": [
+    {
+      "pipeline_name": "daily_sales_etl",
+      "avg_runtime_minutes": 12,
+      "rows_processed": 1500000,
+      "queue_wait_minutes": 1
+    },
+    {
+      "pipeline_name": "inventory_load",
+      "avg_runtime_minutes": 55,
+      "rows_processed": 580000,
+      "queue_wait_minutes": 10
+    },
+    {
+      "pipeline_name": "customer_dim_refresh",
+      "avg_runtime_minutes": 130,
+      "rows_processed": 320000,
+      "queue_wait_minutes": 30
+    }
+  ]
 }

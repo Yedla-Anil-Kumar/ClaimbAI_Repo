@@ -1,9 +1,28 @@
 {
-  "backup_success_rate": 0.87,
-  "avg_rpo_hours": 8,
-  "avg_rto_hours": 10,
-  "targets": {
-    "rpo_hours": 1,
-    "rto_hours": 2
-  }
+  "backup_systems": [
+    {
+      "system_name": "primary_db_backup",
+      "criticality": "high",
+      "backup_success_rate": 0.98,
+      "avg_rpo_hours": 0.8,
+      "avg_rto_hours": 0.9,
+      "last_backup_timestamp": "2025-08-28T02:00:00Z"
+    },
+    {
+      "system_name": "analytics_warehouse_backup",
+      "criticality": "medium",
+      "backup_success_rate": 0.93,
+      "avg_rpo_hours": 3,
+      "avg_rto_hours": 2.5,
+      "last_backup_timestamp": "2025-08-27T22:00:00Z"
+    },
+    {
+      "system_name": "log_data_backup",
+      "criticality": "low",
+      "backup_success_rate": 0.85,
+      "avg_rpo_hours": 10,
+      "avg_rto_hours": 7,
+      "last_backup_timestamp": "2025-08-27T10:00:00Z"
+    }
+  ]
 }
